@@ -1,0 +1,120 @@
+{
+  "name": "yyslide",
+  "version": "0.1.0",
+  "private": true,
+  "author": "yyslide",
+  "description": "FinalShell-inspired SSH and SFTP client for Windows.",
+  "main": "electron/main.cjs",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"vite --host 127.0.0.1 --port 5173 --strictPort\" \"wait-on --timeout 120000 http-get://127.0.0.1:5173/ && node scripts/start-electron.cjs\"",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/lint.cjs",
+    "test": "node --test test/*.test.cjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "start": "node scripts/start-electron.cjs",
+    "cloud": "node ../server/yycloud.cjs",
+    "clean:release": "node -e \"require('fs').rmSync('../releases/windows',{recursive:true,force:true})\"",
+    "dist": "npm run clean:release && npm run build && electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.yyslide.client",
+    "productName": "yySlide",
+    "copyright": "Copyright 2026 yyslide",
+    "directories": {
+      "output": "../releases/windows"
+    },
+    "npmRebuild": false,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/node-pty/prebuilds/**/*",
+      "node_modules/node-pty/third_party/**/*"
+    ],
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": true,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true,
+      "grantFileProtocolExtraPrivileges": false
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": true,
+      "signtoolOptions": {
+        "publisherName": "yyslide"
+      },
+      "artifactName": "${productName}-Setup-${version}-${arch}.${ext}",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "yySlide",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-search": "^0.16.0",
+    "@xterm/addon-web-links": "^0.12.0",
+    "@xterm/xterm": "^6.0.0",
+    "lucide-react": "^1.27.0",
+    "monaco-editor": "^0.56.0",
+    "node-pty": "^1.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "concurrently": "^9.2.4",
+    "cross-env": "^10.1.0",
+    "electron": "^42.7.1",
+    "electron-builder": "^26.15.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.5",
+    "wait-on": "^9.1.0"
+  },
+  "overrides": {
+    "dompurify": "3.4.12",
+    "monaco-editor": {
+      "dompurify": "3.4.12"
+    }
+  }
+}

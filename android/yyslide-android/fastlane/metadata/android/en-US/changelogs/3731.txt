@@ -1,0 +1,26 @@
+v5.32.0-rc3 — MCP gap fixes from rc2 testing
+
+Two follow-ups from driving the v5.32 UI test plan via the MCP
+agent transport:
+
+The new structured terminal-MCP tools added in rc2
+(read_terminal_snapshot / tap_terminal / start_selection /
+copy_selection / scroll_terminal) required the session to have a
+TerminalTab in the foreground UI. Headless agent shells opened via
+open_local_shell didn't qualify, making the new tools unreachable
+until the user manually navigated to the Terminal tab. open_local_shell
+now wires a TerminalEmulator alongside the headless PTY ring and
+registers it with the session registry, so snapshot reads and
+tap-to-position work immediately. Selection and scroll still need a
+real UI tab (no Compose layer attached on the headless path);
+that's a known limitation.
+
+list_connections now exposes per-profile sessionManager (tmux /
+zellij / screen / null) and disableAltScreen, so agents can pick a
+clean-bash test target without first connecting and inspecting the
+live session.
+
+No user-visible terminal behaviour changes. Identical features to
+rc2: drag-select into scrollback (#94), softWrapped-flag-based copy
+rejoin, configurable per-tab scrollback length (#151), OSC 133
+tap-to-position cursor, and the rc2 schema-49 hash-mismatch fix.

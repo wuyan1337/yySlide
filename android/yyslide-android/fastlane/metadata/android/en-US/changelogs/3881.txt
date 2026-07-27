@@ -1,0 +1,33 @@
+v5.35.0 — Cloudflare Tunnel SSH transport, drag-select scroll, MCP agent
+testing tools, and a long-overdue translation pass.
+
+• Cloudflare Tunnel + Access SSH transport (#154): route SSH profiles
+  through cloudflared-style WebSocket gateways. Configure the team
+  domain, hostname and JWT inline on each profile; in-app sign-in via
+  WebView for interactive Access policies.
+
+• Held-still drag-select scroll (#94): holding the finger at the top
+  or bottom edge during a text selection now keeps scrolling steadily.
+  Covers native selection, mouse-mode (tmux/zellij copy-mode), and the
+  selection handles.
+
+• Connection editor cleanup: section headings throughout (General,
+  Connection, Terminal, Authentication, Embedded VNC, Routing, Port
+  knocking). The MCP reverse-tunnel toggle now lives per-profile in
+  the connection editor instead of buried in Settings.
+
+• MCP agent endpoint: new serve_file (gated download URL for any
+  backend), feed_terminal_output (inject through the real OSC/mouse-
+  mode pipeline), drag_terminal (synthetic touch through the real
+  gesture handler). read_terminal_snapshot now exposes mouseMode,
+  activeMouseMode, bracketPasteMode, and a oscEvents object.
+
+• VNC over SSH tunnel (#121): cleaner teardown when the underlying
+  SSH session disconnects — the tunnel-dependent state no longer
+  leaks, so re-tap-to-connect works without disconnect-all.
+
+• 1,533 missing translations filled across 11 locales — a large chunk
+  of the connection editor, the SSH-key / FIDO / step-ca flows,
+  several Settings sections, the SFTP convert/preview dialogs and a
+  few terminal strings now appear in your language. Machine-
+  translated; corrections welcome.

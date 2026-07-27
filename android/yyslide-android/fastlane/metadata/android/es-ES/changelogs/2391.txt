@@ -1,0 +1,20 @@
+v5.8.4: entrada IME + diagnósticos FIDO2
+
+La entrada de teclado japonés/chino/coreano ahora
+funciona en la terminal. El modo de entrada predeterminado
+cambió de TYPE_NULL (solo eventos de tecla sin procesar)
+a TYPE_CLASS_TEXT (protocolo de composición IME),
+permitiendo que los métodos de entrada CJK compongan
+caracteres antes de confirmarlos. El autocompletado y
+las sugerencias permanecen desactivados. (#96)
+
+La autenticación con llave de seguridad FIDO2 ahora
+registra cada paso del intercambio CTAP: resultado del
+permiso USB, inicio CTAPHID, comando GetAssertion y
+estado de respuesta. Cuando una llave de seguridad
+falla, el diálogo de error muestra el motivo CTAP
+específico (p. ej., "No hay credenciales coincidentes
+en esta llave") en lugar de un mensaje genérico de
+respaldo de contraseña. Las solicitudes de permiso USB
+ahora expiran después de 30 segundos en lugar de
+bloquear indefinidamente. (#15)

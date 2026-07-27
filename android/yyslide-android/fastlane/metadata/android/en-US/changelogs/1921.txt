@@ -1,0 +1,4 @@
+- SSH agent forwarding (OpenSSH ForwardAgent) (#75)
+- Per-profile "Forward SSH agent" toggle exposes non-encrypted stored
+  SSH keys to the remote session for git push etc.
+- Encrypted keys are skipped (would need mid-session passphrase prompt)

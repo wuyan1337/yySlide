@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">yySlide</string>
+
+
+    <!-- Common strings shared across modules -->
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_done">تم</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_ok">موافق</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_edit">تعديل</string>
+    <string name="common_rename">إعادة تسمية</string>
+    <string name="common_create">إنشاء</string>
+    <string name="common_connect">اتصال</string>
+    <string name="common_disconnect">قطع الاتصال</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_paste">لصق</string>
+    <string name="common_label">التسمية</string>
+    <string name="common_password">كلمة المرور</string>
+    <string name="common_port">المنفذ</string>
+    <string name="common_host">المضيف</string>
+    <string name="common_username">اسم المستخدم</string>
+    <string name="common_install">تثبيت</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_allow">سماح</string>
+    <string name="common_not_now">ليس الآن</string>
+    <string name="common_import">استيراد</string>
+    <string name="common_add">إضافة</string>
+    <string name="common_download">تنزيل</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">الدعم</string>
+    <string name="common_unlock">فتح القفل</string>
+
+    <!-- Battery optimization -->
+    <string name="battery_title">إبقاء الاتصالات نشطة؟</string>
+    <string name="battery_message">قد يغلق Android اتصالات SSH في الخلفية لتوفير البطارية. تعطيل تحسين البطارية لـ yySlide يمنع ذلك.</string>
+
+    <!-- Workspace profiles -->
+    <string name="workspace_section_title">مساحات العمل</string>
+    <string name="workspace_save_current">حفظ الحالية…</string>
+    <string name="workspace_empty_hint">افتح الجلسات التي تريد تجميعها معًا ثم اضغط على حفظ الحالية. لمسة واحدة ستعيد فتحها جميعًا في المرة القادمة.</string>
+    <string name="workspace_save_dialog_title">حفظ كمساحة عمل</string>
+    <string name="workspace_save_dialog_name_label">الاسم</string>
+    <string name="workspace_save_dialog_items_label">العناصر المراد تضمينها</string>
+    <string name="workspace_save_dialog_no_items">لا يوجد ما يمكن حفظه — اتصل بجلسة، أو افتح Wayland، أو تصفح مشاركة أولًا.</string>
+    <string name="workspace_save_action">حفظ</string>
+    <string name="workspace_card_kind_terminal">الطرفية</string>
+    <string name="workspace_card_kind_file_browser">الملفات</string>
+    <string name="workspace_card_kind_desktop">سطح المكتب</string>
+    <string name="workspace_card_kind_wayland">Wayland</string>
+    <string name="workspace_card_kind_count">%1$s × %2$d</string>
+    <string name="workspace_card_no_items">فارغ</string>
+    <string name="workspace_long_press_delete">حذف</string>
+    <string name="workspace_delete_confirm_title">حذف مساحة العمل؟</string>
+    <string name="workspace_delete_confirm_message">ستتم إزالة \"%1$s\". تبقى الاتصالات المشار إليها.</string>
+    <string name="workspace_launch_progress">جارٍ فتح %1$s — %2$d / %3$d</string>
+    <string name="workspace_launch_completed">تم فتح %1$s</string>
+    <string name="workspace_launch_partial">%1$s — تم فتح %2$d من %3$d عناصر</string>
+    <string name="workspace_launch_cancelled">تم إلغاء %1$s</string>
+    <string name="workspace_launch_failed">فشل: %1$s</string>
+    <string name="workspace_launch_cancel">إلغاء</string>
+    <string name="workspace_launch_dismiss">إغلاق</string>
+    <string name="biometric_screen_lock_icon">Screen lock</string>
+    <string name="desktop_screen_title">Desktop</string>
+    <string name="agent_deny">Deny</string>
+</resources>

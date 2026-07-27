@@ -1,0 +1,3 @@
+Font import: support .zip archives + clearer errors
+
+Importing a terminal font from a URL or file now accepts a .zip of fonts (a Regular .ttf/.otf is auto-extracted), so font families that only ship zips — like Maple — install directly. WOFF/WOFF2 web fonts and HTML pages now give a clear, specific message instead of a generic "couldn't decode" error, and the size cap was raised to 32 MiB for larger font bundles. (#177)

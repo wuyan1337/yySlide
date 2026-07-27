@@ -1,0 +1,1 @@
+- Fix crash on release builds caused by R8 renaming terminal renderer fields

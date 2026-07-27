@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Abbrechen</string>
+    <string name="common_save">Speichern</string>
+    <string name="common_done">Fertig</string>
+    <string name="common_close">Schließen</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Löschen</string>
+    <string name="common_edit">Bearbeiten</string>
+    <string name="common_rename">Umbenennen</string>
+    <string name="common_create">Erstellen</string>
+    <string name="common_connect">Verbinden</string>
+    <string name="common_disconnect">Trennen</string>
+    <string name="common_copy">Kopieren</string>
+    <string name="common_paste">Einfügen</string>
+    <string name="common_label">Bezeichnung</string>
+    <string name="common_password">Passwort</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Benutzername</string>
+    <string name="common_install">Installieren</string>
+    <string name="common_reset">Zurücksetzen</string>
+    <string name="common_allow">Erlauben</string>
+    <string name="common_not_now">Nicht jetzt</string>
+    <string name="common_import">Importieren</string>
+    <string name="common_add">Hinzufügen</string>
+    <string name="common_download">Herunterladen</string>
+    <string name="common_unlock">Entsperren</string>
+
+    <!-- SftpScreen navigation -->
+    <string name="sftp_navigate_up">Nach oben</string>
+    <string name="sftp_hide_hidden_files">Versteckte Dateien ausblenden</string>
+    <string name="sftp_show_hidden_files">Versteckte Dateien anzeigen</string>
+    <string name="sftp_sort">Sortieren</string>
+    <string name="sftp_refresh">Aktualisieren</string>
+
+    <!-- FAB actions -->
+    <string name="sftp_new_folder">Neuer Ordner</string>
+    <string name="sftp_upload_folder">Ordner hochladen</string>
+    <string name="sftp_upload_file">Datei hochladen</string>
+    <string name="sftp_paste">Einfügen</string>
+    <string name="sftp_fab_close">Schließen</string>
+    <string name="sftp_fab_actions">Aktionen</string>
+
+    <!-- Clipboard banner -->
+    <string name="sftp_items_cut">%d Element ausgeschnitten</string>
+    <string name="sftp_items_cut_plural">%d Elemente ausgeschnitten</string>
+    <string name="sftp_items_copied">%d Element kopiert</string>
+    <string name="sftp_items_copied_plural">%d Elemente kopiert</string>
+
+    <!-- Empty states -->
+    <string name="sftp_empty_directory">Leeres Verzeichnis</string>
+    <string name="sftp_parent_directory">Übergeordnetes Verzeichnis</string>
+    <string name="sftp_navigate_up_icon">Hoch</string>
+
+    <!-- Snackbar messages -->
+    <string name="sftp_downloaded">%s heruntergeladen</string>
+    <string name="sftp_open">Öffnen</string>
+    <string name="sftp_no_app_to_open">Keine App zum Öffnen dieser Datei</string>
+    <string name="sftp_path_copied">Pfad kopiert</string>
+
+    <!-- FileListItem -->
+    <string name="sftp_directory">Verzeichnis</string>
+    <string name="sftp_directory_icon">Verzeichnis</string>
+    <string name="sftp_file_icon">Datei</string>
+    <string name="sftp_download">Herunterladen</string>
+    <string name="sftp_cut">Ausschneiden</string>
+    <string name="sftp_copy_path">Pfad kopieren</string>
+
+    <!-- SortDropdown -->
+    <string name="sftp_sort_name_asc">Name A-Z</string>
+    <string name="sftp_sort_name_desc">Name Z-A</string>
+    <string name="sftp_sort_size_asc">Größe (kleinste)</string>
+    <string name="sftp_sort_size_desc">Größe (größte)</string>
+    <string name="sftp_sort_date_asc">Datum (älteste)</string>
+    <string name="sftp_sort_date_desc">Datum (neueste)</string>
+
+    <!-- EmptyState -->
+    <string name="sftp_file_browser_title">SFTP-Dateibrowser</string>
+    <string name="sftp_connect_to_browse">Mit Server verbinden um Dateien zu durchsuchen</string>
+
+    <!-- New Folder dialog -->
+    <string name="sftp_new_folder_title">Neuer Ordner</string>
+    <string name="sftp_folder_name">Ordnername</string>
+    <string name="sftp_create">Erstellen</string>
+
+    <!-- Upload conflict dialog -->
+    <string name="sftp_file_already_exists">Datei existiert bereits</string>
+    <string name="sftp_file_exists_message">\"%s\" existiert bereits an diesem Ort.</string>
+    <string name="sftp_replace">Ersetzen</string>
+    <string name="sftp_replace_all">Alle ersetzen</string>
+    <string name="sftp_skip">Überspringen</string>
+    <string name="sftp_skip_all">Alle überspringen</string>
+    <string name="sftp_play">Play</string>
+    <string name="sftp_play_folder">Play folder</string>
+    <string name="sftp_sync">Sync</string>
+    <string name="sftp_folder_sync">Folder Sync</string>
+    <string name="sftp_source">Source</string>
+    <string name="sftp_destination">Destination</string>
+    <string name="sftp_destination_path">Path</string>
+    <string name="sftp_mode_copy">Copy</string>
+    <string name="sftp_mode_sync">Mirror</string>
+    <string name="sftp_mode_move">Move</string>
+    <string name="sftp_mode_copy_desc">Copy new and updated files. No deletions.</string>
+    <string name="sftp_mode_sync_desc">Make destination identical to source. Deletes extras.</string>
+    <string name="sftp_mode_move_desc">Move files to destination. Deletes from source.</string>
+    <string name="sftp_advanced_filters">Advanced filters</string>
+    <string name="sftp_include_patterns">Include patterns (one per line)</string>
+    <string name="sftp_exclude_patterns">Exclude patterns (one per line)</string>
+    <string name="sftp_min_size">Min size</string>
+    <string name="sftp_max_size">Max size</string>
+    <string name="sftp_bandwidth_limit">Bandwidth limit</string>
+    <string name="sftp_dry_run">Dry run (preview only)</string>
+    <string name="sftp_start_sync">Start</string>
+    <string name="sftp_preview">Preview</string>
+    <string name="sftp_dry_run_results">Dry Run Results</string>
+    <string name="sftp_start_for_real">Start for real</string>
+    <string name="sftp_sync_cancelled">Sync cancelled</string>
+    <!-- Rename dialog -->
+    <string name="sftp_rename_title">Rename</string>
+    <string name="sftp_new_name">New name</string>
+
+    <!-- Share link -->
+    <string name="sftp_share_link">Share link</string>
+    <string name="sftp_link_copied">Link copied</string>
+
+    <!-- Folder size -->
+    <string name="sftp_folder_size">Folder size</string>
+    <string name="sftp_folder_size_title">Folder Size</string>
+    <string name="sftp_calculating_size">Calculating…</string>
+
+    <!-- DLNA -->
+    <string name="sftp_start_dlna">Start DLNA server</string>
+    <string name="sftp_stop_dlna">Stop DLNA server</string>
+    <!-- Convert -->
+    <string name="sftp_convert">Convert</string>
+    <string name="sftp_convert_title">Convert media</string>
+    <string name="sftp_convert_format">Output format</string>
+    <string name="sftp_converting">Converting %s</string>
+    <string name="sftp_convert_done">Saved to %s</string>
+    <!-- Stream -->
+    <string name="sftp_stream">Stream</string>
+    <string name="sftp_streaming">Streaming on %s</string>
+    <string name="sftp_stream_stop">Stop</string>
+    <string name="sftp_downloading_for_convert">Downloading for conversion…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="sftp_play_in_browser">Im Browser abspielen</string>
+    <string name="sftp_stream_to_network">Ins Netzwerk streamen</string>
+    <string name="sftp_selection_enter">Auswählen</string>
+    <string name="sftp_selection_selected">Ausgewählt</string>
+    <string name="sftp_selection_unselected">Nicht ausgewählt</string>
+    <string name="sftp_selection_clear">Auswahl löschen</string>
+    <string name="sftp_selection_select_all">Alles auswählen</string>
+    <string name="sftp_selection_count">%1$d ausgewählt</string>
+    <string name="sftp_delete_selection_title">Ausgewählte Elemente löschen?</string>
+    <string name="sftp_delete_selection_message">%1$d Element(e) werden gelöscht. Dies kann nicht rückgängig gemacht werden.</string>
+    <string name="sftp_filter">Dateien filtern</string>
+    <string name="sftp_permissions">Berechtigungen…</string>
+    <string name="sftp_permissions_dialog_title">Berechtigungen</string>
+    <string name="sftp_permissions_dialog_title_batch">Berechtigungen — %1$d Elemente</string>
+    <string name="sftp_permissions_octal">Oktal (z. B. 0755)</string>
+    <string name="sftp_permissions_owner">Eigentümer</string>
+    <string name="sftp_permissions_group">Gruppe</string>
+    <string name="sftp_permissions_other">Andere</string>
+    <string name="sftp_permissions_read">Lesen</string>
+    <string name="sftp_permissions_write">Schreiben</string>
+    <string name="sftp_permissions_execute">Ausführen</string>
+    <string name="sftp_permissions_apply">Anwenden</string>
+    <string name="sftp_ownership">Eigentümer…</string>
+    <string name="sftp_ownership_dialog_title">Eigentümer</string>
+    <string name="sftp_ownership_dialog_title_batch">Eigentümer — %1$d Elemente</string>
+    <string name="sftp_ownership_label">Eigentümer</string>
+    <string name="sftp_ownership_hint">Benutzer, Gruppe oder Benutzer:Gruppe eingeben. Die Namensauflösung erfolgt auf dem Remotehost. Erfordert üblicherweise Root.</string>
+    <string name="sftp_ownership_apply">Anwenden</string>
+    <string name="sftp_media">Medien…</string>
+    <string name="sftp_stream_folder">Ordner-Playlist streamen</string>
+    <string name="sftp_output_filename">Ausgabedateiname</string>
+    <string name="sftp_convert_sub">Video oder Audio mit Filtern neu codieren</string>
+    <string name="sftp_media_info">Medieninfo</string>
+    <string name="sftp_media_info_sub">Codec, Dauer, Streams</string>
+    <string name="sftp_media_info_probing">Wird untersucht…</string>
+    <string name="sftp_media_info_failed">ffprobe fehlgeschlagen: %s</string>
+    <string name="sftp_media_info_container">Container</string>
+    <string name="sftp_media_info_duration">Dauer</string>
+    <string name="sftp_media_info_bitrate">Bitrate</string>
+    <string name="sftp_media_info_size">Größe</string>
+    <string name="sftp_media_info_video_streams">Video</string>
+    <string name="sftp_media_info_audio_streams">Audio</string>
+    <string name="sftp_media_info_subtitle_streams">Untertitel</string>
+    <string name="sftp_media_info_video">Video</string>
+    <string name="sftp_media_info_audio">Audio</string>
+    <string name="sftp_media_info_subtitle">Untertitel</string>
+    <string name="sftp_media_info_chapters">Kapitel: %d</string>
+    <string name="sftp_media_info_copy">JSON kopieren</string>
+    <string name="sftp_trim">Zuschneiden (verlustfrei)</string>
+    <string name="sftp_trim_sub">Clip ohne Neucodierung schneiden</string>
+    <string name="sftp_trim_title">Clip schneiden</string>
+    <string name="sftp_trim_explain">Start und Ende im Format H:MM:SS. Stream-Kopie, keine Neucodierung.</string>
+    <string name="sftp_trim_start">Start</string>
+    <string name="sftp_trim_end">Ende</string>
+    <string name="sftp_trim_action">Schneiden</string>
+    <string name="sftp_extract_audio">Audio extrahieren</string>
+    <string name="sftp_extract_audio_sub">Tonspur als MP3/AAC/Opus/FLAC speichern</string>
+    <string name="sftp_extract_audio_title">Audio extrahieren</string>
+    <string name="sftp_extract_audio_format">Format</string>
+    <string name="sftp_extract_audio_bitrate">Bitrate: %d kbps</string>
+    <string name="sftp_extract_audio_action">Extrahieren</string>
+    <string name="sftp_contact_sheet">Übersichtsbild</string>
+    <string name="sftp_contact_sheet_sub">Raster aus Miniaturen über die gesamte Datei</string>
+    <string name="sftp_contact_sheet_title">Übersichtsbild</string>
+    <string name="sftp_contact_sheet_explain">Entnimmt Frames im gleichmäßigen Abstand und fügt sie zu einer gekachelten PNG zusammen.</string>
+    <string name="sftp_contact_sheet_cols">Spalten</string>
+    <string name="sftp_contact_sheet_rows">Zeilen</string>
+    <string name="sftp_contact_sheet_tile">Kachelgröße: %1$d × %2$d</string>
+    <string name="sftp_contact_sheet_action">Bild erstellen</string>
+
+    <!-- #135 third pass -->
+    <string name="sftp_attach_use_folder">Use this folder</string>
+    <string name="sftp_paste_discard">Discard</string>
+    <string name="sftp_paste_resume">Resume</string>
+    <string name="sftp_paste_discard_title">Discard unfinished paste?</string>
+    <string name="sftp_paste_discard_body">Pending files will be removed from the queue. This cannot be undone.</string>
+    <string name="sftp_paste_keep">Keep</string>
+    <string name="sftp_preview_frame_desc">Preview frame — tap for fullscreen</string>
+        <string name="sftp_convert_container">Container</string>
+    <string name="sftp_convert_video_encoder">Video encoder</string>
+    <string name="sftp_convert_audio_encoder">Audio encoder</string>
+    <string name="sftp_convert_save_to">Save to</string>
+    <string name="sftp_preview_stop">Stop</string>
+    <string name="sftp_preview_preparing">Preparing…</string>
+    <string name="sftp_preview_play5s">Play 5s preview</string>
+    <string name="sftp_fullscreen_preview">Fullscreen preview</string>
+    <string name="sftp_conflict_title">File already exists</string>
+    <string name="sftp_conflict_overwrite">Overwrite</string>
+    <string name="sftp_conflict_keep_both">Keep both (rename)</string>
+    <string name="sftp_conflict_skip">Skip</string>
+    <string name="sftp_compression_quick_presets">Quick presets</string>
+    <string name="sftp_compression_resolution">Resolution</string>
+    <string name="sftp_compression_quality">Quality (CRF %1$d)</string>
+    <string name="sftp_compression_speed">Encode speed</string>
+    <string name="sftp_compression_audio_bitrate">Audio bitrate</string>
+    <string name="sftp_filter_title">Filters</string>
+    <string name="sftp_filter_rotation">Rotation</string>
+
+</resources>

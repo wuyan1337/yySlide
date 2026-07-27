@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_change">更改</string>
+    <string name="common_back">返回</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_unlock">解锁</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">设置</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">屏幕锁定</string>
+    <string name="settings_biometric_subtitle">需要身份验证才能打开 yySlide</string>
+    <string name="settings_lock_timeout_title">锁定超时</string>
+    <string name="settings_prevent_screenshots_title">阻止截图</string>
+    <string name="settings_prevent_screenshots_subtitle">阻止屏幕截图和任务切换器预览</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">连接日志</string>
+    <string name="settings_connection_logging_subtitle">记录连接事件（连接、断开、错误）。存储在本地，受设备加密保护</string>
+    <string name="settings_view_connection_log_title">查看连接日志</string>
+    <string name="settings_view_connection_log_subtitle">连接历史和事件</string>
+    <string name="settings_verbose_logging_title">详细连接日志</string>
+    <string name="settings_verbose_logging_subtitle">捕获 SSH、Mosh 和 ET 连接的协议详情。可能包含主机名和用户名</string>
+
+    <string name="audit_log_title">连接日志</string>
+    <string name="audit_log_clear_logs">清除日志</string>
+    <string name="audit_log_filter_all">全部</string>
+    <string name="audit_log_empty">暂无连接事件日志</string>
+    <string name="audit_log_share_subject">yySlide 连接日志：%1$s</string>
+    <string name="audit_log_share_chooser">分享日志</string>
+    <string name="audit_log_clear_title">清除所有日志？</string>
+    <string name="audit_log_clear_message">此操作无法撤销。</string>
+    <string name="audit_log_clear_action">清除</string>
+    <string name="audit_log_toggle_details">展开或收起详情</string>
+    <string name="audit_log_copy_log">复制日志</string>
+    <string name="audit_log_share_log">分享日志</string>
+    <string name="audit_log_no_verbose">此条目没有详细日志</string>
+    <string name="audit_log_status_connected">已连接</string>
+    <string name="audit_log_status_disconnected">已断开</string>
+    <string name="audit_log_status_failed">失败</string>
+    <string name="audit_log_status_timeout">超时</string>
+    <string name="audit_log_status_sync">同步</string>
+    <string name="audit_log_status_sync_failed">同步失败</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">会话持久化</string>
+    <string name="settings_session_persistence_none">无</string>
+    <string name="settings_font_size_title">终端字体大小</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_color_scheme_title">终端配色方案</string>
+    <string name="settings_toolbar_title">键盘工具栏</string>
+    <string name="settings_toolbar_subtitle">配置工具栏按键和布局</string>
+    <string name="settings_search_button_title">搜索按钮</string>
+    <string name="settings_search_button_subtitle">在标签栏显示搜索图标——发送会话管理器的原生搜索键（tmux/zellij/screen）或 Shell 的 Ctrl+R</string>
+    <string name="settings_copy_output_title">复制上次输出</string>
+    <string name="settings_copy_output_subtitle">在标签栏显示复制图标——复制上一条命令的输出。需要 Shell 集成（点击查看设置）</string>
+    <string name="settings_mouse_input_title">TUI 应用中的鼠标输入</string>
+    <string name="settings_mouse_input_subtitle">当 htop、mc 或 vim 等应用启用鼠标跟踪时，将点击转发为鼠标点击，长按转发为右键点击</string>
+    <string name="settings_right_click_title">长按发送右键点击</string>
+    <string name="settings_right_click_subtitle">向终端发送右键点击而不是开始文本选择。适用于 tmux 上下文菜单</string>
+    <string name="settings_standard_keyboard_title">语音输入和自动补全</string>
+    <string name="settings_standard_keyboard_subtitle">禁用安全键盘标志（密码模式、无建议）。启用语音输入、滑动输入和词语预测——但输入法可能会学习输入的密码</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">主题</string>
+    <string name="settings_screen_order_title">屏幕顺序</string>
+    <string name="settings_screen_order_subtitle">重新排列底部导航标签</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Wayland 桌面 Shell</string>
+    <string name="settings_shizuku_title">Shizuku 集成</string>
+    <string name="settings_shizuku_enabled">已启用 — 自动电池豁免、Wayland 套接字共享</string>
+    <string name="settings_shizuku_available">Shizuku 已安装——点击授予权限</string>
+    <string name="settings_shizuku_not_running">Shizuku 已安装但未运行 — 点击打开并通过无线调试启动</string>
+    <string name="settings_shizuku_not_installed">安装 Shizuku 以获取电池豁免和 Wayland 访问</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">导出备份</string>
+    <string name="settings_export_backup_subtitle">密钥、连接和设置</string>
+    <string name="settings_restore_backup_title">恢复备份</string>
+    <string name="settings_restore_backup_subtitle">从备份文件导入</string>
+    <string name="settings_backup_working">处理中…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">关于 yySlide</string>
+    <string name="settings_version_unknown">未知</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Wayland 桌面 Shell</string>
+    <string name="settings_wayland_dialog_description">在 Wayland 桌面 foot 终端内运行的 Shell 命令。使用 apk 安装其他 Shell（例如 apk add bash）。</string>
+    <string name="settings_wayland_shell_command_label">Shell 命令</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">锁定超时</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">Shell 集成设置</string>
+    <string name="settings_osc133_description">复制上次输出需要 Shell 发出 OSC 133 标记。将以下代码片段添加到 Shell 配置中：</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">已复制 Bash 代码片段</string>
+    <string name="settings_osc133_copied_zsh">已复制 Zsh 代码片段</string>
+    <string name="settings_osc133_footer">点击代码片段以复制。许多工具（iTerm2、VS Code、WezTerm）默认包含这些标记。</string>
+    <string name="settings_osc133_learn_more">了解更多</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">导出备份</string>
+    <string name="settings_backup_restore_dialog_title">恢复备份</string>
+    <string name="settings_backup_password_min_length">至少 6 个字符</string>
+    <string name="settings_backup_passwords_mismatch">密码不匹配</string>
+    <string name="settings_backup_export_description">使用密码加密备份。这将保护您的 SSH 密钥和连接数据。</string>
+    <string name="settings_backup_restore_description">输入创建备份时使用的密码。</string>
+    <string name="settings_backup_password_label">密码</string>
+    <string name="settings_backup_confirm_password_label">确认密码</string>
+    <string name="settings_backup_export_button">导出</string>
+    <string name="settings_backup_restore_button">恢复</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">关于 yySlide</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">Android 开源 SSH、VNC、RDP 和云存储客户端</string>
+    <string name="settings_about_version">版本 %1$s（构建 %2$d）</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">开源库</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">屏幕顺序</string>
+    <string name="settings_screen_order_drag_description">拖动以重新排序</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">主题</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">终端配色方案</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">会话持久化</string>
+    <string name="settings_session_no_scrollback">无触摸滚动</string>
+    <string name="settings_session_custom_command_label">自定义命令</string>
+    <string name="settings_session_custom_command_hint">使用 {name} 作为会话名称。留空使用默认值。</string>
+    <string name="settings_session_save_command">保存命令</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">终端字体大小</string>
+    <string name="settings_font_size_sample">示例文本</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">键盘工具栏</string>
+    <string name="settings_toolbar_assign_hint">将每个按键分配到第 1 行、第 2 行或关闭</string>
+    <string name="settings_toolbar_arrow_keys">方向键布局</string>
+    <string name="settings_toolbar_function_keys">功能键</string>
+    <string name="settings_toolbar_symbols">符号</string>
+    <string name="settings_toolbar_custom_keys">自定义按键</string>
+    <string name="settings_toolbar_add_custom_key">添加自定义按键</string>
+    <string name="settings_toolbar_edit_json">编辑 JSON</string>
+    <string name="settings_toolbar_row1">行1</string>
+    <string name="settings_toolbar_row2">行2</string>
+    <string name="settings_toolbar_off">关</string>
+    <string name="settings_toolbar_paste_clipboard">粘贴剪贴板</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">编辑自定义按键</string>
+    <string name="settings_custom_key_add_title">添加自定义按键</string>
+    <string name="settings_custom_key_presets">预设</string>
+    <string name="settings_custom_key_label">标签</string>
+    <string name="settings_custom_key_label_placeholder">例如 ^C、Paste</string>
+    <string name="settings_custom_key_sequence_label">序列</string>
+    <string name="settings_custom_key_sequence_placeholder">例如 \\u0003</string>
+    <string name="settings_custom_key_escape_hint">使用 \\u001b 表示 Escape，\\u0003 表示 Ctrl+C，\\n 表示 Enter</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">编辑工具栏 JSON</string>
+    <string name="settings_json_editor_format_hint">字符串 = 内置按键 ID，对象 = 自定义按键 {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">内置 ID：keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">简单</string>
+    <string name="settings_language_title">语言</string>
+    <string name="settings_media_extensions_title">媒体文件扩展名</string>
+    <string name="settings_media_extensions_description">在文件浏览器中视为可流式媒体的文件扩展名（用空格分隔）。</string>
+    <string name="settings_media_extensions_label">扩展名</string>
+    <string name="settings_show_desktops_title">显示桌面卡片</string>
+    <string name="settings_show_desktops_subtitle">在连接屏幕上显示桌面环境管理器</string>
+    <string name="settings_show_linux_vm_title">显示 Linux 虚拟机卡片</string>
+    <string name="settings_show_linux_vm_subtitle">在连接屏幕上显示 Android Linux 虚拟机设置</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="settings_keep_screen_on_title">在终端中保持屏幕常亮</string>
+    <string name="settings_keep_screen_on_subtitle">打开终端标签时，屏幕会保持唤醒。会消耗电量；只有在观察长时间运行的输出时才值得开启。</string>
+    <string name="settings_section_security_privacy">安全与隐私</string>
+    <string name="settings_section_appearance">外观</string>
+    <string name="settings_section_keyboard_input">键盘与输入</string>
+    <string name="settings_section_terminal">终端</string>
+    <string name="settings_section_desktop">桌面（VNC &amp; RDP）</string>
+    <string name="settings_section_connections_screen">连接屏幕</string>
+    <string name="settings_section_diagnostics">诊断</string>
+    <string name="settings_section_advanced">高级</string>
+    <string name="settings_section_backup">备份</string>
+    <string name="settings_section_about">关于</string>
+    <string name="settings_language_system_default">跟随系统</string>
+    <string name="settings_drag_select_title">在 TUI 鼠标模式下拖动选择</string>
+    <string name="settings_drag_select_subtitle">将按下+移动+释放转发到 tmux/zellij，使选择通过远程自己的回滚缓冲区跨越视口。关闭时，拖动滚动远程（旧行为）。</string>
+    <string name="settings_show_terminal_tab_bar_title">显示终端标签栏</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">在终端上方显示会话标签</string>
+    <string name="settings_touchpad_input_title">触控板输入</string>
+    <string name="settings_touchpad_input_direct_subtitle">直接触摸 — 手指位置即指针。开启可切换为触控板风格输入。</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">拖动移动远程光标；点击在光标处单击。缩放时视口跟随光标。</string>
+    <string name="settings_bandwidth_suggest_title">慢速 VNC 链接上建议 256 色</string>
+    <string name="settings_bandwidth_suggest_subtitle">数秒后检测到吞吐量低于约 1 Mbps，并提供一键以 256 色重连。关闭以隐藏此提示。</string>
+
+    <!-- yySlide mobile settings -->
+    <string name="yyslide_settings_signed_in">已登录</string>
+    <string name="yyslide_settings_last_sync">上次同步：%1$s</string>
+    <string name="yyslide_settings_sync_now">立即同步</string>
+    <string name="yyslide_settings_log_out">退出登录</string>
+    <string name="yyslide_settings_sign_in">登录</string>
+    <string name="yyslide_settings_cloud_sign_in_prompt">登录后同步桌面端和 Android 的 SSH 配置。</string>
+    <string name="yyslide_settings_working">正在处理...</string>
+    <string name="yyslide_settings_section_security">安全</string>
+    <string name="yyslide_settings_font_size_title">字体大小</string>
+    <string name="yyslide_settings_app_lock_title">应用锁</string>
+    <string name="yyslide_settings_app_lock_subtitle">打开 yySlide 时需要设备验证。</string>
+    <string name="yyslide_settings_app_lock_unavailable_title">应用锁不可用</string>
+    <string name="yyslide_settings_app_lock_unavailable_body">请先在 Android 设置中设置 PIN、密码、图案或生物识别解锁。</string>
+    <string name="yyslide_settings_version">版本 %1$s (%2$d)</string>
+    <string name="yyslide_settings_unknown">未知</string>
+    <string name="yyslide_settings_android_version">Android %1$s API %2$d</string>
+    <string name="yyslide_settings_lock_timeout_sheet_body">选择 yySlide 离开后保持解锁的时间。</string>
+    <string name="yyslide_theme_system">系统默认</string>
+    <string name="yyslide_theme_light">浅色</string>
+    <string name="yyslide_theme_dark">深色</string>
+    <string name="yyslide_lock_timeout_immediate">立即</string>
+    <string name="yyslide_lock_timeout_30_seconds">30 秒</string>
+    <string name="yyslide_lock_timeout_1_minute">1 分钟</string>
+    <string name="yyslide_lock_timeout_5_minutes">5 分钟</string>
+    <string name="yyslide_lock_timeout_never">永不</string>
+    <string name="yyslide_lock_timeout_immediate_desc">yySlide 进入后台后立即锁定。</string>
+    <string name="yyslide_lock_timeout_30_seconds_desc">短暂宽限期，适合快速切换应用。</string>
+    <string name="yyslide_lock_timeout_1_minute_desc">适合短时间中断。</string>
+    <string name="yyslide_lock_timeout_5_minutes_desc">切换任务时保持解锁。</string>
+    <string name="yyslide_lock_timeout_never_desc">不自动锁定。</string>
+
+    <!-- #135 -->
+    <string name="settings_keyboard_mode_title">键盘模式</string>
+    <string name="settings_font_install_title">从 URL 安装字体</string>
+    <string name="settings_ime_flags_title">输入法标志</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field -->
+    <string name="settings_scrollback_rows_title">回滚行数</string>
+    <string name="settings_scrollback_rows_subtitle">每个标签保留 %1$,d 行 — 适用于新建标签</string>
+    <string name="settings_scrollback_rows_dialog_title">每个标签的回滚行数</string>
+    <string name="settings_scrollback_rows_dialog_body">更大的回滚会占用更多内存。典型列宽下每行约 2 KB，乘以打开的标签数。</string>
+    <string name="settings_scrollback_rows_value">%1$,d 行</string>
+    <string name="settings_tap_to_position_title">点击在受支持的提示符上移动光标</string>
+    <string name="settings_tap_to_position_subtitle">点击 shell 提示符内将光标移到该列。需要 OSC 133 提示符标记（starship、fish 3.6+、近期的 bash/zsh 集成设置）。不会影响不发出标记的 shell</string>
+
+    <!-- yySlide Cloud -->
+    <string name="yyslide_cloud_section_title">yySlide Cloud</string>
+    <string name="yyslide_cloud_sync_connections_title">同步 yySlide 连接</string>
+    <string name="yyslide_cloud_account_summary">账号：%1$s</string>
+    <string name="yyslide_cloud_account_last_sync_summary">账号：%1$s，上次同步：%2$s</string>
+    <string name="yyslide_cloud_sign_out_title">退出 yySlide Cloud</string>
+    <string name="yyslide_cloud_sign_in_title">登录 yySlide Cloud</string>
+    <string name="yyslide_cloud_sign_in_subtitle">同步 Windows 端的连接、分类和密钥</string>
+    <string name="yyslide_cloud_busy_title">yySlide Cloud 正在处理</string>
+    <string name="yyslide_cloud_busy_subtitle">正在登录或同步，请稍等</string>
+    <string name="yyslide_cloud_server_label">服务器</string>
+    <string name="yyslide_cloud_username_label">用户名</string>
+    <string name="yyslide_cloud_password_label">密码</string>
+    <string name="yyslide_cloud_totp_label">2FA 验证码</string>
+    <string name="yyslide_cloud_login_busy_button">登录中</string>
+    <string name="yyslide_cloud_login_submit_button">登录并同步</string>
+    <string name="yyslide_cloud_login_success">登录成功。%1$s</string>
+    <string name="yyslide_cloud_login_failed">yySlide Cloud 登录失败</string>
+    <string name="yyslide_cloud_sync_complete">同步完成。%1$s</string>
+    <string name="yyslide_cloud_sync_failed">yySlide Cloud 同步失败</string>
+    <string name="yyslide_cloud_signed_out">已退出 yySlide Cloud</string>
+    <string name="yyslide_cloud_summary_separator">，</string>
+    <string name="yyslide_cloud_summary_imported_connections">导入 %1$d 个连接</string>
+    <string name="yyslide_cloud_summary_uploaded_connections">上传 %1$d 个</string>
+    <string name="yyslide_cloud_summary_deleted_connections">删除 %1$d 个</string>
+    <string name="yyslide_cloud_summary_skipped_connections">跳过 %1$d 个</string>
+    <string name="yyslide_cloud_summary_conflict_copies">冲突保留 %1$d 个云端副本</string>
+    <string name="yyslide_cloud_summary_imported_keys">密钥导入 %1$d 个</string>
+    <string name="yyslide_cloud_summary_skipped_keys">密钥跳过 %1$d 个</string>
+    <string name="yyslide_cloud_error_missing_login_token">服务器没有返回登录 token</string>
+    <string name="yyslide_cloud_error_missing_vault_key">服务器没有返回同步密钥</string>
+    <string name="yyslide_cloud_error_unlock_vault_key">无法解锁同步密钥，请确认密码正确</string>
+    <string name="yyslide_cloud_error_decrypt_vault">云端数据解密失败，请重新登录</string>
+    <string name="yyslide_cloud_error_not_signed_in">还没有登录 yySlide Cloud</string>
+    <string name="yyslide_cloud_error_request_failed">yySlide Cloud 请求失败：%1$d</string>
+    <string name="yyslide_cloud_conflict_label_suffix">（云端副本）</string>
+
+    <string name="settings_agent_activity_title">代理活动</string>
+    <string name="settings_agent_activity_clear_history">清除历史记录</string>
+    <string name="settings_agent_activity_clear_title">清除代理活动？</string>
+    <string name="settings_agent_activity_clear_body">此设备上记录的所有 MCP 调用都将被删除，且无法撤销。</string>
+    <string name="settings_proot_install_log_title">PRoot 安装日志</string>
+    <string name="settings_proot_install_log_clear">清除日志</string>
+    <string name="settings_proot_install_log_empty">尚未记录安装事件。安装发行版或桌面后，可在此查看各阶段进度。</string>
+    <string name="settings_proot_install_log_clear_title">清除安装日志？</string>
+    <string name="settings_proot_install_log_clear_body">所有已记录的安装事件都将被移除。</string>
+    <string name="settings_terminal_font_set">终端字体已设为 %1$s</string>
+    <string name="settings_terminal_font_invalid">无法加载该字体 — Android 无法将其解码为字体</string>
+    <string name="settings_terminal_font_url_subtitle">获取 .ttf/.otf 或包含字体的 .zip（与代理的 set_terminal_font_from_url 工具一致）</string>
+    <string name="settings_terminal_font_reset_title">重置终端字体</string>
+    <string name="settings_terminal_font_reset_subtitle">恢复内置的 Hack Nerd Font Mono</string>
+    <string name="settings_terminal_font_reset_done">终端字体已重置</string>
+    <string name="settings_logcat_capture_title">Logcat 捕获</string>
+    <string name="settings_logcat_capture_recording">正在记录到 /sdcard/Download/haven-logcat.txt</string>
+    <string name="settings_logcat_capture_subtitle">捕获 logcat 以便远程调试</string>
+    <string name="settings_logcat_saved">Logcat 已保存</string>
+    <string name="settings_logcat_started">Logcat 捕获已开始</string>
+    <string name="settings_logcat_start_failed">无法开始捕获</string>
+    <string name="settings_mcp_reverse_tunnel_title">反向隧道端点</string>
+    <string name="settings_mcp_reverse_tunnel_active">已通过隧道连接到“%1$s” — Wi-Fi 变化或应用重启后仍保持</string>
+    <string name="settings_mcp_reverse_tunnel_unset">未设置 — 端点仅可在设备上访问</string>
+    <string name="settings_mcp_reverse_tunnel_none">无（仅限设备本机）</string>
+    <string name="settings_mcp_wireguard_title">在 WireGuard 隧道上公开</string>
+    <string name="settings_mcp_wireguard_enabled">已启用 — 可通过活动 WireGuard 隧道的 %1$s 访问</string>
+    <string name="settings_mcp_wireguard_waiting">已启用 — 正在等待活动 WireGuard 隧道</string>
+    <string name="settings_mcp_wireguard_disabled">已禁用 — 开启后可通过活动 WireGuard 隧道访问端点</string>
+    <string name="settings_mcp_copy_wireguard_config_title">复制 WireGuard MCP 客户端配置</string>
+    <string name="settings_mcp_wireguard_config_copied">WireGuard 配置已复制</string>
+    <string name="settings_mcp_copy_endpoint_title">复制本机代理端点 URL</string>
+    <string name="settings_terminal_font_title">终端字体</string>
+    <string name="settings_terminal_font_subtitle">%1$s——点按选择 TTF 或 OTF 字体文件</string>
+    <string name="settings_ime_flags_subtitle">选择终端设置的 EditorInfo 标志</string>
+    <string name="settings_ctrl_shift_v_title">Ctrl+Shift+V 粘贴</string>
+    <string name="settings_ctrl_shift_v_subtitle">使用硬件键盘时从 Android 剪贴板粘贴；关闭后会将按键转发到远程 Shell。</string>
+    <string name="settings_always_show_tabs_title">始终显示所有标签页</string>
+    <string name="settings_always_show_tabs_subtitle">即使分类为空，也显示每个导航标签页</string>
+    <string name="settings_usb_guest_title">向 Linux 客户机开放 USB 设备</string>
+    <string name="settings_usb_guest_subtitle">允许客户机应用通过 USB 适配层访问已连接设备；每次连接仍需确认。</string>
+    <string name="settings_view_proot_install_log_title">查看 PRoot 安装日志</string>
+    <string name="settings_proot_install_log_subtitle">Linux 发行版安装各阶段的事件记录</string>
+    <string name="settings_font_url_placeholder">https://…/font.ttf</string>
+    <string name="settings_ime_hide_suggestions_title">隐藏候选建议栏</string>
+    <string name="settings_ime_suppress_corrections_title">禁用自动更正、自动大写和自动空格</string>
+    <string name="settings_ime_enable_autocorrect_title">启用自动更正协议</string>
+    <string name="settings_ime_full_editor_title">语音与滑行输入（完整编辑器）</string>
+    <string name="settings_ime_no_fullscreen_title">禁止全屏输入法界面</string>
+    <string name="settings_ime_no_learning_title">禁止输入法学习内容</string>
+    <string name="settings_mcp_endpoint_title">代理端点（MCP）</string>
+    <string name="settings_mcp_endpoint_enabled">已启用——MCP 服务器仅监听本机回环地址，写操作会请求确认。</string>
+    <string name="settings_mcp_endpoint_disabled">已停用——启用后，本机 AI 代理可读取状态，并在你确认后执行操作</string>
+    <string name="settings_mcp_endpoint_starting">正在启动经过认证的端点…</string>
+    <string name="settings_mcp_file_read_title">允许代理读取文件内容</string>
+    <string name="settings_mcp_file_read_enabled">已启用——serve_file 经逐次确认后返回一次性下载地址</string>
+    <string name="settings_mcp_file_read_disabled">已停用——serve_file 请求会立即失败且不会弹出确认</string>
+    <string name="settings_mcp_terminal_input_title">允许代理排队输入终端内容</string>
+    <string name="settings_mcp_terminal_input_enabled">已启用——queue_terminal_input 经逐次确认后，会等待下一个提示符并输入排队文本</string>
+    <string name="settings_mcp_terminal_input_disabled">已停用——queue_terminal_input 请求会立即失败且不会弹出确认</string>
+    <string name="settings_mcp_endpoint_copied">端点已复制</string>
+    <string name="settings_mcp_copy_config_title">复制本机 MCP 客户端配置</string>
+    <string name="settings_mcp_copy_config_subtitle">供本设备上运行的 MCP 客户端使用的回环地址配置</string>
+    <string name="settings_mcp_config_copied">配置已复制</string>
+    <string name="settings_mcp_proot_available_title">也可在 PRoot 中使用</string>
+    <string name="settings_agent_activity_view">查看代理活动</string>
+    <string name="settings_agent_activity_view_unseen">查看代理活动  ●</string>
+    <string name="settings_agent_activity_subtitle">每次 MCP 调用都会记录，参数会经过脱敏</string>
+    <string name="settings_agent_confirm_destructive_title">确认代理的破坏性操作</string>
+    <string name="settings_agent_confirm_destructive_subtitle">代理执行写入、删除、上传或断开连接前提示确认；只读调用不会提示。</string>
+    <string name="settings_agent_forget_allows_title">清除记住的允许项</string>
+    <string name="settings_agent_forget_allows_subtitle">此前按会话允许的每项工具都会再次请求确认。</string>
+    <string name="settings_agent_forget_allows_done">已清除记住的允许项</string>
+
+</resources>

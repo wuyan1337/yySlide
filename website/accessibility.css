@@ -1,0 +1,33 @@
+:root {
+  color-scheme: dark;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
+/* Content stays visible when JavaScript or IntersectionObserver is unavailable. */
+.scene {
+  opacity: 1;
+  transform: none;
+}
+
+.js .scene {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.js .scene.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .scene {
+    opacity: 1;
+    transform: none;
+  }
+}

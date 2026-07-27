@@ -1,0 +1,10 @@
+Port knocking: per-profile TCP/UDP knock sequence fired before connect.
+
+Add a sequence like "7000 8000 9000" or "7000/tcp 8000/udp 9000/tcp" to any
+SSH/Mosh/ET/VNC/RDP/SMB profile and Haven sends the packets at the remote
+firewall (knockd, fwknop) right before the real socket open. Test knock button
+verifies the sequence without connecting. Knock results land in the Connection
+Log. Skipped on SSH-tunneled and SOCKS-routed paths — knock can't reach the
+firewall from there.
+
+MCP: new test_port_knock, set_port_knock, get_connection_log tools.

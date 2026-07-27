@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">yySlide</string>
+
+    <!-- Navigation labels live in :core:ui strings.xml so all locales
+         share one source. The previous `nav_connections = "Connections"`
+         override here shadowed :core:ui's shorter "Connect" and wrapped
+         to two lines in the bottom nav on narrower devices (#78). -->
+
+    <!-- Common strings shared across modules -->
+    <string name="common_cancel">Cancel</string>
+    <string name="common_save">Save</string>
+    <string name="common_done">Done</string>
+    <string name="common_close">Close</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_edit">Edit</string>
+    <string name="common_rename">Rename</string>
+    <string name="common_create">Create</string>
+    <string name="common_connect">Connect</string>
+    <string name="common_disconnect">Disconnect</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_paste">Paste</string>
+    <string name="common_label">Label</string>
+    <string name="common_password">Password</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Username</string>
+    <string name="common_install">Install</string>
+    <string name="common_reset">Reset</string>
+    <string name="common_allow">Allow</string>
+    <string name="common_not_now">Not now</string>
+    <string name="common_import">Import</string>
+    <string name="common_add">Add</string>
+    <string name="common_download">Download</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">Support</string>
+    <string name="common_unlock">Unlock</string>
+
+    <!-- Battery optimization -->
+    <string name="battery_title">Keep connections alive?</string>
+    <string name="battery_message">Android may close background SSH connections to save battery. Disabling battery optimization for yySlide prevents this.</string>
+
+    <!-- Workspace profiles -->
+    <string name="workspace_section_title">Workspaces</string>
+    <string name="workspace_save_current">Save current…</string>
+    <string name="workspace_empty_hint">Open the sessions you want bundled together, then tap Save current. One tap will reopen them all next time.</string>
+    <string name="workspace_save_dialog_title">Save as workspace</string>
+    <string name="workspace_save_dialog_name_label">Name</string>
+    <string name="workspace_save_dialog_items_label">Items to include</string>
+    <string name="workspace_save_dialog_no_items">Nothing to save — connect a session, open Wayland, or browse a share first.</string>
+    <string name="workspace_save_action">Save</string>
+    <string name="workspace_card_kind_terminal">Terminal</string>
+    <string name="workspace_card_kind_file_browser">Files</string>
+    <string name="workspace_card_kind_desktop">Desktop</string>
+    <string name="workspace_card_kind_wayland">Wayland</string>
+    <string name="workspace_card_kind_count">%1$s × %2$d</string>
+    <string name="workspace_card_no_items">empty</string>
+    <string name="workspace_long_press_delete">Delete</string>
+    <string name="workspace_delete_confirm_title">Delete workspace?</string>
+    <string name="workspace_delete_confirm_message">\"%1$s\" will be removed. The connections it references stay.</string>
+    <string name="workspace_launch_progress">Opening %1$s — %2$d / %3$d</string>
+    <string name="workspace_launch_completed">Opened %1$s</string>
+    <string name="workspace_launch_partial">%1$s — %2$d of %3$d items opened</string>
+    <string name="workspace_launch_cancelled">Cancelled %1$s</string>
+    <string name="workspace_launch_failed">Failed: %1$s</string>
+    <string name="workspace_launch_cancel">Cancel</string>
+    <string name="workspace_launch_dismiss">Dismiss</string>
+    <string name="biometric_screen_lock_icon">Screen lock</string>
+    <string name="desktop_screen_title">Desktop</string>
+    <string name="agent_deny">Deny</string>
+    <string name="agent_consent_pair_title">Pair MCP client?</string>
+    <string name="agent_consent_action_title">Agent action requested</string>
+    <string name="agent_consent_from">From: %1$s</string>
+    <string name="agent_consent_tool">Tool: %1$s</string>
+    <string name="agent_consent_allow_all_from_client">Allow all MCP requests from \'%1$s\' until yySlide restarts</string>
+    <string name="agent_consent_allow_all_warning">Includes destructive operations (terminal input, file write/delete, APK install). Cleared on app kill.</string>
+    <string name="agent_consent_auto_allow_window">Auto-allow window:</string>
+    <string name="agent_consent_minutes_short">%1$dm</string>
+    <string name="agent_consent_allow_for_minutes">Allow for %1$dm</string>
+    <string name="agent_consent_pair_action">Pair</string>
+</resources>

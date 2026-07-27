@@ -1,0 +1,11 @@
+v5.3.1: MCP agent endpoint is now OFF by default
+
+- The local MCP agent endpoint introduced in v5.3.0 no longer
+  starts automatically. It must be explicitly enabled in Settings
+  → "Agent endpoint (MCP)". The endpoint gives local processes
+  read access to saved connection profiles, active sessions, and
+  cloud file listings, so it should be an explicit opt-in.
+- When enabled, a "Copy agent endpoint URL" row appears right
+  below the toggle with a one-tap clipboard copy.
+- The server starts/stops reactively as the preference changes;
+  no app restart needed.

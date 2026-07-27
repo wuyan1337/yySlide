@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_unlock">解锁</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">重新连接中</string>
+    <string name="terminal_sessions">会话</string>
+    <string name="terminal_move_left">左移</string>
+    <string name="terminal_move_right">右移</string>
+    <string name="terminal_close">关闭</string>
+    <string name="terminal_copy_last_output">复制上次输出</string>
+    <string name="terminal_copied_output">已复制输出（%d 字符）</string>
+    <string name="terminal_no_command_output">未找到命令输出（需要 Shell 集成）</string>
+    <string name="terminal_search">搜索</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">连接到服务器以开始会话。</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">%s 会话</string>
+    <string name="terminal_rename_session">重命名会话</string>
+    <string name="terminal_kill_session">终止会话</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">VNC 桌面</string>
+    <string name="terminal_connect_to_host">连接到 %s</string>
+    <string name="terminal_port">端口</string>
+    <string name="terminal_password">密码</string>
+    <string name="terminal_tunnel_through_ssh">通过 SSH 隧道</string>
+    <string name="terminal_save_for_connection">为此连接保存</string>
+    <string name="terminal_connect">连接</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">重命名会话</string>
+    <string name="terminal_name">名称</string>
+    <string name="terminal_rename">重命名</string>
+    <string name="terminal_new_tab_no_active">没有可克隆的活动会话</string>
+    <string name="terminal_new_tab_no_config">未找到连接配置 — 请先尝试重新连接</string>
+    <string name="terminal_new_tab_host_key_changed">%s 的主机密钥已更改 — 出于安全考虑拒绝连接</string>
+    <string name="terminal_new_tab_connection_failed">无法连接：%s</string>
+    <string name="terminal_new_tab_shell_failed">无法打开 shell：%s</string>
+    <string name="terminal_new_tab_reticulum_no_session">没有可克隆的活动 Reticulum 会话</string>
+    <string name="terminal_new_tab_connecting">连接中…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">已断开 — 将在 %1$ds 后关闭</string>
+    <string name="terminal_disconnect_now">已断开 — 正在关闭</string>
+    <string name="terminal_new_session_create">创建</string>
+    <string name="terminal_vnc_username_label">用户名（可选 — 仅 VeNCrypt）</string>
+    <string name="terminal_vnc_username_placeholder">留空使用经典 VncAuth</string>
+    <string name="terminal_vnc_color_depth">色深</string>
+    <string name="terminal_open_plain_shell">打开纯 shell</string>
+
+    <string name="terminal_enter_fullscreen">进入全屏</string>
+    <string name="terminal_exit_fullscreen">退出全屏</string>
+    <string name="terminal_selection_copied">已复制</string>
+    <string name="terminal_selection_open_url">打开链接</string>
+    <string name="terminal_selection_no_url">未检测到链接</string>
+    <string name="terminal_selection_start">起点</string>
+    <string name="terminal_selection_end">终点</string>
+    <string name="terminal_selection_up">上移</string>
+    <string name="terminal_selection_down">下移</string>
+    <string name="terminal_selection_left">左移</string>
+    <string name="terminal_selection_right">右移</string>
+</resources>

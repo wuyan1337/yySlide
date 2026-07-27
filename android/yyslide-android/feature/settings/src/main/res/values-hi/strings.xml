@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">रद्द करें</string>
+    <string name="common_save">सहेजें</string>
+    <string name="common_done">हो गया</string>
+    <string name="common_close">बंद करें</string>
+    <string name="common_ok">ठीक है</string>
+    <string name="common_delete">हटाएँ</string>
+    <string name="common_edit">संपादित करें</string>
+    <string name="common_rename">नाम बदलें</string>
+    <string name="common_create">बनाएँ</string>
+    <string name="common_connect">कनेक्ट करें</string>
+    <string name="common_disconnect">डिस्कनेक्ट करें</string>
+    <string name="common_copy">कॉपी करें</string>
+    <string name="common_paste">पेस्ट करें</string>
+    <string name="common_label">लेबल</string>
+    <string name="common_password">पासवर्ड</string>
+    <string name="common_port">पोर्ट</string>
+    <string name="common_host">होस्ट</string>
+    <string name="common_username">उपयोगकर्ता नाम</string>
+    <string name="common_install">इंस्टॉल करें</string>
+    <string name="common_reset">रीसेट करें</string>
+    <string name="common_allow">अनुमति दें</string>
+    <string name="common_not_now">अभी नहीं</string>
+    <string name="common_import">आयात करें</string>
+    <string name="common_add">जोड़ें</string>
+    <string name="common_download">डाउनलोड करें</string>
+    <string name="common_unlock">अनलॉक करें</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">सेटिंग्स</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">स्क्रीन लॉक</string>
+    <string name="settings_biometric_subtitle">yySlide खोलने के लिए प्रमाणीकरण आवश्यक करें</string>
+    <string name="settings_lock_timeout_title">लॉक टाइमआउट</string>
+    <string name="settings_prevent_screenshots_title">स्क्रीनशॉट रोकें</string>
+    <string name="settings_prevent_screenshots_subtitle">स्क्रीन कैप्चर और टास्क स्विचर प्रीव्यू ब्लॉक करें</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">कनेक्शन लॉगिंग</string>
+    <string name="settings_connection_logging_subtitle">कनेक्शन इवेंट रिकॉर्ड करें (कनेक्ट, डिस्कनेक्ट, त्रुटियाँ)। स्थानीय रूप से संग्रहित, डिवाइस एन्क्रिप्शन से सुरक्षित</string>
+    <string name="settings_view_connection_log_title">कनेक्शन लॉग देखें</string>
+    <string name="settings_view_connection_log_subtitle">कनेक्शन इतिहास और इवेंट</string>
+    <string name="settings_verbose_logging_title">विस्तृत कनेक्शन लॉगिंग</string>
+    <string name="settings_verbose_logging_subtitle">SSH, Mosh और ET कनेक्शन के प्रोटोकॉल विवरण कैप्चर करें। होस्टनाम और उपयोगकर्ता नाम शामिल हो सकते हैं</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">सत्र स्थायित्व</string>
+    <string name="settings_session_persistence_none">कोई नहीं</string>
+    <string name="settings_font_size_title">टर्मिनल फ़ॉन्ट आकार</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_color_scheme_title">टर्मिनल रंग योजना</string>
+    <string name="settings_toolbar_title">कीबोर्ड टूलबार</string>
+    <string name="settings_toolbar_subtitle">टूलबार कुंजी और लेआउट कॉन्फ़िगर करें</string>
+    <string name="settings_search_button_title">खोज बटन</string>
+    <string name="settings_search_button_subtitle">टैब बार में खोज आइकन दिखाएँ — सत्र प्रबंधक की मूल खोज कुंजियाँ (tmux/zellij/screen) या Shell Ctrl+R भेजता है</string>
+    <string name="settings_copy_output_title">पिछला आउटपुट कॉपी करें</string>
+    <string name="settings_copy_output_subtitle">टैब बार में कॉपी आइकन दिखाएँ — पिछले कमांड का आउटपुट कॉपी करता है। Shell इंटीग्रेशन आवश्यक (सेटअप के लिए टैप करें)</string>
+    <string name="settings_mouse_input_title">TUI ऐप्स में माउस इनपुट</string>
+    <string name="settings_mouse_input_subtitle">जब htop, mc या vim जैसे ऐप माउस ट्रैकिंग सक्षम करें तो टैप को क्लिक और लॉन्ग-प्रेस को राइट-क्लिक के रूप में भेजें</string>
+    <string name="settings_right_click_title">लॉन्ग-प्रेस राइट-क्लिक भेजे</string>
+    <string name="settings_right_click_subtitle">टेक्स्ट चयन शुरू करने के बजाय टर्मिनल को राइट-क्लिक भेजें। tmux संदर्भ मेनू के लिए उपयोगी</string>
+    <string name="settings_standard_keyboard_title">वॉइस इनपुट और ऑटोकंप्लीट</string>
+    <string name="settings_standard_keyboard_subtitle">सुरक्षित कीबोर्ड फ़्लैग अक्षम करता है (पासवर्ड मोड, कोई सुझाव नहीं)। वॉइस इनपुट, स्वाइप टाइपिंग और शब्द भविष्यवाणी सक्षम करता है — लेकिन IME टाइप किए गए पासवर्ड सीख सकता है</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">थीम</string>
+    <string name="settings_screen_order_title">स्क्रीन क्रम</string>
+    <string name="settings_screen_order_subtitle">नीचे के नेविगेशन टैब पुनर्व्यवस्थित करें</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Wayland डेस्कटॉप Shell</string>
+    <string name="settings_shizuku_title">Shizuku एकीकरण</string>
+    <string name="settings_shizuku_enabled">सक्रिय — स्वचालित बैटरी छूट, Wayland सॉकेट शेयरिंग</string>
+    <string name="settings_shizuku_available">Shizuku इंस्टॉल है — अनुमति देने के लिए टैप करें</string>
+    <string name="settings_shizuku_not_running">Shizuku इंस्टॉल लेकिन चल नहीं रहा — वायरलेस डिबगिंग से शुरू करने के लिए टैप करें</string>
+    <string name="settings_shizuku_not_installed">बैटरी छूट और Wayland एक्सेस के लिए Shizuku इंस्टॉल करें</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">बैकअप निर्यात करें</string>
+    <string name="settings_export_backup_subtitle">कुंजियाँ, कनेक्शन और सेटिंग्स</string>
+    <string name="settings_restore_backup_title">बैकअप पुनर्स्थापित करें</string>
+    <string name="settings_restore_backup_subtitle">बैकअप फ़ाइल से आयात करें</string>
+    <string name="settings_backup_working">कार्यरत…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">yySlide के बारे में</string>
+    <string name="settings_version_unknown">अज्ञात</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Wayland डेस्कटॉप Shell</string>
+    <string name="settings_wayland_dialog_description">Wayland डेस्कटॉप foot टर्मिनल में चलाने का Shell कमांड। अतिरिक्त Shell apk से इंस्टॉल करें (जैसे apk add bash)।</string>
+    <string name="settings_wayland_shell_command_label">Shell कमांड</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">लॉक टाइमआउट</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">Shell इंटीग्रेशन सेटअप</string>
+    <string name="settings_osc133_description">पिछला आउटपुट कॉपी करने के लिए Shell को OSC 133 मार्कर भेजना होगा। इनमें से कोई स्निपेट अपनी Shell कॉन्फ़िग में जोड़ें:</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">Bash स्निपेट कॉपी हुआ</string>
+    <string name="settings_osc133_copied_zsh">Zsh स्निपेट कॉपी हुआ</string>
+    <string name="settings_osc133_footer">कॉपी करने के लिए स्निपेट टैप करें। कई टूल (iTerm2, VS Code, WezTerm) में ये मार्कर डिफ़ॉल्ट रूप से शामिल हैं।</string>
+    <string name="settings_osc133_learn_more">और जानें</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">बैकअप निर्यात करें</string>
+    <string name="settings_backup_restore_dialog_title">बैकअप पुनर्स्थापित करें</string>
+    <string name="settings_backup_password_min_length">कम से कम 6 अक्षर</string>
+    <string name="settings_backup_passwords_mismatch">पासवर्ड मेल नहीं खाते</string>
+    <string name="settings_backup_export_description">पासवर्ड से अपना बैकअप एन्क्रिप्ट करें। यह आपकी SSH कुंजियों और कनेक्शन डेटा की सुरक्षा करता है।</string>
+    <string name="settings_backup_restore_description">बैकअप बनाते समय उपयोग किया गया पासवर्ड दर्ज करें।</string>
+    <string name="settings_backup_password_label">पासवर्ड</string>
+    <string name="settings_backup_confirm_password_label">पासवर्ड पुष्टि करें</string>
+    <string name="settings_backup_export_button">निर्यात करें</string>
+    <string name="settings_backup_restore_button">पुनर्स्थापित करें</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">yySlide के बारे में</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">Android के लिए ओपन सोर्स SSH, VNC, RDP और क्लाउड स्टोरेज क्लाइंट</string>
+    <string name="settings_about_version">संस्करण %1$s (बिल्ड %2$d)</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">ओपन सोर्स लाइब्रेरीज़</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">स्क्रीन क्रम</string>
+    <string name="settings_screen_order_drag_description">पुनर्व्यवस्थित करने के लिए खींचें</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">थीम</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">टर्मिनल रंग योजना</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">सत्र स्थायित्व</string>
+    <string name="settings_session_no_scrollback">टच स्क्रॉलबैक नहीं</string>
+    <string name="settings_session_custom_command_label">कस्टम कमांड</string>
+    <string name="settings_session_custom_command_hint">सत्र नाम के लिए {name} का उपयोग करें। डिफ़ॉल्ट के लिए खाली छोड़ें।</string>
+    <string name="settings_session_save_command">कमांड सहेजें</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">टर्मिनल फ़ॉन्ट आकार</string>
+    <string name="settings_font_size_sample">नमूना पाठ</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">कीबोर्ड टूलबार</string>
+    <string name="settings_toolbar_assign_hint">प्रत्येक कुंजी को पंक्ति 1, पंक्ति 2 या बंद में असाइन करें</string>
+    <string name="settings_toolbar_arrow_keys">एरो कुंजी लेआउट</string>
+    <string name="settings_toolbar_function_keys">फ़ंक्शन कुंजियाँ</string>
+    <string name="settings_toolbar_symbols">प्रतीक</string>
+    <string name="settings_toolbar_custom_keys">कस्टम कुंजियाँ</string>
+    <string name="settings_toolbar_add_custom_key">कस्टम कुंजी जोड़ें</string>
+    <string name="settings_toolbar_edit_json">JSON संपादित करें</string>
+    <string name="settings_toolbar_row1">प1</string>
+    <string name="settings_toolbar_row2">प2</string>
+    <string name="settings_toolbar_off">बंद</string>
+    <string name="settings_toolbar_paste_clipboard">क्लिपबोर्ड पेस्ट करें</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">कस्टम कुंजी संपादित करें</string>
+    <string name="settings_custom_key_add_title">कस्टम कुंजी जोड़ें</string>
+    <string name="settings_custom_key_presets">प्रीसेट</string>
+    <string name="settings_custom_key_label">लेबल</string>
+    <string name="settings_custom_key_label_placeholder">उदा. ^C, Paste</string>
+    <string name="settings_custom_key_sequence_label">सीक्वेंस</string>
+    <string name="settings_custom_key_sequence_placeholder">उदा. \\u0003</string>
+    <string name="settings_custom_key_escape_hint">Escape के लिए \\u001b, Ctrl+C के लिए \\u0003, Enter के लिए \\n का उपयोग करें</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">टूलबार JSON संपादित करें</string>
+    <string name="settings_json_editor_format_hint">स्ट्रिंग = बिल्ट-इन कुंजी ID, ऑब्जेक्ट = कस्टम कुंजी {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">बिल्ट-इन ID: keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">सरल</string>
+    <string name="settings_language_title">भाषा</string>
+    <string name="settings_media_extensions_title">Media file extensions</string>
+    <string name="settings_media_extensions_description">Space-separated file extensions to treat as streamable media in the file browser.</string>
+    <string name="settings_media_extensions_label">Extensions</string>
+    <string name="settings_show_desktops_title">Show Desktops card</string>
+    <string name="settings_show_desktops_subtitle">Show desktop environment manager on the Connections screen</string>
+    <string name="settings_show_linux_vm_title">Show Linux VM card</string>
+    <string name="settings_show_linux_vm_subtitle">Show Android Linux VM setup on the Connections screen</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="settings_keep_screen_on_title">टर्मिनल में स्क्रीन चालू रखें</string>
+    <string name="settings_keep_screen_on_subtitle">टर्मिनल टैब खुले रहने पर डिस्प्ले चालू रहता है। बैटरी खर्च होती है; केवल लंबी आउटपुट देखते समय चालू रखना उचित है।</string>
+
+    <!-- #135 -->
+    <string name="settings_keyboard_mode_title">Keyboard mode</string>
+    <string name="settings_font_install_title">Install font from URL</string>
+    <string name="settings_ime_flags_title">IME flags</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field --> (en fallback)
+    <string name="settings_scrollback_rows_title">स्क्रॉलबैक पंक्तियाँ</string>
+    <string name="settings_scrollback_rows_subtitle">प्रति टैब %1$,d पंक्तियाँ सुरक्षित — नए टैब पर लागू</string>
+    <string name="settings_scrollback_rows_dialog_title">प्रति टैब स्क्रॉलबैक पंक्तियाँ</string>
+    <string name="settings_scrollback_rows_dialog_body">बड़ा स्क्रॉलबैक अधिक मेमोरी का उपयोग करता है। सामान्य कॉलम चौड़ाई पर प्रति पंक्ति लगभग 2 KB, खुले टैब की संख्या से गुणा।</string>
+    <string name="settings_scrollback_rows_value">%1$,d पंक्तियाँ</string>
+    <string name="settings_tap_to_position_title">समर्थित प्रॉम्प्ट पर कर्सर ले जाने के लिए टैप करें</string>
+    <string name="settings_tap_to_position_subtitle">उस कॉलम में कर्सर ले जाने के लिए शेल प्रॉम्प्ट के अंदर टैप करें। OSC 133 प्रॉम्प्ट मार्कर आवश्यक (starship, fish 3.6+, हाल ही के bash/zsh शेल-इंटीग्रेशन सेटअप)। जो शेल इन्हें नहीं भेजते उन पर कोई प्रभाव नहीं</string>
+
+    <string name="settings_bandwidth_suggest_subtitle">कुछ सेकंड बाद ~1 Mbps से कम थ्रूपुट का पता लगाता है और 256 रंगों पर एक-टैप पुनः कनेक्ट का सुझाव देता है। बंद करने पर संकेत नहीं दिखता।</string>
+    <string name="settings_bandwidth_suggest_title">धीमे VNC लिंक पर 256 रंग सुझाएँ</string>
+    <string name="settings_drag_select_subtitle">tmux/zellij को दबाना+हिलाना+छोड़ना अग्रेषित करता है ताकि चयन रिमोट के अपने स्क्रॉलबैक के माध्यम से व्यूपोर्ट से आगे बढ़े। बंद होने पर, खींचने से रिमोट स्क्रॉल होता है (पुराना व्यवहार)।</string>
+    <string name="settings_drag_select_title">TUI माउस मोड में खींचकर चयन करें</string>
+    <string name="settings_section_about">ऐप के बारे में</string>
+    <string name="settings_section_advanced">उन्नत</string>
+    <string name="settings_section_appearance">दिखावट</string>
+    <string name="settings_section_backup">बैकअप</string>
+    <string name="settings_section_connections_screen">कनेक्शन स्क्रीन</string>
+    <string name="settings_section_desktop">डेस्कटॉप (VNC &amp; RDP)</string>
+    <string name="settings_section_diagnostics">निदान</string>
+    <string name="settings_section_keyboard_input">कीबोर्ड और इनपुट</string>
+    <string name="settings_section_security_privacy">सुरक्षा और गोपनीयता</string>
+    <string name="settings_section_terminal">टर्मिनल</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">टर्मिनल के ऊपर सत्र टैब दिखाएँ</string>
+    <string name="settings_show_terminal_tab_bar_title">टर्मिनल टैब बार दिखाएँ</string>
+    <string name="settings_touchpad_input_direct_subtitle">सीधा स्पर्श — उँगली की स्थिति ही पॉइंटर है। ट्रैकपैड-शैली इनपुट के लिए चालू करें।</string>
+    <string name="settings_touchpad_input_title">टचपैड इनपुट</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">खींचने से रिमोट कर्सर हिलता है; टैप करने से कर्सर पर क्लिक होता है। ज़ूम करने पर व्यूपोर्ट कर्सर का अनुसरण करता है।</string>
+</resources>

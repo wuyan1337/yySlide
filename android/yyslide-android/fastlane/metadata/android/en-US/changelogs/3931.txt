@@ -1,0 +1,21 @@
+v5.37.0-rc4 — save rclone sync configurations for reuse, on top of
+rc3.
+
+• The SFTP folder-sync dialog now lets you save the current source,
+  destination, mode, filters and bandwidth limit as a named entry.
+  Pick a saved entry from the dropdown at the top of the dialog
+  (only appears when ≥1 saved config exists) to re-fill every field
+  with one tap. Each row in the dropdown has a trash icon for
+  pruning obsolete configs without leaving the dialog.
+
+• Save / Save-as buttons appear below the dry-run row once source
+  and destination are both set. Save overwrites the loaded config;
+  Save-as prompts for a new name. Saved entries float to the top of
+  the dropdown after each run.
+
+• Storage lives in a new `sync_profiles` table (schema version 53 →
+  54, automatic migration on update). Closes #159.
+
+All Android 16 SSH stability, MCP toggle, Mirror delete-count, MCP
+rclone tools, Ed25519 export, and connection-log-for-sync-events
+changes from rc1/rc2/rc3 carry forward unchanged.

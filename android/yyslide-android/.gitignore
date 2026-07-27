@@ -1,0 +1,53 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/*/build
+/*/*/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+/releases
+build-mosh/
+com/jcraft/jsch/
+build-proot/build-*/
+build-proot/dl/
+core/local/src/main/jniLibs/*/libproot*.so
+# These four release assets are intentionally versioned so a fresh Windows
+# checkout can assemble without a Linux cross-compile. Keep the broad rule
+# for incidental outputs, then re-include the exact supported ABI files.
+!core/local/src/main/jniLibs/arm64-v8a/libproot.so
+!core/local/src/main/jniLibs/arm64-v8a/libproot_loader.so
+!core/local/src/main/jniLibs/x86_64/libproot.so
+!core/local/src/main/jniLibs/x86_64/libproot_loader.so
+# Wayvnc capture-fallback shim — rebuilt by core/local's buildWayvncShim
+# Gradle task from wayland-android/wayvnc-shim/libhaven_wayvnc_shim.c.
+core/local/src/main/assets/wayvnc-shim/*/libhaven_wayvnc_shim.so
+# haven-usb guest artifacts — rebuilt by core/local's buildHavenUsb Gradle task
+# from core/local/src/main/cpp/haven-usb/ (the probe; later the LD_PRELOAD shim).
+core/local/src/main/assets/haven-usb/
+build-ffmpeg/build-*/
+build-ffmpeg/dl/
+build-ffmpeg/src/
+build-ffmpeg/sysroot/
+build-ffmpeg/spike/build/
+build-ffmpeg/spike/src/main/jniLibs/
+build-ffmpeg/build.log
+build-ffmpeg/dep-*.log
+build-*.log
+.claude/
+
+# Personal dev notes — never committed
+DEV.local.md
+*.local.md
+
+# Kotlin daemon scratch dir — incremental-compile cache + crash logs.
+# Slipped into rc14 by accident.
+.kotlin/

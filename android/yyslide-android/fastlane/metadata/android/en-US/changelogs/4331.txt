@@ -1,0 +1,3 @@
+Self-healing MCP reverse tunnel
+
+The agent MCP reverse tunnel now recovers automatically when a previous session is left holding the forward port on the endpoint host after an app restart or WiFi roam. On a bind failure it kills the stale prior session (recorded on connect; surgical and unprivileged) and rebinds — no more manual intervention to get the agent reconnected.

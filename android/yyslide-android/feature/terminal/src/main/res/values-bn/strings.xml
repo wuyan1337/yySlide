@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">বাতিল</string>
+    <string name="common_save">সংরক্ষণ</string>
+    <string name="common_done">সম্পন্ন</string>
+    <string name="common_close">বন্ধ</string>
+    <string name="common_ok">ঠিক আছে</string>
+    <string name="common_delete">মুছুন</string>
+    <string name="common_edit">সম্পাদনা</string>
+    <string name="common_rename">নাম পরিবর্তন</string>
+    <string name="common_create">তৈরি</string>
+    <string name="common_connect">সংযোগ</string>
+    <string name="common_disconnect">সংযোগ বিচ্ছিন্ন</string>
+    <string name="common_copy">কপি</string>
+    <string name="common_paste">পেস্ট</string>
+    <string name="common_label">লেবেল</string>
+    <string name="common_password">পাসওয়ার্ড</string>
+    <string name="common_port">পোর্ট</string>
+    <string name="common_host">হোস্ট</string>
+    <string name="common_username">ব্যবহারকারীর নাম</string>
+    <string name="common_install">ইনস্টল</string>
+    <string name="common_reset">রিসেট</string>
+    <string name="common_allow">অনুমতি</string>
+    <string name="common_not_now">এখন নয়</string>
+    <string name="common_import">ইমপোর্ট</string>
+    <string name="common_add">যোগ</string>
+    <string name="common_download">ডাউনলোড</string>
+    <string name="common_unlock">আনলক</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">পুনরায় সংযোগ হচ্ছে</string>
+    <string name="terminal_sessions">সেশন</string>
+    <string name="terminal_move_left">বামে সরান</string>
+    <string name="terminal_move_right">ডানে সরান</string>
+    <string name="terminal_close">বন্ধ</string>
+    <string name="terminal_copy_last_output">শেষ আউটপুট কপি</string>
+    <string name="terminal_copied_output">আউটপুট কপি হয়েছে (%d অক্ষর)</string>
+    <string name="terminal_no_command_output">কমান্ড আউটপুট পাওয়া যায়নি (শেল ইন্টিগ্রেশন দরকার)</string>
+    <string name="terminal_search">অনুসন্ধান</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">সেশন শুরু করতে একটি সার্ভারে সংযোগ করুন।</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">%s সেশন</string>
+    <string name="terminal_rename_session">সেশনের নাম পরিবর্তন</string>
+    <string name="terminal_kill_session">সেশন বন্ধ</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">VNC ডেস্কটপ</string>
+    <string name="terminal_connect_to_host">%s-এ সংযোগ</string>
+    <string name="terminal_port">পোর্ট</string>
+    <string name="terminal_password">পাসওয়ার্ড</string>
+    <string name="terminal_tunnel_through_ssh">SSH দিয়ে টানেল</string>
+    <string name="terminal_save_for_connection">এই সংযোগের জন্য সংরক্ষণ</string>
+    <string name="terminal_connect">সংযোগ</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">সেশনের নাম পরিবর্তন</string>
+    <string name="terminal_name">নাম</string>
+    <string name="terminal_rename">নাম পরিবর্তন</string>
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">সংযোগ বিচ্ছিন্ন — %1$ds-এ বন্ধ হচ্ছে</string>
+    <string name="terminal_disconnect_now">সংযোগ বিচ্ছিন্ন — বন্ধ হচ্ছে</string>
+    <string name="terminal_new_session_create">তৈরি করুন</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+    <string name="terminal_open_plain_shell">সাধারণ শেল খুলুন</string>
+
+    <string name="terminal_enter_fullscreen">ফুলস্ক্রিনে প্রবেশ করুন</string>
+    <string name="terminal_exit_fullscreen">ফুলস্ক্রিন থেকে বেরিয়ে আসুন</string>
+</resources>

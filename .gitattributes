@@ -1,0 +1,46 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.7z binary
+*.aab binary
+*.aar binary
+*.apk binary
+*.dll binary
+*.db binary
+*.exe binary
+*.gif binary
+*.gz binary
+*.ico binary
+*.jar binary
+*.jpeg binary
+*.jpg binary
+*.jks binary
+*.keystore binary
+*.pdf binary
+*.png binary
+*.p12 binary
+*.pfx binary
+*.rar binary
+*.so binary
+*.sqlite binary
+*.sqlite3 binary
+*.tar binary
+*.ttf binary
+*.tgz binary
+*.wasm binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+
+android/yyslide-android/rdp-kotlin/rust/vendor/** linguist-vendored
+
+# Preserve upstream/generated formatting while keeping whitespace checks strict
+# for project-owned source.
+android/yyslide-android/build-proot/talloc/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+android/yyslide-android/core/wayland/src/main/assets/xkb/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+android/yyslide-android/feature/editor/src/main/assets/textmate/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+android/yyslide-android/rdp-kotlin/kotlin/sh/haven/rdp/rdp_transport.kt whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+android/yyslide-android/rdp-kotlin/rust/vendor/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

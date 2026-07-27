@@ -1,0 +1,141 @@
+[versions]
+kotlin = "2.3.10"
+agp = "8.9.1"
+compose-bom = "2026.01.01"
+hilt = "2.58"
+room = "2.7.1"
+datastore = "1.1.4"
+tink = "1.17.0"
+biometric = "1.2.0-alpha05"
+jsch = "2.28.0"
+smbj = "0.13.0"
+termlib = "0.0.22"
+sora-editor = "0.23.4"
+bouncycastle = "1.79"
+jna = "5.14.0"
+coroutines = "1.10.1"
+lifecycle = "2.9.0"
+navigation = "2.9.0"
+core-ktx = "1.17.0"
+activity-compose = "1.10.1"
+shizuku-api = "13.1.5"
+ksp = "2.3.6"
+androidx-browser = "1.8.0"
+androidx-work = "2.9.0"
+androidx-hilt-work = "1.2.0"
+okhttp = "4.12.0"
+# QR / barcode + on-device OCR for the terminal's Scan/Recognize attach options.
+# ZXing core is pure Java (Apache 2.0). Tesseract4Android is the adaptech-cz
+# maintained fork that wraps Tesseract 5.x via JNI (Apache 2.0).
+zxing = "3.5.3"
+# adaptech-cz Tesseract4Android is shipped via JitPack (no Maven Central
+# artifact). 4.8.0 wraps Tesseract 5.x + leptonica, JitPack build "ok".
+# Check https://jitpack.io/#adaptech-cz/Tesseract4Android before bumping —
+# some upstream tags fail JitPack's build and never get an AAR.
+tesseract4android = "4.8.0"
+# Pure-Java XZ decoder, BSD-licensed. Needed to extract tar.xz rootfs
+# tarballs (Debian / Ubuntu / Arch from proot-distro). Tiny (~110KB).
+xz = "1.9"
+
+[libraries]
+# Compose BOM
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+compose-material3-window-size = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+compose-material-icons = { group = "androidx.compose.material", name = "material-icons-extended" }
+
+# AndroidX
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+shizuku-api = { group = "dev.rikka.shizuku", name = "api", version.ref = "shizuku-api" }
+shizuku-provider = { group = "dev.rikka.shizuku", name = "provider", version.ref = "shizuku-api" }
+lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycle" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
+androidx-work-runtime = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidx-work" }
+androidx-hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "androidx-hilt-work" }
+androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx-hilt-work" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.2.0" }
+
+# Room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
+# DataStore
+datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+# Security
+tink-android = { group = "com.google.crypto.tink", name = "tink-android", version.ref = "tink" }
+biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometric" }
+
+# SSH
+jsch = { group = "com.github.mwiede", name = "jsch", version.ref = "jsch" }
+bouncycastle = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
+
+# SMB
+smbj = { group = "com.hierynomus", name = "smbj", version.ref = "smbj" }
+
+# OkHttp — WebSocket client for the Cloudflare Access SSH gateway (#154)
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
+
+# Terminal
+termlib = { group = "org.connectbot", name = "termlib", version.ref = "termlib" }
+
+# Scan / OCR — feeds the terminal's paperclip → camera/photo flow. ZXing-core
+# stays pure Java (no Android dep), so the recognizer can be unit-tested on
+# the JVM. Tesseract4Android ships native libs per ABI and is the F-Droid-
+# friendly alternative to Google ML Kit.
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
+tesseract4android = { group = "com.github.adaptech-cz", name = "Tesseract4Android", version.ref = "tesseract4android" }
+
+# XZ decoder for tar.xz rootfs tarballs (Debian / Ubuntu via proot-distro).
+xz = { group = "org.tukaani", name = "xz", version.ref = "xz" }
+
+# JNA (for UniFFI-generated bindings — keep in sync with rdp-kotlin/build.gradle.kts)
+jna = { group = "net.java.dev.jna", name = "jna", version.ref = "jna" }
+
+# Desugaring
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version = "2.1.4" }
+
+# Editor
+sora-editor = { group = "io.github.Rosemoe.sora-editor", name = "editor", version.ref = "sora-editor" }
+sora-editor-textmate = { group = "io.github.Rosemoe.sora-editor", name = "language-textmate", version.ref = "sora-editor" }
+
+# Coroutines
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Testing
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.16" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+turbine = { group = "app.cash.turbine", name = "turbine", version = "1.2.0" }
+robolectric = { group = "org.robolectric", name = "robolectric", version = "4.14.1" }
+androidx-test-core = { group = "androidx.test", name = "core-ktx", version = "1.6.1" }
+compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+# Embedded SSH server for SshClient unit tests (Apache MINA sshd, host JVM only)
+sshd-core = { group = "org.apache.sshd", name = "sshd-core", version = "2.13.2" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version = "2.0.9" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

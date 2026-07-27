@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完了</string>
+    <string name="common_close">閉じる</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">削除</string>
+    <string name="common_edit">編集</string>
+    <string name="common_rename">名前変更</string>
+    <string name="common_create">作成</string>
+    <string name="common_connect">接続</string>
+    <string name="common_disconnect">切断</string>
+    <string name="common_copy">コピー</string>
+    <string name="common_paste">貼り付け</string>
+    <string name="common_label">ラベル</string>
+    <string name="common_password">パスワード</string>
+    <string name="common_port">ポート</string>
+    <string name="common_host">ホスト</string>
+    <string name="common_username">ユーザー名</string>
+    <string name="common_install">インストール</string>
+    <string name="common_reset">リセット</string>
+    <string name="common_allow">許可</string>
+    <string name="common_not_now">後で</string>
+    <string name="common_import">インポート</string>
+    <string name="common_add">追加</string>
+    <string name="common_download">ダウンロード</string>
+    <string name="common_unlock">ロック解除</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">再接続中</string>
+    <string name="terminal_sessions">セッション</string>
+    <string name="terminal_move_left">左に移動</string>
+    <string name="terminal_move_right">右に移動</string>
+    <string name="terminal_close">閉じる</string>
+    <string name="terminal_copy_last_output">最後の出力をコピー</string>
+    <string name="terminal_copied_output">出力をコピーしました（%d文字）</string>
+    <string name="terminal_no_command_output">コマンド出力が見つかりません（シェル統合が必要）</string>
+    <string name="terminal_search">検索</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">サーバーに接続してセッションを開始してください。</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">%s セッション</string>
+    <string name="terminal_rename_session">セッション名を変更</string>
+    <string name="terminal_kill_session">セッションを終了</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">VNCデスクトップ</string>
+    <string name="terminal_connect_to_host">%sに接続</string>
+    <string name="terminal_port">ポート</string>
+    <string name="terminal_password">パスワード</string>
+    <string name="terminal_tunnel_through_ssh">SSH経由でトンネル</string>
+    <string name="terminal_save_for_connection">この接続用に保存</string>
+    <string name="terminal_connect">接続</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">セッション名を変更</string>
+    <string name="terminal_name">名前</string>
+    <string name="terminal_rename">名前変更</string>
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">切断 — %1$d 秒後に閉じます</string>
+    <string name="terminal_disconnect_now">切断 — クローズ中</string>
+    <string name="terminal_new_session_create">作成</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+    <string name="terminal_open_plain_shell">プレーンシェルを開く</string>
+
+    <string name="terminal_enter_fullscreen">全画面表示にする</string>
+    <string name="terminal_exit_fullscreen">全画面表示を終了</string>
+</resources>

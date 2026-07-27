@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <!--
+            OIDC redirect target. The Custom Tab opens the IdP's authorize
+            URL with redirect_uri = haven://stepca-callback; the IdP sends
+            the user back here with ?code=...&state=... in the query, and
+            this Activity hands the code to the in-flight OidcAuthClient
+            via OidcRedirectBus. singleTask is required so subsequent
+            redirects (e.g. user retries) reuse the existing instance.
+        -->
+        <activity
+            android:name="sh.haven.core.stepca.OidcRedirectActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="haven"
+                    android:host="stepca-callback" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

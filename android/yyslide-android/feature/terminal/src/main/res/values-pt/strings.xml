@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Cancelar</string>
+    <string name="common_save">Salvar</string>
+    <string name="common_done">Concluído</string>
+    <string name="common_close">Fechar</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Excluir</string>
+    <string name="common_edit">Editar</string>
+    <string name="common_rename">Renomear</string>
+    <string name="common_create">Criar</string>
+    <string name="common_connect">Conectar</string>
+    <string name="common_disconnect">Desconectar</string>
+    <string name="common_copy">Copiar</string>
+    <string name="common_paste">Colar</string>
+    <string name="common_label">Rótulo</string>
+    <string name="common_password">Senha</string>
+    <string name="common_port">Porta</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Usuário</string>
+    <string name="common_install">Instalar</string>
+    <string name="common_reset">Redefinir</string>
+    <string name="common_allow">Permitir</string>
+    <string name="common_not_now">Agora não</string>
+    <string name="common_import">Importar</string>
+    <string name="common_add">Adicionar</string>
+    <string name="common_download">Baixar</string>
+    <string name="common_unlock">Desbloquear</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">Reconectando</string>
+    <string name="terminal_sessions">Sessões</string>
+    <string name="terminal_move_left">Mover para esquerda</string>
+    <string name="terminal_move_right">Mover para direita</string>
+    <string name="terminal_close">Fechar</string>
+    <string name="terminal_copy_last_output">Copiar última saída</string>
+    <string name="terminal_copied_output">Saída copiada (%d caracteres)</string>
+    <string name="terminal_no_command_output">Saída do comando não encontrada (requer integração do shell)</string>
+    <string name="terminal_search">Pesquisar</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">Conecte-se a um servidor para iniciar uma sessão.</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">Sessões de %s</string>
+    <string name="terminal_rename_session">Renomear sessão</string>
+    <string name="terminal_kill_session">Encerrar sessão</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">Desktop VNC</string>
+    <string name="terminal_connect_to_host">Conectar a %s</string>
+    <string name="terminal_port">Porta</string>
+    <string name="terminal_password">Senha</string>
+    <string name="terminal_tunnel_through_ssh">Tunelamento via SSH</string>
+    <string name="terminal_save_for_connection">Salvar para esta conexão</string>
+    <string name="terminal_connect">Conectar</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">Renomear sessão</string>
+    <string name="terminal_name">Nome</string>
+    <string name="terminal_rename">Renomear</string>
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">Desconectado — fechando em %1$ds</string>
+    <string name="terminal_disconnect_now">Desconectado — fechando</string>
+    <string name="terminal_new_session_create">Criar</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+    <string name="terminal_open_plain_shell">Abrir shell simples</string>
+
+    <string name="terminal_enter_fullscreen">Entrar em tela cheia</string>
+    <string name="terminal_exit_fullscreen">Sair da tela cheia</string>
+</resources>

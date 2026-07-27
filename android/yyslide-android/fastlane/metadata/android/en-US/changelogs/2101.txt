@@ -1,0 +1,17 @@
+v5.0.0: FFmpeg media tools, local file browser, HLS streaming
+
+FFmpeg 8.0 integration:
+- Convert media files (H.264, H.265, VP9, MP3) from any file browser tab
+- Filter UI with one-tap presets (Stabilize, Fix Colors, Enhance,
+  Normalize Audio) and fine-grained sliders for brightness, contrast,
+  saturation, gamma, sharpen, denoise, speed, volume
+- Live CLI command preview shows the exact ffmpeg command being built
+- Stream any media file to other devices via HLS — opens an HTML5
+  player in the browser at http://phone-ip:8080/
+
+Local file browser:
+- Always-present "Local" tab in Files for on-device storage
+- Browse Internal Storage, Downloads, and App Cache
+- Tap files to open with system apps
+- Editable path bar — tap to type a path directly
+- Convert and stream local files without any server connection

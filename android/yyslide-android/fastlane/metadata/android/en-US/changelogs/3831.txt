@@ -1,0 +1,20 @@
+v5.35.0-rc3 — Cloudflare Access diagnostics + serve_file.
+
+Carries forward rc2's serve_file MCP tool, and adds a diagnostics pass
+on the Cloudflare Access SSH backend so the failure mode of a real-
+tenant test points at the actual cause instead of a generic
+"Expected HTTP 101" error:
+
+- Tunnel-failure messages now carry the status code, cf-ray, cf-
+  mitigated, Server, WWW-Authenticate, and a body excerpt of the
+  rejected upgrade response. Those land in the connection log.
+- The IdP login WebView now checks for the CF_Authorization cookie on
+  both the per-app hostname AND the team domain (Cloudflare sets it on
+  both); whichever is present wins, and the source is surfaced for
+  diagnostics.
+- New "Test connection" button on the CF Access form runs a single
+  WebSocket handshake against the gateway and reports the result
+  inline + as a connection-log row — lets you iterate on the form
+  without first creating an SSH profile.
+
+(F-Droid skips RC tags; this changelog is for GitHub-release users.)

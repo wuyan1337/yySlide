@@ -1,0 +1,5 @@
+- Fix slow SSH connections to .local hostnames (mDNS direct resolution)
+- Add OSC 8 hyperlink support (Open URL from selection toolbar)
+- Add terminal notifications via OSC 9/777
+- Enable tmux OSC passthrough for clipboard/notifications/hyperlinks
+- Disable GSSAPI auth to avoid connection timeout

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_connections">Verbinden</string>
+    <string name="nav_terminal">Terminal</string>
+    <string name="nav_desktop">Desktop</string>
+    <string name="nav_keys">Schlüssel</string>
+    <string name="nav_sftp">Dateien</string>
+    <string name="nav_settings">Einstell.</string>
+    <string name="common_cancel">Abbrechen</string>
+    <string name="common_save">Speichern</string>
+    <string name="common_done">Fertig</string>
+    <string name="common_close">Schließen</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Löschen</string>
+    <string name="common_edit">Bearbeiten</string>
+    <string name="common_rename">Umbenennen</string>
+    <string name="common_create">Erstellen</string>
+    <string name="common_connect">Verbinden</string>
+    <string name="common_disconnect">Trennen</string>
+    <string name="common_copy">Kopieren</string>
+    <string name="common_paste">Einfügen</string>
+    <string name="common_label">Bezeichnung</string>
+    <string name="common_password">Passwort</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Benutzername</string>
+    <string name="common_install">Installieren</string>
+    <string name="common_reset">Zurücksetzen</string>
+    <string name="common_allow">Erlauben</string>
+    <string name="common_not_now">Nicht jetzt</string>
+    <string name="common_import">Importieren</string>
+    <string name="common_add">Hinzufügen</string>
+    <string name="common_download">Herunterladen</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">Support</string>
+    <string name="common_unlock">Entsperren</string>
+</resources>

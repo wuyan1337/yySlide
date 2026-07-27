@@ -1,0 +1,78 @@
+# Default shell profile for Haven's PRoot Alpine rootfs.
+#
+# This file is written on first install. Personal overrides belong
+# in ~/.profile.local which is sourced at the bottom — edit that
+# instead of this one and your changes will survive Haven updates
+# that refresh the default profile.
+
+# ---------------------------------------------------------------
+# PATH: include ~/.local/bin so tools installed by the user
+# (curl | sh style) are found without extra configuration.
+# ---------------------------------------------------------------
+export PATH=$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Reasonable defaults
+export EDITOR=${EDITOR:-vi}
+export PAGER=${PAGER:-less}
+export LESS=${LESS:--FRX}
+export LANG=${LANG:-C.UTF-8}
+export LC_ALL=${LC_ALL:-C.UTF-8}
+
+# Color hints for tools that honour them
+export CLICOLOR=1
+export GREP_COLORS='mt=01;33'
+
+# A compact prompt with user@host and current path
+PS1='\[\033[32m\]\u@proot\[\033[0m\]:\[\033[34m\]\w\[\033[0m\]\$ '
+
+# Aliases most shells agree on
+alias ll='ls -lh'
+alias la='ls -lha'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias g='git'
+alias gs='git status'
+alias gd='git diff'
+alias gl='git log --oneline -20'
+
+# ---------------------------------------------------------------
+# Composition helper: run a command on a remote host configured
+# in ~/.ssh/config.
+#
+# The phone is a thin client. If you have a bigger machine you can
+# reach over SSH (a workstation, a VPS, a home server), you can
+# keep your agent and your editor on the phone while pushing heavy
+# work to the remote. See ~/README.md for the full pattern.
+#
+# Configure with:
+#   export REMOTE_HOST=myworkstation  # matches an entry in ~/.ssh/config
+#
+# Then:
+#   rexec "uname -a"
+#   rexec "cd project && make test"
+# ---------------------------------------------------------------
+rexec() {
+    local host=${REMOTE_HOST:-}
+    if [ -z "$host" ]; then
+        echo "rexec: set REMOTE_HOST first, or add 'Host myworkstation' to ~/.ssh/config" >&2
+        return 2
+    fi
+    ssh "$host" "$*"
+}
+
+# ---------------------------------------------------------------
+# Personal overrides — create ~/.profile.local to set things like
+# REMOTE_HOST, project aliases, tool configuration, API keys, etc.
+# Never shipped or modified by Haven.
+# ---------------------------------------------------------------
+[ -f "$HOME/.profile.local" ] && . "$HOME/.profile.local"
+
+# One-line welcome the first time you log in. Name the actual distro
+# (this same profile ships to Alpine/Debian/Arch/Void) rather than
+# always saying "Alpine" (#168).
+if [ -t 1 ] && [ -z "${HAVEN_PROOT_WELCOMED:-}" ]; then
+    _haven_distro=$(. /etc/os-release 2>/dev/null; echo "${NAME:-Linux}")
+    echo "$_haven_distro $(uname -m) in Haven PRoot. See ~/README.md for what's here."
+    unset _haven_distro
+    export HAVEN_PROOT_WELCOMED=1
+fi

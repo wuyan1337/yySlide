@@ -1,0 +1,11 @@
+v5.8.5: faster mosh session-end detection (#92)
+
+Reduced the session-dead threshold from 15s to 8s.
+The previous 15s timeout was correct but too slow —
+users disconnected manually before it fired. With 8s,
+the session closes on its own ~6s after typing `exit`.
+
+Mosh-server sends keepalives every ~3s, so 8s of
+silence (missing 2+ keepalives) reliably indicates
+the server has exited without false-positives on
+healthy networks.

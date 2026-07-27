@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Cancelar</string>
+    <string name="common_save">Guardar</string>
+    <string name="common_done">Listo</string>
+    <string name="common_close">Cerrar</string>
+    <string name="common_ok">Aceptar</string>
+    <string name="common_delete">Eliminar</string>
+    <string name="common_edit">Editar</string>
+    <string name="common_rename">Renombrar</string>
+    <string name="common_create">Crear</string>
+    <string name="common_connect">Conectar</string>
+    <string name="common_disconnect">Desconectar</string>
+    <string name="common_copy">Copiar</string>
+    <string name="common_paste">Pegar</string>
+    <string name="common_label">Etiqueta</string>
+    <string name="common_password">Contraseña</string>
+    <string name="common_port">Puerto</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Usuario</string>
+    <string name="common_install">Instalar</string>
+    <string name="common_reset">Restablecer</string>
+    <string name="common_allow">Permitir</string>
+    <string name="common_not_now">Ahora no</string>
+    <string name="common_import">Importar</string>
+    <string name="common_add">Agregar</string>
+    <string name="common_download">Descargar</string>
+    <string name="common_unlock">Desbloquear</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">Ajustes</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">Bloqueo de pantalla</string>
+    <string name="settings_biometric_subtitle">Requerir autenticación para abrir yySlide</string>
+    <string name="settings_lock_timeout_title">Tiempo de bloqueo</string>
+    <string name="settings_prevent_screenshots_title">Evitar capturas de pantalla</string>
+    <string name="settings_prevent_screenshots_subtitle">Bloquear capturas de pantalla y vista previa del selector de apps</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">Registro de conexiones</string>
+    <string name="settings_connection_logging_subtitle">Registrar eventos de conexión (conectar, desconectar, errores). Almacenado localmente, protegido por cifrado del dispositivo</string>
+    <string name="settings_view_connection_log_title">Ver registro de conexiones</string>
+    <string name="settings_view_connection_log_subtitle">Historial y eventos de conexión</string>
+    <string name="settings_verbose_logging_title">Registro detallado de conexiones</string>
+    <string name="settings_verbose_logging_subtitle">Capturar detalles de protocolo para conexiones SSH, Mosh y ET. Puede incluir nombres de host y usuarios</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">Persistencia de sesión</string>
+    <string name="settings_session_persistence_none">Ninguna</string>
+    <string name="settings_font_size_title">Tamaño de fuente del terminal</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_color_scheme_title">Esquema de colores del terminal</string>
+    <string name="settings_toolbar_title">Barra de herramientas</string>
+    <string name="settings_toolbar_subtitle">Configurar teclas y diseño de la barra</string>
+    <string name="settings_search_button_title">Botón de búsqueda</string>
+    <string name="settings_search_button_subtitle">Mostrar icono de búsqueda en la barra de pestañas — envía las teclas nativas del gestor de sesiones (tmux/zellij/screen) o Ctrl+R del shell</string>
+    <string name="settings_copy_output_title">Copiar última salida</string>
+    <string name="settings_copy_output_subtitle">Mostrar icono de copia en la barra de pestañas — copia la salida del último comando. Requiere integración del shell (toca para configurar)</string>
+    <string name="settings_mouse_input_title">Entrada de ratón en apps TUI</string>
+    <string name="settings_mouse_input_subtitle">Reenviar toques como clics y pulsación larga como clic derecho cuando apps como htop, mc o vim activan el seguimiento del ratón</string>
+    <string name="settings_right_click_title">Pulsación larga envía clic derecho</string>
+    <string name="settings_right_click_subtitle">Enviar clic derecho al terminal en vez de iniciar selección de texto. Útil para menús contextuales de tmux</string>
+    <string name="settings_standard_keyboard_title">Entrada de voz y autocompletar</string>
+    <string name="settings_standard_keyboard_subtitle">Desactiva los indicadores de teclado seguro (modo contraseña, sin sugerencias). Habilita entrada de voz, escritura por deslizamiento y predicción de palabras — pero el teclado puede aprender las contraseñas escritas</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_screen_order_title">Orden de pantallas</string>
+    <string name="settings_screen_order_subtitle">Reordenar pestañas de navegación inferior</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Shell de escritorio Wayland</string>
+    <string name="settings_shizuku_title">Integración Shizuku</string>
+    <string name="settings_shizuku_enabled">Activado — exención automática de batería, socket Wayland compartido</string>
+    <string name="settings_shizuku_available">Shizuku instalado — toca para conceder permiso</string>
+    <string name="settings_shizuku_not_running">Shizuku instalado pero no activo — toca para abrir e iniciar con Depuración inalámbrica</string>
+    <string name="settings_shizuku_not_installed">Instalar Shizuku para exención de batería y acceso Wayland</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">Exportar respaldo</string>
+    <string name="settings_export_backup_subtitle">Claves, conexiones y ajustes</string>
+    <string name="settings_restore_backup_title">Restaurar respaldo</string>
+    <string name="settings_restore_backup_subtitle">Importar desde un archivo de respaldo</string>
+    <string name="settings_backup_working">Procesando…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">Acerca de yySlide</string>
+    <string name="settings_version_unknown">desconocido</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Shell de escritorio Wayland</string>
+    <string name="settings_wayland_dialog_description">Comando shell a ejecutar dentro del terminal foot del escritorio Wayland. Instala shells adicionales con apk (ej. apk add bash).</string>
+    <string name="settings_wayland_shell_command_label">Comando shell</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">Tiempo de bloqueo</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">Configuración de integración del shell</string>
+    <string name="settings_osc133_description">Copiar última salida requiere que tu shell emita marcadores OSC 133. Agrega uno de estos fragmentos a la configuración de tu shell:</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">Fragmento de bash copiado</string>
+    <string name="settings_osc133_copied_zsh">Fragmento de zsh copiado</string>
+    <string name="settings_osc133_footer">Toca un fragmento para copiarlo. Muchas herramientas (iTerm2, VS Code, WezTerm) incluyen estos marcadores por defecto.</string>
+    <string name="settings_osc133_learn_more">Más información</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">Exportar respaldo</string>
+    <string name="settings_backup_restore_dialog_title">Restaurar respaldo</string>
+    <string name="settings_backup_password_min_length">Al menos 6 caracteres</string>
+    <string name="settings_backup_passwords_mismatch">Las contraseñas no coinciden</string>
+    <string name="settings_backup_export_description">Cifra tu respaldo con una contraseña. Esto protege tus claves SSH y datos de conexión.</string>
+    <string name="settings_backup_restore_description">Ingresa la contraseña usada al crear el respaldo.</string>
+    <string name="settings_backup_password_label">Contraseña</string>
+    <string name="settings_backup_confirm_password_label">Confirmar contraseña</string>
+    <string name="settings_backup_export_button">Exportar</string>
+    <string name="settings_backup_restore_button">Restaurar</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">Acerca de yySlide</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">Cliente de código abierto de SSH, VNC, RDP y almacenamiento en la nube para Android</string>
+    <string name="settings_about_version">Versión %1$s (compilación %2$d)</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">Bibliotecas de código abierto</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">Orden de pantallas</string>
+    <string name="settings_screen_order_drag_description">Arrastra para reordenar</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">Tema</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">Esquema de colores del terminal</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">Persistencia de sesión</string>
+    <string name="settings_session_no_scrollback">Sin desplazamiento táctil</string>
+    <string name="settings_session_custom_command_label">Comando personalizado</string>
+    <string name="settings_session_custom_command_hint">Usa {name} para el nombre de sesión. Deja vacío para el predeterminado.</string>
+    <string name="settings_session_save_command">Guardar comando</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">Tamaño de fuente del terminal</string>
+    <string name="settings_font_size_sample">Texto de ejemplo</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">Barra de herramientas</string>
+    <string name="settings_toolbar_assign_hint">Asigna cada tecla a Fila 1, Fila 2 o Desactivado</string>
+    <string name="settings_toolbar_arrow_keys">Disposición de flechas</string>
+    <string name="settings_toolbar_function_keys">Teclas de función</string>
+    <string name="settings_toolbar_symbols">Símbolos</string>
+    <string name="settings_toolbar_custom_keys">Teclas personalizadas</string>
+    <string name="settings_toolbar_add_custom_key">Agregar tecla personalizada</string>
+    <string name="settings_toolbar_edit_json">Editar JSON</string>
+    <string name="settings_toolbar_row1">F1</string>
+    <string name="settings_toolbar_row2">F2</string>
+    <string name="settings_toolbar_off">No</string>
+    <string name="settings_toolbar_paste_clipboard">Pegar portapapeles</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">Editar tecla personalizada</string>
+    <string name="settings_custom_key_add_title">Agregar tecla personalizada</string>
+    <string name="settings_custom_key_presets">Presets</string>
+    <string name="settings_custom_key_label">Etiqueta</string>
+    <string name="settings_custom_key_label_placeholder">ej. ^C, Paste</string>
+    <string name="settings_custom_key_sequence_label">Secuencia</string>
+    <string name="settings_custom_key_sequence_placeholder">ej. \\u0003</string>
+    <string name="settings_custom_key_escape_hint">Usa \\u001b para Escape, \\u0003 para Ctrl+C, \\n para Enter</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">Editar JSON de la barra</string>
+    <string name="settings_json_editor_format_hint">Cadena = ID de tecla integrada, Objeto = tecla personalizada {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">IDs integrados: keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">Simple</string>
+    <string name="settings_language_title">Idioma</string>
+    <string name="settings_media_extensions_title">Media file extensions</string>
+    <string name="settings_media_extensions_description">Space-separated file extensions to treat as streamable media in the file browser.</string>
+    <string name="settings_media_extensions_label">Extensions</string>
+    <string name="settings_show_desktops_title">Show Desktops card</string>
+    <string name="settings_show_desktops_subtitle">Show desktop environment manager on the Connections screen</string>
+    <string name="settings_show_linux_vm_title">Show Linux VM card</string>
+    <string name="settings_show_linux_vm_subtitle">Show Android Linux VM setup on the Connections screen</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="settings_keep_screen_on_title">Mantener pantalla encendida en el terminal</string>
+    <string name="settings_keep_screen_on_subtitle">La pantalla permanece encendida mientras una pestaña de terminal está abierta. Consume batería; solo conviene activarlo si vas a observar salidas prolongadas.</string>
+
+    <!-- #135 -->
+    <string name="settings_keyboard_mode_title">Keyboard mode</string>
+    <string name="settings_font_install_title">Install font from URL</string>
+    <string name="settings_ime_flags_title">IME flags</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field --> (en fallback)
+    <string name="settings_scrollback_rows_title">Líneas de historial</string>
+    <string name="settings_scrollback_rows_subtitle">%1$,d líneas guardadas por pestaña — se aplica a pestañas nuevas</string>
+    <string name="settings_scrollback_rows_dialog_title">Líneas de historial por pestaña</string>
+    <string name="settings_scrollback_rows_dialog_body">Más historial usa más memoria. Aproximadamente 2 KB por línea con anchos de columna típicos, multiplicado por el número de pestañas abiertas.</string>
+    <string name="settings_scrollback_rows_value">%1$,d líneas</string>
+    <string name="settings_tap_to_position_title">Tocar para mover el cursor en avisos compatibles</string>
+    <string name="settings_tap_to_position_subtitle">Toca dentro de un aviso de shell para mover el cursor a esa columna. Requiere marcadores OSC 133 (starship, fish 3.6+, configuraciones recientes de bash/zsh). Sin efecto en shells que no los emiten</string>
+
+    <string name="settings_bandwidth_suggest_subtitle">Detecta un rendimiento inferior a ~1 Mbps tras unos segundos y ofrece reconectar con 256 colores con un toque. Desactivado silencia el aviso.</string>
+    <string name="settings_bandwidth_suggest_title">Sugerir 256 colores en conexiones VNC lentas</string>
+    <string name="settings_drag_select_subtitle">Reenvía pulsar+mover+soltar a tmux/zellij para que la selección se extienda por toda la vista mediante el propio historial del remoto. Si está desactivado, arrastrar desplaza el remoto (comportamiento heredado).</string>
+    <string name="settings_drag_select_title">Arrastrar para seleccionar en modo ratón TUI</string>
+    <string name="settings_section_about">Acerca de</string>
+    <string name="settings_section_advanced">Avanzado</string>
+    <string name="settings_section_appearance">Apariencia</string>
+    <string name="settings_section_backup">Copia de seguridad</string>
+    <string name="settings_section_connections_screen">Pantalla de conexiones</string>
+    <string name="settings_section_desktop">Escritorio (VNC &amp; RDP)</string>
+    <string name="settings_section_diagnostics">Diagnóstico</string>
+    <string name="settings_section_keyboard_input">Teclado y entrada</string>
+    <string name="settings_section_security_privacy">Seguridad y privacidad</string>
+    <string name="settings_section_terminal">Terminal</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">Mostrar pestañas de sesión sobre el terminal</string>
+    <string name="settings_show_terminal_tab_bar_title">Mostrar barra de pestañas del terminal</string>
+    <string name="settings_touchpad_input_direct_subtitle">Toque directo: la posición del dedo es el puntero. Actívalo para una entrada tipo trackpad.</string>
+    <string name="settings_touchpad_input_title">Entrada de panel táctil</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">Arrastrar mueve el cursor remoto; tocar hace clic en el cursor. La vista sigue al cursor al ampliar.</string>
+</resources>

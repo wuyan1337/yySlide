@@ -1,0 +1,756 @@
+package sh.haven.core.wayland
+
+import android.annotation.SuppressLint
+import android.view.KeyEvent as AndroidKeyEvent
+import android.view.MotionEvent
+import android.graphics.SurfaceTexture
+import android.view.Surface
+import android.view.TextureView
+import android.view.inputmethod.BaseInputConnection
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AspectRatio
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Fullscreen
+import androidx.compose.material.icons.filled.FullscreenExit
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.Keyboard
+import androidx.compose.material.icons.filled.KeyboardHide
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.ime
+import androidx.compose.ui.viewinterop.AndroidView
+import java.io.File
+import sh.haven.core.data.preferences.NavBlockMode
+import sh.haven.core.data.preferences.ToolbarLayout
+
+/**
+ * Composable that displays the native Wayland compositor output
+ * and forwards touch + keyboard input to the compositor.
+ * Zoom and pan are handled at the Compose level via graphicsLayer transforms.
+ */
+@SuppressLint("ClickableViewAccessibility")
+@Composable
+fun WaylandDesktopView(
+    modifier: Modifier = Modifier,
+    toolbarLayout: ToolbarLayout = ToolbarLayout.DEFAULT,
+    navBlockMode: NavBlockMode = NavBlockMode.ALIGNED,
+    onFullscreenChanged: (Boolean) -> Unit = {},
+) {
+    val context = LocalContext.current
+    var zoom by remember { mutableFloatStateOf(1f) }
+    var panX by remember { mutableFloatStateOf(0f) }
+    var panY by remember { mutableFloatStateOf(0f) }
+    var fullscreen by remember { mutableStateOf(false) }
+    var overlayVisible by remember { mutableStateOf(false) }
+    var benchmarkRunning by remember { mutableStateOf(false) }
+    var textureViewRef by remember { mutableStateOf<android.view.View?>(null) }
+    // Desktop resolution control (#161). The compositor renders at a logical
+    // mode that Android upscales; nativeSetZoom(permille, commit=true) rescales
+    // that mode AND reflows windows (unlike the Compose-level pinch zoom below,
+    // which is purely visual). 1000 = the surface-derived default; lower
+    // permille = higher resolution / more workspace, higher = larger UI.
+    var displayScalePermille by rememberSaveable { mutableIntStateOf(1000) }
+    var scaleMenuOpen by remember { mutableStateOf(false) }
+    // Physical surface size (px), used to label the scale options with the
+    // actual logical resolution each one produces (#161).
+    var surfacePxW by remember { mutableIntStateOf(0) }
+    var surfacePxH by remember { mutableIntStateOf(0) }
+    DisposableEffect(Unit) {
+        onDispose {
+            WaylandBridge.nativeSetSurface(null)
+        }
+    }
+
+    val density = LocalDensity.current
+    Column(modifier = modifier) {
+    // The parent pager uses imePadding() which shrinks our available height
+    // when the keyboard opens. Counteract by measuring at full height but
+    // reporting the shrunken height to the parent so the toolbar position
+    // doesn't change. The compositor extends behind the keyboard.
+    val imeBottomPx = WindowInsets.ime.getBottom(density)
+    Box(
+        modifier = Modifier
+            .weight(1f)
+            .layout { measurable, constraints ->
+                // Measure the content at full height (including behind keyboard)
+                val fullHeight = constraints.maxHeight + imeBottomPx
+                val extended = constraints.copy(maxHeight = fullHeight)
+                val placeable = measurable.measure(extended)
+                // Report the original shrunken height so the toolbar stays put
+                layout(placeable.width, constraints.maxHeight) {
+                    placeable.placeRelative(0, 0)
+                }
+            }
+            .pointerInput(Unit) {
+                awaitEachGesture {
+                    // Wait for first finger
+                    awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+                    var prevCentroid = Offset.Zero
+                    var prevSpan = 0f
+                    var gestureStarted = false
+
+                    do {
+                        val event = awaitPointerEvent(PointerEventPass.Initial)
+                        val pointers = event.changes.filter { it.pressed }
+                        val count = pointers.size
+
+                        // Only intercept multi-finger gestures (zoom/pan).
+                        // Single-finger events pass through to the AndroidView.
+                        if (count >= 2) {
+                            val centroid = Offset(
+                                pointers.map { it.position.x }.average().toFloat(),
+                                pointers.map { it.position.y }.average().toFloat(),
+                            )
+                            val span = pointers.map {
+                                (it.position - centroid).getDistance()
+                            }.average().toFloat()
+
+                            if (gestureStarted && prevSpan > 0f && span > 0f) {
+                                val scaleFactor = span / prevSpan
+                                val dy = centroid.y - prevCentroid.y
+                                val dx = centroid.x - prevCentroid.x
+                                val isPinch = kotlin.math.abs(scaleFactor - 1f) > 0.02f
+
+                                if (isPinch) {
+                                    // Pinch-to-zoom
+                                    val newZoom = (zoom * scaleFactor).coerceIn(0.5f, 5f)
+                                    panX += (centroid.x - panX) * (1 - scaleFactor)
+                                    panY += (centroid.y - panY) * (1 - scaleFactor)
+                                    zoom = newZoom
+                                    panX += dx
+                                    panY += dy
+                                } else if (zoom == 1f) {
+                                    // Two-finger scroll (no zoom active)
+                                    WaylandBridge.nativeSendScroll(0, -dy / 10f) // vertical
+                                    if (kotlin.math.abs(dx) > 5f) {
+                                        WaylandBridge.nativeSendScroll(1, -dx / 10f) // horizontal
+                                    }
+                                } else {
+                                    // Pan when zoomed in
+                                    panX += dx
+                                    panY += dy
+                                }
+                            }
+                            prevCentroid = centroid
+                            prevSpan = span
+                            gestureStarted = true
+                            event.changes.forEach { it.consume() }
+                        }
+                    } while (event.changes.any { it.pressed })
+                }
+            },
+    ) {
+        // Force landscape 16:10 aspect ratio — the compositor fills this
+        // exactly, so pixels remain square. Letterboxed in portrait.
+        AndroidView(
+            factory = { context ->
+                @SuppressLint("ClickableViewAccessibility")
+                object : TextureView(context) {
+                    init {
+                        isFocusable = true
+                        isFocusableInTouchMode = true
+                        textureViewRef = this
+
+                        surfaceTextureListener = object : TextureView.SurfaceTextureListener {
+                            private var nativeSurface: Surface? = null
+                            private var initialWidth = 0
+                            private var initialHeight = 0
+                            override fun onSurfaceTextureAvailable(st: SurfaceTexture, w: Int, h: Int) {
+                                android.util.Log.i("WaylandTV", "TextureAvailable: ${w}x${h} view=${width}x${height}")
+                                initialWidth = w
+                                initialHeight = h
+                                surfacePxW = w
+                                surfacePxH = h
+                                st.setDefaultBufferSize(w, h)
+                                nativeSurface = Surface(st)
+                                WaylandBridge.nativeSetSurface(nativeSurface)
+                                // nativeSetSurface resets the output to the
+                                // surface-derived default mode, so re-apply a
+                                // non-default resolution choice (#161).
+                                if (displayScalePermille != 1000) {
+                                    WaylandBridge.nativeSetZoom(displayScalePermille, true)
+                                }
+                            }
+                            override fun onSurfaceTextureSizeChanged(st: SurfaceTexture, w: Int, h: Int) {
+                                android.util.Log.i("WaylandTV", "TextureSizeChanged: ${w}x${h} initial=${initialWidth}x${initialHeight}")
+                                // Only resize if width changed (not keyboard show/hide which only changes height).
+                                // This prevents the compositor buffer from being squashed when imePadding
+                                // shrinks the pager vertically.
+                                if (w != initialWidth) {
+                                    initialWidth = w
+                                    initialHeight = h
+                                    surfacePxW = w
+                                    surfacePxH = h
+                                    st.setDefaultBufferSize(w, h)
+                                }
+                            }
+                            override fun onSurfaceTextureDestroyed(st: SurfaceTexture): Boolean {
+                                WaylandBridge.nativeSetSurface(null)
+                                nativeSurface?.release()
+                                nativeSurface = null
+                                return true
+                            }
+                            override fun onSurfaceTextureUpdated(st: SurfaceTexture) {}
+                        }
+
+                        setOnTouchListener { view, event ->
+                            // Single-finger: pointer events (keyboard toggled via button)
+                            if (event.pointerCount == 1) {
+                                if (event.actionMasked == MotionEvent.ACTION_DOWN) {
+                                    if (!hasFocus()) requestFocus()
+                                }
+                                val nx = event.x / view.width
+                                val ny = event.y / view.height
+                                when (event.actionMasked) {
+                                    MotionEvent.ACTION_DOWN ->
+                                        WaylandBridge.nativeSendTouch(0, nx, ny)
+                                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL ->
+                                        WaylandBridge.nativeSendTouch(1, nx, ny)
+                                    MotionEvent.ACTION_MOVE ->
+                                        WaylandBridge.nativeSendTouch(2, nx, ny)
+                                }
+                            }
+                            true
+                        }
+                    }
+
+                    override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection {
+                        // Suppress the Android IME's composing region so each
+                        // keystroke is forwarded immediately. The labwc surface
+                        // sends raw evdev keycodes to the focused Wayland app —
+                        // an Android-side composing/autocorrect buffer only held
+                        // text back until space/close (#172). VISIBLE_PASSWORD +
+                        // NO_SUGGESTIONS is the signal Gboard et al. honour to
+                        // stop composing (same as the terminal's ImeInputView).
+                        outAttrs.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                            android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD or
+                            android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+                        outAttrs.imeOptions = EditorInfo.IME_FLAG_NO_FULLSCREEN or
+                            EditorInfo.IME_FLAG_NO_EXTRACT_UI or
+                            EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
+                        val view = this
+                        return object : BaseInputConnection(view, false) {
+                            // Chars already forwarded as evdev for the current
+                            // composing region. IMEs that ignore the
+                            // no-suggestions hint (Samsung, CJK) still compose;
+                            // we dispatch each delta live and reconcile on commit
+                            // so nothing is double-sent. Empty on the common
+                            // flag-suppressed path (direct commitText).
+                            private var composing = ""
+
+                            private fun backspaces(n: Int) {
+                                repeat(n.coerceAtLeast(0)) {
+                                    WaylandBridge.nativeSendKey(14, 1) // KEY_BACKSPACE
+                                    WaylandBridge.nativeSendKey(14, 0)
+                                }
+                            }
+
+                            override fun setComposingText(text: CharSequence?, newCursorPosition: Int): Boolean {
+                                val new = text?.toString() ?: ""
+                                when {
+                                    new == composing -> {}
+                                    new.startsWith(composing) ->
+                                        new.substring(composing.length).forEach { sendCharAsEvdev(it) }
+                                    composing.startsWith(new) ->
+                                        backspaces(composing.length - new.length)
+                                    else -> {
+                                        backspaces(composing.length)
+                                        new.forEach { sendCharAsEvdev(it) }
+                                    }
+                                }
+                                composing = new
+                                return true
+                            }
+
+                            override fun finishComposingText(): Boolean {
+                                composing = ""
+                                return true
+                            }
+
+                            override fun commitText(text: CharSequence?, newCursorPosition: Int): Boolean {
+                                val committed = text?.toString() ?: ""
+                                when {
+                                    composing.isEmpty() -> committed.forEach { sendCharAsEvdev(it) }
+                                    committed == composing -> { /* already sent via composing deltas */ }
+                                    else -> {
+                                        backspaces(composing.length)
+                                        committed.forEach { sendCharAsEvdev(it) }
+                                    }
+                                }
+                                composing = ""
+                                return true
+                            }
+
+                            override fun deleteSurroundingText(beforeLength: Int, afterLength: Int): Boolean {
+                                if (composing.isNotEmpty()) {
+                                    val n = beforeLength.coerceAtMost(composing.length)
+                                    backspaces(n)
+                                    composing = composing.dropLast(n)
+                                } else {
+                                    backspaces(beforeLength)
+                                }
+                                return true
+                            }
+
+                            override fun sendKeyEvent(event: AndroidKeyEvent): Boolean {
+                                val evdev = androidToEvdev(event.keyCode)
+                                if (evdev >= 0) {
+                                    val pressed = if (event.action == AndroidKeyEvent.ACTION_DOWN) 1 else 0
+                                    WaylandBridge.nativeSendKey(evdev, pressed)
+                                    return true
+                                }
+                                return super.sendKeyEvent(event)
+                            }
+                        }
+                    }
+
+                    override fun onCheckIsTextEditor(): Boolean = true
+
+                    override fun onKeyDown(keyCode: Int, event: AndroidKeyEvent?): Boolean {
+                        val evdev = androidToEvdev(keyCode)
+                        if (evdev >= 0) {
+                            WaylandBridge.nativeSendKey(evdev, 1)
+                            return true
+                        }
+                        return super.onKeyDown(keyCode, event)
+                    }
+
+                    override fun onKeyUp(keyCode: Int, event: AndroidKeyEvent?): Boolean {
+                        val evdev = androidToEvdev(keyCode)
+                        if (evdev >= 0) {
+                            WaylandBridge.nativeSendKey(evdev, 0)
+                            return true
+                        }
+                        return super.onKeyUp(keyCode, event)
+                    }
+
+                    override fun onKeyMultiple(keyCode: Int, repeatCount: Int, event: AndroidKeyEvent?): Boolean {
+                        val chars = event?.characters ?: return super.onKeyMultiple(keyCode, repeatCount, event)
+                        for (ch in chars) { sendCharAsEvdev(ch) }
+                        return true
+                    }
+                }
+            },
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer {
+                    scaleX = zoom
+                    scaleY = zoom
+                    translationX = panX
+                    translationY = panY
+                },
+        )
+
+        // Fullscreen corner hotspot and overlay menu
+        if (fullscreen) {
+            if (overlayVisible) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                        ) { overlayVisible = false },
+                )
+            }
+            androidx.compose.animation.AnimatedVisibility(
+                visible = !overlayVisible,
+                enter = fadeIn(),
+                exit = fadeOut(),
+                modifier = Modifier.align(Alignment.TopEnd),
+            ) {
+                Surface(
+                    onClick = { overlayVisible = true },
+                    shape = RoundedCornerShape(bottomStart = 12.dp),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.4f),
+                ) {
+                    Icon(
+                        Icons.Default.Menu,
+                        contentDescription = "Session menu",
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                        modifier = Modifier.padding(8.dp).size(20.dp),
+                    )
+                }
+            }
+            androidx.compose.animation.AnimatedVisibility(
+                visible = overlayVisible,
+                enter = fadeIn(),
+                exit = fadeOut(),
+                modifier = Modifier.align(Alignment.TopEnd),
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(bottomStart = 16.dp),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
+                    shadowElevation = 8.dp,
+                ) {
+                    Column(
+                        modifier = Modifier.padding(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        if (zoom != 1f || panX != 0f || panY != 0f) {
+                            IconButton(onClick = { zoom = 1f; panX = 0f; panY = 0f }) {
+                                Icon(Icons.Default.FullscreenExit, contentDescription = "Reset zoom")
+                            }
+                        }
+                        ResolutionScaleButton(
+                            currentPermille = displayScalePermille,
+                            surfacePxW = surfacePxW,
+                            surfacePxH = surfacePxH,
+                            expanded = scaleMenuOpen,
+                            onExpandedChange = { scaleMenuOpen = it },
+                            onSelect = {
+                                displayScalePermille = it
+                                WaylandBridge.nativeSetZoom(it, true)
+                            },
+                            buttonSizeDp = 48,
+                            iconSizeDp = 24,
+                        )
+                        IconButton(onClick = {
+                            val bench = File(context.applicationInfo.nativeLibraryDir, "libbenchmark_gles.so")
+                            if (bench.canExecute()) {
+                                benchmarkRunning = WaylandBridge.nativeLaunchBenchmark(bench.absolutePath)
+                            }
+                            overlayVisible = false
+                        }) {
+                            Icon(
+                                if (benchmarkRunning) Icons.Default.Stop else Icons.Default.Speed,
+                                contentDescription = if (benchmarkRunning) "Stop Benchmark" else "GPU Benchmark",
+                            )
+                        }
+                        IconButton(onClick = {
+                            overlayVisible = false
+                            fullscreen = false
+                            onFullscreenChanged(false)
+                        }) {
+                            Icon(Icons.Default.FullscreenExit, contentDescription = "Exit fullscreen")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Toolbar + fullscreen button (hidden in fullscreen)
+    if (!fullscreen) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            WaylandToolbar(
+                layout = toolbarLayout,
+                navBlockMode = navBlockMode,
+                modifier = Modifier.weight(1f),
+            )
+            Column {
+                IconButton(
+                    onClick = {
+                        textureViewRef?.let { tv ->
+                            val imm = context.getSystemService(
+                                android.content.Context.INPUT_METHOD_SERVICE
+                            ) as android.view.inputmethod.InputMethodManager
+                            tv.requestFocus()
+                            imm.restartInput(tv)
+                            imm.toggleSoftInput(0, 0)
+                        }
+                    },
+                    modifier = Modifier.size(32.dp),
+                ) {
+                    Icon(Icons.Default.Keyboard, contentDescription = "Toggle keyboard", modifier = Modifier.size(18.dp))
+                }
+                ResolutionScaleButton(
+                    currentPermille = displayScalePermille,
+                    surfacePxW = surfacePxW,
+                    surfacePxH = surfacePxH,
+                    expanded = scaleMenuOpen,
+                    onExpandedChange = { scaleMenuOpen = it },
+                    onSelect = {
+                        displayScalePermille = it
+                        WaylandBridge.nativeSetZoom(it, true)
+                    },
+                    buttonSizeDp = 32,
+                    iconSizeDp = 18,
+                )
+                IconButton(
+                    onClick = {
+                        val bench = File(context.applicationInfo.nativeLibraryDir, "libbenchmark_gles.so")
+                        if (bench.canExecute()) {
+                            benchmarkRunning = WaylandBridge.nativeLaunchBenchmark(bench.absolutePath)
+                        }
+                    },
+                    modifier = Modifier.size(32.dp),
+                ) {
+                    Icon(
+                        if (benchmarkRunning) Icons.Default.Stop else Icons.Default.Speed,
+                        contentDescription = if (benchmarkRunning) "Stop Benchmark" else "GPU Benchmark",
+                        modifier = Modifier.size(18.dp),
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        fullscreen = true
+                        onFullscreenChanged(true)
+                    },
+                    modifier = Modifier.size(32.dp),
+                ) {
+                    Icon(Icons.Default.Fullscreen, contentDescription = "Fullscreen", modifier = Modifier.size(18.dp))
+                }
+            }
+        }
+    }
+
+    // Notify parent of fullscreen changes
+    LaunchedEffect(fullscreen) {
+        onFullscreenChanged(fullscreen)
+    }
+    } // Column
+}
+
+/* Must match DPI_SCALE in wayland-android/jni_bridge.c — the compositor
+ * renders at physical_pixels / DPI_SCALE and Android upscales. Used only to
+ * label the scale options with the resolution they produce (#161). */
+private const val LABWC_DPI_SCALE = 3
+
+/**
+ * Desktop-resolution control for labwc-native (#161). Each option is a zoom
+ * permille handed to [WaylandBridge.nativeSetZoom] with commit=true, which
+ * rescales the compositor output mode and reflows windows (a real resolution
+ * change, unlike the Compose-level pinch zoom). 1000 = the surface-derived
+ * default; lower = higher resolution / more workspace, higher = larger UI.
+ *
+ * Options are labelled with the actual resolution each produces — derived from
+ * the live surface size: mode = (surfacePx / DPI_SCALE) * 1000 / permille,
+ * matching the native nativeSetZoom maths. Falls back to a percent label
+ * before the surface size is known.
+ */
+@Composable
+private fun ResolutionScaleButton(
+    currentPermille: Int,
+    surfacePxW: Int,
+    surfacePxH: Int,
+    expanded: Boolean,
+    onExpandedChange: (Boolean) -> Unit,
+    onSelect: (Int) -> Unit,
+    buttonSizeDp: Int,
+    iconSizeDp: Int,
+) {
+    // nativeSetZoom clamps permille to [500, 4000]; offer the high-resolution
+    // end (500 = 2x the default) through to a large-UI low-resolution option.
+    val permilles = listOf(500, 650, 800, 1000, 1300, 1700)
+    val baseW = surfacePxW / LABWC_DPI_SCALE
+    val baseH = surfacePxH / LABWC_DPI_SCALE
+    fun label(permille: Int): String {
+        if (baseW <= 0 || baseH <= 0) return "${permille / 10}%"
+        val w = baseW * 1000 / permille
+        val h = baseH * 1000 / permille
+        val long = maxOf(w, h)
+        val short = minOf(w, h)
+        return "$long × $short"
+    }
+    Box {
+        IconButton(onClick = { onExpandedChange(true) }, modifier = Modifier.size(buttonSizeDp.dp)) {
+            Icon(
+                Icons.Default.AspectRatio,
+                contentDescription = "Desktop resolution",
+                modifier = Modifier.size(iconSizeDp.dp),
+            )
+        }
+        DropdownMenu(expanded = expanded, onDismissRequest = { onExpandedChange(false) }) {
+            for (permille in permilles) {
+                val suffix = if (permille == 1000) "  (default)" else ""
+                val check = if (permille == currentPermille) "  ✓" else ""
+                DropdownMenuItem(
+                    text = { Text(label(permille) + suffix + check) },
+                    onClick = { onSelect(permille); onExpandedChange(false) },
+                )
+            }
+        }
+    }
+}
+
+/** Map Android KeyEvent keyCode to Linux evdev scancode (input-event-codes.h). */
+private fun androidToEvdev(keyCode: Int): Int = when (keyCode) {
+    AndroidKeyEvent.KEYCODE_A -> 30
+    AndroidKeyEvent.KEYCODE_B -> 48
+    AndroidKeyEvent.KEYCODE_C -> 46
+    AndroidKeyEvent.KEYCODE_D -> 32
+    AndroidKeyEvent.KEYCODE_E -> 18
+    AndroidKeyEvent.KEYCODE_F -> 33
+    AndroidKeyEvent.KEYCODE_G -> 34
+    AndroidKeyEvent.KEYCODE_H -> 35
+    AndroidKeyEvent.KEYCODE_I -> 23
+    AndroidKeyEvent.KEYCODE_J -> 36
+    AndroidKeyEvent.KEYCODE_K -> 37
+    AndroidKeyEvent.KEYCODE_L -> 38
+    AndroidKeyEvent.KEYCODE_M -> 50
+    AndroidKeyEvent.KEYCODE_N -> 49
+    AndroidKeyEvent.KEYCODE_O -> 24
+    AndroidKeyEvent.KEYCODE_P -> 25
+    AndroidKeyEvent.KEYCODE_Q -> 16
+    AndroidKeyEvent.KEYCODE_R -> 19
+    AndroidKeyEvent.KEYCODE_S -> 31
+    AndroidKeyEvent.KEYCODE_T -> 20
+    AndroidKeyEvent.KEYCODE_U -> 22
+    AndroidKeyEvent.KEYCODE_V -> 47
+    AndroidKeyEvent.KEYCODE_W -> 17
+    AndroidKeyEvent.KEYCODE_X -> 45
+    AndroidKeyEvent.KEYCODE_Y -> 21
+    AndroidKeyEvent.KEYCODE_Z -> 44
+    AndroidKeyEvent.KEYCODE_0 -> 11
+    AndroidKeyEvent.KEYCODE_1 -> 2
+    AndroidKeyEvent.KEYCODE_2 -> 3
+    AndroidKeyEvent.KEYCODE_3 -> 4
+    AndroidKeyEvent.KEYCODE_4 -> 5
+    AndroidKeyEvent.KEYCODE_5 -> 6
+    AndroidKeyEvent.KEYCODE_6 -> 7
+    AndroidKeyEvent.KEYCODE_7 -> 8
+    AndroidKeyEvent.KEYCODE_8 -> 9
+    AndroidKeyEvent.KEYCODE_9 -> 10
+    AndroidKeyEvent.KEYCODE_SPACE -> 57
+    AndroidKeyEvent.KEYCODE_ENTER -> 28
+    AndroidKeyEvent.KEYCODE_DEL -> 14 // backspace
+    AndroidKeyEvent.KEYCODE_TAB -> 15
+    AndroidKeyEvent.KEYCODE_ESCAPE -> 1
+    AndroidKeyEvent.KEYCODE_DPAD_UP -> 103
+    AndroidKeyEvent.KEYCODE_DPAD_DOWN -> 108
+    AndroidKeyEvent.KEYCODE_DPAD_LEFT -> 105
+    AndroidKeyEvent.KEYCODE_DPAD_RIGHT -> 106
+    AndroidKeyEvent.KEYCODE_SHIFT_LEFT -> 42
+    AndroidKeyEvent.KEYCODE_SHIFT_RIGHT -> 54
+    AndroidKeyEvent.KEYCODE_CTRL_LEFT -> 29
+    AndroidKeyEvent.KEYCODE_CTRL_RIGHT -> 97
+    AndroidKeyEvent.KEYCODE_ALT_LEFT -> 56
+    AndroidKeyEvent.KEYCODE_ALT_RIGHT -> 100
+    AndroidKeyEvent.KEYCODE_MINUS -> 12
+    AndroidKeyEvent.KEYCODE_EQUALS -> 13
+    AndroidKeyEvent.KEYCODE_LEFT_BRACKET -> 26
+    AndroidKeyEvent.KEYCODE_RIGHT_BRACKET -> 27
+    AndroidKeyEvent.KEYCODE_BACKSLASH -> 43
+    AndroidKeyEvent.KEYCODE_SEMICOLON -> 39
+    AndroidKeyEvent.KEYCODE_APOSTROPHE -> 40
+    AndroidKeyEvent.KEYCODE_GRAVE -> 41
+    AndroidKeyEvent.KEYCODE_COMMA -> 51
+    AndroidKeyEvent.KEYCODE_PERIOD -> 52
+    AndroidKeyEvent.KEYCODE_SLASH -> 53
+    AndroidKeyEvent.KEYCODE_AT -> 3 // mapped to '2' key (shift+2 = @)
+    AndroidKeyEvent.KEYCODE_FORWARD_DEL -> 111
+    AndroidKeyEvent.KEYCODE_PAGE_UP -> 104
+    AndroidKeyEvent.KEYCODE_PAGE_DOWN -> 109
+    AndroidKeyEvent.KEYCODE_MOVE_HOME -> 102
+    AndroidKeyEvent.KEYCODE_MOVE_END -> 107
+    AndroidKeyEvent.KEYCODE_INSERT -> 110
+    AndroidKeyEvent.KEYCODE_F1 -> 59
+    AndroidKeyEvent.KEYCODE_F2 -> 60
+    AndroidKeyEvent.KEYCODE_F3 -> 61
+    AndroidKeyEvent.KEYCODE_F4 -> 62
+    AndroidKeyEvent.KEYCODE_F5 -> 63
+    AndroidKeyEvent.KEYCODE_F6 -> 64
+    AndroidKeyEvent.KEYCODE_F7 -> 65
+    AndroidKeyEvent.KEYCODE_F8 -> 66
+    AndroidKeyEvent.KEYCODE_F9 -> 67
+    AndroidKeyEvent.KEYCODE_F10 -> 68
+    AndroidKeyEvent.KEYCODE_F11 -> 87
+    AndroidKeyEvent.KEYCODE_F12 -> 88
+    else -> -1
+}
+
+private const val KEY_LEFTSHIFT = 42
+
+/**
+ * Map a typed character to (evdev keycode, needsShift).
+ * Returns (-1, false) for unmapped characters.
+ */
+internal fun charToEvdevWithShift(ch: Char): Pair<Int, Boolean> = when (ch) {
+    'a' -> 30 to false; 'b' -> 48 to false; 'c' -> 46 to false
+    'd' -> 32 to false; 'e' -> 18 to false; 'f' -> 33 to false
+    'g' -> 34 to false; 'h' -> 35 to false; 'i' -> 23 to false
+    'j' -> 36 to false; 'k' -> 37 to false; 'l' -> 38 to false
+    'm' -> 50 to false; 'n' -> 49 to false; 'o' -> 24 to false
+    'p' -> 25 to false; 'q' -> 16 to false; 'r' -> 19 to false
+    's' -> 31 to false; 't' -> 20 to false; 'u' -> 22 to false
+    'v' -> 47 to false; 'w' -> 17 to false; 'x' -> 45 to false
+    'y' -> 21 to false; 'z' -> 44 to false
+    'A' -> 30 to true; 'B' -> 48 to true; 'C' -> 46 to true
+    'D' -> 32 to true; 'E' -> 18 to true; 'F' -> 33 to true
+    'G' -> 34 to true; 'H' -> 35 to true; 'I' -> 23 to true
+    'J' -> 36 to true; 'K' -> 37 to true; 'L' -> 38 to true
+    'M' -> 50 to true; 'N' -> 49 to true; 'O' -> 24 to true
+    'P' -> 25 to true; 'Q' -> 16 to true; 'R' -> 19 to true
+    'S' -> 31 to true; 'T' -> 20 to true; 'U' -> 22 to true
+    'V' -> 47 to true; 'W' -> 17 to true; 'X' -> 45 to true
+    'Y' -> 21 to true; 'Z' -> 44 to true
+    '0' -> 11 to false; '1' -> 2 to false; '2' -> 3 to false
+    '3' -> 4 to false; '4' -> 5 to false; '5' -> 6 to false
+    '6' -> 7 to false; '7' -> 8 to false; '8' -> 9 to false
+    '9' -> 10 to false
+    ' ' -> 57 to false; '\n' -> 28 to false; '\t' -> 15 to false
+    '.' -> 52 to false; ',' -> 51 to false; '/' -> 53 to false
+    '-' -> 12 to false; '=' -> 13 to false; ';' -> 39 to false
+    '\'' -> 40 to false; '`' -> 41 to false; '[' -> 26 to false
+    ']' -> 27 to false; '\\' -> 43 to false
+    '!' -> 2 to true;  '@' -> 3 to true;  '#' -> 4 to true
+    '$' -> 5 to true;  '%' -> 6 to true;  '^' -> 7 to true
+    '&' -> 8 to true;  '*' -> 9 to true;  '(' -> 10 to true
+    ')' -> 11 to true; '_' -> 12 to true; '+' -> 13 to true
+    '{' -> 26 to true; '}' -> 27 to true; '|' -> 43 to true
+    ':' -> 39 to true; '"' -> 40 to true; '~' -> 41 to true
+    '<' -> 51 to true; '>' -> 52 to true; '?' -> 53 to true
+    else -> -1 to false
+}
+
+/** Send a character as evdev key event(s), wrapping with Shift when needed. */
+internal fun sendCharAsEvdev(ch: Char) {
+    val (evdev, needsShift) = charToEvdevWithShift(ch)
+    if (evdev < 0) return
+    if (needsShift) WaylandBridge.nativeSendKey(KEY_LEFTSHIFT, 1)
+    WaylandBridge.nativeSendKey(evdev, 1)
+    WaylandBridge.nativeSendKey(evdev, 0)
+    if (needsShift) WaylandBridge.nativeSendKey(KEY_LEFTSHIFT, 0)
+}

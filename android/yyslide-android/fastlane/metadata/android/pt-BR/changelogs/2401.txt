@@ -1,0 +1,10 @@
+v5.8.5: detecção mais rápida do fim de sessão mosh (#92)
+
+O limite de sessão encerrada foi reduzido de 15s para 8s.
+O timeout anterior de 15s estava correto, mas era lento demais —
+os usuários desconectavam manualmente antes que ele disparasse.
+Com 8s, a sessão fecha sozinha ~6s após digitar `exit`.
+
+O mosh-server envia keepalives a cada ~3s, então 8s de
+silêncio (2+ keepalives perdidos) indica de forma confiável que
+o servidor encerrou, sem falsos positivos em redes estáveis.

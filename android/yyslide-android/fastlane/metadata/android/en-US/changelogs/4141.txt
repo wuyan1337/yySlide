@@ -1,0 +1,19 @@
+v5.40.1 — Off-screen copy fix
+
+• Fix: copying a drag-extended terminal selection now includes the
+  off-screen rows, not just the on-screen portion (issue #94, reported
+  by ehoeve786 against v5.39.0). When the edge-scroll auto-selection
+  pulled the anchor above the top of the viewport, the clipboard
+  extractor was treating the anchor row as a viewport offset and
+  silently skipping rows that had scrolled into history. The selection
+  highlight was correct; only the copied payload was clipped.
+
+• Root cause: SelectionManager.getSnapshotLine short-circuited on the
+  live-tail case (scrollbackPosition == 0) and returned null for
+  negative rows. The unified scrollback-aware index formula in the
+  scrolled-back branch already handled the case correctly; it just
+  needed to also run when not scrolled back. New unit tests lock the
+  off-viewport-top behaviour for both live-tail and scrolled-back.
+
+No other changes from v5.40.0 — Mosh-over-tunnel, multi-distro proot,
+and the v5.39 UX work all carry forward unchanged.

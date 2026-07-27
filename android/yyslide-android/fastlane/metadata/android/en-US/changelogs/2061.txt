@@ -1,0 +1,8 @@
+SSH post-login command (issue #80)
+
+- New "Post-login command" field in SSH and Reticulum connection settings
+- Command auto-sends after shell prompt detection on login
+- Works with session managers (tmux, screen, zellij, byobu)
+- "Run before session manager" toggle controls execution order
+- Improved ANSI escape stripping for prompt detection inside tmux
+- Added support for custom prompt chars (e.g. starship ❯)

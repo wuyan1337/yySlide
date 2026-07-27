@@ -1,0 +1,10 @@
+v5.8.5: detección más rápida del fin de sesión mosh (#92)
+
+Se redujo el umbral de sesión finalizada de 15s a 8s.
+El timeout anterior de 15s era correcto pero demasiado lento —
+los usuarios desconectaban manualmente antes de que se activara.
+Con 8s, la sesión se cierra sola ~6s después de escribir `exit`.
+
+mosh-server envía keepalives cada ~3s, por lo que 8s de
+silencio (2+ keepalives perdidos) indica de forma fiable que
+el servidor ha finalizado, sin falsos positivos en redes estables.

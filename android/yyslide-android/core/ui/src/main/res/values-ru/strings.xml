@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_connections">Связь</string>
+    <string name="nav_terminal">Терминал</string>
+    <string name="nav_desktop">Рабстол</string>
+    <string name="nav_keys">Ключи</string>
+    <string name="nav_sftp">Файлы</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="common_cancel">Отмена</string>
+    <string name="common_save">Сохранить</string>
+    <string name="common_done">Готово</string>
+    <string name="common_close">Закрыть</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Удалить</string>
+    <string name="common_edit">Изменить</string>
+    <string name="common_rename">Переименовать</string>
+    <string name="common_create">Создать</string>
+    <string name="common_connect">Подключить</string>
+    <string name="common_disconnect">Отключить</string>
+    <string name="common_copy">Копировать</string>
+    <string name="common_paste">Вставить</string>
+    <string name="common_label">Метка</string>
+    <string name="common_password">Пароль</string>
+    <string name="common_port">Порт</string>
+    <string name="common_host">Хост</string>
+    <string name="common_username">Имя пользователя</string>
+    <string name="common_install">Установить</string>
+    <string name="common_reset">Сбросить</string>
+    <string name="common_allow">Разрешить</string>
+    <string name="common_not_now">Не сейчас</string>
+    <string name="common_import">Импорт</string>
+    <string name="common_add">Добавить</string>
+    <string name="common_download">Скачать</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">Поддержка</string>
+    <string name="common_unlock">Разблокировать</string>
+</resources>

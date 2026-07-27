@@ -1,0 +1,21 @@
+v5.8.4 : saisie IME + diagnostics FIDO2
+
+La saisie au clavier japonais/chinois/coréen fonctionne
+désormais dans le terminal. Le mode de saisie par défaut
+est passé de TYPE_NULL (événements de touches bruts
+uniquement) à TYPE_CLASS_TEXT (protocole de composition
+IME), permettant aux méthodes de saisie CJK de composer
+les caractères avant de les valider. L'autocomplétion
+et les suggestions restent désactivées. (#96)
+
+L'authentification par clé de sécurité FIDO2 enregistre
+désormais chaque étape de l'échange CTAP — résultat de
+la permission USB, initialisation CTAPHID, commande
+GetAssertion et statut de la réponse. Lorsqu'une clé
+de sécurité échoue, la boîte de dialogue d'erreur
+affiche la raison CTAP précise (ex. : « Aucune
+information d'identification correspondante sur cette
+clé ») au lieu d'une invite générique de repli par mot
+de passe. Les demandes de permission USB expirent
+désormais après 30 secondes au lieu de bloquer
+indéfiniment. (#15)

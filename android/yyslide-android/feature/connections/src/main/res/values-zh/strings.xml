@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_unlock">解锁</string>
+
+    <!-- Common strings (shared across features) -->
+
+    <!-- Connections screen -->
+    <string name="connections_title">连接</string>
+    <string name="connections_add">添加连接</string>
+    <string name="connections_quick_connect_placeholder">user@host 或 host:port</string>
+    <string name="connections_quick_connect_button">连接</string>
+    <string name="connections_quick_connect_error">请使用格式：user@host 或 user@host:port</string>
+    <string name="connections_filter_placeholder">筛选连接\u2026</string>
+    <string name="connections_filter_clear">清除筛选</string>
+    <string name="connections_reorder">排序</string>
+
+    <!-- Empty state -->
+    <string name="connections_empty_title">暂无连接</string>
+    <string name="connections_empty_subtitle">点击 + 添加服务器，或在上方输入 user@host</string>
+
+    <!-- Connection status -->
+    <string name="connections_status_connected">已连接</string>
+    <string name="connections_status_error">错误</string>
+    <string name="connections_status_disconnected">已断开</string>
+
+    <!-- Connection tree item -->
+    <string name="connections_proot_label">PRoot Alpine Linux</string>
+    <string name="connections_launch_desktop">启动桌面</string>
+    <string name="connections_setup_desktop">设置桌面</string>
+
+    <!-- Connection context menu -->
+    <string name="connections_menu_port_forwards">端口转发</string>
+    <string name="connections_menu_connect_with_password">使用密码连接</string>
+    <string name="connections_menu_sessions">会话</string>
+    <string name="connections_menu_disconnect">断开连接</string>
+    <string name="connections_menu_deploy_ssh_key">部署 SSH 密钥</string>
+
+    <!-- Delete confirmation dialog -->
+    <string name="connections_delete_title">删除连接？</string>
+    <string name="connections_delete_message">删除"%1$s"？此操作无法撤消。</string>
+
+    <!-- Deploy key snackbar -->
+    <string name="connections_key_deployed">SSH 密钥部署成功</string>
+
+    <!-- Battery optimization dialog -->
+    <string name="connections_battery_title">保持连接？</string>
+    <string name="connections_battery_message">Android 可能会为省电而关闭后台 SSH 连接。为 yySlide 禁用电池优化可以防止此情况。</string>
+
+    <!-- Mosh setup guide dialog -->
+    <string name="connections_mosh_not_found_title">服务器上未找到 Mosh</string>
+    <string name="connections_mosh_not_found_message">远程主机未安装 mosh-server。Mosh（移动 Shell）可在网络切换和高延迟连接时保持会话。</string>
+    <string name="connections_mosh_install_prompt">在服务器上安装：</string>
+    <string name="connections_mosh_install_commands">\u0020 Ubuntu/Debian:  sudo apt install mosh\n\u0020 Fedora/RHEL:    sudo dnf install mosh\n\u0020 Arch:           sudo pacman -S mosh\n\u0020 macOS:          brew install mosh</string>
+    <string name="connections_mosh_firewall_note">服务器防火墙须开放 UDP 端口 60001。</string>
+    <string name="connections_mosh_github">GitHub 上的 Mosh</string>
+
+    <!-- Mosh client missing dialog -->
+    <string name="connections_mosh_client_missing_title">Mosh 客户端未构建</string>
+    <string name="connections_mosh_client_missing_message">此版本未包含 mosh-client 二进制文件。需要使用 NDK 为 Android 交叉编译。</string>
+    <string name="connections_mosh_client_build_instructions">使用 Android NDK r27+ 运行 tools/build-mosh.sh 构建 mosh-client 二进制文件，然后重新构建应用。</string>
+
+    <!-- Session picker dialog -->
+    <string name="connections_sessions_title">%1$s 会话</string>
+    <string name="connections_restore_previous_sessions">恢复 %1$d 个之前的会话</string>
+    <string name="connections_rename_session">重命名会话</string>
+    <string name="connections_kill_session">终止会话</string>
+
+    <!-- Rename dialog -->
+    <string name="connections_rename_title">重命名连接</string>
+
+    <!-- Linux VM card -->
+    <string name="connections_linux_vm">Linux 虚拟机</string>
+    <string name="connections_vm_tap_to_setup">点击以设置</string>
+    <string name="connections_vm_status_active">活动中</string>
+    <string name="connections_vm_refresh">刷新虚拟机状态</string>
+
+    <!-- Desktop setup dialog -->
+    <string name="connections_desktop_setup_title">设置桌面</string>
+    <string name="connections_desktop_wayland_description">在 PRoot 环境中安装 Wayland 合成器。实验性功能——使用软件渲染。</string>
+    <string name="connections_desktop_openbox_description">在 PRoot 环境中安装桌面环境和 VNC 服务器。Openbox 是最小化的——右键点击桌面打开应用菜单。</string>
+    <string name="connections_desktop_vnc_description">在 PRoot 环境中安装桌面环境和 VNC 服务器。</string>
+    <string name="connections_desktop_vnc_password">VNC 密码</string>
+    <string name="connections_desktop_shell">终端</string>
+    <string name="connections_desktop_installed">桌面已安装。正在连接 VNC\u2026</string>
+    <string name="connections_desktop_setup_failed">设置失败：%1$s</string>
+
+    <!-- New group dialog -->
+    <string name="connections_new_group_title">新建分组</string>
+    <string name="connections_group_name">分组名称</string>
+
+    <!-- Group header -->
+    <string name="connections_launch_group">启动分组</string>
+    <string name="connections_expand">展开</string>
+    <string name="connections_collapse">折叠</string>
+    <string name="connections_menu_launch_all">全部启动</string>
+    <string name="connections_menu_delete_group">删除分组</string>
+    <string name="connections_new_group_action">新建分组</string>
+    <string name="connections_desktop_addons_header">桌面功能（可选）</string>
+    <string name="connections_menu_duplicate">复制连接</string>
+    <string name="connections_desktops_title">桌面</string>
+    <string name="connections_desktop_start">启动</string>
+    <string name="connections_desktop_stop">停止</string>
+    <string name="connections_desktop_native_running">原生合成器</string>
+    <string name="connections_desktop_uninstall_title">卸载桌面？</string>
+    <string name="connections_desktop_uninstall_message">卸载 %1$s？将从 PRoot 环境中移除相关包。</string>
+    <string name="connections_use_android_shell">使用原生 Android shell</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="connections_new_session_create">创建</string>
+    <string name="connections_dialog_new">新建连接</string>
+    <string name="connections_dialog_edit">编辑连接</string>
+    <string name="connections_yy_name">名称</string>
+    <string name="connections_yy_category">分类</string>
+    <string name="connections_yy_no_category">无分类</string>
+    <string name="connections_yy_new_category">新建分类</string>
+    <string name="connections_yy_category_name">分类名称</string>
+    <string name="connections_yy_authentication">身份验证</string>
+    <string name="connections_yy_private_key">私钥</string>
+    <string name="connections_yy_key">密钥</string>
+    <string name="connections_yy_any_saved_key">任意已保存密钥</string>
+    <string name="connections_yy_import_local_key_file">导入本地密钥文件</string>
+    <string name="connections_yy_import_local_key">导入本地密钥</string>
+    <string name="connections_yy_importing">正在导入...</string>
+    <string name="connections_yy_import_private_key_failed">导入私钥失败</string>
+    <string name="connections_yy_ssh_only_notice">yySlide 移动端仅显示 SSH 配置。</string>
+    <string name="connections_yy_private_key_passphrase">私钥口令</string>
+    <string name="connections_yy_passphrase">口令</string>
+    <string name="connections_field_transport">传输方式</string>
+    <string name="connections_field_label">标签</string>
+    <string name="connections_field_color">颜色</string>
+    <string name="connections_field_host">主机</string>
+    <string name="connections_field_port">端口</string>
+    <string name="connections_field_username">用户名</string>
+    <string name="connections_field_jump_host">跳板机（-J）</string>
+    <string name="connections_field_route_through">路由经过</string>
+    <string name="connections_field_session_manager">会话管理器</string>
+    <string name="connections_field_ssh_options">SSH 选项</string>
+    <string name="connections_helper_ssh_options">ssh_config 格式：键 值（每行一个）</string>
+    <string name="connections_field_post_login">登录后命令</string>
+    <string name="connections_helper_post_login">登录后发送。</string>
+    <string name="connections_dropdown_none_direct">无（直连）</string>
+    <string name="connections_dropdown_default_none">默认（无）</string>
+    <string name="connections_dropdown_none">无</string>
+    <string name="connections_section_file_transport">文件传输</string>
+    <string name="connections_helper_file_transport">文件标签页传输该服务器数据的方式。</string>
+    <string name="connections_file_transport_auto">自动</string>
+    <string name="connections_scan_network">扫描网络</string>
+    <string name="connections_scanning">扫描中</string>
+    <string name="connections_field_group">分组</string>
+    <string name="connections_field_provider">提供商</string>
+    <string name="connections_field_tunnel_through_ssh">通过 SSH 隧道</string>
+    <string name="connections_field_ssh_connection">SSH 连接</string>
+    <string name="connections_field_username_vnc">用户名（可选 — 仅 VeNCrypt）</string>
+    <string name="connections_field_password_optional">密码（可选）</string>
+    <string name="connections_field_domain_optional">域（可选）</string>
+    <string name="connections_field_share_name">共享名称</string>
+    <string name="connections_field_colour_depth">色深</string>
+    <string name="connections_field_proxy_host">代理主机</string>
+    <string name="connections_field_et_port">ET 端口</string>
+    <string name="connections_field_mosh_server_command">mosh-server 命令</string>
+    <string name="connections_helper_mosh_server">留空使用默认值。低于 1024 的端口请使用 authbind。</string>
+    <string name="connections_username_placeholder_ask">留空以在连接时询问</string>
+    <string name="connections_file_transport_auto_desc">尝试 SFTP，若服务器禁用了 sftp-server 子系统则回退到 SCP。</string>
+    <string name="connections_file_transport_sftp_label">仅 SFTP</string>
+    <string name="connections_file_transport_sftp_desc">强制使用现代 SFTP 子系统。若服务器端已禁用则失败。</string>
+    <string name="connections_file_transport_scp_label">SCP（旧版）</string>
+    <string name="connections_file_transport_scp_desc">强制使用旧版 scp -t/-f 和 shell ls。适用于加固或嵌入式服务器。</string>
+    <string name="connection_address_family_label">地址族</string>
+    <string name="connection_address_family_auto">自动</string>
+    <string name="connection_address_family_ipv4_only">仅 IPv4</string>
+    <string name="connection_address_family_ipv6_only">仅 IPv6</string>
+    <string name="connection_address_family_ipv4_hint">跳过 AAAA 记录，仅通过 IPv4 连接。适用于 DNS 返回 IPv6 但网络无法路由的情况。</string>
+    <string name="connection_address_family_ipv6_hint">跳过 A 记录，仅通过 IPv6 连接。适用于 IPv4 NAT 损坏的纯 IPv6 网络。</string>
+
+    <!-- #135 -->
+    <string name="connections_field_vnc_host_via_ssh">VNC 主机（在 SSH 服务器上）</string>
+    <string name="connections_field_rdp_host_via_ssh">RDP 主机（在 SSH 服务器上）</string>
+    <string name="connections_toggle_run_before_session_manager">在会话管理器之前运行</string>
+    <string name="connections_toggle_disable_alt_screen">禁用备用屏幕</string>
+    <string name="connections_helper_disable_alt_screen">在 screen/vim 中可滚动回看。程序退出后输出仍保留在回滚缓冲区中。</string>
+    <string name="connections_toggle_forward_agent">转发 SSH 代理</string>
+    <string name="connections_helper_forward_agent">将未加密的已存 SSH 密钥暴露给远程主机（用于 git push 等）。加密的密钥会被跳过。</string>
+    <string name="connections_field_ssh_key">SSH 密钥</string>
+    <string name="connections_ssh_key_any">任意（尝试所有密钥）</string>
+    <string name="connections_field_vnc_port">VNC 端口</string>
+    <string name="connections_field_vnc_password">VNC 密码</string>
+    <string name="connections_field_vnc_color_depth">VNC 色深</string>
+    <string name="connections_action_clear_vnc">清除已保存的 VNC 设置</string>
+    <string name="connections_toggle_local_sideband">本地 Sideband</string>
+    <string name="connections_field_gateway_host">网关主机</string>
+    <string name="connections_field_network_name">网络名称</string>
+    <string name="connections_helper_network_name">IFAC 网络名称（可选）</string>
+    <string name="connections_action_scan_rnsh">扫描 rnsh 节点</string>
+    <string name="connections_field_destination_hash">目标哈希</string>
+    <string name="connections_helper_destination_hash">32 位十六进制</string>
+    <string name="connections_field_color_scheme">终端配色方案</string>
+    <string name="connections_color_scheme_inherit">使用默认设置（全局）</string>
+    <string name="connections_tunnel_dropdown_label">隧道: %1$s</string>
+    <string name="connections_session_default_with">默认（%1$s）</string>
+    <string name="connections_discovered_count">已发现（%1$d）</string>
+    <string name="connections_discovered_count_filtered">已发现（%1$d / %2$d）</string>
+
+    <!-- #135 third pass -->
+
+    <string name="connections_pf_dialog_title_edit">编辑端口转发</string>
+    <string name="connections_pf_dialog_title_new">新建端口转发</string>
+    <string name="connections_pf_dialog_title_list">%1$s 的端口转发</string>
+    <string name="connections_pf_empty">尚未配置任何端口转发规则。</string>
+    <string name="connections_pf_add_rule">添加规则</string>
+    <string name="connections_pf_local">本地（-L）</string>
+    <string name="connections_pf_remote">远程（-R）</string>
+    <string name="connections_pf_dynamic">动态（-D）</string>
+    <string name="connections_pf_address">地址</string>
+
+    <string name="connections_hostkey_title_verify">验证主机密钥</string>
+    <string name="connections_hostkey_first_time">首次连接到 %1$s。</string>
+    <string name="connections_hostkey_key_type">密钥类型：%1$s</string>
+    <string name="connections_hostkey_fingerprint">指纹：</string>
+    <string name="connections_hostkey_trust">信任</string>
+    <string name="connections_hostkey_old_fingerprint">旧指纹：</string>
+    <string name="connections_hostkey_new_fingerprint">新指纹：</string>
+    <string name="connections_hostkey_accept_new">接受新密钥</string>
+    <string name="connections_hostkey_disconnect">断开连接</string>
+    <string name="connections_hostkey_verify_hint">信任前请核对此指纹是否与服务器密钥匹配。</string>
+    <string name="connections_hostkey_changed_title">主机密钥已变更</string>
+    <string name="connections_hostkey_changed_body">%1$s 的主机密钥已变更。这可能是服务器重装，也可能是中间人攻击。</string>
+
+    <string name="connections_deploy_title">部署 SSH 密钥</string>
+    <string name="connections_deploy_field_key">SSH 密钥</string>
+    <string name="connections_deploy_button">部署</string>
+
+    <string name="connections_password_title">连接到 %1$s</string>
+    <string name="connections_password_button">连接</string>
+    <string name="connections_password_field_passphrase">密钥口令</string>
+    <string name="connections_password_keyboard_warning">您的输入法可访问网络，输入内容可能被上传。建议改用注重隐私的输入法（例如 HeliBoard、Simple Keyboard）。</string>
+    <string name="connections_password_domain">域：%1$s</string>
+    <string name="connections_password_passphrase_for_key">请输入 SSH 密钥 "%1$s" 的口令。</string>
+    <string name="connections_password_remember_password">记住密码</string>
+    <string name="connections_password_remember_passphrase">记住密钥口令</string>
+    <string name="connections_password_leave_empty_for_key">留空以使用 SSH 密钥连接</string>
+
+    <string name="connections_fido_pin_title">安全密钥 PIN 码</string>
+    <string name="connections_fido_pin_label">PIN 码</string>
+    <string name="connections_fido_pin_help">此 SSH 密钥需要验证。请输入安全密钥上设置的 PIN 码以继续。</string>
+    <string name="connections_fido_pin_wrong">PIN 码错误。安全密钥锁定前还有 %1$d 次尝试机会。</string>
+    <string name="connections_fido_waiting_title">需要安全密钥</string>
+    <string name="connections_fido_waiting_body">通过 USB 插入安全密钥，或将其贴在设备背面以使用 NFC。检测到密钥后 yySlide 会自动继续。</string>
+    <string name="connections_fido_touch_usb_title">触摸您的安全密钥</string>
+    <string name="connections_fido_touch_usb_body">现在按下安全密钥上的按钮以授权 SSH 签名。密钥可能会闪烁提示等待操作。</string>
+    <string name="connections_fido_touch_nfc_title">贴住您的安全密钥</string>
+    <string name="connections_fido_touch_nfc_body">在签名期间将安全密钥贴在设备背面持续两秒。提前移开会中止交换，需要再次贴近。</string>
+    <string name="connections_fido_cancel_hint">如需取消，请从连接列表断开此连接。</string>
+
+    <string name="connections_ki_submit">提交</string>
+    <string name="connections_ki_response_fallback">回答</string>
+    <string name="connections_ki_title_additional">需要进一步的认证</string>
+    <string name="connections_ki_title_server">服务器提示</string>
+
+    <string name="connections_vm_title">Linux 虚拟机</string>
+    <string name="connections_vm_detected_services">已检测到的服务</string>
+    <string name="connections_vm_quick_setup">快速设置</string>
+    <string name="connections_vm_copy_install">复制安装命令</string>
+    <string name="connections_vm_view_script">查看脚本</string>
+    <string name="connections_vm_step_start">1. 启动 Linux 虚拟机</string>
+    <string name="connections_vm_open_terminal">打开终端应用</string>
+    <string name="connections_vm_step_open_port">2. 开放 8022 端口</string>
+    <string name="connections_vm_step_password">3. 设置密码并安装 SSH</string>
+    <string name="connections_vm_step_vnc">4. 安装 VNC 服务器（可选）</string>
+    <string name="connections_vm_step_desktop">5. 安装桌面环境（可选）</string>
+    <string name="connections_vm_step_apps">6. 安装桌面应用（可选）</string>
+    <string name="connections_vm_install_blurb">一键安装 SSH、VNC、Xfce4 桌面以及常用应用（浏览器、编辑器、文件管理器）：</string>
+    <string name="connections_vm_copied">已复制到剪贴板</string>
+    <string name="connections_vm_copy_content_description">复制</string>
+    <string name="connections_vm_terminal_not_found">未找到终端应用</string>
+    <string name="connections_vm_show_steps">显示设置步骤</string>
+    <string name="connections_vm_hide_steps">隐藏设置步骤</string>
+    <string name="connections_vm_step_start_body">打开 Android 终端应用以启动虚拟机。</string>
+    <string name="connections_vm_step_open_port_body">在终端应用的设置中，将 8022 端口添加到监听端口列表。</string>
+    <string name="connections_vm_step_password_body">在终端应用中运行。系统会提示为 droid 用户设置密码。</string>
+    <string name="connections_vm_step_password_hint">然后通过 droid@localhost:8022 连接</string>
+    <string name="connections_vm_step_vnc_body">用于通过 yySlide 的桌面标签页进行远程桌面访问。</string>
+    <string name="connections_vm_step_desktop_body">Xfce4 轻量且通过 VNC 表现良好。</string>
+    <string name="connections_vm_step_apps_body">文件管理器、文本编辑器、图片查看器、浏览器、计算器。</string>
+
+    <string name="connections_section_desktops">桌面</string>
+    <string name="connections_action_back">返回</string>
+    <string name="connections_vnc_password_title">VNC 密码</string>
+    <string name="connections_action_local_terminal">本地终端</string>
+    <string name="connections_action_tunnels">隧道</string>
+    <string name="connections_action_reauthenticate">重新认证</string>
+    <string name="connections_action_cancel_oauth">取消 OAuth</string>
+
+    <!-- #133 phase 2b: cert renewal status banner -->
+    <string name="connections_renewing_cert">正在通过 %2$s 续签 %1$s 的证书…</string>
+    <string name="connections_open_plain_shell">打开纯 shell</string>
+
+    <!-- Port knocking -->
+    <string name="connections_section_port_knock">端口敲门</string>
+    <string name="connections_field_port_knock_sequence">敲门序列（可选）</string>
+    <string name="connections_hint_port_knock_sequence">例如 7000 8000 9000 或 7000/tcp 8000/udp</string>
+    <string name="connections_helper_port_knock_active">在每次直接连接前发送。在 SSH/SOCKS 隧道路径上跳过。</string>
+    <string name="connections_helper_port_knock_blank">留空以停用。</string>
+    <string name="connections_field_port_knock_delay">敲门间隔（毫秒）</string>
+    <string name="connections_button_test_knock">测试敲门</string>
+    <string name="connections_button_test_knock_running">正在敲门…</string>
+    <string name="connections_knock_invalid_sequence">无效序列：%1$s</string>
+    <string name="connections_knock_empty">敲门序列为空</string>
+    <string name="connections_knock_host_blank">主机为空</string>
+    <string name="connections_knock_success">已在 %2$d 毫秒内发送 %1$d 次敲门</string>
+    <string name="connections_knock_failed">在 %1$d 毫秒后失败：%2$s</string>
+    <string name="connections_dropdown_cloudflare_tunnel">Cloudflare Tunnel</string>
+    <string name="connections_section_general">常规</string>
+    <string name="connections_section_local_shell">本地 Shell</string>
+    <string name="connections_section_cloud_storage">云存储</string>
+    <string name="connections_section_vnc">VNC 设置</string>
+    <string name="connections_section_rdp">RDP 设置</string>
+    <string name="connections_section_smb">SMB 设置</string>
+    <string name="connections_section_connection">连接</string>
+    <string name="connections_section_terminal">终端</string>
+    <string name="connections_section_authentication">身份验证</string>
+    <string name="connections_section_embedded_vnc">嵌入式 VNC</string>
+    <string name="connections_section_reticulum">Reticulum</string>
+    <string name="connections_section_routing">路由</string>
+    <string name="connections_toggle_mcp_tunnel">公开 yySlide 的 MCP 服务器</string>
+    <string name="connections_helper_mcp_tunnel">添加 -R 8730 → 127.0.0.1:8730 规则，使此服务器上的 MCP 客户端能够通过 http://127.0.0.1:8730/mcp 访问 yySlide。连接时应用。</string>
+    <string name="connections_section_reconnect">重新连接</string>
+    <string name="connections_local_shell_android_desc">运行原生 Android shell (/system/bin/sh)。可访问 Android 命令、文件系统和 root（如果可用）。</string>
+    <string name="connections_local_shell_proot_desc">通过 PRoot 在本地运行 Alpine Linux shell。首次使用时下载最小 rootfs（约 4MB）。无需 root 或网络连接。</string>
+    <string name="connections_dropdown_select_provider">选择提供商…</string>
+    <string name="connections_helper_rclone_signin">首次连接时通过浏览器登录。</string>
+    <string name="connections_dropdown_select_ssh">选择 SSH 连接</string>
+    <string name="connections_helper_add_ssh_first">请先添加一个 SSH 连接</string>
+    <string name="connections_toggle_rdp_nla">网络级身份验证 (NLA)</string>
+    <string name="connections_helper_mosh_required">需要远程主机上的 mosh-server</string>
+    <string name="connections_helper_et_required">需要远程主机上的 etserver（端口 %1$s）</string>
+    <string name="connections_helper_run_before_session_manager">在会话管理器启动前运行。</string>
+    <string name="connections_toggle_tunnel_only">仅隧道（无终端）</string>
+    <string name="connections_helper_tunnel_only">仅为端口转发建立 SSH — 不会打开终端会话。</string>
+    <string name="connections_toggle_auto_reconnect">断开时自动重新连接</string>
+    <string name="connections_field_reconnect_max_attempts">最大尝试次数（0 = 无限制）</string>
+    <string name="connections_toggle_reconnect_on_network_change">网络变化时重新连接</string>
+    <string name="connections_field_passphrase">密码短语</string>
+    <string name="connections_hint_ifac_passphrase">IFAC 密码短语（可选）</string>
+    <string name="connections_helper_vnc_host_via_ssh">VNC 服务器从 SSH 服务器可访问的位置 — 如果是同一台机器，通常为 127.0.0.1（wayvnc 等仅绑定回环地址）。</string>
+    <string name="connections_helper_vnc_auth">经典 VncAuth（8 字符密码）请将用户名留空。VeNCrypt（wayvnc、TigerVNC）请填写用户名 — 支持更长的密码和 TLS 加密。</string>
+    <string name="connections_helper_rdp_host_via_ssh">RDP 服务器从 SSH 服务器可访问的位置 — 如果是同一台机器，通常为 127.0.0.1。</string>
+    <string name="connections_helper_rdp_nla">默认开启。如果服务器拒绝 yySlide 的 NLA，请关闭（某些 Windows Server 2025 配置 — 服务器必须禁用\"Require NLA\"才能仅通过 SSL 连接）。</string>
+    <string name="connections_action_manage_tunnels">管理隧道…</string>
+    <string name="connections_helper_cloudflare_routing">通过 Cloudflare Tunnel 连接器路由。上面的主机用作隧道主机名；端口不适用（连接器决定上游 SSH 目标）。</string>
+    <string name="connections_vnc_depth_24">24 位色彩（最佳质量）</string>
+    <string name="connections_vnc_depth_16">16 位色彩（更快）</string>
+    <string name="connections_vnc_depth_8">256 色（最低带宽）</string>
+    <string name="connections_rdp_depth_16">16 位（默认 — 各处可用，保真度较低）</string>
+    <string name="connections_rdp_depth_24">24 位（xrdp — Windows 重置连接）</string>
+    <string name="connections_rdp_depth_32">32 位（Windows — xrdp 上黑屏）</string>
+    <string name="connections_desktop_open_shell_for_distro">在 %1$s 中打开 shell</string>
+    <string name="connections_desktop_delete_distro">删除 %1$s</string>
+    <string name="connections_desktop_add_distro">+ %1$s（约 %2$d MB）</string>
+    <string name="connections_rootfs_downloading">正在下载 rootfs… %1$d%%</string>
+    <string name="connections_rootfs_extracting">正在解压 rootfs…</string>
+    <string name="connections_rootfs_initializing">正在设置 rootfs…（%1$s）</string>
+    <string name="connections_phase_download">下载</string>
+    <string name="connections_phase_extract">解压</string>
+    <string name="connections_phase_bootstrap_hook">引导钩子</string>
+    <string name="connections_phase_baseline_packages">基础软件包</string>
+    <string name="connections_phase_desktop_packages">软件包</string>
+    <string name="connections_phase_vnc_config">VNC 配置</string>
+    <string name="connections_phase_marker_file">标记文件</string>
+    <string name="connections_phase_failed">失败：%1$s</string>
+    <string name="connections_proot_history_hint">完整的分阶段历史记录：设置 → 查看 PRoot 安装日志。</string>
+    <string name="connections_retry_wipe">清除并重试</string>
+    <string name="connections_retry_step">重试此步骤</string>
+    <string name="connections_desktop_experimental">实验性</string>
+    <string name="connections_desktop_vnc_instance">VNC :%1$d（端口 %2$d）</string>
+    <string name="connections_desktop_vnc_port_value">VNC 端口 %1$d</string>
+    <string name="connections_desktop_experimental_on">在 %1$s 上为实验性支持</string>
+    <string name="connections_desktop_vnc_display">显示 :%1$d</string>
+    <string name="connections_desktop_vnc_port_range">范围 5901–5999</string>
+    <string name="connections_auth_methods_title">身份验证方法</string>
+    <string name="connections_auth_methods_description">在单次连接中按顺序尝试，适用于要求多种方法的服务器（例如密钥 + 密码或 PAM/OTP 链）。</string>
+    <string name="connections_auth_method_keyboard_interactive">键盘交互（OTP）</string>
+    <string name="connections_auth_method_any_key">任意密钥</string>
+    <string name="connections_auth_method_any_authenticator">任意身份验证器</string>
+    <string name="connections_auth_method_key_any_summary">SSH 密钥：任意</string>
+    <string name="connections_auth_method_authenticator_any_summary">身份验证器：任意</string>
+    <string name="connections_auth_method_totp">身份验证器验证码（TOTP）</string>
+    <string name="connections_auth_method_add">添加方法</string>
+    <string name="connections_auth_method_move_up">上移</string>
+    <string name="connections_auth_method_move_down">下移</string>
+    <string name="connections_auth_method_remove">移除</string>
+    <string name="connections_reticulum_summary">RNS：%1$s…，经由 %2$s:%3$d</string>
+</resources>

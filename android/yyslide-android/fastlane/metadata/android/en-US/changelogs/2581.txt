@@ -1,0 +1,21 @@
+v5.21.0-rc2: consolidated swipe gesture, page-jump fix (#89)
+
+Builds on rc1's right-flick-navigates-up gesture. Two fixes
+this round:
+
+- Deduplicated the swipe handling. rc1 had the Files screen
+  layering its own pointerInput on top of the pager's
+  pagerSwipeOverride, which made the slow-vs-fast decision
+  feel flaky — the two handlers were fighting for the same
+  gesture. Now every horizontal drag on Terminal and Files
+  flows through a single pagerSwipeOverride with an optional
+  onFlick hook each screen can claim.
+
+- Fixed a double-jump on normal tab swipes: because the
+  pager's page index ticks over mid-drag once you've passed
+  half a page, computing "next page = currentPage + 1" at
+  release could skip two pages. Now anchored to the page held
+  at finger-down so one swipe moves exactly one tab.
+
+Please try normal tab swipes AND the fast right-flick in a
+Files subdirectory, and feed back on #89.

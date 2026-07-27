@@ -1,0 +1,11 @@
+Cloudflare Access SSH (#154, experimental release-candidate).
+
+New tunnel backend for SSH hosts behind Cloudflare Tunnel + Access. Add an
+Access hostname under Settings → Tunnels, sign in via the in-app WebView
+(or paste a JWT from `cloudflared access token` for headless setups),
+then reference the tunnel from any SSH profile.
+
+The WebSocket wire protocol is reverse-engineered from cloudflared and
+flagged Experimental in the UI — please report breakage on #154.
+
+(F-Droid skips RC tags; this changelog is for GitHub-release users only.)

@@ -1,0 +1,1 @@
+- Fix "New Session" attaching to existing session instead of creating a new one

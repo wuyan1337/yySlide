@@ -1,0 +1,60 @@
+v5.37.0 — Android 16 SSH stability, Mirror diagnostics, and agent
+self-driving via MCP. Consolidates rc1 → rc5.
+
+• Android 16 SSH stability. The SSH/Mosh/VNC/RDP/SFTP foreground
+  service was being killed every 10–30 s on Android 16 with "Stop
+  FGS timeout," dropping any session and any MCP reverse tunnel
+  forwarded over it. Switched foregroundServiceType from dataSync
+  to specialUse, which isn't subject to that timeout schedule.
+  Android 14/15 users are unaffected.
+
+• Mirror sync surfaces deletions. The "Mirror" mode toast now
+  reports the delete count alongside transferred files ("2 files
+  transferred, 1 files deleted") instead of only transfers. When
+  rclone's "skip the delete pass because of source errors"
+  behaviour fires (mode=Mirror, errors > 0, zero deletes), the
+  toast gets a "deletions skipped — source errors" suffix.
+
+• rclone sync events in the connection log. Every Copy / Mirror /
+  Move now writes one entry to Settings → View connection log with
+  mode, source, destination, filters, transfers, deletes, errors,
+  duration, the last per-file error, and a "deletions suppressed"
+  hint when Mirror's no-delete-on-error path fires. Helps
+  diagnose "Mirror behaves like Copy" reports by surfacing the
+  offending file path (#157, #158).
+
+• Saved sync configurations. The SFTP folder-sync dialog now lets
+  you save a named src/dst/mode/filters bundle and recall it from
+  a dropdown at the top of the dialog. Per-row delete prunes
+  obsolete saved configs without leaving the dialog. Save and
+  Save-as buttons appear below the dry-run checkbox once source
+  and destination are filled (#159).
+
+• Connection-edit toggle UX. Boolean toggles (MCP reverse tunnel,
+  Forward agent, VNC/RDP/SMB SSH-tunnel, Auto-reconnect,
+  Tunnel-only, Disable alt screen, Reticulum local-sideband) now
+  use Material 3 Switch instead of FilterChip — ON/OFF reads
+  unambiguously. Enum chip groups (sync mode, file transport) keep
+  using FilterChip.
+
+• MCP reverse-tunnel toggle no longer flips off. The chip used to
+  silently revert to OFF after the dialog's async DB read landed,
+  then save would wipe the rule. Now re-syncs from the async
+  value when it arrives.
+
+• Ed25519 key export reliability. SshKeyExporter's PEM-detection
+  short-circuit was matching any byte sequence starting with `-`
+  (0x2d), colliding with ~1 in 256 randomly-generated Ed25519
+  seeds and producing an invalid PEM for those keys. Fixed by
+  matching the full "-----BEGIN " preamble. Regression test pins
+  the CI-captured failing seed.
+
+• New MCP tools for agents:
+  - rclone sync: start_rclone_sync, get_rclone_sync_status,
+    cancel_rclone_sync, get_rclone_stats, reset_rclone_stats.
+  - Saved sync configs: list_saved_sync_profiles,
+    save_sync_profile, delete_sync_profile.
+  - queue_terminal_input (power-user, off by default): type text +
+    Enter into any connected SSH session at the next matching
+    prompt. Pre-delivery consent on the phone with 5/10/30-minute
+    "Allow for N min" windows. Enable in Settings → Agent endpoint.

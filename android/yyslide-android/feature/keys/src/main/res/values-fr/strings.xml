@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Annuler</string>
+    <string name="common_save">Enregistrer</string>
+    <string name="common_done">Terminé</string>
+    <string name="common_close">Fermer</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Supprimer</string>
+    <string name="common_edit">Modifier</string>
+    <string name="common_rename">Renommer</string>
+    <string name="common_create">Créer</string>
+    <string name="common_connect">Connecter</string>
+    <string name="common_disconnect">Déconnecter</string>
+    <string name="common_copy">Copier</string>
+    <string name="common_paste">Coller</string>
+    <string name="common_label">Libellé</string>
+    <string name="common_password">Mot de passe</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Hôte</string>
+    <string name="common_username">Nom d\'utilisateur</string>
+    <string name="common_install">Installer</string>
+    <string name="common_reset">Réinitialiser</string>
+    <string name="common_allow">Autoriser</string>
+    <string name="common_not_now">Pas maintenant</string>
+    <string name="common_import">Importer</string>
+    <string name="common_add">Ajouter</string>
+    <string name="common_download">Télécharger</string>
+    <string name="common_unlock">Déverrouiller</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">Ajouter une clé</string>
+    <string name="keys_no_ssh_keys">Aucune clé SSH</string>
+    <string name="keys_tap_to_add">Appuyez sur + pour générer ou importer une clé</string>
+    <string name="keys_copy_public_key">Copier la clé publique</string>
+    <string name="keys_export_private_key">Exporter la clé privée</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">Ajouter une clé SSH</string>
+    <string name="keys_generate_new_key">Générer une nouvelle clé</string>
+    <string name="keys_generate_key_types">Ed25519, RSA ou ECDSA</string>
+    <string name="keys_import_from_file">Importer depuis un fichier</string>
+    <string name="keys_import_file_formats">Format PEM, OpenSSH ou Dropbear</string>
+    <string name="keys_paste_from_clipboard">Coller depuis le presse-papiers</string>
+    <string name="keys_paste_clipboard_hint">Clés texte uniquement (PEM/OpenSSH). Utilisez l\'import fichier pour les clés binaires Dropbear.</string>
+    <string name="keys_clipboard_empty">Presse-papiers vide</string>
+    <string name="keys_clipboard_not_text_key">Le presse-papiers ne contient pas de clé SSH texte. Les clés binaires (ex. Dropbear) doivent être importées depuis un fichier.</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">Générer une clé SSH</string>
+    <string name="keys_label_placeholder">ex. my-server</string>
+    <string name="keys_key_type">Type de clé</string>
+    <string name="keys_generate">Générer</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">Clé chiffrée</string>
+    <string name="keys_passphrase_prompt">Cette clé est protégée par une phrase de passe.</string>
+    <string name="keys_passphrase">Phrase de passe</string>
+    <string name="keys_unlock">Déverrouiller</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">Importer une clé SSH</string>
+    <string name="keys_import">Importer</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">Clé publique SSH</string>
+
+    <!-- #133 phase 2: step-ca generate-via-OIDC (en fallback) -->
+    <string name="keys_generate_via_stepca">Generate via step-ca</string>
+    <string name="keys_generate_via_stepca_hint">OIDC sign-in mints a fresh keypair + signed cert</string>
+    <string name="keys_generate_via_stepca_no_ca">Tap Certificate authorities above to add one</string>
+    <string name="keys_stepca_dialog_title">Generate via step-ca</string>
+    <string name="keys_stepca_pick_ca">Certificate authority</string>
+    <string name="keys_stepca_principals_override_label">Override principals (optional, comma-separated)</string>
+    <string name="keys_stepca_label">Key label</string>
+    <string name="keys_stepca_generate">Generate</string>
+    <string name="keys_chip_certificate_minted">Minted %1$s</string>
+
+    <!-- #133 phase 2b: regenerate menu --> (en fallback)
+    <string name="keys_regenerate_via_stepca">Regenerate via step-ca</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">Add certificate authority</string>
+    <string name="stepca_edit_title">Edit certificate authority</string>
+    <string name="stepca_add">Add</string>
+    <string name="stepca_save">Save</string>
+    <string name="stepca_cancel">Cancel</string>
+    <string name="stepca_delete">Delete</string>
+    <string name="stepca_test_connection">Test connection</string>
+    <string name="stepca_field_name">Display name</string>
+    <string name="stepca_field_ca_url">CA URL</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC issuer URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC authorize URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC token URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC client ID</string>
+    <string name="stepca_field_provisioner">step-ca provisioner</string>
+    <string name="stepca_field_principals">Default principals (comma-separated)</string>
+    <string name="stepca_field_root_cert">Root certificate (PEM)</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">Reachable</string>
+    <string name="stepca_test_bad_root_cert">Invalid root cert: %1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d: %2$s</string>
+    <string name="stepca_test_network_error">Network error: %1$s</string>
+    <string name="stepca_empty_state">No certificate authorities configured.\nTap + to add one.</string>
+    <string name="stepca_validation_required">%1$s is required</string>
+    <string name="stepca_validation_url">%1$s must start with https://</string>
+    <string name="stepca_validation_pem">Root certificate must be PEM-encoded</string>
+    <string name="stepca_delete_confirm_title">Delete %1$s?</string>
+    <string name="stepca_delete_confirm_body">Existing keys minted via this CA will keep working until their certificates expire, but you won\'t be able to renew or generate new ones.</string>
+    <string name="stepca_field_ssh_host_ca">SSH host CA public key (optional)</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">Discover from /1.0/ssh/config</string>
+    <string name="stepca_discovering">Discovering…</string>
+    <string name="stepca_import_from_file">Import from file</string>
+    <string name="stepca_import_failed">Import failed: %1$s</string>
+    <string name="keys_section_certificate_authorities">Certificate authorities (%1$d)</string>
+    <string name="keys_section_ssh">Clés SSH (%1$d)</string>
+    <string name="keys_section_passwords">Mots de passe enregistrés (%1$d)</string>
+    <string name="keys_chip_hardware_backed">Protégé par le matériel</string>
+    <string name="keys_chip_passphrase">Phrase secrète</string>
+    <string name="keys_chip_user_presence">Présence de l\'utilisateur</string>
+    <string name="keys_chip_user_verification">Vérification de l\'utilisateur</string>
+    <string name="keys_chip_biometric">Biométrie requise</string>
+    <string name="keys_require_biometric">Exiger la biométrie pour l\'utilisation</string>
+    <string name="keys_clear_password_title">Effacer %1$s ?</string>
+    <string name="keys_clear_password_body">L\'effacement supprime le mot de passe enregistré sur ce profil. Le profil lui-même est conservé — il vous sera redemandé à la prochaine connexion.</string>
+    <string name="keys_wipe_content_description">Effacer %1$s</string>
+    <string name="keys_attach_certificate">Joindre un certificat</string>
+    <string name="keys_remove_certificate">Retirer le certificat</string>
+    <string name="keys_chip_certificate">Certificat joint</string>
+    <string name="stepca_bootstrap_intro">Amorçage depuis l\'URL de l\'AC + empreinte SHA-256. Le reste (certificat racine, fournisseurs, URLs OIDC et secret) est récupéré depuis l\'AC.</string>
+    <string name="stepca_field_fingerprint">Empreinte du certificat racine (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">collez depuis `step certificate fingerprint`</string>
+    <string name="stepca_bootstrap_action">Amorcer depuis l\'AC</string>
+    <string name="stepca_bootstrapping">Communication avec l\'AC…</string>
+    <string name="stepca_bootstrap_pick_provisioner">Choisissez un fournisseur OIDC :</string>
+    <string name="stepca_manual_entry">Saisie manuelle…</string>
+    <string name="stepca_field_oidc_client_secret">Secret client OIDC (facultatif)</string>
+    <string name="stepca_field_oidc_client_secret_hint">laissez vide pour les clients publics PKCE uniquement</string>
+    <string name="keys_discover_from_security_key">Découvrir depuis une clé de sécurité</string>
+    <string name="keys_discover_from_security_key_hint">Énumère les identifiants SSH-SK résidents d\'une clé de sécurité insérée ou présentée. Ignore ssh-keygen -K.</string>
+    <string name="keys_discover_picker_title">Clés SSH résidentes</string>
+    <string name="keys_discover_picker_body">Choisissez les identifiants résidents à importer. Chacun devient une nouvelle entrée de clé SSH ; la clé de sécurité conserve le matériel privé.</string>
+    <string name="keys_discover_import_selected">Importer la sélection</string>
+    <string name="keys_fido_pin_title">PIN de la clé de sécurité</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">Saisissez le PIN configuré sur votre clé de sécurité pour continuer.</string>
+    <string name="keys_fido_pin_wrong">PIN incorrect. %1$d tentatives restantes avant le verrouillage de la clé.</string>
+    <string name="keys_fido_waiting_title">Clé de sécurité requise</string>
+    <string name="keys_fido_waiting_body">Branchez votre clé de sécurité en USB, ou présentez-la à l\'arrière de l\'appareil pour le NFC. yySlide continuera automatiquement dès qu\'elle est détectée.</string>
+    <string name="keys_fido_touch_usb_title">Touchez votre clé de sécurité</string>
+    <string name="keys_fido_touch_usb_body">Appuyez maintenant sur le bouton de votre clé de sécurité pour autoriser la demande.</string>
+    <string name="keys_fido_touch_nfc_title">Maintenez votre clé de sécurité</string>
+    <string name="keys_fido_touch_nfc_body">Maintenez la clé de sécurité contre l\'arrière de l\'appareil pendant deux secondes. La retirer trop tôt annule l\'échange.</string>
+    <string name="keys_fido_cancel_hint">Reste ouvert jusqu\'à ce que la clé de sécurité réponde.</string>
+</resources>

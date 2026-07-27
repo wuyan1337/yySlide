@@ -1,0 +1,3 @@
+Writable /dev/shm in the Linux guest
+
+The proot guest now provides a writable /dev/shm, so Linux apps that use POSIX shared memory — Mono/.NET, Chromium-based apps, PostgreSQL and similar — work instead of crashing on startup. (Verified by getting Evolv's Mono-based EScribe to launch in the Debian guest.)

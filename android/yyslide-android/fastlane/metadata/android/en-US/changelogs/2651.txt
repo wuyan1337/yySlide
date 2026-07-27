@@ -1,0 +1,13 @@
+v5.24.1: fix test assertion
+
+Recovers the v5.24.0 release flow — no runtime change.
+
+v5.24.0's Release workflow failed on a unit test in core:tunnel that
+expected the dial-timeout to pass through unchanged, but v5.24.0
+itself added a 30s minimum floor on that timeout so cold-peer
+Tailscale / WireGuard handshakes have room to complete. Test
+updated to assert the clamp contract explicitly; the signed APK/AAB
+now build and publish.
+
+If you are on v5.24.0 already via another channel, this is
+effectively a no-op for you.

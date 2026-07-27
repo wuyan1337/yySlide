@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Отмена</string>
+    <string name="common_save">Сохранить</string>
+    <string name="common_done">Готово</string>
+    <string name="common_close">Закрыть</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Удалить</string>
+    <string name="common_edit">Изменить</string>
+    <string name="common_rename">Переименовать</string>
+    <string name="common_create">Создать</string>
+    <string name="common_connect">Подключить</string>
+    <string name="common_disconnect">Отключить</string>
+    <string name="common_copy">Копировать</string>
+    <string name="common_paste">Вставить</string>
+    <string name="common_label">Метка</string>
+    <string name="common_password">Пароль</string>
+    <string name="common_port">Порт</string>
+    <string name="common_host">Хост</string>
+    <string name="common_username">Имя пользователя</string>
+    <string name="common_install">Установить</string>
+    <string name="common_reset">Сбросить</string>
+    <string name="common_allow">Разрешить</string>
+    <string name="common_not_now">Не сейчас</string>
+    <string name="common_import">Импорт</string>
+    <string name="common_add">Добавить</string>
+    <string name="common_download">Скачать</string>
+    <string name="common_unlock">Разблокировать</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">Настройки</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">Блокировка экрана</string>
+    <string name="settings_biometric_subtitle">Требовать аутентификацию для открытия yySlide</string>
+    <string name="settings_lock_timeout_title">Время блокировки</string>
+    <string name="settings_prevent_screenshots_title">Запрет снимков экрана</string>
+    <string name="settings_prevent_screenshots_subtitle">Блокировать захват экрана и превью в диспетчере задач</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">Журнал подключений</string>
+    <string name="settings_connection_logging_subtitle">Записывать события подключений (подключение, отключение, ошибки). Хранится локально, защищено шифрованием устройства</string>
+    <string name="settings_view_connection_log_title">Просмотр журнала подключений</string>
+    <string name="settings_view_connection_log_subtitle">История подключений и события</string>
+    <string name="settings_verbose_logging_title">Подробный журнал подключений</string>
+    <string name="settings_verbose_logging_subtitle">Захват деталей протокола для SSH, Mosh и ET. Может включать имена хостов и пользователей</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">Сохранение сессий</string>
+    <string name="settings_session_persistence_none">Нет</string>
+    <string name="settings_font_size_title">Размер шрифта терминала</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_color_scheme_title">Цветовая схема терминала</string>
+    <string name="settings_toolbar_title">Панель клавиатуры</string>
+    <string name="settings_toolbar_subtitle">Настроить кнопки и расположение панели</string>
+    <string name="settings_search_button_title">Кнопка поиска</string>
+    <string name="settings_search_button_subtitle">Показать значок поиска в панели вкладок — отправляет клавиши поиска менеджера сессий (tmux/zellij/screen) или Ctrl+R</string>
+    <string name="settings_copy_output_title">Копировать последний вывод</string>
+    <string name="settings_copy_output_subtitle">Показать значок копирования — копирует вывод последней команды. Требуется интеграция с оболочкой (нажмите для настройки)</string>
+    <string name="settings_mouse_input_title">Мышь в TUI-приложениях</string>
+    <string name="settings_mouse_input_subtitle">Передавать нажатия как клики и удержание как правый клик, когда приложения типа htop, mc или vim включают отслеживание мыши</string>
+    <string name="settings_right_click_title">Удержание — правый клик</string>
+    <string name="settings_right_click_subtitle">Отправлять правый клик в терминал вместо выделения текста. Полезно для контекстного меню tmux</string>
+    <string name="settings_standard_keyboard_title">Голосовой ввод и автодополнение</string>
+    <string name="settings_standard_keyboard_subtitle">Отключает флаги защищённой клавиатуры (режим пароля, без подсказок). Включает голосовой ввод, свайп-набор и предсказание слов — но клавиатура может запоминать введённые пароли</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">Тема</string>
+    <string name="settings_screen_order_title">Порядок экранов</string>
+    <string name="settings_screen_order_subtitle">Изменить порядок вкладок навигации</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Оболочка рабочего стола Wayland</string>
+    <string name="settings_shizuku_title">Интеграция Shizuku</string>
+    <string name="settings_shizuku_enabled">Включено — автоисключение батареи, общий сокет Wayland</string>
+    <string name="settings_shizuku_available">Shizuku установлен — нажмите для предоставления доступа</string>
+    <string name="settings_shizuku_not_running">Shizuku установлен, но не запущен — нажмите для запуска через Беспроводную отладку</string>
+    <string name="settings_shizuku_not_installed">Установить Shizuku для исключения батареи и доступа Wayland</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">Экспорт резервной копии</string>
+    <string name="settings_export_backup_subtitle">Ключи, подключения и настройки</string>
+    <string name="settings_restore_backup_title">Восстановление из копии</string>
+    <string name="settings_restore_backup_subtitle">Импорт из файла резервной копии</string>
+    <string name="settings_backup_working">Обработка…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">О yySlide</string>
+    <string name="settings_version_unknown">неизвестно</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Оболочка рабочего стола Wayland</string>
+    <string name="settings_wayland_dialog_description">Команда оболочки для терминала foot в Wayland-рабочем столе. Дополнительные оболочки можно установить через apk (напр. apk add bash).</string>
+    <string name="settings_wayland_shell_command_label">Команда оболочки</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">Время блокировки</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">Настройка интеграции оболочки</string>
+    <string name="settings_osc133_description">Для копирования последнего вывода оболочка должна отправлять маркеры OSC 133. Добавьте один из этих фрагментов в конфиг оболочки:</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">Фрагмент для bash скопирован</string>
+    <string name="settings_osc133_copied_zsh">Фрагмент для zsh скопирован</string>
+    <string name="settings_osc133_footer">Нажмите на фрагмент для копирования. Многие инструменты (iTerm2, VS Code, WezTerm) включают эти маркеры по умолчанию.</string>
+    <string name="settings_osc133_learn_more">Подробнее</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">Экспорт резервной копии</string>
+    <string name="settings_backup_restore_dialog_title">Восстановление из копии</string>
+    <string name="settings_backup_password_min_length">Минимум 6 символов</string>
+    <string name="settings_backup_passwords_mismatch">Пароли не совпадают</string>
+    <string name="settings_backup_export_description">Зашифруйте резервную копию паролем. Это защитит ваши SSH-ключи и данные подключений.</string>
+    <string name="settings_backup_restore_description">Введите пароль, использованный при создании резервной копии.</string>
+    <string name="settings_backup_password_label">Пароль</string>
+    <string name="settings_backup_confirm_password_label">Подтвердите пароль</string>
+    <string name="settings_backup_export_button">Экспорт</string>
+    <string name="settings_backup_restore_button">Восстановить</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">О yySlide</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">Клиент SSH, VNC, RDP и облачного хранилища с открытым кодом для Android</string>
+    <string name="settings_about_version">Версия %1$s (сборка %2$d)</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">Библиотеки с открытым кодом</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">Порядок экранов</string>
+    <string name="settings_screen_order_drag_description">Перетащите для изменения порядка</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">Тема</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">Цветовая схема терминала</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">Сохранение сессий</string>
+    <string name="settings_session_no_scrollback">Без сенсорной прокрутки</string>
+    <string name="settings_session_custom_command_label">Пользовательская команда</string>
+    <string name="settings_session_custom_command_hint">Используйте {name} для имени сессии. Оставьте пустым для значения по умолчанию.</string>
+    <string name="settings_session_save_command">Сохранить команду</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">Размер шрифта терминала</string>
+    <string name="settings_font_size_sample">Пример текста</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">Панель клавиатуры</string>
+    <string name="settings_toolbar_assign_hint">Назначьте каждую клавишу: Ряд 1, Ряд 2 или Выкл</string>
+    <string name="settings_toolbar_arrow_keys">Расположение стрелок</string>
+    <string name="settings_toolbar_function_keys">Функциональные клавиши</string>
+    <string name="settings_toolbar_symbols">Символы</string>
+    <string name="settings_toolbar_custom_keys">Пользовательские клавиши</string>
+    <string name="settings_toolbar_add_custom_key">Добавить клавишу</string>
+    <string name="settings_toolbar_edit_json">Редактировать JSON</string>
+    <string name="settings_toolbar_row1">R1</string>
+    <string name="settings_toolbar_row2">R2</string>
+    <string name="settings_toolbar_off">Выкл</string>
+    <string name="settings_toolbar_paste_clipboard">Вставить из буфера</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">Редактировать клавишу</string>
+    <string name="settings_custom_key_add_title">Добавить клавишу</string>
+    <string name="settings_custom_key_presets">Шаблоны</string>
+    <string name="settings_custom_key_label">Метка</string>
+    <string name="settings_custom_key_label_placeholder">напр. ^C, Paste</string>
+    <string name="settings_custom_key_sequence_label">Последовательность</string>
+    <string name="settings_custom_key_sequence_placeholder">напр. \\u0003</string>
+    <string name="settings_custom_key_escape_hint">\\u001b для Escape, \\u0003 для Ctrl+C, \\n для Enter</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">Редактировать JSON панели</string>
+    <string name="settings_json_editor_format_hint">String = встроенный ID, Object = пользовательская клавиша {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">Built-in IDs: keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">Простой</string>
+    <string name="settings_language_title">Язык</string>
+    <string name="settings_media_extensions_title">Media file extensions</string>
+    <string name="settings_media_extensions_description">Space-separated file extensions to treat as streamable media in the file browser.</string>
+    <string name="settings_media_extensions_label">Extensions</string>
+    <string name="settings_show_desktops_title">Show Desktops card</string>
+    <string name="settings_show_desktops_subtitle">Show desktop environment manager on the Connections screen</string>
+    <string name="settings_show_linux_vm_title">Show Linux VM card</string>
+    <string name="settings_show_linux_vm_subtitle">Show Android Linux VM setup on the Connections screen</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="settings_keep_screen_on_title">Не выключать экран в терминале</string>
+    <string name="settings_keep_screen_on_subtitle">Дисплей остаётся включённым, пока открыта вкладка терминала. Расходует заряд; включайте только если следите за длительным выводом.</string>
+
+    <!-- #135 -->
+    <string name="settings_keyboard_mode_title">Keyboard mode</string>
+    <string name="settings_font_install_title">Install font from URL</string>
+    <string name="settings_ime_flags_title">IME flags</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field --> (en fallback)
+    <string name="settings_scrollback_rows_title">Строки истории</string>
+    <string name="settings_scrollback_rows_subtitle">%1$,d строк на вкладку — применяется к новым вкладкам</string>
+    <string name="settings_scrollback_rows_dialog_title">Строк истории на вкладку</string>
+    <string name="settings_scrollback_rows_dialog_body">Больший размер истории использует больше памяти. Около 2 КБ на строку при обычной ширине столбцов, умноженное на количество открытых вкладок.</string>
+    <string name="settings_scrollback_rows_value">%1$,d строк</string>
+    <string name="settings_tap_to_position_title">Нажмите для перемещения курсора в поддерживаемых приглашениях</string>
+    <string name="settings_tap_to_position_subtitle">Нажмите внутри приглашения shell, чтобы переместить курсор в этот столбец. Требуются маркеры OSC 133 (starship, fish 3.6+, современные настройки интеграции оболочки bash/zsh). Не влияет на оболочки, которые их не выдают</string>
+
+    <string name="settings_bandwidth_suggest_subtitle">Обнаруживает пропускную способность ниже ~1 Мбит/с через несколько секунд и предлагает переподключение с 256 цветами одним касанием. Выключено — подсказка не показывается.</string>
+    <string name="settings_bandwidth_suggest_title">Предлагать 256 цветов на медленных VNC-соединениях</string>
+    <string name="settings_drag_select_subtitle">Передаёт нажатие+движение+отпускание в tmux/zellij, чтобы выделение расширялось за пределы экрана через собственную историю удалённого узла. Когда выключено, перетаскивание прокручивает удалённый узел (прежнее поведение).</string>
+    <string name="settings_drag_select_title">Перетаскивание для выделения в режиме мыши TUI</string>
+    <string name="settings_section_about">О приложении</string>
+    <string name="settings_section_advanced">Дополнительно</string>
+    <string name="settings_section_appearance">Оформление</string>
+    <string name="settings_section_backup">Резервное копирование</string>
+    <string name="settings_section_connections_screen">Экран подключений</string>
+    <string name="settings_section_desktop">Рабочий стол (VNC &amp; RDP)</string>
+    <string name="settings_section_diagnostics">Диагностика</string>
+    <string name="settings_section_keyboard_input">Клавиатура и ввод</string>
+    <string name="settings_section_security_privacy">Безопасность и конфиденциальность</string>
+    <string name="settings_section_terminal">Терминал</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">Показывать вкладки сеансов над терминалом</string>
+    <string name="settings_show_terminal_tab_bar_title">Показывать панель вкладок терминала</string>
+    <string name="settings_touchpad_input_direct_subtitle">Прямое касание — положение пальца является указателем. Включите для ввода в стиле трекпада.</string>
+    <string name="settings_touchpad_input_title">Ввод с тачпада</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">Перетаскивание перемещает удалённый курсор; касание выполняет щелчок в позиции курсора. При увеличении область просмотра следует за курсором.</string>
+</resources>

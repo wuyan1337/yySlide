@@ -1,0 +1,8 @@
+Agent co-design tooling (MCP)
+
+New MCP tools for AI-assisted work inside the Linux guest:
+- view_file renders a schematic / PCB / PDF / SVG / image to an inline picture, fully headless — no desktop or GPU needed.
+- read_guest_file / write_guest_file move files to and from the guest reliably.
+- launch_app_in_desktop opens a GUI app (e.g. KiCad) in the VNC desktop with a software-GL fallback so it doesn't crash on the GPU-less canvas.
+
+Guest-resident MCP servers (e.g. a KiCad MCP) are now aggregated into Haven's own MCP endpoint, namespaced, so an external agent only ever connects to Haven.

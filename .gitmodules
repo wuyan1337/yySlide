@@ -1,0 +1,22 @@
+[submodule "android/yyslide-android/build-proot/proot-termux"]
+	path = android/yyslide-android/build-proot/proot-termux
+	url = https://github.com/termux/proot
+[submodule "android/yyslide-android/et-kotlin"]
+	path = android/yyslide-android/et-kotlin
+	url = https://github.com/GlassOnTin/et-kotlin.git
+[submodule "android/yyslide-android/mosh-kotlin"]
+	path = android/yyslide-android/mosh-kotlin
+	url = https://github.com/GlassOnTin/ssp-transport.git
+[submodule "android/yyslide-android/reticulum-kt"]
+	path = android/yyslide-android/reticulum-kt
+	url = https://github.com/GlassOnTin/reticulum-kt.git
+	branch = fix/channel-link-proof
+[submodule "android/yyslide-android/rnsh-kt"]
+	path = android/yyslide-android/rnsh-kt
+	url = https://github.com/GlassOnTin/rnsh-kt.git
+[submodule "android/yyslide-android/termlib"]
+	path = android/yyslide-android/termlib
+	url = https://github.com/GlassOnTin/termlib.git
+[submodule "android/yyslide-android/wayland-android"]
+	path = android/yyslide-android/wayland-android
+	url = https://github.com/GlassOnTin/wayland-android.git

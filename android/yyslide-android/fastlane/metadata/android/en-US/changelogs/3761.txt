@@ -1,0 +1,24 @@
+v5.32.1 — stale tmux list fix + i18n batch
+
+Bug fix:
+- Long-press tab menu no longer shows stale tmux/zellij/screen
+  session names from a previously-active tab. The remote-session
+  list now clears on every tab switch and on any early-return in
+  the refresh path, so a profile with sessionManager=None doesn't
+  inherit a tmux profile's session list and route the user to a
+  bare bash that looks broken.
+
+UI tweak:
+- Removed the "Bypass tmux for this session — bare login shell"
+  subtitle under the picker's "Open plain shell" row. The
+  headline is enough; the subtitle was eating vertical space on
+  a phone-sized dialog.
+
+i18n:
+- Translations for the 9 v5.32 strings (scrollback rows setting,
+  tap-to-position toggle, plain-shell affordance) added across
+  ar / bn / de / es / fr / hi / ja / ko / pt / ru / zh.
+- Korean caught up on the long-standing feature/connections
+  backlog (81 entries spanning FIDO security-key flows, host-key
+  verification, port forwarding, password dialog, Linux VM
+  walkthrough).

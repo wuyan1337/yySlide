@@ -1,0 +1,6 @@
+- Set ndkVersion to r28c for F-Droid build compatibility
+- Fix URL underline extending past wrapped URL on continuation rows
+- Fix URL continuation cascade underlining entire screen
+- Fix XWayland: clean stale X11 sockets before compositor starts
+- Add missing translations for settings_standard_keyboard
+- Update F-Droid fastlane metadata with 10 locale translations

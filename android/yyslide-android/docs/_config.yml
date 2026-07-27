@@ -1,0 +1,8 @@
+title: yySlide Android
+description: SSH, VNC, RDP, SFTP, cloud storage, and yySlide Cloud for Android
+theme: jekyll-theme-cayman
+url: https://wuyan1337.github.io
+baseurl: /yySlide
+github:
+  repository_url: https://github.com/wuyan1337/yySlide
+show_downloads: false

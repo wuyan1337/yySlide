@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Отмена</string>
+    <string name="common_save">Сохранить</string>
+    <string name="common_done">Готово</string>
+    <string name="common_close">Закрыть</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Удалить</string>
+    <string name="common_edit">Изменить</string>
+    <string name="common_rename">Переименовать</string>
+    <string name="common_create">Создать</string>
+    <string name="common_connect">Подключить</string>
+    <string name="common_disconnect">Отключить</string>
+    <string name="common_copy">Копировать</string>
+    <string name="common_paste">Вставить</string>
+    <string name="common_label">Метка</string>
+    <string name="common_password">Пароль</string>
+    <string name="common_port">Порт</string>
+    <string name="common_host">Хост</string>
+    <string name="common_username">Имя пользователя</string>
+    <string name="common_install">Установить</string>
+    <string name="common_reset">Сбросить</string>
+    <string name="common_allow">Разрешить</string>
+    <string name="common_not_now">Не сейчас</string>
+    <string name="common_import">Импорт</string>
+    <string name="common_add">Добавить</string>
+    <string name="common_download">Скачать</string>
+    <string name="common_unlock">Разблокировать</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">Переподключение</string>
+    <string name="terminal_sessions">Сессии</string>
+    <string name="terminal_move_left">Переместить влево</string>
+    <string name="terminal_move_right">Переместить вправо</string>
+    <string name="terminal_close">Закрыть</string>
+    <string name="terminal_copy_last_output">Копировать последний вывод</string>
+    <string name="terminal_copied_output">Вывод скопирован (%d символов)</string>
+    <string name="terminal_no_command_output">Вывод команды не найден (нужна интеграция с оболочкой)</string>
+    <string name="terminal_search">Поиск</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">Подключитесь к серверу для начала сессии.</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">Сессии %s</string>
+    <string name="terminal_rename_session">Переименовать сессию</string>
+    <string name="terminal_kill_session">Завершить сессию</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">Рабочий стол VNC</string>
+    <string name="terminal_connect_to_host">Подключить к %s</string>
+    <string name="terminal_port">Порт</string>
+    <string name="terminal_password">Пароль</string>
+    <string name="terminal_tunnel_through_ssh">Туннель через SSH</string>
+    <string name="terminal_save_for_connection">Сохранить для этого подключения</string>
+    <string name="terminal_connect">Подключить</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">Переименовать сессию</string>
+    <string name="terminal_name">Имя</string>
+    <string name="terminal_rename">Переименовать</string>
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">Соединение разорвано — закрытие через %1$dс</string>
+    <string name="terminal_disconnect_now">Соединение разорвано — закрывается</string>
+    <string name="terminal_new_session_create">Создать</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+    <string name="terminal_open_plain_shell">Открыть простой shell</string>
+
+    <string name="terminal_enter_fullscreen">Полноэкранный режим</string>
+    <string name="terminal_exit_fullscreen">Выйти из полноэкранного режима</string>
+</resources>

@@ -1,0 +1,70 @@
+name: Android CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "android/yyslide-android/**"
+      - ".gitmodules"
+      - ".node-version"
+      - "scripts/android-copy-audit.cjs"
+      - ".github/workflows/android-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "android/yyslide-android/**"
+      - ".gitmodules"
+      - ".node-version"
+      - "scripts/android-copy-audit.cjs"
+      - ".github/workflows/android-ci.yml"
+
+concurrency:
+  group: android-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: android/yyslide-android
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          submodules: false
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./android/yyslide-android/.github/actions/init-submodules-with-retry
+        with:
+          project-directory: android/yyslide-android
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+      - uses: ./android/yyslide-android/.github/actions/setup-toolchain
+        with:
+          project-directory: android/yyslide-android
+      - name: Audit Android UI copy
+        run: node ../../scripts/android-copy-audit.cjs
+      - name: Run both ABI-flavor unit-test suites
+        run: ./gradlew testArm64DebugUnitTest testX64DebugUnitTest
+      - name: Lint both ABI flavors
+        run: ./gradlew lintArm64Debug lintX64Debug
+      - name: Assemble debug APKs
+        run: ./gradlew :app:assembleArm64Debug :app:assembleX64Debug
+      - name: Upload reports and APKs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: android-ci-output
+          path: |
+            android/yyslide-android/**/build/reports/tests/
+            android/yyslide-android/**/build/reports/lint-results-*.html
+            android/yyslide-android/**/build/reports/lint-results-*.xml
+            android/yyslide-android/app/build/outputs/apk/**/yyslide-*.apk
+          if-no-files-found: ignore
+          retention-days: 14

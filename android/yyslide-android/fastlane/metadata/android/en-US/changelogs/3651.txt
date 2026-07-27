@@ -1,0 +1,11 @@
+Attach (paperclip) key on the terminal toolbar — pick a local
+file, choose a destination folder on any connected SSH host or
+rclone remote (Drive, Dropbox, OneDrive, etc.), and Haven uploads
+then injects a shell-quoted path or share URL at your cursor.
+
+Default layout: Attach at row 1 col 3, Voice/lock toggle stacked
+below it; both are now bare icons. Existing custom layouts are
+untouched.
+
+Fix: Deploy SSH Key now honours the profile's "Route through"
+setting (#143) — works through jump hosts, tunnels, and proxies.

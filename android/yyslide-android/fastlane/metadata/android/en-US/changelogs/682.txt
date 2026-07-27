@@ -1,0 +1,2 @@
+- Extract ET protocol to standalone et-kotlin library for reuse
+- ET crypto and wire protocol now in separate repo (GPLv3)

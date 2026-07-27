@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_done">تم</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_ok">موافق</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_edit">تعديل</string>
+    <string name="common_rename">إعادة تسمية</string>
+    <string name="common_create">إنشاء</string>
+    <string name="common_connect">اتصال</string>
+    <string name="common_disconnect">قطع الاتصال</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_paste">لصق</string>
+    <string name="common_label">التسمية</string>
+    <string name="common_password">كلمة المرور</string>
+    <string name="common_port">المنفذ</string>
+    <string name="common_host">المضيف</string>
+    <string name="common_username">اسم المستخدم</string>
+    <string name="common_install">تثبيت</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_allow">سماح</string>
+    <string name="common_not_now">ليس الآن</string>
+    <string name="common_import">استيراد</string>
+    <string name="common_add">إضافة</string>
+    <string name="common_download">تنزيل</string>
+    <string name="common_unlock">فتح القفل</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">الإعدادات</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">قفل الشاشة</string>
+    <string name="settings_biometric_subtitle">طلب المصادقة لفتح yySlide</string>
+    <string name="settings_lock_timeout_title">مهلة القفل</string>
+    <string name="settings_prevent_screenshots_title">منع لقطات الشاشة</string>
+    <string name="settings_prevent_screenshots_subtitle">حظر التقاط الشاشة ومعاينة مبدّل التطبيقات</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">تسجيل الاتصالات</string>
+    <string name="settings_connection_logging_subtitle">تسجيل أحداث الاتصال (اتصال، قطع، أخطاء). يُخزّن محلياً ومحمي بتشفير الجهاز</string>
+    <string name="settings_view_connection_log_title">عرض سجل الاتصالات</string>
+    <string name="settings_view_connection_log_subtitle">سجل الاتصالات والأحداث</string>
+    <string name="settings_verbose_logging_title">تسجيل تفصيلي للاتصالات</string>
+    <string name="settings_verbose_logging_subtitle">التقاط تفاصيل البروتوكول لاتصالات SSH و Mosh و ET. قد يتضمن أسماء المضيفين والمستخدمين</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">استمرار الجلسة</string>
+    <string name="settings_session_persistence_none">بلا</string>
+    <string name="settings_font_size_title">حجم خط الطرفية</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_color_scheme_title">نظام ألوان الطرفية</string>
+    <string name="settings_toolbar_title">شريط أدوات لوحة المفاتيح</string>
+    <string name="settings_toolbar_subtitle">تكوين مفاتيح وتخطيط شريط الأدوات</string>
+    <string name="settings_search_button_title">زر البحث</string>
+    <string name="settings_search_button_subtitle">إظهار أيقونة البحث في شريط التبويبات — يرسل مفاتيح البحث الأصلية لمدير الجلسات (tmux/zellij/screen) أو Ctrl+R للـ Shell</string>
+    <string name="settings_copy_output_title">نسخ آخر مخرجات</string>
+    <string name="settings_copy_output_subtitle">إظهار أيقونة النسخ في شريط التبويبات — ينسخ مخرجات آخر أمر. يتطلب تكامل Shell (اضغط للإعداد)</string>
+    <string name="settings_mouse_input_title">إدخال الماوس في تطبيقات TUI</string>
+    <string name="settings_mouse_input_subtitle">تمرير اللمسات كنقرات والضغط المطوّل كنقرة يمين عندما تفعّل تطبيقات مثل htop و mc و vim تتبع الماوس</string>
+    <string name="settings_right_click_title">الضغط المطوّل يرسل نقرة يمين</string>
+    <string name="settings_right_click_subtitle">إرسال نقرة يمين للطرفية بدلاً من بدء تحديد النص. مفيد لقوائم tmux السياقية</string>
+    <string name="settings_standard_keyboard_title">الإدخال الصوتي والإكمال التلقائي</string>
+    <string name="settings_standard_keyboard_subtitle">يعطّل أعلام لوحة المفاتيح الآمنة (وضع كلمة المرور، بدون اقتراحات). يتيح الإدخال الصوتي والكتابة بالسحب والتنبؤ بالكلمات — لكن لوحة المفاتيح قد تتعلم كلمات المرور المكتوبة</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">المظهر</string>
+    <string name="settings_screen_order_title">ترتيب الشاشات</string>
+    <string name="settings_screen_order_subtitle">إعادة ترتيب تبويبات التنقل السفلية</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Shell سطح مكتب Wayland</string>
+    <string name="settings_shizuku_title">تكامل Shizuku</string>
+    <string name="settings_shizuku_enabled">مفعّل — إعفاء تلقائي من البطارية، مشاركة مقبس Wayland</string>
+    <string name="settings_shizuku_available">Shizuku مثبّت — اضغط لمنح الإذن</string>
+    <string name="settings_shizuku_not_running">Shizuku مثبت لكن غير مُشغّل — انقر لفتحه وبدء التشغيل عبر التصحيح اللاسلكي</string>
+    <string name="settings_shizuku_not_installed">تثبيت Shizuku للإعفاء من البطارية ومشاركة Wayland</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">تصدير نسخة احتياطية</string>
+    <string name="settings_export_backup_subtitle">المفاتيح والاتصالات والإعدادات</string>
+    <string name="settings_restore_backup_title">استعادة نسخة احتياطية</string>
+    <string name="settings_restore_backup_subtitle">الاستيراد من ملف نسخة احتياطية</string>
+    <string name="settings_backup_working">جارٍ المعالجة…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">حول yySlide</string>
+    <string name="settings_version_unknown">غير معروف</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Shell سطح مكتب Wayland</string>
+    <string name="settings_wayland_dialog_description">أمر Shell للتشغيل داخل طرفية foot في سطح مكتب Wayland. ثبّت أصداف إضافية بـ apk (مثل apk add bash).</string>
+    <string name="settings_wayland_shell_command_label">أمر Shell</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">مهلة القفل</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">إعداد تكامل Shell</string>
+    <string name="settings_osc133_description">نسخ آخر مخرجات يتطلب من Shell إصدار علامات OSC 133. أضف أحد هذه المقاطع إلى إعدادات Shell:</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">تم نسخ مقطع Bash</string>
+    <string name="settings_osc133_copied_zsh">تم نسخ مقطع Zsh</string>
+    <string name="settings_osc133_footer">اضغط على مقطع لنسخه. العديد من الأدوات (iTerm2, VS Code, WezTerm) تتضمن هذه العلامات افتراضياً.</string>
+    <string name="settings_osc133_learn_more">معرفة المزيد</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">تصدير نسخة احتياطية</string>
+    <string name="settings_backup_restore_dialog_title">استعادة نسخة احتياطية</string>
+    <string name="settings_backup_password_min_length">6 أحرف على الأقل</string>
+    <string name="settings_backup_passwords_mismatch">كلمتا المرور غير متطابقتين</string>
+    <string name="settings_backup_export_description">شفّر نسختك الاحتياطية بكلمة مرور. هذا يحمي مفاتيح SSH وبيانات الاتصال.</string>
+    <string name="settings_backup_restore_description">أدخل كلمة المرور المستخدمة عند إنشاء النسخة الاحتياطية.</string>
+    <string name="settings_backup_password_label">كلمة المرور</string>
+    <string name="settings_backup_confirm_password_label">تأكيد كلمة المرور</string>
+    <string name="settings_backup_export_button">تصدير</string>
+    <string name="settings_backup_restore_button">استعادة</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">حول yySlide</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">عميل مفتوح المصدر لـ SSH و VNC و RDP والتخزين السحابي لـ Android</string>
+    <string name="settings_about_version">الإصدار %1$s (بناء %2$d)</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">مكتبات مفتوحة المصدر</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">ترتيب الشاشات</string>
+    <string name="settings_screen_order_drag_description">اسحب لإعادة الترتيب</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">المظهر</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">نظام ألوان الطرفية</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">استمرار الجلسة</string>
+    <string name="settings_session_no_scrollback">بدون تمرير باللمس</string>
+    <string name="settings_session_custom_command_label">أمر مخصص</string>
+    <string name="settings_session_custom_command_hint">استخدم {name} لاسم الجلسة. اتركه فارغاً للافتراضي.</string>
+    <string name="settings_session_save_command">حفظ الأمر</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">حجم خط الطرفية</string>
+    <string name="settings_font_size_sample">نص تجريبي</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">شريط أدوات لوحة المفاتيح</string>
+    <string name="settings_toolbar_assign_hint">عيّن كل مفتاح إلى الصف 1 أو الصف 2 أو إيقاف</string>
+    <string name="settings_toolbar_arrow_keys">تخطيط مفاتيح الأسهم</string>
+    <string name="settings_toolbar_function_keys">مفاتيح الوظائف</string>
+    <string name="settings_toolbar_symbols">الرموز</string>
+    <string name="settings_toolbar_custom_keys">مفاتيح مخصصة</string>
+    <string name="settings_toolbar_add_custom_key">إضافة مفتاح مخصص</string>
+    <string name="settings_toolbar_edit_json">تعديل JSON</string>
+    <string name="settings_toolbar_row1">ص1</string>
+    <string name="settings_toolbar_row2">ص2</string>
+    <string name="settings_toolbar_off">إيقاف</string>
+    <string name="settings_toolbar_paste_clipboard">لصق الحافظة</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">تعديل مفتاح مخصص</string>
+    <string name="settings_custom_key_add_title">إضافة مفتاح مخصص</string>
+    <string name="settings_custom_key_presets">إعدادات مسبقة</string>
+    <string name="settings_custom_key_label">التسمية</string>
+    <string name="settings_custom_key_label_placeholder">مثال: ^C, Paste</string>
+    <string name="settings_custom_key_sequence_label">التسلسل</string>
+    <string name="settings_custom_key_sequence_placeholder">مثال: \\u0003</string>
+    <string name="settings_custom_key_escape_hint">استخدم \\u001b لـ Escape، \\u0003 لـ Ctrl+C، \\n لـ Enter</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">تعديل JSON شريط الأدوات</string>
+    <string name="settings_json_editor_format_hint">نص = معرّف مفتاح مدمج، كائن = مفتاح مخصص {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">المعرّفات المدمجة: keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">بسيط</string>
+    <string name="settings_language_title">اللغة</string>
+    <string name="settings_media_extensions_title">Media file extensions</string>
+    <string name="settings_media_extensions_description">Space-separated file extensions to treat as streamable media in the file browser.</string>
+    <string name="settings_media_extensions_label">Extensions</string>
+    <string name="settings_show_desktops_title">Show Desktops card</string>
+    <string name="settings_show_desktops_subtitle">Show desktop environment manager on the Connections screen</string>
+    <string name="settings_show_linux_vm_title">Show Linux VM card</string>
+    <string name="settings_show_linux_vm_subtitle">Show Android Linux VM setup on the Connections screen</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="settings_keep_screen_on_title">إبقاء الشاشة مضاءة في الطرفية</string>
+    <string name="settings_keep_screen_on_subtitle">تبقى الشاشة مضاءة طالما توجد علامة تبويب طرفية مفتوحة. يستهلك ذلك البطارية؛ يستحق التفعيل فقط إذا كنت تراقب مخرجات طويلة.</string>
+
+    <!-- #135 -->
+    <string name="settings_keyboard_mode_title">Keyboard mode</string>
+    <string name="settings_font_install_title">Install font from URL</string>
+    <string name="settings_ime_flags_title">IME flags</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field --> (en fallback)
+    <string name="settings_scrollback_rows_title">صفوف السجل</string>
+    <string name="settings_scrollback_rows_subtitle">%1$,d سطر محفوظ لكل علامة تبويب — يُطبَّق على العلامات الجديدة</string>
+    <string name="settings_scrollback_rows_dialog_title">عدد صفوف السجل لكل علامة تبويب</string>
+    <string name="settings_scrollback_rows_dialog_body">السجل الأكبر يستهلك ذاكرة أكثر. حوالي 2 كيلوبايت لكل سطر بعرض أعمدة نموذجي، مضروبًا في عدد علامات التبويب المفتوحة.</string>
+    <string name="settings_scrollback_rows_value">%1$,d سطر</string>
+    <string name="settings_tap_to_position_title">اضغط لتحريك المؤشر في الأوامر المدعومة</string>
+    <string name="settings_tap_to_position_subtitle">اضغط داخل أمر shell لنقل المؤشر إلى ذلك العمود. يتطلب علامات OSC 133 (starship وfish 3.6+ وإعدادات bash/zsh حديثة). لا يؤثر على الأصداف التي لا تُصدرها</string>
+
+    <string name="settings_bandwidth_suggest_subtitle">يكتشف معدل نقل أقل من ~1 ميجابت/ثانية بعد بضع ثوانٍ ويعرض إعادة الاتصال بـ 256 لونًا بنقرة واحدة. إيقاف التشغيل يلغي الإشعار.</string>
+    <string name="settings_bandwidth_suggest_title">اقتراح 256 لونًا على اتصالات VNC البطيئة</string>
+    <string name="settings_drag_select_subtitle">يمرر الضغط والحركة والإفلات إلى tmux/zellij بحيث يمتد التحديد عبر منطقة العرض من خلال سجل التمرير الخاص بالجهاز البعيد. عند الإيقاف، يؤدي السحب إلى تمرير الجهاز البعيد (السلوك القديم).</string>
+    <string name="settings_drag_select_title">السحب للتحديد في وضع ماوس TUI</string>
+    <string name="settings_section_about">حول التطبيق</string>
+    <string name="settings_section_advanced">متقدم</string>
+    <string name="settings_section_appearance">المظهر</string>
+    <string name="settings_section_backup">النسخ الاحتياطي</string>
+    <string name="settings_section_connections_screen">شاشة الاتصالات</string>
+    <string name="settings_section_desktop">سطح المكتب (VNC &amp; RDP)</string>
+    <string name="settings_section_diagnostics">التشخيص</string>
+    <string name="settings_section_keyboard_input">لوحة المفاتيح والإدخال</string>
+    <string name="settings_section_security_privacy">الأمان والخصوصية</string>
+    <string name="settings_section_terminal">الطرفية</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">إظهار علامات تبويب الجلسات أعلى الطرفية</string>
+    <string name="settings_show_terminal_tab_bar_title">إظهار شريط علامات تبويب الطرفية</string>
+    <string name="settings_touchpad_input_direct_subtitle">لمس مباشر — موضع الإصبع هو المؤشر. فعّله للإدخال على نمط لوحة اللمس.</string>
+    <string name="settings_touchpad_input_title">إدخال لوحة اللمس</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">السحب يحرّك المؤشر البعيد؛ النقر ينقر عند المؤشر. تتبع منطقة العرض المؤشر عند التكبير.</string>
+</resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_done">تم</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_ok">موافق</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_edit">تعديل</string>
+    <string name="common_rename">إعادة تسمية</string>
+    <string name="common_create">إنشاء</string>
+    <string name="common_connect">اتصال</string>
+    <string name="common_disconnect">قطع الاتصال</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_paste">لصق</string>
+    <string name="common_label">التسمية</string>
+    <string name="common_password">كلمة المرور</string>
+    <string name="common_port">المنفذ</string>
+    <string name="common_host">المضيف</string>
+    <string name="common_username">اسم المستخدم</string>
+    <string name="common_install">تثبيت</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_allow">سماح</string>
+    <string name="common_not_now">ليس الآن</string>
+    <string name="common_import">استيراد</string>
+    <string name="common_add">إضافة</string>
+    <string name="common_download">تنزيل</string>
+    <string name="common_unlock">فتح القفل</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">إضافة مفتاح</string>
+    <string name="keys_no_ssh_keys">لا توجد مفاتيح SSH</string>
+    <string name="keys_tap_to_add">اضغط + لإنشاء أو استيراد مفتاح</string>
+    <string name="keys_copy_public_key">نسخ المفتاح العام</string>
+    <string name="keys_export_private_key">تصدير المفتاح الخاص</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">إضافة مفتاح SSH</string>
+    <string name="keys_generate_new_key">إنشاء مفتاح جديد</string>
+    <string name="keys_generate_key_types">Ed25519 أو RSA أو ECDSA</string>
+    <string name="keys_import_from_file">استيراد من ملف</string>
+    <string name="keys_import_file_formats">تنسيق PEM أو OpenSSH أو Dropbear</string>
+    <string name="keys_paste_from_clipboard">لصق من الحافظة</string>
+    <string name="keys_paste_clipboard_hint">مفاتيح نصية فقط (PEM/OpenSSH). استخدم استيراد الملف لمفاتيح Dropbear الثنائية.</string>
+    <string name="keys_clipboard_empty">الحافظة فارغة</string>
+    <string name="keys_clipboard_not_text_key">الحافظة لا تحتوي على مفتاح SSH نصي. المفاتيح الثنائية (مثل Dropbear) يجب استيرادها من ملف.</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">إنشاء مفتاح SSH</string>
+    <string name="keys_label_placeholder">مثال: my-server</string>
+    <string name="keys_key_type">نوع المفتاح</string>
+    <string name="keys_generate">إنشاء</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">مفتاح مشفر</string>
+    <string name="keys_passphrase_prompt">هذا المفتاح محمي بعبارة مرور.</string>
+    <string name="keys_passphrase">عبارة المرور</string>
+    <string name="keys_unlock">فتح القفل</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">استيراد مفتاح SSH</string>
+    <string name="keys_import">استيراد</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">مفتاح SSH العام</string>
+
+    <!-- #133 phase 2: step-ca generate-via-OIDC (en fallback) -->
+    <string name="keys_generate_via_stepca">Generate via step-ca</string>
+    <string name="keys_generate_via_stepca_hint">OIDC sign-in mints a fresh keypair + signed cert</string>
+    <string name="keys_generate_via_stepca_no_ca">Tap Certificate authorities above to add one</string>
+    <string name="keys_stepca_dialog_title">Generate via step-ca</string>
+    <string name="keys_stepca_pick_ca">Certificate authority</string>
+    <string name="keys_stepca_principals_override_label">Override principals (optional, comma-separated)</string>
+    <string name="keys_stepca_label">Key label</string>
+    <string name="keys_stepca_generate">Generate</string>
+    <string name="keys_chip_certificate_minted">Minted %1$s</string>
+
+    <!-- #133 phase 2b: regenerate menu --> (en fallback)
+    <string name="keys_regenerate_via_stepca">Regenerate via step-ca</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">Add certificate authority</string>
+    <string name="stepca_edit_title">Edit certificate authority</string>
+    <string name="stepca_add">Add</string>
+    <string name="stepca_save">Save</string>
+    <string name="stepca_cancel">Cancel</string>
+    <string name="stepca_delete">Delete</string>
+    <string name="stepca_test_connection">Test connection</string>
+    <string name="stepca_field_name">Display name</string>
+    <string name="stepca_field_ca_url">CA URL</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC issuer URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC authorize URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC token URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC client ID</string>
+    <string name="stepca_field_provisioner">step-ca provisioner</string>
+    <string name="stepca_field_principals">Default principals (comma-separated)</string>
+    <string name="stepca_field_root_cert">Root certificate (PEM)</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">Reachable</string>
+    <string name="stepca_test_bad_root_cert">Invalid root cert: %1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d: %2$s</string>
+    <string name="stepca_test_network_error">Network error: %1$s</string>
+    <string name="stepca_empty_state">No certificate authorities configured.\nTap + to add one.</string>
+    <string name="stepca_validation_required">%1$s is required</string>
+    <string name="stepca_validation_url">%1$s must start with https://</string>
+    <string name="stepca_validation_pem">Root certificate must be PEM-encoded</string>
+    <string name="stepca_delete_confirm_title">Delete %1$s?</string>
+    <string name="stepca_delete_confirm_body">Existing keys minted via this CA will keep working until their certificates expire, but you won\'t be able to renew or generate new ones.</string>
+    <string name="stepca_field_ssh_host_ca">SSH host CA public key (optional)</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">Discover from /1.0/ssh/config</string>
+    <string name="stepca_discovering">Discovering…</string>
+    <string name="stepca_import_from_file">Import from file</string>
+    <string name="stepca_import_failed">Import failed: %1$s</string>
+    <string name="keys_section_certificate_authorities">Certificate authorities (%1$d)</string>
+    <string name="keys_section_ssh">مفاتيح SSH (%1$d)</string>
+    <string name="keys_section_passwords">كلمات المرور المحفوظة (%1$d)</string>
+    <string name="keys_chip_hardware_backed">محمي بالعتاد</string>
+    <string name="keys_chip_passphrase">عبارة المرور</string>
+    <string name="keys_chip_user_presence">حضور المستخدم</string>
+    <string name="keys_chip_user_verification">التحقق من المستخدم</string>
+    <string name="keys_chip_biometric">القياسات الحيوية مطلوبة</string>
+    <string name="keys_require_biometric">طلب القياسات الحيوية للاستخدام</string>
+    <string name="keys_clear_password_title">مسح %1$s؟</string>
+    <string name="keys_clear_password_body">المسح يزيل كلمة المرور المحفوظة على هذا الملف الشخصي. يبقى الملف الشخصي نفسه — سيُطلب منك ذلك في المرة القادمة التي تتصل فيها.</string>
+    <string name="keys_wipe_content_description">مسح %1$s</string>
+    <string name="keys_attach_certificate">إرفاق شهادة</string>
+    <string name="keys_remove_certificate">إزالة الشهادة</string>
+    <string name="keys_chip_certificate">تم إرفاق الشهادة</string>
+    <string name="stepca_bootstrap_intro">التهيئة من عنوان URL لسلطة التصديق + بصمة SHA-256. يُجلب الباقي (الشهادة الجذرية، الموفّرون، عناوين OIDC والسر) من سلطة التصديق.</string>
+    <string name="stepca_field_fingerprint">بصمة الشهادة الجذرية (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">الصق من `step certificate fingerprint`</string>
+    <string name="stepca_bootstrap_action">التهيئة من سلطة التصديق</string>
+    <string name="stepca_bootstrapping">جارٍ التواصل مع سلطة التصديق…</string>
+    <string name="stepca_bootstrap_pick_provisioner">اختر موفّر OIDC:</string>
+    <string name="stepca_manual_entry">إدخال يدوي…</string>
+    <string name="stepca_field_oidc_client_secret">سر عميل OIDC (اختياري)</string>
+    <string name="stepca_field_oidc_client_secret_hint">اتركه فارغًا للعملاء العامين الذين يستخدمون PKCE فقط</string>
+    <string name="keys_discover_from_security_key">الاكتشاف من مفتاح الأمان</string>
+    <string name="keys_discover_from_security_key_hint">يعدّد بيانات اعتماد SSH-SK المقيمة من مفتاح أمان مُدرَج أو مُلامَس. يتخطى ssh-keygen -K.</string>
+    <string name="keys_discover_picker_title">مفاتيح SSH المقيمة</string>
+    <string name="keys_discover_picker_body">اختر بيانات الاعتماد المقيمة المراد استيرادها. يصبح كل منها إدخال مفتاح SSH جديد؛ وتبقى المادة الخاصة على مفتاح الأمان نفسه.</string>
+    <string name="keys_discover_import_selected">استيراد المحدد</string>
+    <string name="keys_fido_pin_title">رمز PIN لمفتاح الأمان</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">أدخل رمز PIN المضبوط على مفتاح الأمان للمتابعة.</string>
+    <string name="keys_fido_pin_wrong">رمز PIN خاطئ. تبقى %1$d محاولات قبل قفل المفتاح.</string>
+    <string name="keys_fido_waiting_title">مفتاح الأمان مطلوب</string>
+    <string name="keys_fido_waiting_body">وصّل مفتاح الأمان عبر USB، أو المسه بظهر الجهاز لـ NFC. سيتابع yySlide تلقائيًا بمجرد اكتشافه.</string>
+    <string name="keys_fido_touch_usb_title">المس مفتاح الأمان</string>
+    <string name="keys_fido_touch_usb_body">اضغط الزر على مفتاح الأمان الآن للموافقة على الطلب.</string>
+    <string name="keys_fido_touch_nfc_title">أمسك مفتاح الأمان</string>
+    <string name="keys_fido_touch_nfc_body">أبقِ مفتاح الأمان ملاصقًا لظهر الجهاز لمدة ثانيتين. إبعاده مبكرًا يُلغي التبادل.</string>
+    <string name="keys_fido_cancel_hint">يبقى مفتوحًا حتى يستجيب مفتاح الأمان.</string>
+</resources>

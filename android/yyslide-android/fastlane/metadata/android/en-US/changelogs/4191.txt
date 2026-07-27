@@ -1,0 +1,15 @@
+v5.43.2 — desktop-over-SSH lifecycle fixes
+
+• Fix a family of bugs where a VNC/RDP desktop tunneled over SSH could
+  leave an orphaned session or tab behind. Disconnecting the connection
+  from the Connections list now also closes its Desktop tab; a failed
+  connect (e.g. no server listening) no longer leaves the SSH session
+  lit with a green dot; and a dropped tunnel tears the tab down with it.
+
+• The Connections list now reflects the dependency: a VNC/RDP-over-SSH
+  profile nests under its SSH tunnel and shows its own connected
+  indicator while its desktop is open.
+
+• Under the hood, a desktop tab and the SSH session that carries it are
+  now tied together by a single lease, so teardown cascades both ways
+  instead of each disconnect path having to clean up by hand.

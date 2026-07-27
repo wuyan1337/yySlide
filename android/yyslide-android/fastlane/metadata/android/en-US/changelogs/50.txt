@@ -1,0 +1,2 @@
+- Fix new tab (+) failing after closing a tab via X button
+- Key material was shared across sessions; closing one corrupted others

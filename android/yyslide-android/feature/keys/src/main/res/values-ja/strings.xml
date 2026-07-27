@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完了</string>
+    <string name="common_close">閉じる</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">削除</string>
+    <string name="common_edit">編集</string>
+    <string name="common_rename">名前変更</string>
+    <string name="common_create">作成</string>
+    <string name="common_connect">接続</string>
+    <string name="common_disconnect">切断</string>
+    <string name="common_copy">コピー</string>
+    <string name="common_paste">貼り付け</string>
+    <string name="common_label">ラベル</string>
+    <string name="common_password">パスワード</string>
+    <string name="common_port">ポート</string>
+    <string name="common_host">ホスト</string>
+    <string name="common_username">ユーザー名</string>
+    <string name="common_install">インストール</string>
+    <string name="common_reset">リセット</string>
+    <string name="common_allow">許可</string>
+    <string name="common_not_now">後で</string>
+    <string name="common_import">インポート</string>
+    <string name="common_add">追加</string>
+    <string name="common_download">ダウンロード</string>
+    <string name="common_unlock">ロック解除</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">鍵を追加</string>
+    <string name="keys_no_ssh_keys">SSH鍵がありません</string>
+    <string name="keys_tap_to_add">+ をタップして鍵を生成またはインポート</string>
+    <string name="keys_copy_public_key">公開鍵をコピー</string>
+    <string name="keys_export_private_key">秘密鍵をエクスポート</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">SSH鍵を追加</string>
+    <string name="keys_generate_new_key">新しい鍵を生成</string>
+    <string name="keys_generate_key_types">Ed25519、RSA、またはECDSA</string>
+    <string name="keys_import_from_file">ファイルからインポート</string>
+    <string name="keys_import_file_formats">PEM、OpenSSH、またはDropbear形式</string>
+    <string name="keys_paste_from_clipboard">クリップボードから貼り付け</string>
+    <string name="keys_paste_clipboard_hint">テキスト鍵のみ（PEM/OpenSSH）。バイナリDropbear鍵はファイルインポートを使用。</string>
+    <string name="keys_clipboard_empty">クリップボードが空です</string>
+    <string name="keys_clipboard_not_text_key">クリップボードにテキストSSH鍵がありません。バイナリ鍵（Dropbearなど）はファイルからインポートしてください。</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">SSH鍵を生成</string>
+    <string name="keys_label_placeholder">例: my-server</string>
+    <string name="keys_key_type">鍵の種類</string>
+    <string name="keys_generate">生成</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">暗号化された鍵</string>
+    <string name="keys_passphrase_prompt">この鍵はパスフレーズで保護されています。</string>
+    <string name="keys_passphrase">パスフレーズ</string>
+    <string name="keys_unlock">ロック解除</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">SSH鍵をインポート</string>
+    <string name="keys_import">インポート</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">SSH公開鍵</string>
+
+    <!-- #133 phase 2: step-ca generate-via-OIDC (en fallback) -->
+    <string name="keys_generate_via_stepca">Generate via step-ca</string>
+    <string name="keys_generate_via_stepca_hint">OIDC sign-in mints a fresh keypair + signed cert</string>
+    <string name="keys_generate_via_stepca_no_ca">Tap Certificate authorities above to add one</string>
+    <string name="keys_stepca_dialog_title">Generate via step-ca</string>
+    <string name="keys_stepca_pick_ca">Certificate authority</string>
+    <string name="keys_stepca_principals_override_label">Override principals (optional, comma-separated)</string>
+    <string name="keys_stepca_label">Key label</string>
+    <string name="keys_stepca_generate">Generate</string>
+    <string name="keys_chip_certificate_minted">Minted %1$s</string>
+
+    <!-- #133 phase 2b: regenerate menu --> (en fallback)
+    <string name="keys_regenerate_via_stepca">Regenerate via step-ca</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">Add certificate authority</string>
+    <string name="stepca_edit_title">Edit certificate authority</string>
+    <string name="stepca_add">Add</string>
+    <string name="stepca_save">Save</string>
+    <string name="stepca_cancel">Cancel</string>
+    <string name="stepca_delete">Delete</string>
+    <string name="stepca_test_connection">Test connection</string>
+    <string name="stepca_field_name">Display name</string>
+    <string name="stepca_field_ca_url">CA URL</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC issuer URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC authorize URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC token URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC client ID</string>
+    <string name="stepca_field_provisioner">step-ca provisioner</string>
+    <string name="stepca_field_principals">Default principals (comma-separated)</string>
+    <string name="stepca_field_root_cert">Root certificate (PEM)</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">Reachable</string>
+    <string name="stepca_test_bad_root_cert">Invalid root cert: %1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d: %2$s</string>
+    <string name="stepca_test_network_error">Network error: %1$s</string>
+    <string name="stepca_empty_state">No certificate authorities configured.\nTap + to add one.</string>
+    <string name="stepca_validation_required">%1$s is required</string>
+    <string name="stepca_validation_url">%1$s must start with https://</string>
+    <string name="stepca_validation_pem">Root certificate must be PEM-encoded</string>
+    <string name="stepca_delete_confirm_title">Delete %1$s?</string>
+    <string name="stepca_delete_confirm_body">Existing keys minted via this CA will keep working until their certificates expire, but you won\'t be able to renew or generate new ones.</string>
+    <string name="stepca_field_ssh_host_ca">SSH host CA public key (optional)</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">Discover from /1.0/ssh/config</string>
+    <string name="stepca_discovering">Discovering…</string>
+    <string name="stepca_import_from_file">Import from file</string>
+    <string name="stepca_import_failed">Import failed: %1$s</string>
+    <string name="keys_section_certificate_authorities">Certificate authorities (%1$d)</string>
+    <string name="keys_section_ssh">SSH鍵 (%1$d)</string>
+    <string name="keys_section_passwords">保存済みパスワード (%1$d)</string>
+    <string name="keys_chip_hardware_backed">ハードウェア保護</string>
+    <string name="keys_chip_passphrase">パスフレーズ</string>
+    <string name="keys_chip_user_presence">ユーザーの存在</string>
+    <string name="keys_chip_user_verification">ユーザー検証</string>
+    <string name="keys_chip_biometric">生体認証が必要</string>
+    <string name="keys_require_biometric">使用に生体認証を必須にする</string>
+    <string name="keys_clear_password_title">%1$s を消去しますか？</string>
+    <string name="keys_clear_password_body">消去すると、このプロファイルに保存されたパスワードが削除されます。プロファイル自体は残ります — 次回接続時に再度入力を求められます。</string>
+    <string name="keys_wipe_content_description">%1$s を消去</string>
+    <string name="keys_attach_certificate">証明書を添付</string>
+    <string name="keys_remove_certificate">証明書を削除</string>
+    <string name="keys_chip_certificate">証明書が添付されています</string>
+    <string name="stepca_bootstrap_intro">CAのURLとSHA-256フィンガープリントからブートストラップします。残り（ルート証明書、プロビジョナー、OIDCのURLとシークレット）はCAから取得されます。</string>
+    <string name="stepca_field_fingerprint">ルート証明書のフィンガープリント (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">`step certificate fingerprint` から貼り付け</string>
+    <string name="stepca_bootstrap_action">CAからブートストラップ</string>
+    <string name="stepca_bootstrapping">CAと通信中…</string>
+    <string name="stepca_bootstrap_pick_provisioner">OIDCプロビジョナーを選択:</string>
+    <string name="stepca_manual_entry">手動入力…</string>
+    <string name="stepca_field_oidc_client_secret">OIDCクライアントシークレット（任意）</string>
+    <string name="stepca_field_oidc_client_secret_hint">公開のPKCEのみのクライアントの場合は空欄のまま</string>
+    <string name="keys_discover_from_security_key">セキュリティキーから検出</string>
+    <string name="keys_discover_from_security_key_hint">挿入またはタップしたセキュリティキーから常駐SSH-SK認証情報を列挙します。ssh-keygen -K をスキップします。</string>
+    <string name="keys_discover_picker_title">常駐SSH鍵</string>
+    <string name="keys_discover_picker_body">インポートする常駐認証情報を選択してください。それぞれが新しいSSH鍵エントリになります。秘密鍵の素材はセキュリティキー自体に残ります。</string>
+    <string name="keys_discover_import_selected">選択したものをインポート</string>
+    <string name="keys_fido_pin_title">セキュリティキーのPIN</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">続行するには、セキュリティキーに設定されたPINを入力してください。</string>
+    <string name="keys_fido_pin_wrong">PINが間違っています。キーがロックされるまであと %1$d 回です。</string>
+    <string name="keys_fido_waiting_title">セキュリティキーが必要です</string>
+    <string name="keys_fido_waiting_body">セキュリティキーをUSBで接続するか、NFCの場合はデバイスの背面にタップしてください。検出されると yySlide は自動的に続行します。</string>
+    <string name="keys_fido_touch_usb_title">セキュリティキーにタッチ</string>
+    <string name="keys_fido_touch_usb_body">リクエストを承認するには、今すぐセキュリティキーのボタンを押してください。</string>
+    <string name="keys_fido_touch_nfc_title">セキュリティキーを保持</string>
+    <string name="keys_fido_touch_nfc_body">セキュリティキーをデバイスの背面に2秒間当てたままにしてください。早く離すと交換が中止されます。</string>
+    <string name="keys_fido_cancel_hint">セキュリティキーが応答するまで開いたままになります。</string>
+</resources>

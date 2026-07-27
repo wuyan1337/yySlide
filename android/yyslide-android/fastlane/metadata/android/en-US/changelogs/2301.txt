@@ -1,0 +1,42 @@
+v5.6.0: clipboard work + toolbar cog dialog fix
+
+Hardware Ctrl+Shift+V now pastes from the Android clipboard
+into the terminal, with a Settings → Terminal toggle ('Ctrl+
+Shift+V pastes') so users who need the literal key combo
+forwarded to the remote can switch the intercept off. Default
+on. Goes through the same path the Selection toolbar Paste
+button uses, including bracketed-paste mode 2004 wrapping when
+the remote app has it active. Implemented as an optional
+onPasteShortcut callback on KeyboardHandler so the V key falls
+through unchanged when the toggle is off.
+
+VNC inbound clipboard is now wired to the Android system
+clipboard. Previously VncViewModel.onRemoteClipboard was a
+stub that only logged the text — it now pushes incoming
+ServerCutText into ClipboardManager.setPrimaryClip. The
+outbound direction (Android → VNC remote) was already wired.
+
+Bug fix: the cog button on the keyboard toolbar reorder bar
+opens the Toolbar Configuration dialog directly again. The
+previous wiring reset its open-flag inline during composition
+(`if (openToolbarConfig) openToolbarConfig = false`), which
+raced with the LaunchedEffect inside SettingsScreen — the
+launched coroutine that set the dialog state was cancelled by
+the immediate flag flip before its body ran, so the cog only
+scrolled to Settings without opening the dialog. Replaced with
+an onToolbarConfigConsumed callback that the child invokes
+after the dialog state has actually been written.
+
+What's verified: project assembles clean for arm64Debug,
+:lib:testDebugUnitTest plus :core:data, :feature:terminal,
+:feature:vnc, :feature:settings unit tests pass, four new
+KeyboardHandlerTest cases for the Ctrl+Shift+V intercept all
+pass on the Pixel 8 Pro instrumentation run (intercept fires
+when wired, falls through when null, plain V untouched, Ctrl+
+V alone untouched).
+
+Not yet verified end-to-end with a remote VNC server actually
+emitting ServerCutText — the wiring is correct on paper, the
+message just hasn't been seen flow through. Worth a manual
+test against a TigerVNC or wayvnc session for anyone who uses
+the Desktop tab heavily.

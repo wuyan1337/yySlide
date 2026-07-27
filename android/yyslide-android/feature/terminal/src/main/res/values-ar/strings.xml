@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_done">تم</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_ok">موافق</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_edit">تعديل</string>
+    <string name="common_rename">إعادة تسمية</string>
+    <string name="common_create">إنشاء</string>
+    <string name="common_connect">اتصال</string>
+    <string name="common_disconnect">قطع الاتصال</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_paste">لصق</string>
+    <string name="common_label">التسمية</string>
+    <string name="common_password">كلمة المرور</string>
+    <string name="common_port">المنفذ</string>
+    <string name="common_host">المضيف</string>
+    <string name="common_username">اسم المستخدم</string>
+    <string name="common_install">تثبيت</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_allow">سماح</string>
+    <string name="common_not_now">ليس الآن</string>
+    <string name="common_import">استيراد</string>
+    <string name="common_add">إضافة</string>
+    <string name="common_download">تنزيل</string>
+    <string name="common_unlock">فتح القفل</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">إعادة الاتصال</string>
+    <string name="terminal_sessions">الجلسات</string>
+    <string name="terminal_move_left">نقل لليسار</string>
+    <string name="terminal_move_right">نقل لليمين</string>
+    <string name="terminal_close">إغلاق</string>
+    <string name="terminal_copy_last_output">نسخ آخر مخرجات</string>
+    <string name="terminal_copied_output">تم نسخ المخرجات (%d حرف)</string>
+    <string name="terminal_no_command_output">لم يتم العثور على مخرجات الأمر (يتطلب تكامل Shell)</string>
+    <string name="terminal_search">بحث</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">اتصل بخادم لبدء جلسة.</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">جلسات %s</string>
+    <string name="terminal_rename_session">إعادة تسمية الجلسة</string>
+    <string name="terminal_kill_session">إنهاء الجلسة</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">سطح مكتب VNC</string>
+    <string name="terminal_connect_to_host">الاتصال بـ %s</string>
+    <string name="terminal_port">المنفذ</string>
+    <string name="terminal_password">كلمة المرور</string>
+    <string name="terminal_tunnel_through_ssh">الأنفاق عبر SSH</string>
+    <string name="terminal_save_for_connection">حفظ لهذا الاتصال</string>
+    <string name="terminal_connect">اتصال</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">إعادة تسمية الجلسة</string>
+    <string name="terminal_name">الاسم</string>
+    <string name="terminal_rename">إعادة تسمية</string>
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="terminal_disconnect_countdown">تم قطع الاتصال — يُغلق خلال %1$ds</string>
+    <string name="terminal_disconnect_now">تم قطع الاتصال — يُغلق</string>
+    <string name="terminal_new_session_create">إنشاء</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+    <string name="terminal_open_plain_shell">فتح shell عادي</string>
+
+    <string name="terminal_enter_fullscreen">الدخول إلى وضع ملء الشاشة</string>
+    <string name="terminal_exit_fullscreen">الخروج من وضع ملء الشاشة</string>
+</resources>

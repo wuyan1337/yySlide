@@ -1,0 +1,5 @@
+USB for Linux-guest apps, plus consent and navigation fixes
+
+- The Linux guest can now reach a USB device through Haven: a native HID app run with the haven-usb shim sees the device as a normal /dev/hidraw node, with no root. (Verified against an Evolv DNA board.)
+- Fixed a bug where the agent consent prompt could freeze the UI after it timed out, and could reappear after you'd already accepted it. The prompt now also gives you more time to respond.
+- Fixed the landscape navigation rail clipping the lower tabs (e.g. Keys, Settings) when many tabs were shown; the rail now scrolls.

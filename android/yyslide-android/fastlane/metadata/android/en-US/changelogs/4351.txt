@@ -1,0 +1,3 @@
+USB devices over the agent bridge
+
+Haven can now enumerate the phone's USB/OTG devices and, with your per-request consent, open them and run raw control/bulk transfers. This is the first step toward letting Linux-guest apps reach USB hardware without root. Verified end-to-end against an Evolv DNA board: device descriptor read back over USB from the agent.

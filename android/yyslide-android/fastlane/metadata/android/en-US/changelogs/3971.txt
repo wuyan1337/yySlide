@@ -1,0 +1,53 @@
+v5.38.0-rc2 — Phase 2 of multi-distro proot support (issue #162):
+Debian Bookworm landing alongside Alpine, with the dispatch + UX
+fixes that make a multi-distro flow real.
+
+• Debian 12 (Bookworm). New "+ Debian 12 (Bookworm) (~130 MB)"
+  entry in the distro picker. Downloads a Debian rootfs from the
+  termux/proot-distro v4.17.3 release (SHA-256 pinned, aarch64
+  and x86_64), extracts the tar.xz, runs apt-get baseline. Both
+  Openbox and Xfce4 now offer install paths on Debian; labwc-
+  native stays Alpine-only since its compositor is built against
+  Alpine's libs.
+
+• APT package manager. PackageOps.Apt routes apt-get update /
+  install / remove with DEBIAN_FRONTEND=noninteractive +
+  --fix-missing, so a single mirror flake during a 250+ MB
+  install no longer means starting from scratch — retry picks
+  up stragglers.
+
+• Tar.xz + strip-components. The rootfs extractor now picks
+  GZIPInputStream or XZInputStream from RootfsSource.format and
+  honours stripComponents=N (proot-distro tarballs wrap the
+  rootfs in <distro>-<arch>/ — Alpine's minirootfs doesn't).
+
+• Distro picker UI. AssistChip showing the active distro,
+  tappable dropdown listing installed distros (active one
+  checkmarked) plus a divider and any "+ Add another distro"
+  rows. Hidden when there's exactly one installed distro and
+  nothing else available — preserves Phase 1 UX for users who
+  stay on Alpine.
+
+• Install progress under the chip. "Downloading rootfs… 42%" /
+  "Extracting rootfs…" / "Rootfs install failed: <reason>" so
+  add-distro is no longer a silent black box.
+
+• DE list filtered by family. labwc-native no longer shows up
+  when Debian is the active distro (it would have thrown the
+  moment apt-get tried to install its Alpine package list).
+
+• /bin/busybox → /bin/sh across all proot launchers. The shell
+  hardcode in runCommandInProot / launchX11Desktop /
+  startNativeCompositor / LocalSessionManager was Alpine-only
+  ("proot error: '/bin/busybox' not found" on any other distro).
+  /bin/sh works on both Alpine (symlink to busybox) and Debian
+  (symlink to dash).
+
+• Active distro persisted in SharedPreferences. Survives app
+  restarts. If a previous addDistro failed and the persisted
+  preference points at a missing rootfs, falls back to the
+  first installed distro on next launch.
+
+• Redundant "Desktops" card header removed. Dedicated Desktops
+  screen no longer has a second "Desktops" title with an
+  expand chevron — the app bar already labels the screen.

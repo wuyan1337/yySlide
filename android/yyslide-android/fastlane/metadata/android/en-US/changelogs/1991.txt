@@ -1,0 +1,10 @@
+- Fix SSH from inside a forwarded-agent session to a second host
+  (#75). Bumps JSch from 0.2.21 to 2.28.0 to pick up upstream's
+  fix for mwiede/jsch#852 — ChannelAgentForwarding was leaving
+  its buffer in a bad state after an unknown agent message,
+  breaking OpenSSH 9.x's bind_hostkey + REQUEST_IDENTITIES
+  sequence. `ssh-add -l` already worked; `ssh user@other` now
+  does too.
+- Adds OpenSSH certificate support, mlkem/sntrup post-quantum
+  KEX algorithms, and other improvements from three years of
+  upstream JSch development. No API breakage affecting Haven.

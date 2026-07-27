@@ -1,0 +1,25 @@
+v5.37.0-rc1 — Android 16 SSH stability, MCP reverse-tunnel toggle
+fix, and Mirror delete counts.
+
+• Android 16 SSH stability: the SSH/Mosh/VNC/RDP/SFTP foreground
+  service used to be killed by Android 16 every 10–30 s with
+  "Stop FGS timeout," dropping the session and any MCP reverse
+  tunnel forwarded over it. Switched to foregroundServiceType=
+  specialUse, which isn't subject to that timeout schedule.
+  Android 14/15 users are unaffected.
+
+• MCP reverse-tunnel toggle in the connection editor used to
+  flip itself OFF after the dialog finished its async DB read,
+  then save would wipe the rule. The chip now reflects the
+  saved state correctly.
+
+• Mirror sync completion toast now reports the delete count
+  alongside transferred files ("2 files transferred, 1 files
+  deleted") instead of only transfers. Helps disambiguate
+  Mirror behaving correctly vs. rclone suppressing deletions
+  because of source IO errors (#157).
+
+• MCP agent endpoint: new start_rclone_sync /
+  get_rclone_sync_status / cancel_rclone_sync / get_rclone_stats
+  / reset_rclone_stats tools — agents can now drive a Mirror
+  end-to-end and read the live deletes/deletedDirs counters.

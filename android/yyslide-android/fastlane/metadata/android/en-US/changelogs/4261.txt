@@ -1,0 +1,3 @@
+Self-healing MCP reverse tunnel (RC)
+
+The MCP agent endpoint now stays reachable off-device as the network roams. A dedicated, headless SSH reverse tunnel carries the endpoint back to a chosen "endpoint" SSH profile, decoupled from any interactive terminal session, with unlimited auto-reconnect, reconnect-on-network-change, and a watchdog that re-establishes the tunnel after a drop. A failed reverse-forward bind now retries instead of silently coming up without the forward. Pick the endpoint under Settings → Agent endpoint (MCP) → Reverse-tunnel endpoint.

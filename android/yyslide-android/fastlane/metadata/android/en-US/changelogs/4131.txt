@@ -1,0 +1,20 @@
+v5.40.0 — Mosh through WireGuard / Tailscale
+
+• Mosh-over-WireGuard / Tailscale (issue #164, Senkoi). Before this
+  release, turning on Haven's built-in tunnel broke Mosh: SSH worked,
+  but Mosh's UDP packets bypassed the tunnel and never reached the
+  server. The fix adds a UDP surface to the gomobile bridge: gVisor
+  netstack already supported it, it just wasn't exposed across the
+  JNI boundary. The Kotlin tunnel layer gains a TunneledDatagramSocket
+  interface; Mosh's transport accepts a pluggable UDP socket and uses
+  it when the profile selects a tunnel that can carry UDP. Direct
+  (non-tunnelled) Mosh profiles are unchanged — they still use a
+  plain DatagramSocket and the same code paths as before.
+
+• WireGuard verified end-to-end on a Pixel 8 Pro against a 10.0.0.0/24
+  wg-quick + a real mosh-server. Tailscale parity is implemented but
+  not yet verified against a tailnet-only server.
+
+What hasn't changed: the multi-distro proot Linux work from v5.38, the
+v5.39 UX polish (auto-hide tabs, autoscroll velocity, per-phase install
+retry, OIDC discovery URL normalisation) all carry forward.

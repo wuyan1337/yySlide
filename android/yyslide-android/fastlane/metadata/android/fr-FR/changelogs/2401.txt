@@ -1,0 +1,10 @@
+v5.8.5 : détection plus rapide de la fin de session mosh (#92)
+
+Le seuil de session terminée a été réduit de 15s à 8s.
+Le délai précédent de 15s était correct mais trop lent —
+les utilisateurs se déconnectaient manuellement avant qu'il ne se déclenche.
+Avec 8s, la session se ferme d'elle-même ~6s après avoir tapé `exit`.
+
+mosh-server envoie des keepalives toutes les ~3s, donc 8s de
+silence (2+ keepalives manqués) indique de manière fiable que
+le serveur s'est arrêté, sans faux positifs sur les réseaux stables.

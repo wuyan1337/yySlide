@@ -1,0 +1,87 @@
+name: Init submodules with retry
+description: |
+  Run `git submodule update --init` with 3 attempts and a 15s backoff.
+  Use this AFTER `actions/checkout` (with `submodules: false`) in jobs
+  that need a submodule tree.
+
+  Why a separate action: gitlab.freedesktop.org (cairo / mesa-drm /
+  fontconfig / libxau / libxcb / wayland and friends — pulled
+  transitively via wayland-android) intermittently returns HTTP 500-503,
+  PROTOCOL_ERROR, or early EOF mid fetch-pack. Top-level repo checkout
+  from github.com is reliable; only the submodule init fails. Retrying
+  the same command almost always succeeds on attempt 2 or 3.
+
+  Failures on attempts 1-2 are emitted as `::warning::` so they show up
+  in the run summary but don't fail the job; failure on attempt 3 is a
+  real outage and fails the job with `::error::`.
+
+  ### `paths` input
+
+  Default behaviour is `--recursive`, i.e. every submodule including the
+  freedesktop chain under `wayland-android`. Jobs that don't need the
+  Wayland native build (e.g. unit-test jobs that just compile Kotlin)
+  can pass `paths` to limit the init to a subset — typical safe set:
+    paths: |
+      termlib
+      mosh-kotlin
+      et-kotlin
+      reticulum-kt
+      rnsh-kt
+      build-proot/proot-termux
+      rclone-android
+  When `paths` is set the init is non-recursive and skips
+  `wayland-android` entirely, sidestepping freedesktop outages.
+
+inputs:
+  project-directory:
+    description: |
+      Path from the checkout root to the Git repository whose submodules
+      should be initialized. This is required when the Android project is
+      checked out as part of the yySlide monorepo.
+    required: false
+    default: "."
+  paths:
+    description: |
+      Newline-separated list of submodule paths to init. Empty (default)
+      means init every submodule recursively, matching the prior
+      behaviour. When non-empty the init is non-recursive.
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Init submodules with retry
+      shell: bash
+      working-directory: ${{ inputs.project-directory }}
+      env:
+        SUBMODULE_PATHS: ${{ inputs.paths }}
+      run: |
+        set +e
+        # Build the submodule update command. Empty paths → recursive
+        # init of everything (legacy behaviour). Non-empty → non-recursive
+        # init of just the listed paths.
+        if [ -z "$SUBMODULE_PATHS" ]; then
+          cmd=(git submodule update --init --recursive --jobs 4)
+        else
+          # shellcheck disable=SC2206
+          paths=( $(echo "$SUBMODULE_PATHS" | tr '\n' ' ') )
+          cmd=(git submodule update --init --jobs 4 -- "${paths[@]}")
+          echo "Initialising only: ${paths[*]}"
+        fi
+        for attempt in 1 2 3; do
+          echo "::group::Submodule init attempt $attempt"
+          "${cmd[@]}"
+          rc=$?
+          echo "::endgroup::"
+          if [ "$rc" -eq 0 ]; then
+            echo "Submodules ready on attempt $attempt"
+            exit 0
+          fi
+          if [ "$attempt" -lt 3 ]; then
+            echo "::warning::Submodule init failed (rc=$rc) on attempt $attempt; sleeping 15s before retry"
+            sleep 15
+          fi
+        done
+        echo "::error::Submodule init failed after 3 attempts; upstream likely down"
+        exit 1

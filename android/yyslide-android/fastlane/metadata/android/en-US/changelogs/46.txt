@@ -1,0 +1,3 @@
+Android Linux VM detection and setup guide
+Network discovery with condensed host suggestions
+Selection toolbar, quick connect, and host dropdown fixes

@@ -1,0 +1,10 @@
+v5.8.5: Schnellere Erkennung des mosh-Sitzungsendes (#92)
+
+Der Schwellenwert für eine beendete Sitzung wurde von 15s auf 8s reduziert.
+Das vorherige 15s-Timeout war korrekt, aber zu langsam —
+Benutzer trennten die Verbindung manuell, bevor es griff. Mit 8s
+schließt sich die Sitzung ~6s nach der Eingabe von `exit` von selbst.
+
+mosh-server sendet alle ~3s keepalives, daher zeigen 8s
+Stille (2+ fehlende keepalives) zuverlässig an, dass der
+Server beendet wurde — ohne Fehlalarme in stabilen Netzwerken.

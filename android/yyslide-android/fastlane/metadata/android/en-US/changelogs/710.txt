@@ -1,0 +1,9 @@
+v2.4.1
+- RDP remote desktop support (Windows, xrdp, GNOME Remote Desktop)
+- RDP connections with saved passwords and SSH tunnel profiles
+- RDP profiles nest under SSH parent in connection tree view
+- SSH key selector per connection
+- Configurable biometric lock timeout (immediate/30s/1m/5m/never)
+- Fix: key import crash on malformed files
+- Fix: connection dialog preserved on device rotation
+- Fix: port auto-switches when changing transport type

@@ -1,0 +1,19 @@
+v5.15.0: quality + resolution controls in Convert
+
+New Compression section inside the Convert dialog, tailored
+at the main reason users come here — shrinking video.
+
+• Quality (CRF) slider with an encoder-aware range. Lower =
+  better, higher = smaller. Re-seeds to a sensible default
+  when you switch between H.264, H.265, and VP9.
+• Resolution dropdown: same as source, 4K, 1440p, 1080p,
+  720p, 480p, 360p. Keeps aspect ratio, always even pixels.
+• Encode speed preset (ultrafast → veryslow). Slower =
+  smaller output at the same quality.
+• Audio bitrate dropdown (64–320 kbps) for codecs that
+  support it.
+• Quick presets: Share 720p, Small 480p, Archive 1080p,
+  HQ source.
+
+The live CLI preview at the bottom of the dialog reflects
+every knob in real time.

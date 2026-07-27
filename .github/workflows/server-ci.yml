@@ -1,0 +1,46 @@
+name: Server CI
+
+on:
+  push:
+    paths:
+      - "server/**"
+      - "scripts/sync-contract-check.cjs"
+      - "scripts/server-security-check.cjs"
+      - "scripts/decrypt-legacy-archive.cjs"
+      - "package.json"
+      - ".node-version"
+      - ".github/workflows/server-ci.yml"
+  pull_request:
+    paths:
+      - "server/**"
+      - "scripts/sync-contract-check.cjs"
+      - "scripts/server-security-check.cjs"
+      - "scripts/decrypt-legacy-archive.cjs"
+      - "package.json"
+      - ".node-version"
+      - ".github/workflows/server-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          check-latest: true
+      - name: Check server syntax
+        run: |
+          node --check server/yycloud.cjs
+          node --check scripts/sync-contract-check.cjs
+          node --check scripts/server-security-check.cjs
+          node --check scripts/decrypt-legacy-archive.cjs
+      - name: Run root regression tests
+        run: npm test

@@ -1,0 +1,4 @@
+USB for Mono/.NET guest apps + a master toggle
+
+- Mono/.NET apps in the Linux guest (anything built on HidSharp) can now reach a USB HID device through Haven: a DllMap config routes their USB calls to the haven-usb shim, which fakes the udev enumeration + a non-crashing hotplug monitor and presents the device as /dev/hidraw — no root. usb_attach_to_guest returns the ready-to-use config.
+- New Settings switch "Expose USB devices to the Linux guest" (off by default): a deliberate opt-in for the whole guest-USB capability, on top of the per-attach consent prompt.

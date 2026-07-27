@@ -1,0 +1,35 @@
+v5.37.0-rc5 — connection-edit toggle UX, plus a new power-user
+queue_terminal_input MCP tool for driving any interactive SSH
+session, on top of rc4.
+
+• Boolean toggles in the connection-edit dialog (VNC/RDP/SMB
+  SSH-tunnel, Forward agent, MCP reverse tunnel, Auto-reconnect,
+  Tunnel-only, Disable alt screen, etc.) switched from FilterChip to
+  Material 3 Switch. FilterChip's selected state was a subtle tonal
+  shade — easy to miss, especially in low light. Switch reads ON/OFF
+  unambiguously and the whole row is tappable. Enum chip groups
+  (sync mode, file transport) keep using FilterChip.
+
+• New MCP tool `queue_terminal_input` (power-user, off by default).
+  Lets an agent queue text to be typed into any connected SSH
+  session at the next matching prompt — for example answering `y`
+  to a `Continue? [y/N]` in an install script, driving a `psql` or
+  Python REPL, or sending a slash command into the agent's own
+  Claude Code REPL session. Watches the session's stdout for a
+  configurable regex (default matches common shell glyphs `$ # % >
+  ❯`), then types `text + submitKey` (default `\r` for Enter when
+  the pattern matches. Pre-delivery consent fires on the phone with
+  an "Allow for 5/10/30 min" power-user window. Enable in
+  Settings → Agent endpoint → "Allow agents to queue terminal
+  input." Closes #161.
+
+• New MCP CRUD tools for saved rclone sync configurations (#159):
+  `list_saved_sync_profiles`, `save_sync_profile`,
+  `delete_sync_profile`. The SFTP sync dialog already had the UI;
+  these expose the same data to an agent so it can save a Mirror
+  config once and re-run it on demand.
+
+All Android 16 SSH stability, MCP reverse-tunnel toggle, Mirror
+delete-count, MCP rclone tools, Ed25519 export, persisted-sync-
+events-in-the-connection-log, and saved-sync-config changes from
+rc1/rc2/rc3/rc4 carry forward unchanged.

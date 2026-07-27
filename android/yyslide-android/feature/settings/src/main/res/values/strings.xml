@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Cancel</string>
+    <string name="common_save">Save</string>
+    <string name="common_done">Done</string>
+    <string name="common_close">Close</string>
+    <string name="common_change">Change</string>
+    <string name="common_back">Back</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_edit">Edit</string>
+    <string name="common_rename">Rename</string>
+    <string name="common_create">Create</string>
+    <string name="common_connect">Connect</string>
+    <string name="common_disconnect">Disconnect</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_paste">Paste</string>
+    <string name="common_label">Label</string>
+    <string name="common_password">Password</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Username</string>
+    <string name="common_install">Install</string>
+    <string name="common_reset">Reset</string>
+    <string name="common_allow">Allow</string>
+    <string name="common_not_now">Not now</string>
+    <string name="common_import">Import</string>
+    <string name="common_add">Add</string>
+    <string name="common_download">Download</string>
+    <string name="common_unlock">Unlock</string>
+
+    <!-- Top-level screen -->
+    <string name="settings_title">Settings</string>
+
+    <!-- Security section -->
+    <string name="settings_biometric_title">Screen lock</string>
+    <string name="settings_biometric_subtitle">Require authentication to open yySlide</string>
+    <string name="settings_lock_timeout_title">Lock timeout</string>
+    <string name="settings_prevent_screenshots_title">Prevent screenshots</string>
+    <string name="settings_prevent_screenshots_subtitle">Block screen capture and task switcher preview</string>
+    <string name="settings_show_desktops_title">Show Desktops card</string>
+    <string name="settings_show_desktops_subtitle">Show desktop environment manager on the Connections screen</string>
+    <string name="settings_show_linux_vm_title">Show Linux VM card</string>
+    <string name="settings_show_linux_vm_subtitle">Show Android Linux VM setup on the Connections screen</string>
+
+    <!-- Logging section -->
+    <string name="settings_connection_logging_title">Connection logging</string>
+    <string name="settings_connection_logging_subtitle">Record connection events (connect, disconnect, errors). Stored locally, protected by device encryption</string>
+    <string name="settings_view_connection_log_title">View connection log</string>
+    <string name="settings_view_connection_log_subtitle">Connection history and events</string>
+    <string name="settings_verbose_logging_title">Verbose connection logging</string>
+    <string name="settings_verbose_logging_subtitle">Capture protocol details for SSH, Mosh, and ET connections. May include hostnames and usernames</string>
+    <string name="audit_log_title">Connection log</string>
+    <string name="audit_log_clear_logs">Clear logs</string>
+    <string name="audit_log_filter_all">All</string>
+    <string name="audit_log_empty">No connection events logged</string>
+    <string name="audit_log_share_subject">yySlide connection log: %1$s</string>
+    <string name="audit_log_share_chooser">Share log</string>
+    <string name="audit_log_clear_title">Clear all logs?</string>
+    <string name="audit_log_clear_message">This cannot be undone.</string>
+    <string name="audit_log_clear_action">Clear</string>
+    <string name="audit_log_toggle_details">Toggle details</string>
+    <string name="audit_log_copy_log">Copy log</string>
+    <string name="audit_log_share_log">Share log</string>
+    <string name="audit_log_no_verbose">No verbose log for this entry</string>
+    <string name="audit_log_status_connected">Connected</string>
+    <string name="audit_log_status_disconnected">Disconnected</string>
+    <string name="audit_log_status_failed">Failed</string>
+    <string name="audit_log_status_timeout">Timed out</string>
+    <string name="audit_log_status_sync">Sync</string>
+    <string name="audit_log_status_sync_failed">Sync failed</string>
+
+    <!-- Terminal section -->
+    <string name="settings_session_persistence_title">Session persistence</string>
+    <string name="settings_session_persistence_none">None</string>
+    <string name="settings_font_size_title">Terminal font size</string>
+    <string name="settings_font_size_subtitle">%1$dsp</string>
+    <string name="settings_scrollback_rows_title">Scrollback rows</string>
+    <string name="settings_scrollback_rows_subtitle">%1$,d lines retained per tab — applies to new tabs</string>
+    <string name="settings_tap_to_position_title">Tap to move cursor on supported prompts</string>
+    <string name="settings_tap_to_position_subtitle">Tap inside a shell prompt to move the cursor to that column. Requires OSC 133 prompt markers (starship, fish 3.6+, recent bash/zsh shell-integration setups). No effect on shells that don\'t emit them</string>
+    <string name="settings_color_scheme_title">Terminal color scheme</string>
+    <string name="settings_color_scheme_auto_switch_title">Auto-switch with system theme</string>
+    <string name="settings_color_scheme_auto_switch_subtitle">Use different terminal color schemes for light and dark mode</string>
+    <string name="settings_color_scheme_light_title">Terminal color scheme (light)</string>
+    <string name="settings_color_scheme_dark_title">Terminal color scheme (dark)</string>
+    <string name="settings_color_scheme_light_dialog_title">Terminal color scheme — light</string>
+    <string name="settings_color_scheme_dark_dialog_title">Terminal color scheme — dark</string>
+    <string name="settings_toolbar_title">Keyboard toolbar</string>
+    <string name="settings_toolbar_subtitle">Configure toolbar keys and layout</string>
+    <string name="settings_search_button_title">Search button</string>
+    <string name="settings_search_button_subtitle">Show search icon in tab bar — sends your session manager\'s native search keys (tmux/zellij/screen) or shell Ctrl+R</string>
+    <string name="settings_copy_output_title">Copy last output</string>
+    <string name="settings_copy_output_subtitle">Show copy icon in tab bar — copies the last command\'s output. Requires shell integration (tap for setup)</string>
+    <string name="settings_keep_screen_on_title">Keep screen on in terminal</string>
+    <string name="settings_keep_screen_on_subtitle">The display stays awake while a terminal tab is open. Drains battery; only worth turning on if you watch long-running output</string>
+    <string name="settings_mouse_input_title">Mouse input in TUI apps</string>
+    <string name="settings_mouse_input_subtitle">Forward taps as clicks and long-press as right-click when apps like htop, mc, or vim enable mouse tracking</string>
+    <string name="settings_right_click_title">Long-press sends right-click</string>
+    <string name="settings_right_click_subtitle">Send right-click to terminal instead of starting text selection. Useful for tmux context menus</string>
+    <string name="settings_standard_keyboard_title">Voice input and autocomplete</string>
+    <string name="settings_standard_keyboard_subtitle">Disables secure keyboard flags (password mode, no suggestions). Enables voice input, swipe typing, and word predictions — but the IME may learn typed passwords</string>
+
+    <!-- Appearance section -->
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_screen_order_title">Screen order</string>
+    <string name="settings_screen_order_subtitle">Reorder bottom navigation tabs</string>
+
+    <!-- Wayland section -->
+    <string name="settings_wayland_shell_title">Wayland desktop shell</string>
+    <string name="settings_shizuku_title">Shizuku integration</string>
+    <string name="settings_shizuku_enabled">Enabled — auto battery exemption, Wayland socket sharing</string>
+    <string name="settings_shizuku_available">Shizuku running — tap to grant permission</string>
+    <string name="settings_shizuku_not_running">Shizuku installed but not running — tap to open and start via Wireless Debugging</string>
+    <string name="settings_shizuku_not_installed">Install Shizuku for battery exemption and cross-app Wayland access</string>
+
+    <!-- Media streaming -->
+    <string name="settings_media_extensions_title">Media file extensions</string>
+    <string name="settings_media_extensions_description">Space-separated file extensions to treat as streamable media in the file browser.</string>
+    <string name="settings_media_extensions_label">Extensions</string>
+
+    <!-- Backup section -->
+    <string name="settings_export_backup_title">Export backup</string>
+    <string name="settings_export_backup_subtitle">Keys, connections, and settings</string>
+    <string name="settings_restore_backup_title">Restore backup</string>
+    <string name="settings_restore_backup_subtitle">Import from a backup file</string>
+    <string name="settings_backup_working">Working…</string>
+
+    <!-- About section -->
+    <string name="settings_about_title">About yySlide</string>
+    <string name="settings_version_unknown">unknown</string>
+
+    <!-- Wayland shell dialog -->
+    <string name="settings_wayland_dialog_title">Wayland Desktop Shell</string>
+    <string name="settings_wayland_dialog_description">Shell command to run inside the Wayland desktop foot terminal. Install additional shells with apk (e.g. apk add bash).</string>
+    <string name="settings_wayland_shell_command_label">Shell command</string>
+
+    <!-- Lock timeout dialog -->
+    <string name="settings_lock_timeout_dialog_title">Lock timeout</string>
+
+    <!-- OSC 133 shell integration dialog -->
+    <string name="settings_osc133_dialog_title">Shell integration setup</string>
+    <string name="settings_osc133_description">Copy last output requires your shell to emit OSC 133 markers. Add one of these snippets to your shell config:</string>
+    <string name="settings_osc133_bash">Bash</string>
+    <string name="settings_osc133_zsh">Zsh</string>
+    <string name="settings_osc133_copied_bash">Copied bash snippet</string>
+    <string name="settings_osc133_copied_zsh">Copied zsh snippet</string>
+    <string name="settings_osc133_footer">Tap a snippet to copy it. Many tools (iTerm2, VS Code, WezTerm) include these markers by default.</string>
+    <string name="settings_osc133_learn_more">Learn more</string>
+
+    <!-- Backup password dialog -->
+    <string name="settings_backup_export_dialog_title">Export Backup</string>
+    <string name="settings_backup_restore_dialog_title">Restore Backup</string>
+    <string name="settings_backup_password_min_length">At least 6 characters</string>
+    <string name="settings_backup_passwords_mismatch">Passwords don\'t match</string>
+    <string name="settings_backup_export_description">Encrypt your backup with a password. This protects your SSH keys and connection data.</string>
+    <string name="settings_backup_restore_description">Enter the password used when the backup was created.</string>
+    <string name="settings_backup_password_label">Password</string>
+    <string name="settings_backup_confirm_password_label">Confirm password</string>
+    <string name="settings_backup_export_button">Export</string>
+    <string name="settings_backup_restore_button">Restore</string>
+
+    <!-- About dialog -->
+    <string name="settings_about_dialog_title">About yySlide</string>
+    <string name="settings_about_app_name">yySlide</string>
+    <string name="settings_about_description">Open source SSH, VNC, RDP &amp; cloud storage client for Android</string>
+    <string name="settings_about_version">Version %1$s (build %2$d)</string>
+    <string name="settings_about_android">Android %1$s (API %2$d)</string>
+    <string name="settings_about_libraries_title">Open Source Libraries</string>
+
+    <!-- Screen order dialog -->
+    <string name="settings_screen_order_dialog_title">Screen order</string>
+    <string name="settings_screen_order_drag_description">Drag to reorder</string>
+
+    <!-- Theme dialog -->
+    <string name="settings_theme_dialog_title">Theme</string>
+
+    <!-- Color scheme dialog -->
+    <string name="settings_color_scheme_dialog_title">Terminal color scheme</string>
+
+    <!-- Session manager dialog -->
+    <string name="settings_session_dialog_title">Session persistence</string>
+    <string name="settings_session_no_scrollback">No touch scrollback</string>
+    <string name="settings_session_custom_command_label">Custom command</string>
+    <string name="settings_session_custom_command_hint">Use {name} for session name. Leave blank for default.</string>
+    <string name="settings_session_save_command">Save command</string>
+
+    <!-- Font size dialog -->
+    <string name="settings_font_size_dialog_title">Terminal font size</string>
+    <string name="settings_font_size_sample">Sample text</string>
+    <string name="settings_font_size_value">%1$dsp</string>
+
+    <!-- Scrollback rows dialog -->
+    <string name="settings_scrollback_rows_dialog_title">Scrollback rows per tab</string>
+    <string name="settings_scrollback_rows_dialog_body">Larger scrollback uses more memory. Roughly 2 KB per line at typical column widths, multiplied by the number of open tabs.</string>
+    <string name="settings_scrollback_rows_value">%1$,d lines</string>
+
+    <!-- Toolbar config dialog -->
+    <string name="settings_toolbar_dialog_title">Keyboard toolbar</string>
+    <string name="settings_toolbar_assign_hint">Assign each key to Row 1, Row 2, or Off</string>
+    <string name="settings_toolbar_arrow_keys">Arrow keys layout</string>
+    <string name="settings_toolbar_function_keys">Function keys</string>
+    <string name="settings_toolbar_symbols">Symbols</string>
+    <string name="settings_toolbar_custom_keys">Custom keys</string>
+    <string name="settings_toolbar_add_custom_key">Add custom key</string>
+    <string name="settings_toolbar_edit_json">Edit JSON</string>
+    <string name="settings_toolbar_row1">R1</string>
+    <string name="settings_toolbar_row2">R2</string>
+    <string name="settings_toolbar_off">Off</string>
+    <string name="settings_toolbar_paste_clipboard">Paste clipboard</string>
+
+    <!-- Custom key dialog -->
+    <string name="settings_custom_key_edit_title">Edit custom key</string>
+    <string name="settings_custom_key_add_title">Add custom key</string>
+    <string name="settings_custom_key_presets">Presets</string>
+    <string name="settings_custom_key_label">Label</string>
+    <string name="settings_custom_key_label_placeholder">e.g. ^C, Paste</string>
+    <string name="settings_custom_key_sequence_label">Sequence</string>
+    <string name="settings_custom_key_sequence_placeholder">e.g. \\u0003</string>
+    <string name="settings_custom_key_escape_hint">Use \\u001b for Escape, \\u0003 for Ctrl+C, \\n for Enter</string>
+
+    <!-- JSON editor dialog -->
+    <string name="settings_json_editor_title">Edit toolbar JSON</string>
+    <string name="settings_json_editor_format_hint">String = built-in key ID, Object = custom key {\"label\": \"…\", \"send\": \"…\"}</string>
+    <string name="settings_json_editor_builtin_ids">Built-in IDs: keyboard, esc, tab, shift, ctrl, alt, arrow_left, arrow_up, arrow_down, arrow_right, home, end, pgup, pgdn, insert, delete, sym_pipe, sym_tilde, sym_slash, sym_dash, sym_underscore, sym_equals, sym_plus, sym_backslash, sym_squote, sym_dquote, sym_semicolon, sym_colon, sym_bang, sym_question, sym_at, sym_hash, sym_dollar, sym_percent, sym_caret, sym_amp, sym_star, sym_lparen, sym_rparen, sym_lbracket, sym_rbracket, sym_lbrace, sym_rbrace, sym_lt, sym_gt, sym_backtick</string>
+
+    <!-- Common strings -->
+    <string name="common_github">GitHub</string>
+    <string name="common_simple">Simple</string>
+    <string name="settings_section_security_privacy">Security &amp; privacy</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_keyboard_input">Keyboard &amp; input</string>
+    <string name="settings_section_terminal">Terminal</string>
+    <string name="settings_section_desktop">Desktop (VNC &amp; RDP)</string>
+    <string name="settings_section_connections_screen">Connections screen</string>
+    <string name="settings_section_diagnostics">Diagnostics</string>
+    <string name="settings_section_advanced">Advanced</string>
+    <string name="settings_section_backup">Backup</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_language_system_default">Follow system</string>
+    <string name="settings_drag_select_title">Drag-to-select in TUI mouse mode</string>
+    <string name="settings_drag_select_subtitle">Forward press+motion+release to tmux/zellij so selection extends across the viewport via the remote\'s own scrollback. When off, drag scrolls the remote (legacy behaviour).</string>
+    <string name="settings_show_terminal_tab_bar_title">Show terminal tab bar</string>
+    <string name="settings_show_terminal_tab_bar_subtitle">Show session tabs above the terminal</string>
+    <string name="settings_touchpad_input_title">Touchpad input</string>
+    <string name="settings_touchpad_input_direct_subtitle">Direct touch — finger position is the pointer. Toggle on for trackpad-style input.</string>
+    <string name="settings_touchpad_input_touchpad_subtitle">Drag moves the remote cursor; tap clicks at the cursor. The viewport follows the cursor when zoomed.</string>
+    <string name="settings_bandwidth_suggest_title">Suggest 256 colours on slow VNC links</string>
+    <string name="settings_bandwidth_suggest_subtitle">Detects throughput below ~1 Mbps after a few seconds and offers a one-tap reconnect at 256 colours. Off silences the prompt.</string>
+
+    <!-- yySlide mobile settings -->
+    <string name="yyslide_settings_signed_in">Signed in</string>
+    <string name="yyslide_settings_last_sync">Last sync: %1$s</string>
+    <string name="yyslide_settings_sync_now">Sync now</string>
+    <string name="yyslide_settings_log_out">Log out</string>
+    <string name="yyslide_settings_sign_in">Sign in</string>
+    <string name="yyslide_settings_cloud_sign_in_prompt">Sign in to sync desktop and Android SSH profiles.</string>
+    <string name="yyslide_settings_working">Working...</string>
+    <string name="yyslide_settings_section_security">Security</string>
+    <string name="yyslide_settings_font_size_title">Font size</string>
+    <string name="yyslide_settings_app_lock_title">App lock</string>
+    <string name="yyslide_settings_app_lock_subtitle">Require device authentication when opening yySlide.</string>
+    <string name="yyslide_settings_app_lock_unavailable_title">App lock unavailable</string>
+    <string name="yyslide_settings_app_lock_unavailable_body">Set a device PIN, password, pattern, or biometric unlock in Android Settings first.</string>
+    <string name="yyslide_settings_version">Version %1$s (%2$d)</string>
+    <string name="yyslide_settings_unknown">unknown</string>
+    <string name="yyslide_settings_android_version">Android %1$s API %2$d</string>
+    <string name="yyslide_settings_lock_timeout_sheet_body">Choose how long yySlide stays unlocked after you leave the app.</string>
+    <string name="yyslide_theme_system">System default</string>
+    <string name="yyslide_theme_light">Light</string>
+    <string name="yyslide_theme_dark">Dark</string>
+    <string name="yyslide_lock_timeout_immediate">Immediately</string>
+    <string name="yyslide_lock_timeout_30_seconds">30 seconds</string>
+    <string name="yyslide_lock_timeout_1_minute">1 minute</string>
+    <string name="yyslide_lock_timeout_5_minutes">5 minutes</string>
+    <string name="yyslide_lock_timeout_never">Never</string>
+    <string name="yyslide_lock_timeout_immediate_desc">Lock as soon as yySlide leaves the foreground.</string>
+    <string name="yyslide_lock_timeout_30_seconds_desc">Brief grace period for quick app switching.</string>
+    <string name="yyslide_lock_timeout_1_minute_desc">Good balance for short interruptions.</string>
+    <string name="yyslide_lock_timeout_5_minutes_desc">Keep it open while switching between tasks.</string>
+    <string name="yyslide_lock_timeout_never_desc">Do not lock automatically.</string>
+
+    <!-- yySlide Cloud -->
+    <string name="yyslide_cloud_section_title">yySlide Cloud</string>
+    <string name="yyslide_cloud_sync_connections_title">Sync yySlide connections</string>
+    <string name="yyslide_cloud_account_summary">Account: %1$s</string>
+    <string name="yyslide_cloud_account_last_sync_summary">Account: %1$s, last sync: %2$s</string>
+    <string name="yyslide_cloud_sign_out_title">Sign out of yySlide Cloud</string>
+    <string name="yyslide_cloud_sign_in_title">Sign in to yySlide Cloud</string>
+    <string name="yyslide_cloud_sign_in_subtitle">Sync connections, categories, and keys from Windows</string>
+    <string name="yyslide_cloud_busy_title">yySlide Cloud is working</string>
+    <string name="yyslide_cloud_busy_subtitle">Signing in or syncing. Please wait.</string>
+    <string name="yyslide_cloud_server_label">Server</string>
+    <string name="yyslide_cloud_username_label">Username</string>
+    <string name="yyslide_cloud_password_label">Password</string>
+    <string name="yyslide_cloud_totp_label">2FA code</string>
+    <string name="yyslide_cloud_login_busy_button">Signing in</string>
+    <string name="yyslide_cloud_login_submit_button">Sign in and sync</string>
+    <string name="yyslide_cloud_login_success">Login successful. %1$s</string>
+    <string name="yyslide_cloud_login_failed">yySlide Cloud login failed</string>
+    <string name="yyslide_cloud_sync_complete">Sync complete. %1$s</string>
+    <string name="yyslide_cloud_sync_failed">yySlide Cloud sync failed</string>
+    <string name="yyslide_cloud_signed_out">Signed out of yySlide Cloud</string>
+    <string name="yyslide_cloud_summary_separator">, </string>
+    <string name="yyslide_cloud_summary_imported_connections">imported %1$d connections</string>
+    <string name="yyslide_cloud_summary_uploaded_connections">uploaded %1$d</string>
+    <string name="yyslide_cloud_summary_deleted_connections">deleted %1$d</string>
+    <string name="yyslide_cloud_summary_skipped_connections">skipped %1$d</string>
+    <string name="yyslide_cloud_summary_conflict_copies">kept %1$d cloud conflict copies</string>
+    <string name="yyslide_cloud_summary_imported_keys">imported %1$d keys</string>
+    <string name="yyslide_cloud_summary_skipped_keys">skipped %1$d keys</string>
+    <string name="yyslide_cloud_error_missing_login_token">Server did not return a login token</string>
+    <string name="yyslide_cloud_error_missing_vault_key">Server did not return a sync key</string>
+    <string name="yyslide_cloud_error_unlock_vault_key">Could not unlock the sync key. Check your password.</string>
+    <string name="yyslide_cloud_error_decrypt_vault">Could not decrypt cloud data. Please sign in again.</string>
+    <string name="yyslide_cloud_error_not_signed_in">You are not signed in to yySlide Cloud</string>
+    <string name="yyslide_cloud_error_request_failed">yySlide Cloud request failed: %1$d</string>
+    <string name="yyslide_cloud_conflict_label_suffix">(cloud copy)</string>
+
+    <!-- #135 dialog titles previously hardcoded -->
+    <string name="settings_keyboard_mode_title">Keyboard mode</string>
+    <string name="settings_font_install_title">Install font from URL</string>
+    <string name="settings_ime_flags_title">IME flags</string>
+    <!-- #133 phase 2b: SSH host CA pubkey field -->
+    <string name="settings_agent_activity_title">Agent activity</string>
+    <string name="settings_agent_activity_clear_history">Clear history</string>
+    <string name="settings_agent_activity_clear_title">Clear agent activity?</string>
+    <string name="settings_agent_activity_clear_body">All recorded MCP calls will be deleted from this device. This cannot be undone.</string>
+    <string name="settings_proot_install_log_title">PRoot install log</string>
+    <string name="settings_proot_install_log_clear">Clear log</string>
+    <string name="settings_proot_install_log_empty">No install events recorded yet. Install a distro or desktop to see per-phase progress here.</string>
+    <string name="settings_proot_install_log_clear_title">Clear install log?</string>
+    <string name="settings_proot_install_log_clear_body">All recorded install events will be removed.</string>
+    <string name="settings_terminal_font_set">Terminal font set to %1$s</string>
+    <string name="settings_terminal_font_invalid">Could not load that font — Android couldn\'t decode it as a typeface</string>
+    <string name="settings_terminal_font_url_subtitle">Fetch a .ttf/.otf, or a .zip containing fonts (mirrors the agent\'s set_terminal_font_from_url tool)</string>
+    <string name="settings_terminal_font_reset_title">Reset terminal font</string>
+    <string name="settings_terminal_font_reset_subtitle">Go back to bundled Hack Nerd Font Mono</string>
+    <string name="settings_terminal_font_reset_done">Terminal font reset</string>
+    <string name="settings_logcat_capture_title">Logcat capture</string>
+    <string name="settings_logcat_capture_recording">Recording to /sdcard/Download/haven-logcat.txt</string>
+    <string name="settings_logcat_capture_subtitle">Capture logcat for remote debugging</string>
+    <string name="settings_logcat_saved">Logcat saved</string>
+    <string name="settings_logcat_started">Logcat capture started</string>
+    <string name="settings_logcat_start_failed">Failed to start capture</string>
+    <string name="settings_mcp_reverse_tunnel_title">Reverse-tunnel endpoint</string>
+    <string name="settings_mcp_reverse_tunnel_active">Tunnelled to \"%1$s\" — survives Wi-Fi changes and app restarts</string>
+    <string name="settings_mcp_reverse_tunnel_unset">Not set — endpoint reachable on-device only</string>
+    <string name="settings_mcp_reverse_tunnel_none">None (on-device only)</string>
+    <string name="settings_mcp_wireguard_title">Expose on WireGuard tunnel</string>
+    <string name="settings_mcp_wireguard_enabled">Enabled — reachable at %1$s over the active WireGuard tunnel</string>
+    <string name="settings_mcp_wireguard_waiting">Enabled — waiting for an active WireGuard tunnel</string>
+    <string name="settings_mcp_wireguard_disabled">Disabled — turn on to reach the endpoint over an active WireGuard tunnel</string>
+    <string name="settings_mcp_copy_wireguard_config_title">Copy WireGuard MCP client config</string>
+    <string name="settings_mcp_wireguard_config_copied">WireGuard config copied</string>
+    <string name="settings_mcp_copy_endpoint_title">Copy local agent endpoint URL</string>
+    <string name="settings_terminal_font_title">Terminal font</string>
+    <string name="settings_terminal_font_subtitle">%1$s — tap to choose a TTF or OTF file</string>
+    <string name="settings_ime_flags_subtitle">Choose which EditorInfo flags the terminal sets</string>
+    <string name="settings_ctrl_shift_v_title">Ctrl+Shift+V pastes</string>
+    <string name="settings_ctrl_shift_v_subtitle">On a hardware keyboard, paste from the Android clipboard. Turn off to forward the keys to the remote shell.</string>
+    <string name="settings_always_show_tabs_title">Always show all tabs</string>
+    <string name="settings_always_show_tabs_subtitle">Show every navigation tab even when its category is empty</string>
+    <string name="settings_usb_guest_title">Expose USB devices to the Linux guest</string>
+    <string name="settings_usb_guest_subtitle">Let attached USB devices reach guest apps through the USB shim. Each attachment still requires consent.</string>
+    <string name="settings_view_proot_install_log_title">View PRoot install log</string>
+    <string name="settings_proot_install_log_subtitle">Per-phase events from Linux distribution installs</string>
+    <string name="settings_font_url_placeholder">https://…/font.ttf</string>
+    <string name="settings_ime_hide_suggestions_title">Hide suggestion strip</string>
+    <string name="settings_ime_suppress_corrections_title">Suppress autocorrect, capitalization, and spacing</string>
+    <string name="settings_ime_enable_autocorrect_title">Enable autocorrect protocol</string>
+    <string name="settings_ime_full_editor_title">Voice and swipe input (full editor)</string>
+    <string name="settings_ime_no_fullscreen_title">Suppress fullscreen IME</string>
+    <string name="settings_ime_no_learning_title">Block IME from learning</string>
+    <string name="settings_mcp_endpoint_title">Agent endpoint (MCP)</string>
+    <string name="settings_mcp_endpoint_enabled">Enabled — local MCP server on loopback. Write tools prompt for consent.</string>
+    <string name="settings_mcp_endpoint_disabled">Disabled — turn on to let local AI agents read state and, with consent, act on it</string>
+    <string name="settings_mcp_endpoint_starting">Starting the authenticated endpoint…</string>
+    <string name="settings_mcp_file_read_title">Allow agents to read file contents</string>
+    <string name="settings_mcp_file_read_enabled">Enabled — serve_file returns a single-use download URL after per-call consent</string>
+    <string name="settings_mcp_file_read_disabled">Disabled — serve_file requests fail immediately without prompting</string>
+    <string name="settings_mcp_terminal_input_title">Allow agents to queue terminal input</string>
+    <string name="settings_mcp_terminal_input_enabled">Enabled — queue_terminal_input watches session output and types the queued text at the next prompt after per-call consent</string>
+    <string name="settings_mcp_terminal_input_disabled">Disabled — queue_terminal_input requests fail immediately without prompting</string>
+    <string name="settings_mcp_endpoint_copied">Endpoint copied</string>
+    <string name="settings_mcp_copy_config_title">Copy local MCP client config</string>
+    <string name="settings_mcp_copy_config_subtitle">Loopback config for an MCP client running on this device</string>
+    <string name="settings_mcp_config_copied">Config copied</string>
+    <string name="settings_mcp_proot_available_title">Also available in PRoot</string>
+    <string name="settings_agent_activity_view">View agent activity</string>
+    <string name="settings_agent_activity_view_unseen">View agent activity  ●</string>
+    <string name="settings_agent_activity_subtitle">Every MCP call is recorded with redacted arguments</string>
+    <string name="settings_agent_confirm_destructive_title">Confirm destructive agent actions</string>
+    <string name="settings_agent_confirm_destructive_subtitle">Prompt before any agent call that writes, deletes, uploads, or disconnects. Read-only calls never prompt.</string>
+    <string name="settings_agent_forget_allows_title">Forget remembered allows</string>
+    <string name="settings_agent_forget_allows_subtitle">Re-prompt for every tool that previously received once-per-session approval.</string>
+    <string name="settings_agent_forget_allows_done">Remembered allows cleared</string>
+</resources>

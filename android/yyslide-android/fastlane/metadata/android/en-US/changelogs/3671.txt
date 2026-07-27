@@ -1,0 +1,14 @@
+step-ca / OIDC SSH cert integration (#133): register a step-ca CA
+in Keys → Certificate authorities, sign in via OIDC in your browser,
+and Haven mints a fresh Ed25519 keypair + cert against it. Lazy
+renewal at connect time refreshes expiring certs; a daily background
+check fires a notification when one's about to expire. Servers
+presenting a host cert signed by a registered CA skip TOFU when the
+cert is valid and the hostname is in its principals.
+
+CA registration moved from Settings to the Keys tab — credentials
+live with credentials. The Add/Edit CA dialog grows "Import from
+file" for the root cert (PEM/DER) and SSH host CA pubkey (.pub).
+
+SSH: replay PTY size on reconnect to fix corruption after WiFi hops
+(#120). i18n: Korean translations (#146).

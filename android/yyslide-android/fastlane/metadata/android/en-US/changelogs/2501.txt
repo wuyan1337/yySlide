@@ -1,0 +1,20 @@
+v5.17.0: keyboard robustness (#96)
+
+Four small defensive fixes to the terminal IME path picked up
+while investigating the CJK composition work:
+
+• Deferred Enter-fallback runnables are now cancelled when the
+  terminal view detaches, so a post-commit "\n" scheduled for
+  the next frame can't fire into a dead view if you leave the
+  screen within ~16 ms.
+• `resetImeBuffer()` now also clears the composing-text tracker
+  — a composition interrupted by a physical-keyboard key no
+  longer resumes against stale state and emit ghost backspaces.
+• Switching Standard keyboard / Compose mode while you're
+  mid-composition now erases the projected characters before
+  restarting the input connection, so the new connection starts
+  consistent with the terminal.
+• `deleteSurroundingText` caps its DEL-key loop at 4096 so a
+  misbehaving IME can't freeze the UI thread.
+
+No user-visible feature changes.

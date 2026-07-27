@@ -1,0 +1,20 @@
+v5.24.6: USB SD cards + cleaner file transfers
+
+USB SD cards and USB flash drives now appear as browsable roots in
+the Files tab alongside Internal Storage and Downloads. Plug a card
+reader into the phone and the volume shows up with its manufacturer
+label (e.g. "SanDisk USB Drive"), ready to copy from/to. Tested with
+a Sony RX10 IV SD card transcoding MP4 footage across the pipe to a
+remote SFTP server.
+
+Cleaner progress display during file transfers. The old "Preparing…"
+label that would sit for minutes on the first large file is replaced
+with live "Uploading 3 of 47: clip.mp4" counters that update as each
+file starts. For transfers from a local source (including USB SD)
+the redundant copy to internal cache is skipped — now a direct
+stream from source to destination, saving the temporary duplicate
+that used to fill internal storage with every file in the batch.
+
+Requires Android 11+ for USB SD card detection. Internal and USB
+storage access needs the existing "All files access" permission
+granted in a previous version.

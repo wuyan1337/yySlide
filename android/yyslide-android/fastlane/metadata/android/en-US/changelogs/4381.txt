@@ -1,0 +1,4 @@
+Single Packet Authorization (fwknop)
+
+- The cryptographic alternative to port knocking (#156): instead of an observable knock sequence, Haven sends one AES-256-CBC + HMAC-SHA256 UDP packet before connecting — it can't be read or replayed. Native Kotlin, verified against fwknop 2.6.11.
+- Per profile: Rijndael + HMAC keys (passphrase or base64), access spec (e.g. tcp/22), and allow-IP mode (Source/Resolve/Explicit). In-dialog "Test SPA" button; keys encrypted at rest.

@@ -1,0 +1,7 @@
+Fix terminal scroll corruption during animations
+
+- Fix scroll position drift from accidental touch during text animations
+- Auto-recover when scrollbackPosition drifts 1–3 lines from bottom
+- Snap flings settling near bottom fully to position 0
+- Fix moverect double-damage inefficiency in libvterm callback
+- Add 26 unit tests for scroll state behavior

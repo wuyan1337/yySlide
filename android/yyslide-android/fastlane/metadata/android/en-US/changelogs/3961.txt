@@ -1,0 +1,39 @@
+v5.38.0-rc1 — Phase 1 of multi-distro / multi-DE proot support
+(issue #162) plus a Shizuku-less install_apk fallback.
+
+• Distro / DE manifest. Internal data model for distros (id,
+  package family, per-arch rootfs URLs, baseline packages) and
+  desktop environments (id, per-family package lists, launch
+  spec). Today this still resolves to Alpine 3.21 and the
+  existing Openbox / Xfce4 / labwc-native — the UI is unchanged
+  bit-for-bit. Phase 2 (Debian + APT) lands next.
+
+• Rootfs path migration. New installs land at
+  proot/rootfs/alpine-3.21/. Existing installs at
+  proot/rootfs/alpine/ are renamed in-place on first launch; if
+  the rename fails (rare cross-fs case) the app keeps reading
+  from the legacy path so nothing breaks.
+
+• PackageOps strategy. apk / apt / pacman / xbps / nix routed
+  through a single interface; only APK is implemented in this
+  release. Calls into the unimplemented families raise a clear
+  "lands in Phase N" error rather than silently no-oping.
+
+• LaunchSpec sealed class. DesktopManager dispatch switches on
+  launch type (X11/VNC, native compositor, nested Wayland)
+  instead of the old isWayland / isNative flags. The
+  nested-Wayland branch is wired but reserved — its real
+  compositors (Hyprland / niri / Sway via wayvnc) ship in
+  Phase 4.
+
+• install_apk_from_url fallback. When Shizuku isn't running the
+  agent endpoint no longer hard-errors. The staged APK survives,
+  the system installer dialog launches via FileProvider, and the
+  MCP response carries `pending: true` so callers know to wait
+  for the user's one-tap confirmation.
+
+• New install_apk_from_backend MCP tool. Stream an APK from any
+  connected backend (local, SSH/SFTP, SMB, rclone, Reticulum)
+  and install it — same Shizuku-or-dialog path as the URL
+  variant. Gated by Settings → Agent endpoint → "Allow agents
+  to read file contents" and confirmed per-call.

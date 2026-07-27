@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <receiver
+            android:name="sh.haven.app.debug.DebugReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="sh.haven.app.DEBUG_CREATE_PROFILE" />
+                <action android:name="sh.haven.app.DEBUG_LIST_PROFILES" />
+                <action android:name="sh.haven.app.DEBUG_NAVIGATE" />
+                <action android:name="sh.haven.app.DEBUG_SCAN_RETICULUM" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

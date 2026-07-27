@@ -1,0 +1,10 @@
+v5.30.0 — WireGuard / Tailscale routing for non-SSH transports (#149)
+
+Per-app WG / Tailscale tunnels now apply to every TCP transport: pick
+a tunnel from "Route through" on any VNC, RDP, SMB, Reticulum, or
+rclone profile. Multiple profiles sharing one tunnel share one
+userspace handle, torn down on the last release. Legacy SOCKS5 /
+SOCKS4 / HTTP proxies are also honoured for non-SSH transports now.
+
+Smaller fixes: Desktop-tab Disconnect now reads as a ✕ icon (#148);
+Reset Zoom too. README cleanup.

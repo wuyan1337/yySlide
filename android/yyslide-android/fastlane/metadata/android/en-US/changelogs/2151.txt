@@ -1,0 +1,20 @@
+v5.2.0: Rclone HTTP preview + full ffmpeg codec set
+
+Instant preview for cloud files:
+- Convert dialog preview now streams over HTTP for rclone files
+  instead of downloading the whole file first
+- First frame appears in seconds regardless of file size — ffmpeg
+  reads what it needs via Range requests, rclone's VFS disk cache
+  handles the chunking
+- Seek slider is fast — repeat seeks near the same area are served
+  from the cache
+- "Fetching from cloud" indicator shown during rclone preview
+  generation so you know network is the bottleneck
+
+Full ffmpeg codec set:
+- Rebuilt ffmpeg with all built-in decoders, encoders, demuxers,
+  muxers, parsers, protocols, filters, and bitstream filters enabled
+- VP9, VP8, AV1 (native), Theora, WebM, DASH, FLV, WMV, RM and
+  dozens more formats now decode correctly
+- Fixes "no decoder found for vp9" errors on YouTube-sourced files
+- Binary size grew from ~14 MB to ~25 MB per executable

@@ -1,0 +1,17 @@
+v5.3.2: PRoot ships with a usable shell out of the box
+
+- Fresh Haven rootfs installs now seed /root/.profile, /root/.inputrc,
+  /root/README.md, /root/.ssh (0700), and /etc/profile.d/haven.sh
+- Baseline apk packages installed on first boot: bash, curl,
+  ca-certificates, openssh-client (best-effort, ignored if offline)
+- /root/.profile ships with PATH, colored prompt, standard aliases
+  and a `rexec` helper for running commands on a remote host
+  configured via ~/.ssh/config — the composition primitive Haven's
+  VISION describes (phone is point-of-presence, remote machines are
+  compute)
+- /root/README.md explains the environment, common apk install
+  recipes, how to set up SSH to a remote workstation, and how to
+  enable the "push-to-current-branch" workflow with
+  receive.denyCurrentBranch=updateInstead
+- All defaults are vendor-neutral: no cloned repos, no hardcoded
+  hosts, no specific CLIs or cloud services, no brand mentions

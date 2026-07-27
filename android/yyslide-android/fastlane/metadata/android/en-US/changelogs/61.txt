@@ -1,0 +1,2 @@
+- Fix biometric cancel leaving user stuck on lock screen
+- Fix settings screen not scrolling on smaller displays

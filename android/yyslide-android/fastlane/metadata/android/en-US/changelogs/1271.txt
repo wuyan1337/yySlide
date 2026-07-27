@@ -1,0 +1,8 @@
+- Unified build: RDP now available on F-Droid (IronRDP built from source)
+- Fix Mosh blank screen in release builds (R8 protobuf fix)
+- Fix Mosh character doubling (SSP diff base validation)
+- Fix tmux scrollback corruption during rapid scroll region changes
+- Per-connection "Disable alternate screen" toggle for GNU screen
+- Mosh/ET/RDP verbose logging with share/copy in connection log
+- Tab labels show session names; + button moved away from close x
+- Terminal data recorder for debugging rendering issues

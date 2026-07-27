@@ -1,0 +1,2 @@
+Aligned keyboard nav block with vertically stacked cursor keys
+VNC keyboard toolbar with modifier keys and symbols

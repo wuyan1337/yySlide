@@ -1,0 +1,58 @@
+v5.38.0 — Multi-distro proot Linux (issue #162) + a robust OS installer
+
+• Three new Linux distros alongside Alpine: Debian 12 (Bookworm)
+  via APT, Arch Linux ARM via pacman, and Void Linux via xbps. Each
+  ships as a distinct rootfs under proot/rootfs/<distroId>/; you
+  can install several side-by-side and switch between them in the
+  Desktop tab's Manage view. Existing Alpine installs migrate to
+  proot/rootfs/alpine-3.21/ on first launch with no data loss.
+
+• Desktop install / management surface moved to the top-level
+  Desktop tab. Tap the Manage icon in the TopAppBar to add a
+  distro, pick a DE, or watch the install progress. Sessions view
+  (the running VNC / RDP / Wayland tabs) stays one tap away. The
+  Connections topbar's redundant Local Shell and Desktops icons
+  are gone — local shells are added through Connection + → LOCAL
+  like every other backend.
+
+• Per-DE VNC port override. The install dialog now exposes the
+  VNC port (default 5901, range 5901–5999). The choice persists
+  per (distro, DE) pair, so each installed desktop comes back on
+  the same port on every subsequent Start.
+
+• Install button is disabled while the distro is still being set
+  up — no more tapping Install before the rootfs is unpacked and
+  wondering why nothing happens. The DE row shows
+  "install distro first" as the hint.
+
+• Per-phase install attribution. When something goes wrong the
+  error chip names the layer (Download, Extract, Bootstrap hook,
+  Baseline, Packages, VNC config) rather than collapsing every
+  failure into a generic "install failed". Each phase also writes
+  a row to the new Room-backed install log surfaced at
+  Settings → View PRoot install log; the log survives logcat
+  rotation and process restarts, which makes filing useful bug
+  reports straightforward.
+
+• MCP endpoint now binds to the existing foreground service.
+  Before this, the agent endpoint went away within seconds of
+  Haven backgrounding because the OS reclaimed the process; now
+  it stays up alongside any active SSH / Mosh / VNC / RDP / SFTP
+  session, with "MCP agent endpoint" listed in the notification.
+
+• Eight new MCP tools for driving the proot pipeline directly:
+  inspect_proot, list_distros, list_desktop_environments,
+  install_distro, delete_distro, install_desktop,
+  uninstall_desktop, get_proot_install_log. Read tools require no
+  consent prompt; write tools each prompt per call.
+
+• step-ca: OIDC discovery URL normalisation (#133). Authentik
+  provisioners configured with an issuer URL instead of a full
+  .well-known/openid-configuration URL now bootstrap cleanly
+  rather than failing with HTTP 404.
+
+Void note: Xfce4 / Openbox on Void are tagged Experimental — the
+CLI environment works fully; the X11 install path completes by
+matching termux/proot-distro's exact proot flag set. Native-Wayland
+DEs on Void (Sway, Hyprland, niri) are queued for v5.39 alongside
+the rest of the Phase 4 nested-compositor work.

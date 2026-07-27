@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tunnel_action_add">Add tunnel</string>
+    <string name="tunnel_action_delete">Delete tunnel</string>
+    <string name="tunnel_action_delete_short">Delete</string>
+    <string name="tunnel_action_cancel">Cancel</string>
+    <string name="tunnel_action_save">Save</string>
+    <string name="tunnel_delete_title">Delete tunnel?</string>
+    <string name="tunnel_delete_body">Remove \"%1$s\". Profiles referencing this tunnel will fail to connect until you pick another one.</string>
+    <string name="tunnel_empty_title">No tunnels configured yet</string>
+    <string name="tunnel_empty_body">Add a WireGuard config to route individual connection profiles through it — no system-wide VPN required.</string>
+    <string name="tunnel_sign_in_again">Sign in again</string>
+    <string name="tunnel_row_summary">%1$s · added %2$s</string>
+    <string name="tunnel_type_unknown">Unknown</string>
+    <string name="tunnel_type_wireguard" translatable="false">WireGuard</string>
+    <string name="tunnel_type_tailscale" translatable="false">Tailscale</string>
+    <string name="tunnel_type_cloudflare" translatable="false">Cloudflare Tunnel</string>
+    <string name="tunnel_field_label">Label</string>
+    <string name="tunnel_wireguard_description">Paste a wg-quick style config or load a .conf file. Only [Interface] and [Peer] fields are read; unknown keys (PostUp, Table, MTU) are ignored. Hostname endpoints and DNS names are resolved at tunnel start.</string>
+    <string name="tunnel_wireguard_load_file">Load from file…</string>
+    <string name="tunnel_wireguard_config_label">WireGuard config</string>
+    <string name="tunnel_wireguard_config_placeholder" translatable="false">[Interface]\nPrivateKey = …\nAddress = 10.0.0.2/32\n\n[Peer]\nPublicKey = …\nEndpoint = vpn.example.com:51820\nAllowedIPs = 0.0.0.0/0</string>
+    <string name="tunnel_tailscale_description">Generate an auth key in the Tailscale admin console (Settings → Keys), or in your Headscale CLI (`headscale preauthkeys create`). yySlide joins your tailnet on first use and reuses the node state after that, so a one-time key is fine. Reusable keys let you reconnect after reinstall.</string>
+    <string name="tunnel_tailscale_auth_key_label">Auth key (tskey-auth-…)</string>
+    <string name="tunnel_tailscale_control_url_label">Control plane URL (optional)</string>
+    <string name="tunnel_tailscale_control_url_placeholder" translatable="false">https://headscale.example.com</string>
+    <string name="tunnel_tailscale_control_url_hint">Leave blank for Tailscale\'s hosted control plane. Set a Headscale URL for a self-hosted coordination server.</string>
+
+    <string name="cloudflare_experimental_banner">Experimental — yySlide implements the same WebSocket wire protocol as `cloudflared access ssh`. Tested against a small set of tenants.</string>
+    <string name="cloudflare_intro">Route SSH through a Cloudflare Tunnel published hostname — the in-app equivalent of `cloudflared access ssh --hostname &lt;host&gt;`. Public Tunnel routes need only a hostname. Access-protected routes additionally require a JWT — tap Sign in to capture one via your team\'s IdP.</string>
+    <string name="cloudflare_hostname_label">Hostname (e.g. ssh.example.com)</string>
+    <string name="cloudflare_jwt_missing">No JWT — only works for unprotected Tunnel routes</string>
+    <string name="cloudflare_jwt_expired">JWT expired — sign in again</string>
+    <string name="cloudflare_jwt_expires_hours">Signed in · expires in ~%1$d h</string>
+    <string name="cloudflare_jwt_expires_less_than_hour">Signed in · expires in &lt;1 h</string>
+    <string name="cloudflare_jwt_signed_in">Signed in</string>
+    <string name="cloudflare_test_running">Testing…</string>
+    <string name="cloudflare_test_action">Test connection</string>
+    <string name="cloudflare_advanced_hide">Hide advanced</string>
+    <string name="cloudflare_advanced_show">Advanced (Access auth, bastion, paste JWT)</string>
+    <string name="cloudflare_sign_in">Sign in via Cloudflare Access</string>
+    <string name="cloudflare_reauthenticate">Re-authenticate</string>
+    <string name="cloudflare_team_domain_label">Team domain (optional)</string>
+    <string name="cloudflare_team_domain_placeholder" translatable="false">myteam.cloudflareaccess.com</string>
+    <string name="cloudflare_team_domain_hint">Only needed for Access-protected routes; lets yySlide capture the team-domain cookie as a fallback if the per-app one is missing.</string>
+    <string name="cloudflare_jump_destination_label">Jump destination (optional)</string>
+    <string name="cloudflare_jump_destination_placeholder" translatable="false">internal-host:22</string>
+    <string name="cloudflare_jump_destination_hint">For bastion-mode multi-target tunnels, this is forwarded as `Cf-Access-Jump-Destination`. Leave blank for one-target routes.</string>
+    <string name="cloudflare_headless_jwt_hint">For headless setups, run `cloudflared access token --app https://&lt;hostname&gt;` on another machine and paste the JWT here. Expiry is parsed from the token automatically.</string>
+    <string name="cloudflare_jwt_label">Cloudflare Access JWT (optional)</string>
+</resources>

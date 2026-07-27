@@ -1,0 +1,24 @@
+v5.2.1: Rclone convert/stream, destination picker, copy defaults
+
+Convert:
+- Rclone convert now streams the source over HTTP instead of downloading
+  the whole file first — transcode starts in seconds regardless of
+  file size. New "Download first" toggle forces the legacy full-download
+  path for offline conversion or flaky connections.
+- New "Save to" picker in the convert dialog: "Downloads (this device)"
+  or "Same folder as source". Uploading back to cloud/SFTP/SMB is
+  supported with live progress.
+- Copy (remux) is now the default for both video and audio encoders —
+  instant lossless remux for most files. Container auto-matches the
+  source extension so tapping Convert usually does the right thing
+  with no changes.
+
+Stream & play:
+- HLS streaming now works for rclone files — same HTTP-streaming trick
+  as the convert preview.
+- Stream URL opens in the browser at the device's LAN IP (shareable
+  from the address bar) and is auto-copied to the clipboard.
+- Tap a media file on the rclone tab to play it directly in your
+  system media player (VLC, MX Player, etc.).
+- Fix VLC playback failing on file names with spaces or special
+  characters — URL path is now properly encoded.

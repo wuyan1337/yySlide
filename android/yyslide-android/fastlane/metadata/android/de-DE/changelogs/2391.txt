@@ -1,0 +1,20 @@
+v5.8.4: IME-Eingabe + FIDO2-Diagnose
+
+Japanische/chinesische/koreanische Tastatureingabe
+funktioniert jetzt im Terminal. Der Standard-Eingabemodus
+wurde von TYPE_NULL (nur rohe Tastendrücke) auf
+TYPE_CLASS_TEXT (IME-Kompositionsprotokoll) umgestellt,
+sodass CJK-Eingabemethoden Zeichen zusammensetzen
+können, bevor sie bestätigt werden. Autovervollständigung
+und Vorschläge bleiben deaktiviert. (#96)
+
+Die FIDO2-Sicherheitsschlüssel-Authentifizierung
+protokolliert jetzt jeden Schritt des CTAP-Austauschs
+— USB-Berechtigungsergebnis, CTAPHID-Init,
+GetAssertion-Befehl und Antwortstatus. Wenn ein
+Sicherheitsschlüssel fehlschlägt, zeigt der Fehlerdialog
+den spezifischen CTAP-Grund an (z.B. „Keine passenden
+Anmeldedaten auf diesem Schlüssel") anstelle einer
+generischen Passwort-Rückfallaufforderung.
+USB-Berechtigungsanfragen haben jetzt ein Timeout von
+30 Sekunden statt unbegrenztem Blockieren. (#15)

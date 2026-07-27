@@ -1,0 +1,8 @@
+Splash dark mode follow-up: the in-app Light / Dark theme override now
+reaches the pre-Compose splash window as well, so users who force a
+mode opposite the system don't see a brief mismatch flash on cold
+launch (#153).
+
+Implemented via AppCompatDelegate.setDefaultNightMode in
+Application.onCreate (synchronous DataStore read) plus a reactive
+mirror in MainActivity so Settings changes take effect immediately.

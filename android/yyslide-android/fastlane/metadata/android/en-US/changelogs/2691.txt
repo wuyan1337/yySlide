@@ -1,0 +1,7 @@
+v5.24.5: CI runner upgrade (no runtime change)
+
+Repo moved to the new GlassHaven organisation and the release
+pipeline now uses GitHub's 8-core larger runners (test + build).
+Release wall clock drops from ~40 min to ~15 min.
+
+No user-facing change vs v5.24.4.

@@ -1,0 +1,10 @@
+- Fix tap-to-open hyperlink detection swallowing normal text that
+  follows a URL on the same line. Previously "https://…/78.  i
+  think…" was resolved as one giant "ithinktheis…" blob because
+  the wrapped-URL reassembler collapsed any whitespace between
+  URL-safe characters regardless of row boundary. The detector
+  now preserves within-row whitespace and only joins rows that
+  are genuine URL continuations (next row must start URL-safe at
+  column 0, no leading indentation). Same fix applied to the
+  visual underline continuation so it no longer extends onto
+  prose below a URL either.

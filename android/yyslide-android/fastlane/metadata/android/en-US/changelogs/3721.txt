@@ -1,0 +1,17 @@
+v5.32.0-rc2 — same features, fixes the Room schema-49 hash crash
+
+In v5.31.0 the four new ConnectionProfile columns (autoReconnect,
+reconnectMaxAttempts, reconnectOnNetworkChange, tunnelOnly) were added
+to the entity without bumping the database version from 49. Devices
+upgrading from v5.30.0 saw a hash-mismatch crash on first launch
+because the stored schema-49 hash no longer matched what the
+v5.31.0+ entity-graph computed.
+
+Bumps to schema 50 with a defensive 49→50 migration that adds the
+columns if they're missing. Devices that installed v5.31.0+ fresh
+already have the columns from the from-scratch CREATE TABLE; the
+migration's ALTER ADD is guarded by a PRAGMA table_info check.
+
+Otherwise identical to rc1: drag-select into scrollback (#94),
+softWrapped-flag-based copy rejoin, configurable per-tab scrollback
+length (#151), and OSC 133 tap-to-position cursor.

@@ -1,0 +1,9 @@
+v5.4.2: Mosh arrow keys work in mutt / emacs / less
+
+- Mosh sessions now force DECCKM=on at connect, matching
+  upstream mosh-client. Up/Down/Left/Right now send the
+  application-mode SS3 escape sequences mutt, emacs, and
+  less bind to their navigation keymaps. Fixes #73.
+- Verified on-device: the client-side libvterm emits
+  ESC O A for arrow keys from the very first byte of the
+  mosh session, not ESC [ A as before.

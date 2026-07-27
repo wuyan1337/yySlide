@@ -1,0 +1,19 @@
+v5.43.0 — desktop input + keyboard polish
+
+• Native Wayland (labwc) keyboard: typed characters now appear
+  immediately instead of buffering until you press space or close the
+  keyboard, and backspace no longer duplicates the word. The input path
+  was leaving text in the IME's composing buffer; it now commits each
+  keystroke as you type.
+
+• Desktop keyboard: added a Super (⊞) key so you can drive nested
+  Wayland compositor keybinds — e.g. Super+D for the app picker,
+  Super+Enter for a terminal in Sway/Hyprland/niri. Sits inline on the
+  existing key row.
+
+• Desktop: the monitor view now connects to a desktop that's already
+  running (e.g. started by an agent) instead of showing an empty screen.
+
+• Connections: the Keys tab now appears once you have an SSH connection,
+  and the connection editor points you to it — so attaching an SSH key
+  is discoverable without hunting through Settings.

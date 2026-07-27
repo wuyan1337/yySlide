@@ -1,0 +1,5 @@
+- Show a dialog during FIDO2 SSH authentication telling you to plug
+  in or tap your security key, then to touch it once detected.
+  Previously the connect attempt just spun silently with no
+  on-screen indication that a security key was being requested
+  (#15 follow-up).

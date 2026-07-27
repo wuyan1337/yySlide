@@ -1,0 +1,5 @@
+v5.43.1 — F-Droid build fix
+
+• Fix the F-Droid (reproducible) build, which failed to link the
+  native Wayland desktop (labwc) with a duplicate-symbol error in the
+  XWayland window-icon code. No app behaviour changes versus 5.43.0.

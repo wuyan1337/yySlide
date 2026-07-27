@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_done">تم</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_ok">موافق</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_edit">تعديل</string>
+    <string name="common_rename">إعادة تسمية</string>
+    <string name="common_create">إنشاء</string>
+    <string name="common_connect">اتصال</string>
+    <string name="common_disconnect">قطع الاتصال</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_paste">لصق</string>
+    <string name="common_label">التسمية</string>
+    <string name="common_password">كلمة المرور</string>
+    <string name="common_port">المنفذ</string>
+    <string name="common_host">المضيف</string>
+    <string name="common_username">اسم المستخدم</string>
+    <string name="common_install">تثبيت</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_allow">سماح</string>
+    <string name="common_not_now">ليس الآن</string>
+    <string name="common_import">استيراد</string>
+    <string name="common_add">إضافة</string>
+    <string name="common_download">تنزيل</string>
+    <string name="common_unlock">فتح القفل</string>
+
+    <!-- SftpScreen navigation -->
+    <string name="sftp_navigate_up">الانتقال للأعلى</string>
+    <string name="sftp_hide_hidden_files">إخفاء الملفات المخفية</string>
+    <string name="sftp_show_hidden_files">إظهار الملفات المخفية</string>
+    <string name="sftp_sort">ترتيب</string>
+    <string name="sftp_refresh">تحديث</string>
+
+    <!-- FAB actions -->
+    <string name="sftp_new_folder">مجلد جديد</string>
+    <string name="sftp_upload_folder">رفع مجلد</string>
+    <string name="sftp_upload_file">رفع ملف</string>
+    <string name="sftp_paste">لصق</string>
+    <string name="sftp_fab_close">إغلاق</string>
+    <string name="sftp_fab_actions">الإجراءات</string>
+
+    <!-- Clipboard banner -->
+    <string name="sftp_items_cut">تم قص %d عنصر</string>
+    <string name="sftp_items_cut_plural">تم قص %d عناصر</string>
+    <string name="sftp_items_copied">تم نسخ %d عنصر</string>
+    <string name="sftp_items_copied_plural">تم نسخ %d عناصر</string>
+
+    <!-- Empty states -->
+    <string name="sftp_empty_directory">مجلد فارغ</string>
+    <string name="sftp_parent_directory">المجلد الأصل</string>
+    <string name="sftp_navigate_up_icon">أعلى</string>
+
+    <!-- Snackbar messages -->
+    <string name="sftp_downloaded">تم تنزيل %s</string>
+    <string name="sftp_open">فتح</string>
+    <string name="sftp_no_app_to_open">لا يوجد تطبيق لفتح هذا الملف</string>
+    <string name="sftp_path_copied">تم نسخ المسار</string>
+
+    <!-- FileListItem -->
+    <string name="sftp_directory">مجلد</string>
+    <string name="sftp_directory_icon">مجلد</string>
+    <string name="sftp_file_icon">ملف</string>
+    <string name="sftp_download">تنزيل</string>
+    <string name="sftp_cut">قص</string>
+    <string name="sftp_copy_path">نسخ المسار</string>
+
+    <!-- SortDropdown -->
+    <string name="sftp_sort_name_asc">الاسم أ-ي</string>
+    <string name="sftp_sort_name_desc">الاسم ي-أ</string>
+    <string name="sftp_sort_size_asc">الحجم (الأصغر)</string>
+    <string name="sftp_sort_size_desc">الحجم (الأكبر)</string>
+    <string name="sftp_sort_date_asc">التاريخ (الأقدم)</string>
+    <string name="sftp_sort_date_desc">التاريخ (الأحدث)</string>
+
+    <!-- EmptyState -->
+    <string name="sftp_file_browser_title">مستعرض ملفات SFTP</string>
+    <string name="sftp_connect_to_browse">اتصل بخادم لتصفح الملفات</string>
+
+    <!-- New Folder dialog -->
+    <string name="sftp_new_folder_title">مجلد جديد</string>
+    <string name="sftp_folder_name">اسم المجلد</string>
+    <string name="sftp_create">إنشاء</string>
+
+    <!-- Upload conflict dialog -->
+    <string name="sftp_file_already_exists">الملف موجود بالفعل</string>
+    <string name="sftp_file_exists_message">\"%s\" موجود بالفعل في هذا الموقع.</string>
+    <string name="sftp_replace">استبدال</string>
+    <string name="sftp_replace_all">استبدال الكل</string>
+    <string name="sftp_skip">تخطي</string>
+    <string name="sftp_skip_all">تخطي الكل</string>
+    <string name="sftp_play">Play</string>
+    <string name="sftp_play_folder">Play folder</string>
+    <string name="sftp_sync">Sync</string>
+    <string name="sftp_folder_sync">Folder Sync</string>
+    <string name="sftp_source">Source</string>
+    <string name="sftp_destination">Destination</string>
+    <string name="sftp_destination_path">Path</string>
+    <string name="sftp_mode_copy">Copy</string>
+    <string name="sftp_mode_sync">Mirror</string>
+    <string name="sftp_mode_move">Move</string>
+    <string name="sftp_mode_copy_desc">Copy new and updated files. No deletions.</string>
+    <string name="sftp_mode_sync_desc">Make destination identical to source. Deletes extras.</string>
+    <string name="sftp_mode_move_desc">Move files to destination. Deletes from source.</string>
+    <string name="sftp_advanced_filters">Advanced filters</string>
+    <string name="sftp_include_patterns">Include patterns (one per line)</string>
+    <string name="sftp_exclude_patterns">Exclude patterns (one per line)</string>
+    <string name="sftp_min_size">Min size</string>
+    <string name="sftp_max_size">Max size</string>
+    <string name="sftp_bandwidth_limit">Bandwidth limit</string>
+    <string name="sftp_dry_run">Dry run (preview only)</string>
+    <string name="sftp_start_sync">Start</string>
+    <string name="sftp_preview">Preview</string>
+    <string name="sftp_dry_run_results">Dry Run Results</string>
+    <string name="sftp_start_for_real">Start for real</string>
+    <string name="sftp_sync_cancelled">Sync cancelled</string>
+    <!-- Rename dialog -->
+    <string name="sftp_rename_title">Rename</string>
+    <string name="sftp_new_name">New name</string>
+
+    <!-- Share link -->
+    <string name="sftp_share_link">Share link</string>
+    <string name="sftp_link_copied">Link copied</string>
+
+    <!-- Folder size -->
+    <string name="sftp_folder_size">Folder size</string>
+    <string name="sftp_folder_size_title">Folder Size</string>
+    <string name="sftp_calculating_size">Calculating…</string>
+
+    <!-- DLNA -->
+    <string name="sftp_start_dlna">Start DLNA server</string>
+    <string name="sftp_stop_dlna">Stop DLNA server</string>
+    <!-- Convert -->
+    <string name="sftp_convert">Convert</string>
+    <string name="sftp_convert_title">Convert media</string>
+    <string name="sftp_convert_format">Output format</string>
+    <string name="sftp_converting">Converting %s</string>
+    <string name="sftp_convert_done">Saved to %s</string>
+    <!-- Stream -->
+    <string name="sftp_stream">Stream</string>
+    <string name="sftp_streaming">Streaming on %s</string>
+    <string name="sftp_stream_stop">Stop</string>
+    <string name="sftp_downloading_for_convert">Downloading for conversion…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="sftp_play_in_browser">تشغيل في المتصفح</string>
+    <string name="sftp_stream_to_network">بث إلى الشبكة</string>
+    <string name="sftp_selection_enter">تحديد</string>
+    <string name="sftp_selection_selected">محدد</string>
+    <string name="sftp_selection_unselected">غير محدد</string>
+    <string name="sftp_selection_clear">مسح التحديد</string>
+    <string name="sftp_selection_select_all">تحديد الكل</string>
+    <string name="sftp_selection_count">%1$d محدد</string>
+    <string name="sftp_delete_selection_title">حذف العناصر المحددة؟</string>
+    <string name="sftp_delete_selection_message">سيتم حذف %1$d عنصر. لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="sftp_filter">تصفية الملفات</string>
+    <string name="sftp_permissions">الأذونات…</string>
+    <string name="sftp_permissions_dialog_title">الأذونات</string>
+    <string name="sftp_permissions_dialog_title_batch">الأذونات — %1$d عنصر</string>
+    <string name="sftp_permissions_octal">ثماني (مثل 0755)</string>
+    <string name="sftp_permissions_owner">المالك</string>
+    <string name="sftp_permissions_group">المجموعة</string>
+    <string name="sftp_permissions_other">آخرون</string>
+    <string name="sftp_permissions_read">قراءة</string>
+    <string name="sftp_permissions_write">كتابة</string>
+    <string name="sftp_permissions_execute">تنفيذ</string>
+    <string name="sftp_permissions_apply">تطبيق</string>
+    <string name="sftp_ownership">المالك…</string>
+    <string name="sftp_ownership_dialog_title">المالك</string>
+    <string name="sftp_ownership_dialog_title_batch">المالك — %1$d عنصر</string>
+    <string name="sftp_ownership_label">المالك</string>
+    <string name="sftp_ownership_hint">أدخل المستخدم أو المجموعة أو المستخدم:المجموعة. تتم تسوية الأسماء على الخادم البعيد. يتطلب عادةً صلاحية root.</string>
+    <string name="sftp_ownership_apply">تطبيق</string>
+    <string name="sftp_media">الوسائط…</string>
+    <string name="sftp_stream_folder">بث قائمة تشغيل المجلد</string>
+    <string name="sftp_output_filename">اسم ملف الإخراج</string>
+    <string name="sftp_convert_sub">إعادة ترميز الفيديو أو الصوت مع المرشحات</string>
+    <string name="sftp_media_info">معلومات الوسائط</string>
+    <string name="sftp_media_info_sub">الترميز والمدة والتدفقات</string>
+    <string name="sftp_media_info_probing">جارٍ الفحص…</string>
+    <string name="sftp_media_info_failed">فشل ffprobe: %s</string>
+    <string name="sftp_media_info_container">الحاوية</string>
+    <string name="sftp_media_info_duration">المدة</string>
+    <string name="sftp_media_info_bitrate">معدل البت</string>
+    <string name="sftp_media_info_size">الحجم</string>
+    <string name="sftp_media_info_video_streams">فيديو</string>
+    <string name="sftp_media_info_audio_streams">صوت</string>
+    <string name="sftp_media_info_subtitle_streams">الترجمات</string>
+    <string name="sftp_media_info_video">فيديو</string>
+    <string name="sftp_media_info_audio">صوت</string>
+    <string name="sftp_media_info_subtitle">ترجمة</string>
+    <string name="sftp_media_info_chapters">الفصول: %d</string>
+    <string name="sftp_media_info_copy">نسخ JSON</string>
+    <string name="sftp_trim">اقتصاص (بدون فقد)</string>
+    <string name="sftp_trim_sub">اقتصاص مقطع دون إعادة الترميز</string>
+    <string name="sftp_trim_title">اقتصاص المقطع</string>
+    <string name="sftp_trim_explain">البداية والنهاية بصيغة H:MM:SS. نسخ التدفق دون إعادة ترميز.</string>
+    <string name="sftp_trim_start">البداية</string>
+    <string name="sftp_trim_end">النهاية</string>
+    <string name="sftp_trim_action">اقتصاص</string>
+    <string name="sftp_extract_audio">استخراج الصوت</string>
+    <string name="sftp_extract_audio_sub">حفظ المقطوعة الصوتية بصيغة MP3/AAC/Opus/FLAC</string>
+    <string name="sftp_extract_audio_title">استخراج الصوت</string>
+    <string name="sftp_extract_audio_format">الصيغة</string>
+    <string name="sftp_extract_audio_bitrate">معدل البت: %d kbps</string>
+    <string name="sftp_extract_audio_action">استخراج</string>
+    <string name="sftp_contact_sheet">ورقة المعاينات</string>
+    <string name="sftp_contact_sheet_sub">شبكة من الصور المصغرة المأخوذة عبر الملف</string>
+    <string name="sftp_contact_sheet_title">ورقة المعاينات</string>
+    <string name="sftp_contact_sheet_explain">تستخرج إطارات بفواصل متساوية من المقطع وتدمجها في صورة PNG مجزأة.</string>
+    <string name="sftp_contact_sheet_cols">الأعمدة</string>
+    <string name="sftp_contact_sheet_rows">الصفوف</string>
+    <string name="sftp_contact_sheet_tile">حجم البلاطة: %1$d × %2$d</string>
+    <string name="sftp_contact_sheet_action">إنشاء الورقة</string>
+
+    <!-- #135 third pass -->
+    <string name="sftp_attach_use_folder">Use this folder</string>
+    <string name="sftp_paste_discard">Discard</string>
+    <string name="sftp_paste_resume">Resume</string>
+    <string name="sftp_paste_discard_title">Discard unfinished paste?</string>
+    <string name="sftp_paste_discard_body">Pending files will be removed from the queue. This cannot be undone.</string>
+    <string name="sftp_paste_keep">Keep</string>
+    <string name="sftp_preview_frame_desc">Preview frame — tap for fullscreen</string>
+        <string name="sftp_convert_container">Container</string>
+    <string name="sftp_convert_video_encoder">Video encoder</string>
+    <string name="sftp_convert_audio_encoder">Audio encoder</string>
+    <string name="sftp_convert_save_to">Save to</string>
+    <string name="sftp_preview_stop">Stop</string>
+    <string name="sftp_preview_preparing">Preparing…</string>
+    <string name="sftp_preview_play5s">Play 5s preview</string>
+    <string name="sftp_fullscreen_preview">Fullscreen preview</string>
+    <string name="sftp_conflict_title">File already exists</string>
+    <string name="sftp_conflict_overwrite">Overwrite</string>
+    <string name="sftp_conflict_keep_both">Keep both (rename)</string>
+    <string name="sftp_conflict_skip">Skip</string>
+    <string name="sftp_compression_quick_presets">Quick presets</string>
+    <string name="sftp_compression_resolution">Resolution</string>
+    <string name="sftp_compression_quality">Quality (CRF %1$d)</string>
+    <string name="sftp_compression_speed">Encode speed</string>
+    <string name="sftp_compression_audio_bitrate">Audio bitrate</string>
+    <string name="sftp_filter_title">Filters</string>
+    <string name="sftp_filter_rotation">Rotation</string>
+
+</resources>

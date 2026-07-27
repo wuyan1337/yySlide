@@ -1,0 +1,22 @@
+v5.22.0-rc1: keyboard-interactive 2FA / PAM prompt (#100)
+
+Servers using keyboard-interactive authentication for
+two-factor auth, TOTP, or PAM challenge-response used to
+silently fail after the first prompt because Haven had no
+UI for collecting additional responses. Haven already
+advertised keyboard-interactive in its PreferredAuthentications
+list; this release plugs in the corresponding dialog.
+
+- Multi-prompt flow: a dialog appears with one field per
+  server-issued prompt, masked when the server sets echo=false
+  (passwords, codes). Submit sends all responses; Cancel
+  aborts the auth attempt.
+- Profiles with a saved password auto-answer a solo "Password:"
+  round silently, so you're only prompted for things the
+  server actually expects typed input for (a TOTP code etc.).
+
+RC because I don't have a 2FA-configured server to test
+against here. If you SSH to a host that prompts you for an
+authenticator code, please try this build and feed back on
+GH #100 — is the dialog clear, does submit work, does Cancel
+actually abort without hanging?

@@ -1,0 +1,5 @@
+v2.4.2
+- Private keys now encrypted at rest (AES-256-GCM, Android Keystore)
+- Fix: imported encrypted keys now work for auth (stores decrypted key)
+- Fix: try all stored keys when no specific key assigned to connection
+- Backup/restore handles key encryption transparently

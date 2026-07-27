@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yySlide Privacy Policy</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222; }
+        h1 { font-size: 1.8em; }
+        h2 { font-size: 1.25em; margin-top: 1.7em; }
+        .updated { color: #666; font-size: 0.9em; }
+        code { overflow-wrap: anywhere; }
+    </style>
+</head>
+<body>
+    <h1>yySlide Privacy Policy</h1>
+    <p class="updated">Last updated: 27 July 2026</p>
+    <p>This policy applies to the yySlide Android application (<code>com.yyslide.android</code>). yySlide is a remote-access, file-transfer, local Linux, cloud-storage, and optional encrypted-sync client. It does not include advertising, analytics, tracking, or automatic crash-reporting SDKs. It does make the network connections described below when you enable or use the corresponding features.</p>
+
+    <h2>Data stored on your device</h2>
+    <p>Depending on the features you use, yySlide stores the following in Android app-private storage:</p>
+    <ul>
+        <li>Connection profiles, groups, host names, ports, user names, proxy/tunnel settings, known-host fingerprints, workspaces, and bookmarks.</li>
+        <li>Credentials and security material you provide or generate, such as passwords, SSH private keys and certificates, TOTP secrets, cloud-provider tokens, and step-ca configuration. Android Keystore-backed encryption or biometric protection is used where the relevant feature supports it.</li>
+        <li>App preferences, yySlide Cloud server address, encrypted authentication token and vault key, and synchronization state.</li>
+        <li>Local connection history, MCP consent/audit records, installation logs, and optional verbose protocol logs. Verbose logs can contain server messages, paths, and other session details, so enable and share them carefully.</li>
+        <li>Files you explicitly download, cache, edit, export, or import, including optional Linux root filesystems, fonts, and media output.</li>
+    </ul>
+    <p>Android's app sandbox normally prevents other apps from reading this data. Clearing yySlide's storage or uninstalling the app removes its local private data, subject to Android backup/device-management behavior. Files you exported to shared storage are not removed automatically.</p>
+
+    <h2>Network activity</h2>
+    <p>yySlide connects only as needed for a feature you choose or configure. Those connections can include:</p>
+    <ul>
+        <li>SSH, Mosh, Eternal Terminal, SFTP/SCP, SMB, VNC, RDP, Reticulum, Tor, WireGuard, Tailscale/Headscale, Cloudflare Access, step-ca, port-knocking/SPA, and other user-configured hosts or tunnels.</li>
+        <li>Cloud-storage providers configured through rclone, such as Google Drive, Dropbox, OneDrive, S3-compatible services, or WebDAV. Each provider receives the requests and credentials needed for the operations you initiate and applies its own privacy policy.</li>
+        <li>Downloads you request, including Linux distributions/root filesystems, packages, fonts, media components, and other resources from their respective project mirrors or a URL you provide. Optional Linux-environment installs fetch Alpine artifacts from <code>dl-cdn.alpinelinux.org</code> and Debian, Arch, or Void root filesystems from release assets published through <code>github.com/termux/proot-distro</code>; those services receive ordinary request and network metadata.</li>
+        <li>External links open only when you choose them and are then governed by the destination site's privacy practices.</li>
+        <li>If you explicitly choose the SPA <strong>Resolve public IP</strong> mode, yySlide sends an HTTPS request to <code>api.ipify.org</code>. ipify receives your device's public IP address and ordinary network metadata and returns the detected address for the SPA request.</li>
+        <li>Optional local-network discovery, which probes the local subnet when you explicitly start a scan.</li>
+        <li>The optional MCP agent endpoint. It listens on device loopback by default, requires a per-install bearer token, and can be exposed through a reverse SSH or WireGuard tunnel only when you enable that configuration. Authorized MCP clients can receive data and perform consent-gated actions within the capabilities you enable.</li>
+    </ul>
+    <p>Remote hosts and service operators can ordinarily observe connection metadata such as your IP address, time, destination account, and traffic volume, and may receive the content required by the protocol or operation. Their retention and privacy practices are outside yySlide's control.</p>
+
+    <h2>Optional yySlide Cloud synchronization</h2>
+    <p>Cloud synchronization is off until you sign in. The default service address is <code>https://yyslide.ccwu.cc</code>, and you may enter a different compatible server.</p>
+    <p>When you sign in, yySlide sends the server address, user name, password, and optional TOTP code to the selected server over HTTPS for authentication. The password and TOTP code are not retained by the Android client after authentication. The client stores the returned authentication token and vault key locally using its credential-encryption helper.</p>
+    <p>When you synchronize, supported yySlide configuration data is encrypted on the device with AES-256-GCM before upload. The sync server receives the encrypted vault payload, account/authentication records, revision/event information needed for synchronization, and ordinary server logs/connection metadata; it is not sent the plaintext vault payload by the Android client. Signing out removes the local Cloud credentials but does not necessarily delete the remote account or encrypted vault. Remote retention and deletion are controlled by the selected server operator.</p>
+
+    <h2>Permissions and user actions</h2>
+    <p>yySlide requests Android permissions only for enabled features, for example Internet/network access, notifications and foreground services for long-running sessions, biometric authentication, NFC/USB hardware-key or USB-device access, camera/photo picker for QR/image features, and user-selected file access. Android permission prompts and system pickers control access where applicable.</p>
+    <p>Backups, clipboard operations, file transfers, shares, and exports occur when you request them. Data you send to another app, remote host, storage provider, or MCP client is then governed by that recipient.</p>
+
+    <h2>Data sharing and third-party services</h2>
+    <p>yySlide does not sell personal data and does not send usage analytics, advertising identifiers, or telemetry to the yySlide maintainers. It does not bundle advertising or third-party analytics/crash-reporting services. Data is shared with configured hosts and providers only as required to carry out the features you use, as described above. The built-in ipify request is made only when you select <strong>Resolve public IP</strong> for SPA; ipify's handling of that request is governed by its own privacy practices.</p>
+
+    <h2>Security and your choices</h2>
+    <p>You can reduce data exposure by leaving Cloud sync and MCP disabled, avoiding verbose logs, using biometric/key protection, reviewing host keys and certificates, and removing profiles, credentials, logs, exported files, and remote service data you no longer need. No software or network service can guarantee absolute security.</p>
+
+    <h2>Open source and contact</h2>
+    <p>yySlide is licensed under the GNU Affero General Public License v3.0. Source code is available at <a href="https://github.com/wuyan1337/yySlide">github.com/wuyan1337/yySlide</a>.</p>
+    <p>For privacy questions or deletion help for the default yySlide Cloud service, open an issue at <a href="https://github.com/wuyan1337/yySlide/issues">github.com/wuyan1337/yySlide/issues</a>. Do not include passwords, private keys, access tokens, TOTP secrets, or sensitive logs in a public issue.</p>
+    <p>Material changes to this policy will be published in the repository and may be noted in release notes.</p>
+</body>
+</html>

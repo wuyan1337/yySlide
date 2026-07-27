@@ -1,0 +1,10 @@
+- Connect dialog no longer says "Leave empty to connect with SSH
+  key" for profiles with a passphrase-protected key assigned —
+  the field is now labelled "Key passphrase" and the hint reflects
+  the actual key name. Previously entering nothing gave a silent
+  JSch decrypt failure (#75).
+- Enable Verbose SSH logging in Settings to see agent-forwarding
+  diagnostics: identities registered/skipped, the full JSch
+  identity repo contents, and each shell/exec channel that opens
+  agent forwarding. Helps diagnose "ssh-add -l empty on remote"
+  issues (#75).

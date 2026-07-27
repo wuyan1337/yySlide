@@ -1,0 +1,4 @@
+v2.4.3
+- Tapping the Haven notification brings the app to the foreground
+- Biometric lock is respected when returning via notification
+- Ed25519 encrypted key import handled gracefully

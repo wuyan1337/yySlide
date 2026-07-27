@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Cancel</string>
+    <string name="common_save">Save</string>
+    <string name="common_done">Done</string>
+    <string name="common_close">Close</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_edit">Edit</string>
+    <string name="common_rename">Rename</string>
+    <string name="common_create">Create</string>
+    <string name="common_connect">Connect</string>
+    <string name="common_disconnect">Disconnect</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_paste">Paste</string>
+    <string name="common_label">Label</string>
+    <string name="common_password">Password</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Host</string>
+    <string name="common_username">Username</string>
+    <string name="common_install">Install</string>
+    <string name="common_reset">Reset</string>
+    <string name="common_allow">Allow</string>
+    <string name="common_not_now">Not now</string>
+    <string name="common_import">Import</string>
+    <string name="common_add">Add</string>
+    <string name="common_download">Download</string>
+    <string name="common_unlock">Unlock</string>
+
+    <!-- Tab bar -->
+    <string name="terminal_reconnecting">Reconnecting</string>
+    <string name="terminal_disconnect_countdown">Disconnected — closing in %1$ds</string>
+    <string name="terminal_disconnect_now">Disconnected — closing</string>
+    <string name="terminal_sessions">Sessions</string>
+    <string name="terminal_move_left">Move left</string>
+    <string name="terminal_move_right">Move right</string>
+    <string name="terminal_close">Close</string>
+    <string name="terminal_copy_last_output">Copy last output</string>
+    <string name="terminal_copied_output">Copied output (%d chars)</string>
+    <string name="terminal_no_command_output">No command output found (needs shell integration)</string>
+    <string name="terminal_search">Search</string>
+
+    <!-- New tab errors -->
+    <string name="terminal_new_tab_no_active">No active session to clone</string>
+    <string name="terminal_new_tab_no_config">Connection config not found — try reconnecting first</string>
+    <string name="terminal_new_tab_host_key_changed">Host key changed for %s — connection refused for security</string>
+    <string name="terminal_new_tab_connection_failed">Could not connect: %s</string>
+    <string name="terminal_new_tab_shell_failed">Failed to open shell: %s</string>
+    <string name="terminal_new_tab_reticulum_no_session">No active Reticulum session to clone</string>
+    <string name="terminal_new_tab_connecting">Connecting…</string>
+
+    <!-- EmptyTerminalState -->
+    <string name="terminal_connect_prompt">Connect to a server to start a session.</string>
+
+    <!-- NewTabSessionPickerDialog -->
+    <string name="terminal_sessions_title">%s sessions</string>
+    <string name="terminal_rename_session">Rename session</string>
+    <string name="terminal_kill_session">Kill session</string>
+    <string name="terminal_new_session_create">Create</string>
+    <string name="terminal_open_plain_shell">Open plain shell</string>
+
+    <!-- VncSettingsDialog -->
+    <string name="terminal_vnc_desktop">VNC Desktop</string>
+    <string name="terminal_connect_to_host">Connect to %s</string>
+    <string name="terminal_port">Port</string>
+    <string name="terminal_password">Password</string>
+    <string name="terminal_tunnel_through_ssh">Tunnel through SSH</string>
+    <string name="terminal_save_for_connection">Save for this connection</string>
+    <string name="terminal_connect">Connect</string>
+
+    <!-- RenameSessionDialog -->
+    <string name="terminal_rename_session_title">Rename Session</string>
+    <string name="terminal_name">Name</string>
+    <string name="terminal_rename">Rename</string>
+    <string name="terminal_enter_fullscreen">Enter fullscreen</string>
+    <string name="terminal_exit_fullscreen">Exit fullscreen</string>
+    <string name="terminal_vnc_username_label">Username (optional — VeNCrypt only)</string>
+    <string name="terminal_vnc_username_placeholder">Leave blank for classic VncAuth</string>
+    <string name="terminal_vnc_color_depth">Colour depth</string>
+
+    <!-- AttachOptionsSheet — paperclip key on the keyboard toolbar -->
+    <string name="terminal_attach_title">Attach</string>
+    <string name="terminal_attach_send_file">Send a file</string>
+    <string name="terminal_attach_send_file_desc">Upload to the remote and paste its path</string>
+    <string name="terminal_attach_scan_camera">Scan code (Camera)</string>
+    <string name="terminal_attach_scan_camera_desc">Photograph a QR or barcode and paste its contents</string>
+    <string name="terminal_attach_scan_gallery">Scan code (Photos)</string>
+    <string name="terminal_attach_scan_gallery_desc">Pick a photo of a QR or barcode and paste its contents</string>
+    <string name="terminal_attach_ocr_camera">Recognise text (Camera)</string>
+    <string name="terminal_attach_ocr_camera_desc">Photograph printed text and paste what is detected</string>
+    <string name="terminal_attach_ocr_gallery">Recognise text (Photos)</string>
+    <string name="terminal_attach_ocr_gallery_desc">Pick a photo of printed text and paste what is detected</string>
+    <string name="terminal_scan_no_code">No code detected in the image</string>
+    <string name="terminal_scan_no_text">No text detected in the image</string>
+    <string name="terminal_scan_failed">Scan failed: %s</string>
+    <string name="terminal_scan_no_camera">No camera app available</string>
+    <string name="terminal_selection_copied">Copied</string>
+    <string name="terminal_selection_open_url">Open URL</string>
+    <string name="terminal_selection_no_url">No URL detected</string>
+    <string name="terminal_selection_start">Start</string>
+    <string name="terminal_selection_end">End</string>
+    <string name="terminal_selection_up">Up</string>
+    <string name="terminal_selection_down">Down</string>
+    <string name="terminal_selection_left">Left</string>
+    <string name="terminal_selection_right">Right</string>
+</resources>

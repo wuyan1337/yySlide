@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_connections">接続</string>
+    <string name="nav_terminal">ターミナル</string>
+    <string name="nav_desktop">デスクトップ</string>
+    <string name="nav_keys">鍵</string>
+    <string name="nav_sftp">ファイル</string>
+    <string name="nav_settings">設定</string>
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完了</string>
+    <string name="common_close">閉じる</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">削除</string>
+    <string name="common_edit">編集</string>
+    <string name="common_rename">名前変更</string>
+    <string name="common_create">作成</string>
+    <string name="common_connect">接続</string>
+    <string name="common_disconnect">切断</string>
+    <string name="common_copy">コピー</string>
+    <string name="common_paste">貼り付け</string>
+    <string name="common_label">ラベル</string>
+    <string name="common_password">パスワード</string>
+    <string name="common_port">ポート</string>
+    <string name="common_host">ホスト</string>
+    <string name="common_username">ユーザー名</string>
+    <string name="common_install">インストール</string>
+    <string name="common_reset">リセット</string>
+    <string name="common_allow">許可</string>
+    <string name="common_not_now">後で</string>
+    <string name="common_import">インポート</string>
+    <string name="common_add">追加</string>
+    <string name="common_download">ダウンロード</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">サポート</string>
+    <string name="common_unlock">ロック解除</string>
+</resources>

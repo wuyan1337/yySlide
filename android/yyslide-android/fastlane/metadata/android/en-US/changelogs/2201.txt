@@ -1,0 +1,16 @@
+v5.3.3: Easy MCP endpoint hookup for local MCP clients
+
+- When the MCP agent endpoint is enabled, Haven now writes a
+  ready-to-use server config file to
+  ~/.config/haven/mcp-servers.json inside the PRoot rootfs.
+  Any MCP-compatible client running in PRoot can read/merge/
+  source it directly — no typing the URL by hand.
+- The file is removed when the endpoint is toggled off.
+- Settings: new "Copy MCP client config" row that puts the
+  standard mcpServers JSON snippet on the clipboard, for
+  clients running outside PRoot (a workstation reached via
+  SSH, Termux, etc.).
+- Settings: new info row showing the in-PRoot path so users
+  know where the auto-advertised config lives.
+- /root/README.md explains the advertised file and shows the
+  cat one-liner. Vendor-neutral — no specific client named.

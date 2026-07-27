@@ -1,0 +1,13 @@
+v5.35.0-rc2 — Cloudflare Access SSH + new MCP serve_file tool.
+
+Carries forward rc1's Cloudflare Access SSH tunnel backend (still
+experimental) and adds an MCP tool that lets connected agents
+download any file from Haven backends (local, SFTP, SMB, rclone) by
+being handed a short-lived loopback HTTP URL.
+
+Gated by a new Settings → Agent endpoint → "Allow agents to read file
+contents" toggle (default off) and a per-call consent prompt. The
+SFTP/file browser shows an "Agent" chip on rows the agent has
+currently fetched, so served files stay visible.
+
+(F-Droid skips RC tags; this changelog is for GitHub-release users.)

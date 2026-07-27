@@ -1,0 +1,9 @@
+Terminal attach key now opens a bottom sheet with five options:
+
+• Send file — the original SAF upload to the remote.
+• Scan code (Camera / Photos) — photograph or pick a QR / barcode and paste the decoded payload at the cursor.
+• Recognise text (Camera / Photos) — photograph or pick a still and paste the OCR result at the cursor.
+
+QR scanning uses ZXing (pure Java). OCR uses Tesseract via the adaptech-cz Tesseract4Android binding with the English fast LSTM model; the trained-data file is extracted on first OCR call. Decoded text is wrapped in bracketed-paste when DECSET 2004 is active so a runaway newline is not interpreted as Enter.
+
+Both flows go through the system camera intent and PickVisualMedia — no new runtime permissions are requested by Haven itself.

@@ -1,0 +1,3 @@
+- Per-profile session manager (tmux/zellij/screen/byobu) instead of global setting
+- Each connection can use a different session manager
+- Existing profiles default to the global setting

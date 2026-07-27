@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">रद्द करें</string>
+    <string name="common_save">सहेजें</string>
+    <string name="common_done">हो गया</string>
+    <string name="common_close">बंद करें</string>
+    <string name="common_ok">ठीक है</string>
+    <string name="common_delete">हटाएँ</string>
+    <string name="common_edit">संपादित करें</string>
+    <string name="common_rename">नाम बदलें</string>
+    <string name="common_create">बनाएँ</string>
+    <string name="common_connect">कनेक्ट करें</string>
+    <string name="common_disconnect">डिस्कनेक्ट करें</string>
+    <string name="common_copy">कॉपी करें</string>
+    <string name="common_paste">पेस्ट करें</string>
+    <string name="common_label">लेबल</string>
+    <string name="common_password">पासवर्ड</string>
+    <string name="common_port">पोर्ट</string>
+    <string name="common_host">होस्ट</string>
+    <string name="common_username">उपयोगकर्ता नाम</string>
+    <string name="common_install">इंस्टॉल करें</string>
+    <string name="common_reset">रीसेट करें</string>
+    <string name="common_allow">अनुमति दें</string>
+    <string name="common_not_now">अभी नहीं</string>
+    <string name="common_import">आयात करें</string>
+    <string name="common_add">जोड़ें</string>
+    <string name="common_download">डाउनलोड करें</string>
+    <string name="common_unlock">अनलॉक करें</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">कुंजी जोड़ें</string>
+    <string name="keys_no_ssh_keys">कोई SSH कुंजी नहीं</string>
+    <string name="keys_tap_to_add">कुंजी बनाने या आयात करने के लिए + दबाएँ</string>
+    <string name="keys_copy_public_key">सार्वजनिक कुंजी कॉपी करें</string>
+    <string name="keys_export_private_key">निजी कुंजी निर्यात करें</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">SSH कुंजी जोड़ें</string>
+    <string name="keys_generate_new_key">नई कुंजी बनाएँ</string>
+    <string name="keys_generate_key_types">Ed25519, RSA, या ECDSA</string>
+    <string name="keys_import_from_file">फ़ाइल से आयात करें</string>
+    <string name="keys_import_file_formats">PEM, OpenSSH, या Dropbear प्रारूप</string>
+    <string name="keys_paste_from_clipboard">क्लिपबोर्ड से पेस्ट करें</string>
+    <string name="keys_paste_clipboard_hint">केवल टेक्स्ट कुंजियाँ (PEM/OpenSSH)। बाइनरी Dropbear कुंजियों के लिए फ़ाइल आयात का उपयोग करें।</string>
+    <string name="keys_clipboard_empty">क्लिपबोर्ड खाली है</string>
+    <string name="keys_clipboard_not_text_key">क्लिपबोर्ड में टेक्स्ट SSH कुंजी नहीं है। बाइनरी कुंजियाँ (जैसे Dropbear) फ़ाइल से आयात करनी होंगी।</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">SSH कुंजी बनाएँ</string>
+    <string name="keys_label_placeholder">उदा. my-server</string>
+    <string name="keys_key_type">कुंजी का प्रकार</string>
+    <string name="keys_generate">बनाएँ</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">एन्क्रिप्टेड कुंजी</string>
+    <string name="keys_passphrase_prompt">यह कुंजी पासफ़्रेज़ से सुरक्षित है।</string>
+    <string name="keys_passphrase">पासफ़्रेज़</string>
+    <string name="keys_unlock">अनलॉक करें</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">SSH कुंजी आयात करें</string>
+    <string name="keys_import">आयात करें</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">SSH सार्वजनिक कुंजी</string>
+
+    <!-- #133 phase 2: step-ca generate-via-OIDC (en fallback) -->
+    <string name="keys_generate_via_stepca">Generate via step-ca</string>
+    <string name="keys_generate_via_stepca_hint">OIDC sign-in mints a fresh keypair + signed cert</string>
+    <string name="keys_generate_via_stepca_no_ca">Tap Certificate authorities above to add one</string>
+    <string name="keys_stepca_dialog_title">Generate via step-ca</string>
+    <string name="keys_stepca_pick_ca">Certificate authority</string>
+    <string name="keys_stepca_principals_override_label">Override principals (optional, comma-separated)</string>
+    <string name="keys_stepca_label">Key label</string>
+    <string name="keys_stepca_generate">Generate</string>
+    <string name="keys_chip_certificate_minted">Minted %1$s</string>
+
+    <!-- #133 phase 2b: regenerate menu --> (en fallback)
+    <string name="keys_regenerate_via_stepca">Regenerate via step-ca</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">Add certificate authority</string>
+    <string name="stepca_edit_title">Edit certificate authority</string>
+    <string name="stepca_add">Add</string>
+    <string name="stepca_save">Save</string>
+    <string name="stepca_cancel">Cancel</string>
+    <string name="stepca_delete">Delete</string>
+    <string name="stepca_test_connection">Test connection</string>
+    <string name="stepca_field_name">Display name</string>
+    <string name="stepca_field_ca_url">CA URL</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC issuer URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC authorize URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC token URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC client ID</string>
+    <string name="stepca_field_provisioner">step-ca provisioner</string>
+    <string name="stepca_field_principals">Default principals (comma-separated)</string>
+    <string name="stepca_field_root_cert">Root certificate (PEM)</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">Reachable</string>
+    <string name="stepca_test_bad_root_cert">Invalid root cert: %1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d: %2$s</string>
+    <string name="stepca_test_network_error">Network error: %1$s</string>
+    <string name="stepca_empty_state">No certificate authorities configured.\nTap + to add one.</string>
+    <string name="stepca_validation_required">%1$s is required</string>
+    <string name="stepca_validation_url">%1$s must start with https://</string>
+    <string name="stepca_validation_pem">Root certificate must be PEM-encoded</string>
+    <string name="stepca_delete_confirm_title">Delete %1$s?</string>
+    <string name="stepca_delete_confirm_body">Existing keys minted via this CA will keep working until their certificates expire, but you won\'t be able to renew or generate new ones.</string>
+    <string name="stepca_field_ssh_host_ca">SSH host CA public key (optional)</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">Discover from /1.0/ssh/config</string>
+    <string name="stepca_discovering">Discovering…</string>
+    <string name="stepca_import_from_file">Import from file</string>
+    <string name="stepca_import_failed">Import failed: %1$s</string>
+    <string name="keys_section_certificate_authorities">Certificate authorities (%1$d)</string>
+    <string name="keys_section_ssh">SSH कुंजियाँ (%1$d)</string>
+    <string name="keys_section_passwords">सहेजे गए पासवर्ड (%1$d)</string>
+    <string name="keys_chip_hardware_backed">हार्डवेयर-समर्थित</string>
+    <string name="keys_chip_passphrase">पासफ़्रेज़</string>
+    <string name="keys_chip_user_presence">उपयोगकर्ता उपस्थिति</string>
+    <string name="keys_chip_user_verification">उपयोगकर्ता सत्यापन</string>
+    <string name="keys_chip_biometric">बायोमेट्रिक आवश्यक</string>
+    <string name="keys_require_biometric">उपयोग के लिए बायोमेट्रिक आवश्यक करें</string>
+    <string name="keys_clear_password_title">%1$s साफ़ करें?</string>
+    <string name="keys_clear_password_body">साफ़ करने से इस प्रोफ़ाइल पर सहेजा गया पासवर्ड मिट जाता है। प्रोफ़ाइल स्वयं बनी रहती है — अगली बार कनेक्ट करने पर आपसे पूछा जाएगा।</string>
+    <string name="keys_wipe_content_description">%1$s मिटाएँ</string>
+    <string name="keys_attach_certificate">प्रमाणपत्र संलग्न करें</string>
+    <string name="keys_remove_certificate">प्रमाणपत्र हटाएँ</string>
+    <string name="keys_chip_certificate">प्रमाणपत्र संलग्न है</string>
+    <string name="stepca_bootstrap_intro">CA URL + SHA-256 फ़िंगरप्रिंट से बूटस्ट्रैप करें। बाकी (रूट प्रमाणपत्र, प्रोविज़नर, OIDC URL और सीक्रेट) CA से प्राप्त किया जाता है।</string>
+    <string name="stepca_field_fingerprint">रूट प्रमाणपत्र फ़िंगरप्रिंट (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">`step certificate fingerprint` से चिपकाएँ</string>
+    <string name="stepca_bootstrap_action">CA से बूटस्ट्रैप करें</string>
+    <string name="stepca_bootstrapping">CA से संपर्क हो रहा है…</string>
+    <string name="stepca_bootstrap_pick_provisioner">एक OIDC प्रोविज़नर चुनें:</string>
+    <string name="stepca_manual_entry">मैन्युअल प्रविष्टि…</string>
+    <string name="stepca_field_oidc_client_secret">OIDC क्लाइंट सीक्रेट (वैकल्पिक)</string>
+    <string name="stepca_field_oidc_client_secret_hint">सार्वजनिक केवल-PKCE क्लाइंट के लिए खाली छोड़ें</string>
+    <string name="keys_discover_from_security_key">सुरक्षा कुंजी से खोजें</string>
+    <string name="keys_discover_from_security_key_hint">डाली गई/टैप की गई सुरक्षा कुंजी से रेज़िडेंट SSH-SK क्रेडेंशियल्स की सूची बनाता है। ssh-keygen -K को छोड़ देता है।</string>
+    <string name="keys_discover_picker_title">रेज़िडेंट SSH कुंजियाँ</string>
+    <string name="keys_discover_picker_body">चुनें कि कौन-से रेज़िडेंट क्रेडेंशियल्स आयात करने हैं। प्रत्येक एक नई SSH कुंजी प्रविष्टि बन जाता है; निजी सामग्री सुरक्षा कुंजी पर ही रहती है।</string>
+    <string name="keys_discover_import_selected">चयनित आयात करें</string>
+    <string name="keys_fido_pin_title">सुरक्षा कुंजी PIN</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">जारी रखने के लिए अपनी सुरक्षा कुंजी पर सेट किया गया PIN दर्ज करें।</string>
+    <string name="keys_fido_pin_wrong">गलत PIN. कुंजी लॉक होने से पहले %1$d प्रयास शेष हैं।</string>
+    <string name="keys_fido_waiting_title">सुरक्षा कुंजी आवश्यक</string>
+    <string name="keys_fido_waiting_body">अपनी सुरक्षा कुंजी को USB से जोड़ें, या NFC के लिए इसे डिवाइस के पीछे टैप करें। पता चलते ही yySlide स्वतः जारी रहेगा।</string>
+    <string name="keys_fido_touch_usb_title">अपनी सुरक्षा कुंजी को स्पर्श करें</string>
+    <string name="keys_fido_touch_usb_body">अनुरोध को अधिकृत करने के लिए अभी अपनी सुरक्षा कुंजी का बटन दबाएँ।</string>
+    <string name="keys_fido_touch_nfc_title">अपनी सुरक्षा कुंजी पकड़ें</string>
+    <string name="keys_fido_touch_nfc_body">सुरक्षा कुंजी को डिवाइस के पीछे दो सेकंड तक रखें। इसे जल्दी हटाने से आदान-प्रदान रद्द हो जाता है।</string>
+    <string name="keys_fido_cancel_hint">सुरक्षा कुंजी के जवाब देने तक खुला रहता है।</string>
+</resources>

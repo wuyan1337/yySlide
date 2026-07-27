@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">취소</string>
+    <string name="common_save">저장</string>
+    <string name="common_done">완료</string>
+    <string name="common_close">닫기</string>
+    <string name="common_ok">확인</string>
+    <string name="common_delete">삭제</string>
+    <string name="common_edit">편집</string>
+    <string name="common_rename">이름 변경</string>
+    <string name="common_create">생성</string>
+    <string name="common_connect">연결</string>
+    <string name="common_disconnect">연결 해제</string>
+    <string name="common_copy">복사</string>
+    <string name="common_paste">붙여넣기</string>
+    <string name="common_label">라벨</string>
+    <string name="common_password">비밀번호</string>
+    <string name="common_port">포트</string>
+    <string name="common_host">호스트</string>
+    <string name="common_username">사용자 이름</string>
+    <string name="common_install">설치</string>
+    <string name="common_reset">재설정</string>
+    <string name="common_allow">허용</string>
+    <string name="common_not_now">나중에</string>
+    <string name="common_import">가져오기</string>
+    <string name="common_add">추가</string>
+    <string name="common_download">다운로드</string>
+    <string name="common_unlock">잠금 해제</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">키 추가</string>
+    <string name="keys_no_ssh_keys">SSH 키 없음</string>
+    <string name="keys_tap_to_add">+를 눌러 키를 생성하거나 가져오세요</string>
+    <string name="keys_copy_public_key">공개 키 복사</string>
+    <string name="keys_export_private_key">개인 키 내보내기</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">SSH 키 추가</string>
+    <string name="keys_generate_new_key">새 키 생성</string>
+    <string name="keys_generate_key_types">Ed25519, RSA 또는 ECDSA</string>
+    <string name="keys_import_from_file">파일에서 가져오기</string>
+    <string name="keys_import_file_formats">PEM, OpenSSH 또는 Dropbear 형식</string>
+    <string name="keys_paste_from_clipboard">클립보드에서 붙여넣기</string>
+    <string name="keys_paste_clipboard_hint">텍스트 키만 지원합니다(PEM/OpenSSH). 바이너리 Dropbear 키는 파일 가져오기를 사용하세요.</string>
+    <string name="keys_clipboard_empty">클립보드가 비어 있습니다</string>
+    <string name="keys_clipboard_not_text_key">클립보드에 텍스트 SSH 키가 없습니다. 바이너리 키(예: Dropbear)는 파일에서 가져와야 합니다.</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">SSH 키 생성</string>
+    <string name="keys_label_placeholder">예: my-server</string>
+    <string name="keys_key_type">키 유형</string>
+    <string name="keys_generate">생성</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">암호화된 키</string>
+    <string name="keys_passphrase_prompt">이 키는 암호문으로 보호되어 있습니다.</string>
+    <string name="keys_passphrase">암호문</string>
+    <string name="keys_unlock">잠금 해제</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">SSH 키 가져오기</string>
+    <string name="keys_import">가져오기</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">SSH 공개 키</string>
+    <string name="keys_section_certificate_authorities">인증 기관 (%1$d)</string>
+    <string name="keys_section_ssh">SSH 키(%1$d)</string>
+    <string name="keys_section_passwords">저장된 비밀번호(%1$d)</string>
+    <string name="keys_chip_hardware_backed">하드웨어 지원</string>
+    <string name="keys_chip_passphrase">암호문</string>
+    <string name="keys_chip_user_presence">사용자 존재 확인</string>
+    <string name="keys_chip_user_verification">사용자 인증</string>
+    <string name="keys_chip_biometric">생체 인증 필요</string>
+    <string name="keys_require_biometric">사용 시 생체 인증 필요</string>
+    <string name="keys_clear_password_title">%1$s을(를) 지울까요?</string>
+    <string name="keys_clear_password_body">지우면 이 프로필에 저장된 비밀번호가 삭제됩니다. 프로필 자체는 유지되며 다음 연결 시 다시 요청됩니다.</string>
+    <string name="keys_wipe_content_description">%1$s 지우기</string>
+    <string name="keys_attach_certificate">인증서 첨부</string>
+    <string name="keys_remove_certificate">인증서 제거</string>
+    <string name="keys_chip_certificate">인증서 첨부됨</string>
+
+    <!-- #133 phase 2: step-ca generate-via-OIDC -->
+    <string name="keys_generate_via_stepca">step-ca로 생성</string>
+    <string name="keys_generate_via_stepca_hint">OIDC 로그인으로 새 키 쌍과 서명된 인증서를 발급합니다</string>
+    <string name="keys_generate_via_stepca_no_ca">위의 인증 기관에서 CA를 먼저 추가하세요</string>
+    <string name="keys_stepca_dialog_title">step-ca로 생성</string>
+    <string name="keys_stepca_pick_ca">인증 기관</string>
+    <string name="keys_stepca_principals_override_label">주체 재정의 (선택, 쉼표로 구분)</string>
+    <string name="keys_stepca_label">키 라벨</string>
+    <string name="keys_stepca_generate">생성</string>
+    <string name="keys_chip_certificate_minted">%1$s 발급</string>
+
+    <!-- #133 phase 2b: regenerate menu -->
+    <string name="keys_regenerate_via_stepca">step-ca로 재생성</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">인증 기관 추가</string>
+    <string name="stepca_edit_title">인증 기관 편집</string>
+    <string name="stepca_add">추가</string>
+    <string name="stepca_save">저장</string>
+    <string name="stepca_cancel">취소</string>
+    <string name="stepca_delete">삭제</string>
+    <string name="stepca_test_connection">연결 테스트</string>
+    <string name="stepca_field_name">표시 이름</string>
+    <string name="stepca_field_ca_url">CA URL</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC 발급자 URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC 인증 URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC 토큰 URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC 클라이언트 ID</string>
+    <string name="stepca_field_provisioner">step-ca 프로비저너</string>
+    <string name="stepca_field_principals">기본 주체 (쉼표로 구분)</string>
+    <string name="stepca_field_root_cert">루트 인증서 (PEM)</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">연결 가능</string>
+    <string name="stepca_test_bad_root_cert">잘못된 루트 인증서: %1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d: %2$s</string>
+    <string name="stepca_test_network_error">네트워크 오류: %1$s</string>
+    <string name="stepca_empty_state">구성된 인증 기관이 없습니다.\n+를 눌러 추가하세요.</string>
+    <string name="stepca_validation_required">%1$s은(는) 필수입니다</string>
+    <string name="stepca_validation_url">%1$s은(는) https://로 시작해야 합니다</string>
+    <string name="stepca_validation_pem">루트 인증서는 PEM 형식이어야 합니다</string>
+    <string name="stepca_delete_confirm_title">%1$s을(를) 삭제할까요?</string>
+    <string name="stepca_delete_confirm_body">이 CA로 발급된 기존 키는 인증서가 만료될 때까지 작동하지만, 갱신하거나 새로 생성할 수 없습니다.</string>
+    <string name="stepca_field_ssh_host_ca">SSH 호스트 CA 공개 키 (선택)</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">/1.0/ssh/config에서 검색</string>
+    <string name="stepca_discovering">검색 중…</string>
+    <string name="stepca_import_from_file">파일에서 가져오기</string>
+    <string name="stepca_import_failed">가져오기 실패: %1$s</string>
+
+    <!-- 부트스트랩 사전 단계 (#133 2c) -->
+    <string name="stepca_bootstrap_intro">CA URL 과 SHA-256 지문만 입력하면 됩니다. 루트 인증서, 프로비저너, OIDC URL 및 클라이언트 시크릿은 CA 에서 가져옵니다.</string>
+    <string name="stepca_field_fingerprint">루트 인증서 지문 (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">`step certificate fingerprint` 출력을 붙여넣기</string>
+    <string name="stepca_bootstrap_action">CA 에서 부트스트랩</string>
+    <string name="stepca_bootstrapping">CA 통신 중…</string>
+    <string name="stepca_bootstrap_pick_provisioner">OIDC 프로비저너 선택:</string>
+    <string name="stepca_manual_entry">직접 입력…</string>
+    <string name="stepca_field_oidc_client_secret">OIDC 클라이언트 시크릿 (선택)</string>
+    <string name="stepca_field_oidc_client_secret_hint">공개 PKCE 전용 클라이언트는 비워 두세요</string>
+    <string name="keys_discover_from_security_key">보안 키에서 검색</string>
+    <string name="keys_discover_from_security_key_hint">삽입하거나 탭한 보안 키에서 상주 SSH-SK 자격 증명을 열거합니다. ssh-keygen -K를 건너뜁니다.</string>
+    <string name="keys_discover_picker_title">상주 SSH 키</string>
+    <string name="keys_discover_picker_body">가져올 상주 자격 증명을 선택하세요. 각각 새 SSH 키 항목이 됩니다. 개인 키 자료는 보안 키 자체에 그대로 남습니다.</string>
+    <string name="keys_discover_import_selected">선택 항목 가져오기</string>
+    <string name="keys_fido_pin_title">보안 키 PIN</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">계속하려면 보안 키에 설정된 PIN을 입력하세요.</string>
+    <string name="keys_fido_pin_wrong">PIN이 잘못되었습니다. 키가 잠기기까지 %1$d회 남았습니다.</string>
+    <string name="keys_fido_waiting_title">보안 키 필요</string>
+    <string name="keys_fido_waiting_body">보안 키를 USB로 연결하거나 NFC의 경우 기기 뒷면에 탭하세요. 감지되면 yySlide가 자동으로 계속됩니다.</string>
+    <string name="keys_fido_touch_usb_title">보안 키를 터치하세요</string>
+    <string name="keys_fido_touch_usb_body">요청을 승인하려면 지금 보안 키의 버튼을 누르세요.</string>
+    <string name="keys_fido_touch_nfc_title">보안 키를 대고 계세요</string>
+    <string name="keys_fido_touch_nfc_body">보안 키를 기기 뒷면에 2초 동안 대고 계세요. 너무 일찍 떼면 교환이 중단됩니다.</string>
+    <string name="keys_fido_cancel_hint">보안 키가 응답할 때까지 열려 있습니다.</string>
+</resources>

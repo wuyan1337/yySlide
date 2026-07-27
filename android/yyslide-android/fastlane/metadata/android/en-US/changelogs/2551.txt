@@ -1,0 +1,24 @@
+v5.20.0: clipboard + floating IME composer
+
+Floating IME composer for CJK (rc1 + rc2 combined).
+Romaji / pinyin / swipe-typed composition is painted in a
+blue overlay at the terminal cursor — the remote shell
+sees nothing until you commit a candidate. No more
+backspace-and-rewrite flicker, no per-keystroke round-
+trips over mosh/ET during composition.
+
+Clipboard fix: tapping Copy on a selection that lived in
+scrollback (or extended past a short line's end) used to
+write an empty string to the system clipboard, clobbering
+whatever was there. The smart-copy processor now falls
+back to SelectionManager's raw text when it can't
+contribute anything meaningful, so Copy always lands
+something on the clipboard.
+
+Copy/Paste button row above a selection is now clamped
+within the terminal viewport — the buttons don't slide
+off-screen for selections ending near the right edge
+anymore (@mio-19, #98).
+
+English input is unchanged — non-composition IMEs bypass
+the overlay entirely.

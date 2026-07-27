@@ -1,0 +1,3 @@
+Authenticator (TOTP) auto-fill for SSH
+
+Store an OATH-TOTP secret (paste an otpauth:// URI / base32, or scan a QR) under Keys, then add a TOTP element to a connection's authentication methods. On connect, Haven generates the live 6-digit code and answers the server's "Verification code:" prompt automatically — no separate authenticator app needed. Auto-submits by default, or flip "Confirm OTP before sending" per profile to review the code first.

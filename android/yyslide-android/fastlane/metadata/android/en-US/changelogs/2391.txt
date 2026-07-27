@@ -1,0 +1,17 @@
+v5.8.4: IME input + FIDO2 diagnostics
+
+Japanese/Chinese/Korean keyboard input now works in
+the terminal. The default input mode switched from
+TYPE_NULL (raw key events only) to TYPE_CLASS_TEXT
+(IME composition protocol), enabling CJK input methods
+to compose characters before committing. Autocomplete
+and suggestions remain disabled. (#96)
+
+FIDO2 security key authentication now logs every step
+of the CTAP exchange — USB permission result, CTAPHID
+init, GetAssertion command, and response status. When
+a security key fails, the error dialog shows the
+specific CTAP reason (e.g. "No matching credential on
+this key") instead of a generic password fallback
+prompt. USB permission requests now time out after 30s
+instead of blocking indefinitely. (#15)

@@ -1,0 +1,21 @@
+v5.21.0: Gboard autocorrect + Files navigation gesture
+
+Tapping a Gboard suggestion-bar correction now replaces the
+mistyped word in the terminal on Android 14+. Before this
+release, taps on corrections were silently dropped because
+the API-34 replaceText path wasn't translated into terminal
+backspaces + replacement bytes — only into Gboard's own
+tracked buffer. The terminal was left with the uncorrected
+typing. Also fixes the related root cause: a custom
+InputConnection must call InputMethodManager.updateSelection
+explicitly after every edit (TextView does this implicitly,
+BaseInputConnection doesn't). Without that, Gboard's
+tracked cursor stays frozen and it never enters composition
+mode. #99.
+
+From the rc series:
+- Fast right-flick in a Files subdirectory navigates up one
+  directory; slow horizontal drags still swipe to Terminal.
+- Deduplicated swipe handling; fixed the mid-drag double-jump
+  on normal tab swipes so one swipe moves exactly one tab.
+  #89.

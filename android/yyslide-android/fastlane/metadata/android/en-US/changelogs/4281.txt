@@ -1,0 +1,7 @@
+Multi-factor SSH auth + a tidier connection editor
+
+Multi-factor auth (#166): a connection can now attempt several auth methods in a single connect, so servers requiring a chain — e.g. publickey + password, or PAM multi-prompt — work. Add/remove/reorder methods (Password / SSH key / Keyboard-interactive) in the connection editor; single-method profiles are unchanged.
+
+Connection editor tidy-up: the SSH form is now grouped into collapsible sections (collapsed by default), so new users see only the essentials. Reconnect / tunnel-only / MCP toggles move into a "Reliability & MCP" section; tunnels fold into Connection and port-knocking into Authentication.
+
+Extended keyboard: the Attach and Voice icons now pin to a consistent second column.

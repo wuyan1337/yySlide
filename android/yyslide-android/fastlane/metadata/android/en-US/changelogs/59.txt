@@ -1,0 +1,2 @@
+- Add Mosh (Mobile Shell) support for roaming SSH sessions
+- Split APK by ABI for smaller downloads

@@ -1,0 +1,4 @@
+- Key repeat for toolbar buttons (arrows, PgUp/PgDn, Home/End, symbols)
+- Tab grouping by connection color and reconnecting indicator
+- AltGr modifier button (optional, add via toolbar settings)
+- Improved tab labels using connection profile names

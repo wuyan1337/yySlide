@@ -1,0 +1,11 @@
+v5.1.2: DynamicForward (SOCKS5 proxy) support
+
+- Add DynamicForward (-D / SOCKS5) support (#83): third port forward
+  type that runs a local SOCKS5 proxy server and tunnels each accepted
+  connection through an SSH direct-tcpip channel
+- Point browsers, system proxy settings, or apps at 127.0.0.1:<port>
+  to route traffic through the SSH server
+- Supports SOCKS5 with no auth, CONNECT command, IPv4/IPv6/domain
+  destinations. SOCKS4 and username/password auth not supported.
+- Available in the Port Forwards dialog alongside Local (-L) and
+  Remote (-R) as a third chip: "Dynamic (-D)"

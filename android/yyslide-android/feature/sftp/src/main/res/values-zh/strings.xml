@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_unlock">解锁</string>
+
+    <!-- SftpScreen navigation -->
+    <string name="sftp_navigate_up">向上导航</string>
+    <string name="sftp_hide_hidden_files">隐藏隐藏文件</string>
+    <string name="sftp_show_hidden_files">显示隐藏文件</string>
+    <string name="sftp_sort">排序</string>
+    <string name="sftp_refresh">刷新</string>
+
+    <!-- FAB actions -->
+    <string name="sftp_new_folder">新建文件夹</string>
+    <string name="sftp_upload_folder">上传文件夹</string>
+    <string name="sftp_upload_file">上传文件</string>
+    <string name="sftp_paste">粘贴</string>
+    <string name="sftp_fab_close">关闭</string>
+    <string name="sftp_fab_actions">操作</string>
+
+    <!-- Clipboard banner -->
+    <string name="sftp_items_cut">已剪切 %d 项</string>
+    <string name="sftp_items_cut_plural">已剪切 %d 项</string>
+    <string name="sftp_items_copied">已复制 %d 项</string>
+    <string name="sftp_items_copied_plural">已复制 %d 项</string>
+
+    <!-- Empty states -->
+    <string name="sftp_empty_directory">空目录</string>
+    <string name="sftp_parent_directory">上级目录</string>
+    <string name="sftp_navigate_up_icon">向上</string>
+
+    <!-- Snackbar messages -->
+    <string name="sftp_downloaded">已下载 %s</string>
+    <string name="sftp_open">打开</string>
+    <string name="sftp_no_app_to_open">没有可以打开此文件的应用</string>
+    <string name="sftp_install_failed">安装失败：%1$s</string>
+    <string name="sftp_path_copied">路径已复制</string>
+
+    <!-- FileListItem -->
+    <string name="sftp_directory">目录</string>
+    <string name="sftp_directory_icon">目录</string>
+    <string name="sftp_file_icon">文件</string>
+    <string name="sftp_download">下载</string>
+    <string name="sftp_cut">剪切</string>
+    <string name="sftp_copy_path">复制路径</string>
+
+    <!-- SortDropdown -->
+    <string name="sftp_sort_name_asc">名称 A-Z</string>
+    <string name="sftp_sort_name_desc">名称 Z-A</string>
+    <string name="sftp_sort_size_asc">大小（最小）</string>
+    <string name="sftp_sort_size_desc">大小（最大）</string>
+    <string name="sftp_sort_date_asc">日期（最早）</string>
+    <string name="sftp_sort_date_desc">日期（最新）</string>
+
+    <!-- EmptyState -->
+    <string name="sftp_file_browser_title">SFTP 文件浏览器</string>
+    <string name="sftp_connect_to_browse">连接到服务器以浏览文件</string>
+
+    <!-- New Folder dialog -->
+    <string name="sftp_new_folder_title">新建文件夹</string>
+    <string name="sftp_folder_name">文件夹名称</string>
+    <string name="sftp_create">创建</string>
+
+    <!-- Upload conflict dialog -->
+    <string name="sftp_file_already_exists">文件已存在</string>
+    <string name="sftp_file_exists_message">此位置已存在"%s"。</string>
+    <string name="sftp_replace">替换</string>
+    <string name="sftp_replace_all">全部替换</string>
+    <string name="sftp_skip">跳过</string>
+    <string name="sftp_skip_all">全部跳过</string>
+    <string name="sftp_play">播放</string>
+    <string name="sftp_play_folder">播放文件夹</string>
+    <string name="sftp_sync">同步</string>
+    <string name="sftp_folder_sync">文件夹同步</string>
+    <string name="sftp_source">源</string>
+    <string name="sftp_destination">目标</string>
+    <string name="sftp_destination_path">路径</string>
+    <string name="sftp_mode_copy">复制</string>
+    <string name="sftp_mode_sync">镜像</string>
+    <string name="sftp_mode_move">移动</string>
+    <string name="sftp_mode_copy_desc">复制新文件和更新过的文件。不删除任何文件。</string>
+    <string name="sftp_mode_sync_desc">使目标与源完全一致。删除多余文件。</string>
+    <string name="sftp_mode_move_desc">将文件移动到目标。源中的文件将被删除。</string>
+    <string name="sftp_advanced_filters">高级过滤器</string>
+    <string name="sftp_include_patterns">包含模式（每行一个）</string>
+    <string name="sftp_exclude_patterns">排除模式（每行一个）</string>
+    <string name="sftp_min_size">最小大小</string>
+    <string name="sftp_max_size">最大大小</string>
+    <string name="sftp_bandwidth_limit">带宽限制</string>
+    <string name="sftp_dry_run">试运行（仅预览）</string>
+    <string name="sftp_start_sync">开始</string>
+    <string name="sftp_preview">预览</string>
+    <string name="sftp_dry_run_results">试运行结果</string>
+    <string name="sftp_start_for_real">正式开始</string>
+    <string name="sftp_sync_cancelled">同步已取消</string>
+    <!-- Rename dialog -->
+    <string name="sftp_rename_title">重命名</string>
+    <string name="sftp_new_name">新名称</string>
+
+    <!-- Share link -->
+    <string name="sftp_share_link">分享链接</string>
+    <string name="sftp_link_copied">已复制链接</string>
+
+    <!-- Folder size -->
+    <string name="sftp_folder_size">文件夹大小</string>
+    <string name="sftp_folder_size_title">文件夹大小</string>
+    <string name="sftp_calculating_size">计算中…</string>
+
+    <!-- DLNA -->
+    <string name="sftp_start_dlna">启动 DLNA 服务器</string>
+    <string name="sftp_stop_dlna">停止 DLNA 服务器</string>
+    <!-- Convert -->
+    <string name="sftp_convert">转换</string>
+    <string name="sftp_convert_title">转换媒体</string>
+    <string name="sftp_convert_format">输出格式</string>
+    <string name="sftp_converting">正在转换 %s</string>
+    <string name="sftp_convert_done">已保存到 %s</string>
+    <!-- Stream -->
+    <string name="sftp_stream">流式播放</string>
+    <string name="sftp_streaming">正在 %s 上流式播放</string>
+    <string name="sftp_stream_stop">停止</string>
+    <string name="sftp_downloading_for_convert">正在下载以进行转换…</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="sftp_play_in_browser">在浏览器中播放</string>
+    <string name="sftp_stream_to_network">流式传输到网络</string>
+    <string name="sftp_selection_enter">选择</string>
+    <string name="sftp_selection_selected">已选中</string>
+    <string name="sftp_selection_unselected">未选中</string>
+    <string name="sftp_selection_clear">清除选择</string>
+    <string name="sftp_selection_select_all">全选</string>
+    <string name="sftp_selection_count">已选 %1$d 项</string>
+    <string name="sftp_delete_selection_title">删除所选项目？</string>
+    <string name="sftp_delete_selection_message">%1$d 项将被删除，此操作无法撤销。</string>
+    <string name="sftp_filter">筛选文件</string>
+    <string name="sftp_permissions">权限…</string>
+    <string name="sftp_permissions_dialog_title">权限</string>
+    <string name="sftp_permissions_dialog_title_batch">权限 — %1$d 项</string>
+    <string name="sftp_permissions_octal">八进制（例如 0755）</string>
+    <string name="sftp_permissions_owner">所有者</string>
+    <string name="sftp_permissions_group">群组</string>
+    <string name="sftp_permissions_other">其他</string>
+    <string name="sftp_permissions_read">读取</string>
+    <string name="sftp_permissions_write">写入</string>
+    <string name="sftp_permissions_execute">执行</string>
+    <string name="sftp_permissions_apply">应用</string>
+    <string name="sftp_ownership">所有者…</string>
+    <string name="sftp_ownership_dialog_title">所有者</string>
+    <string name="sftp_ownership_dialog_title_batch">所有者 — %1$d 项</string>
+    <string name="sftp_ownership_label">所有者</string>
+    <string name="sftp_ownership_hint">输入用户、群组或用户:群组。名称解析在远程端进行，通常需要 root 权限。</string>
+    <string name="sftp_ownership_apply">应用</string>
+    <string name="sftp_media">媒体…</string>
+    <string name="sftp_stream_folder">流式播放文件夹列表</string>
+    <string name="sftp_output_filename">输出文件名</string>
+    <string name="sftp_convert_sub">使用滤镜重新编码视频或音频</string>
+    <string name="sftp_media_info">媒体信息</string>
+    <string name="sftp_media_info_sub">编解码器、时长、流</string>
+    <string name="sftp_media_info_probing">正在分析…</string>
+    <string name="sftp_media_info_failed">ffprobe 失败：%s</string>
+    <string name="sftp_media_info_container">容器</string>
+    <string name="sftp_media_info_duration">时长</string>
+    <string name="sftp_media_info_bitrate">比特率</string>
+    <string name="sftp_media_info_size">大小</string>
+    <string name="sftp_media_info_video_streams">视频</string>
+    <string name="sftp_media_info_audio_streams">音频</string>
+    <string name="sftp_media_info_subtitle_streams">字幕</string>
+    <string name="sftp_media_info_video">视频</string>
+    <string name="sftp_media_info_audio">音频</string>
+    <string name="sftp_media_info_subtitle">字幕</string>
+    <string name="sftp_media_info_chapters">章节：%d</string>
+    <string name="sftp_media_info_copy">复制 JSON</string>
+    <string name="sftp_trim">剪辑（无损）</string>
+    <string name="sftp_trim_sub">不重新编码即可剪取片段</string>
+    <string name="sftp_trim_title">剪辑片段</string>
+    <string name="sftp_trim_explain">开始和结束时间格式为 H:MM:SS。流复制，不重新编码。</string>
+    <string name="sftp_trim_start">开始</string>
+    <string name="sftp_trim_end">结束</string>
+    <string name="sftp_trim_action">剪辑</string>
+    <string name="sftp_extract_audio">提取音频</string>
+    <string name="sftp_extract_audio_sub">将音轨保存为 MP3/AAC/Opus/FLAC</string>
+    <string name="sftp_extract_audio_title">提取音频</string>
+    <string name="sftp_extract_audio_format">格式</string>
+    <string name="sftp_extract_audio_bitrate">比特率：%d kbps</string>
+    <string name="sftp_extract_audio_action">提取</string>
+    <string name="sftp_contact_sheet">缩略图拼图</string>
+    <string name="sftp_contact_sheet_sub">在文件中均匀采样的缩略图网格</string>
+    <string name="sftp_contact_sheet_title">缩略图拼图</string>
+    <string name="sftp_contact_sheet_explain">从片段中均匀采样帧并拼合为平铺的 PNG。</string>
+    <string name="sftp_contact_sheet_cols">列数</string>
+    <string name="sftp_contact_sheet_rows">行数</string>
+    <string name="sftp_contact_sheet_tile">瓦片大小：%1$d × %2$d</string>
+    <string name="sftp_contact_sheet_action">生成拼图</string>
+
+    <!-- #135 third pass -->
+    <string name="sftp_attach_use_folder">使用此文件夹</string>
+    <string name="sftp_paste_discard">放弃</string>
+    <string name="sftp_paste_resume">继续</string>
+    <string name="sftp_paste_discard_title">放弃未完成的粘贴？</string>
+    <string name="sftp_paste_discard_body">队列中的待传输文件将被删除，此操作无法撤销。</string>
+    <string name="sftp_paste_keep">保留</string>
+    <string name="sftp_preview_frame_desc">预览帧 — 点按以全屏</string>
+        <string name="sftp_convert_container">容器</string>
+    <string name="sftp_convert_video_encoder">视频编码器</string>
+    <string name="sftp_convert_audio_encoder">音频编码器</string>
+    <string name="sftp_convert_save_to">保存到</string>
+    <string name="sftp_preview_stop">停止</string>
+    <string name="sftp_preview_preparing">准备中…</string>
+    <string name="sftp_preview_play5s">播放 5 秒预览</string>
+    <string name="sftp_fullscreen_preview">全屏预览</string>
+    <string name="sftp_conflict_title">文件已存在</string>
+    <string name="sftp_conflict_overwrite">覆盖</string>
+    <string name="sftp_conflict_keep_both">保留两者（重命名）</string>
+    <string name="sftp_conflict_skip">跳过</string>
+    <string name="sftp_compression_quick_presets">快速预设</string>
+    <string name="sftp_compression_resolution">分辨率</string>
+    <string name="sftp_compression_quality">画质（CRF %1$d）</string>
+    <string name="sftp_compression_speed">编码速度</string>
+    <string name="sftp_compression_audio_bitrate">音频码率</string>
+    <string name="sftp_filter_title">滤镜</string>
+    <string name="sftp_filter_rotation">旋转</string>
+</resources>

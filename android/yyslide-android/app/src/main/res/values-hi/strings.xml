@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">yySlide</string>
+
+
+    <!-- Common strings shared across modules -->
+    <string name="common_cancel">रद्द करें</string>
+    <string name="common_save">सहेजें</string>
+    <string name="common_done">हो गया</string>
+    <string name="common_close">बंद करें</string>
+    <string name="common_ok">ठीक है</string>
+    <string name="common_delete">हटाएँ</string>
+    <string name="common_edit">संपादित करें</string>
+    <string name="common_rename">नाम बदलें</string>
+    <string name="common_create">बनाएँ</string>
+    <string name="common_connect">कनेक्ट करें</string>
+    <string name="common_disconnect">डिस्कनेक्ट करें</string>
+    <string name="common_copy">कॉपी करें</string>
+    <string name="common_paste">पेस्ट करें</string>
+    <string name="common_label">लेबल</string>
+    <string name="common_password">पासवर्ड</string>
+    <string name="common_port">पोर्ट</string>
+    <string name="common_host">होस्ट</string>
+    <string name="common_username">उपयोगकर्ता नाम</string>
+    <string name="common_install">इंस्टॉल करें</string>
+    <string name="common_reset">रीसेट करें</string>
+    <string name="common_allow">अनुमति दें</string>
+    <string name="common_not_now">अभी नहीं</string>
+    <string name="common_import">आयात करें</string>
+    <string name="common_add">जोड़ें</string>
+    <string name="common_download">डाउनलोड करें</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">सहायता</string>
+    <string name="common_unlock">अनलॉक करें</string>
+
+    <!-- Battery optimization -->
+    <string name="battery_title">कनेक्शन सक्रिय रखें?</string>
+    <string name="battery_message">Android बैटरी बचाने के लिए बैकग्राउंड SSH कनेक्शन बंद कर सकता है। yySlide के लिए बैटरी ऑप्टिमाइज़ेशन अक्षम करने से यह रुक जाएगा।</string>
+
+    <!-- Workspace profiles -->
+    <string name="workspace_section_title">वर्कस्पेस</string>
+    <string name="workspace_save_current">वर्तमान सहेजें…</string>
+    <string name="workspace_empty_hint">जिन सत्रों को साथ बंडल करना है उन्हें खोलें, फिर वर्तमान सहेजें पर टैप करें। एक टैप अगली बार उन्हें फिर से खोल देगा।</string>
+    <string name="workspace_save_dialog_title">वर्कस्पेस के रूप में सहेजें</string>
+    <string name="workspace_save_dialog_name_label">नाम</string>
+    <string name="workspace_save_dialog_items_label">शामिल करने योग्य आइटम</string>
+    <string name="workspace_save_dialog_no_items">सहेजने के लिए कुछ नहीं है — पहले एक सत्र कनेक्ट करें, Wayland खोलें, या एक शेयर ब्राउज़ करें।</string>
+    <string name="workspace_save_action">सहेजें</string>
+    <string name="workspace_card_kind_terminal">टर्मिनल</string>
+    <string name="workspace_card_kind_file_browser">फ़ाइलें</string>
+    <string name="workspace_card_kind_desktop">डेस्कटॉप</string>
+    <string name="workspace_card_kind_wayland">Wayland</string>
+    <string name="workspace_card_kind_count">%1$s × %2$d</string>
+    <string name="workspace_card_no_items">खाली</string>
+    <string name="workspace_long_press_delete">हटाएं</string>
+    <string name="workspace_delete_confirm_title">वर्कस्पेस हटाएं?</string>
+    <string name="workspace_delete_confirm_message">\"%1$s\" हटा दिया जाएगा। संदर्भित कनेक्शन बने रहेंगे।</string>
+    <string name="workspace_launch_progress">%1$s खुल रहा है — %2$d / %3$d</string>
+    <string name="workspace_launch_completed">%1$s खुल गया</string>
+    <string name="workspace_launch_partial">%1$s — %3$d आइटम में से %2$d खुले</string>
+    <string name="workspace_launch_cancelled">%1$s रद्द किया गया</string>
+    <string name="workspace_launch_failed">विफल: %1$s</string>
+    <string name="workspace_launch_cancel">रद्द करें</string>
+    <string name="workspace_launch_dismiss">बंद करें</string>
+    <string name="biometric_screen_lock_icon">Screen lock</string>
+    <string name="desktop_screen_title">Desktop</string>
+    <string name="agent_deny">Deny</string>
+</resources>

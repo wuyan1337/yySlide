@@ -1,0 +1,12 @@
+v5.24.2: F-Droid x86_64 wayland build fix
+
+Bumps wayland-android submodule to work around a cairo meson probe
+that only fails on the F-Droid buildserver for x86_64 (works for
+arm64 on the same server, works for both ABIs locally). Cairo's
+`cc.has_define('FT_LOAD_NO_SVG', ...)` probe escalates an internal
+compile-test failure into a hard meson error instead of returning
+false; patched in build-android.sh to use a freetype version gate
+(equivalent to what cairo itself does for the internal-subproject
+path).
+
+No runtime change vs v5.24.1 — F-Droid packaging only.

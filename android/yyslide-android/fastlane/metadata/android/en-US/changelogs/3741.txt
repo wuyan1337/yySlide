@@ -1,0 +1,28 @@
+v5.32.0-rc4 — agent transport polish + green active-agent chip
+
+User-visible:
+- The robot icon on the Connections header now turns green during
+  the 30-second window after each agent action, instead of sharing
+  the theme's primary accent. Reads as a distinct status signal.
+
+Agent / MCP transport (no end-user effect):
+- Numeric / boolean coercion in set_preference is now permissive
+  across Number, Boolean, and parseable String — different MCP
+  clients serialise JSON values inconsistently and the previous
+  strict cast threw on plainly-correct integers.
+- set_preference, scroll_terminal, start_selection, and
+  extend_selection demoted from EVERY_CALL to ONCE_PER_SESSION
+  consent. None of these write to the clipboard or the live PTY,
+  so prompt fatigue isn't proportional to risk. Tools that
+  actually mutate session state or system clipboard
+  (copy_selection, write_clipboard, tap_terminal,
+  send_terminal_input) keep EVERY_CALL.
+- Registry no longer evicts headless agent sessions on each
+  syncSessions sweep — the agent emulator created by
+  open_local_shell now persists across UI state changes.
+- Headless agent emulator writeInput now lands on the main
+  looper, mirroring the EmulatorWriteBuffer pattern. Brings the
+  agent path closer to parity with UI-mounted tabs (one known
+  gap remaining: OSC 133 propagation on headless emulators).
+
+Otherwise identical features to rc3.

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">yySlide</string>
+
+
+    <!-- Common strings shared across modules -->
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完了</string>
+    <string name="common_close">閉じる</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">削除</string>
+    <string name="common_edit">編集</string>
+    <string name="common_rename">名前変更</string>
+    <string name="common_create">作成</string>
+    <string name="common_connect">接続</string>
+    <string name="common_disconnect">切断</string>
+    <string name="common_copy">コピー</string>
+    <string name="common_paste">貼り付け</string>
+    <string name="common_label">ラベル</string>
+    <string name="common_password">パスワード</string>
+    <string name="common_port">ポート</string>
+    <string name="common_host">ホスト</string>
+    <string name="common_username">ユーザー名</string>
+    <string name="common_install">インストール</string>
+    <string name="common_reset">リセット</string>
+    <string name="common_allow">許可</string>
+    <string name="common_not_now">後で</string>
+    <string name="common_import">インポート</string>
+    <string name="common_add">追加</string>
+    <string name="common_download">ダウンロード</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">サポート</string>
+    <string name="common_unlock">ロック解除</string>
+
+    <!-- Battery optimization -->
+    <string name="battery_title">接続を維持しますか？</string>
+    <string name="battery_message">Androidはバッテリー節約のためにバックグラウンドのSSH接続を切断することがあります。yySlideのバッテリー最適化を無効にするとこれを防げます。</string>
+
+    <!-- Workspace profiles -->
+    <string name="workspace_section_title">ワークスペース</string>
+    <string name="workspace_save_current">現在を保存…</string>
+    <string name="workspace_empty_hint">まとめたいセッションを開いてから「現在を保存」をタップしてください。次回ワンタップですべて再び開きます。</string>
+    <string name="workspace_save_dialog_title">ワークスペースとして保存</string>
+    <string name="workspace_save_dialog_name_label">名前</string>
+    <string name="workspace_save_dialog_items_label">含める項目</string>
+    <string name="workspace_save_dialog_no_items">保存するものがありません — まずセッションに接続するか、Wayland を開くか、共有を参照してください。</string>
+    <string name="workspace_save_action">保存</string>
+    <string name="workspace_card_kind_terminal">ターミナル</string>
+    <string name="workspace_card_kind_file_browser">ファイル</string>
+    <string name="workspace_card_kind_desktop">デスクトップ</string>
+    <string name="workspace_card_kind_wayland">Wayland</string>
+    <string name="workspace_card_kind_count">%1$s × %2$d</string>
+    <string name="workspace_card_no_items">空</string>
+    <string name="workspace_long_press_delete">削除</string>
+    <string name="workspace_delete_confirm_title">ワークスペースを削除しますか?</string>
+    <string name="workspace_delete_confirm_message">「%1$s」が削除されます。参照しているコネクションはそのまま残ります。</string>
+    <string name="workspace_launch_progress">%1$s を開いています — %2$d / %3$d</string>
+    <string name="workspace_launch_completed">%1$s を開きました</string>
+    <string name="workspace_launch_partial">%1$s — %3$d 件中 %2$d 件を開きました</string>
+    <string name="workspace_launch_cancelled">%1$s をキャンセルしました</string>
+    <string name="workspace_launch_failed">失敗: %1$s</string>
+    <string name="workspace_launch_cancel">キャンセル</string>
+    <string name="workspace_launch_dismiss">閉じる</string>
+    <string name="biometric_screen_lock_icon">Screen lock</string>
+    <string name="desktop_screen_title">Desktop</string>
+    <string name="agent_deny">Deny</string>
+</resources>

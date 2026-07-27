@@ -1,0 +1,3 @@
+VNC remote desktop viewer with SSH tunnel support
+Fullscreen mode with pinch-to-zoom, pan, and drag gestures
+Licence changed from MIT to GPLv3

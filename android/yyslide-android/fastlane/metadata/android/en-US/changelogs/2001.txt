@@ -1,0 +1,9 @@
+- Fix Mosh display corruption after login (cursor below prompt,
+  freezes after a few Returns, arrow keys appearing "not bound"
+  in Mutt). Haven's mosh client was lying about its state number
+  when a diff arrived with a base it couldn't apply, causing the
+  server to throw away exactly the states the client still needed
+  and producing cumulative display drift. Now matches upstream
+  mosh's Transport::recv() semantics and leaves the state number
+  alone on mismatch so the server retransmits with a base the
+  client can match. (#73)

@@ -1,0 +1,3040 @@
+package sh.haven.feature.settings
+
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ListAlt
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.CloudDownload
+import androidx.compose.material.icons.filled.CloudUpload
+import androidx.compose.material.icons.filled.Laptop
+import androidx.compose.material.icons.filled.Mouse
+import androidx.compose.material.icons.filled.InstallMobile
+import androidx.compose.material.icons.filled.ColorLens
+import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.ContentPaste
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material.icons.filled.DesktopWindows
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Fingerprint
+import androidx.compose.material.icons.filled.VpnLock
+import androidx.compose.material.icons.filled.DragHandle
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Hub
+import androidx.compose.material.icons.filled.LockReset
+import androidx.compose.material.icons.filled.SwapVert
+import androidx.compose.material.icons.filled.Reorder
+import androidx.compose.material.icons.filled.Usb
+import androidx.compose.material.icons.filled.ViewModule
+import androidx.compose.material.icons.filled.ListAlt
+import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.filled.ScreenLockPortrait
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.KeyboardAlt
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Keyboard
+import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.filled.Terminal
+import androidx.compose.material.icons.filled.FontDownload
+import androidx.compose.material.icons.filled.RestartAlt
+import androidx.compose.material.icons.filled.TextFields
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.PlatformImeOptions
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
+import kotlin.math.roundToInt
+import androidx.hilt.navigation.compose.hiltViewModel
+import sh.haven.core.ui.navigation.Screen
+import sh.haven.core.data.preferences.MACRO_PRESETS
+import sh.haven.core.data.preferences.NavBlockMode
+import sh.haven.core.data.preferences.ToolbarItem
+import sh.haven.core.data.preferences.ToolbarKey
+import sh.haven.core.data.preferences.ToolbarLayout
+import sh.haven.core.data.preferences.UserPreferencesRepository
+import kotlinx.coroutines.launch
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SettingsScreen(
+    openToolbarConfig: Boolean = false,
+    onToolbarConfigConsumed: () -> Unit = {},
+    mcpEndpointUrl: String? = null,
+    mcpWireguardEndpointUrl: String? = null,
+    mcpServerConfigJson: String? = null,
+    mcpWireguardServerConfigJson: String? = null,
+    viewModel: SettingsViewModel = hiltViewModel(),
+) {
+    val biometricEnabled by viewModel.biometricEnabled.collectAsState()
+    val screenSecurity by viewModel.screenSecurity.collectAsState()
+    val showLinuxVmCard by viewModel.showLinuxVmCard.collectAsState()
+    val showDesktopsCard by viewModel.showDesktopsCard.collectAsState()
+    val lockTimeout by viewModel.lockTimeout.collectAsState()
+    val fontSize by viewModel.terminalFontSize.collectAsState()
+    val scrollbackRows by viewModel.terminalScrollbackRows.collectAsState()
+    val theme by viewModel.theme.collectAsState()
+    val sessionManager by viewModel.sessionManager.collectAsState()
+    val colorScheme by viewModel.terminalColorScheme.collectAsState()
+    val autoSwitchColorScheme by viewModel.terminalAutoSwitchScheme.collectAsState()
+    val lightColorScheme by viewModel.terminalLightColorScheme.collectAsState()
+    val darkColorScheme by viewModel.terminalDarkColorScheme.collectAsState()
+    val toolbarLayout by viewModel.toolbarLayout.collectAsState()
+    val toolbarLayoutJson by viewModel.toolbarLayoutJson.collectAsState()
+    val navBlockMode by viewModel.navBlockMode.collectAsState()
+    val showSearchButton by viewModel.showSearchButton.collectAsState()
+    val showCopyOutputButton by viewModel.showCopyOutputButton.collectAsState()
+    val keepScreenOnInTerminal by viewModel.keepScreenOnInTerminal.collectAsState()
+    val connectionLoggingEnabled by viewModel.connectionLoggingEnabled.collectAsState()
+    val verboseLoggingEnabled by viewModel.verboseLoggingEnabled.collectAsState()
+    val mcpAgentEndpointEnabled by viewModel.mcpAgentEndpointEnabled.collectAsState()
+    val agentAllowFileRead by viewModel.agentAllowFileRead.collectAsState()
+    val unseenAgentActivity by viewModel.unseenAgentActivity.collectAsState()
+    val requireAgentConsentForWrites by viewModel.requireAgentConsentForWrites.collectAsState()
+    val mouseInputEnabled by viewModel.mouseInputEnabled.collectAsState()
+    val mouseDragSelects by viewModel.mouseDragSelects.collectAsState()
+    val desktopInputMode by viewModel.desktopInputMode.collectAsState()
+    val bandwidthAutoSuggest by viewModel.bandwidthAutoSuggest.collectAsState()
+    val terminalRightClick by viewModel.terminalRightClick.collectAsState()
+    val tapToPositionCursorOnPrompt by viewModel.terminalTapToPositionCursor.collectAsState()
+    val allowStandardKeyboard by viewModel.allowStandardKeyboard.collectAsState()
+    val rawKeyboardMode by viewModel.rawKeyboardMode.collectAsState()
+    val keyboardCustomMode by viewModel.keyboardCustomMode.collectAsState()
+    val interceptCtrlShiftV by viewModel.interceptCtrlShiftV.collectAsState()
+    val showTerminalTabBar by viewModel.showTerminalTabBar.collectAsState()
+    val backupStatus by viewModel.backupStatus.collectAsState()
+    val yySlideCloudSession by viewModel.yySlideCloudSession.collectAsState()
+    val yySlideCloudStatus by viewModel.yySlideCloudStatus.collectAsState()
+    val waylandShellCommand by viewModel.waylandShellCommand.collectAsState()
+    val mediaExtensions by viewModel.mediaExtensions.collectAsState()
+    var showAuditLog by remember { mutableStateOf(false) }
+    var showProotInstallLog by remember { mutableStateOf(false) }
+    var showAgentActivity by remember { mutableStateOf(false) }
+    var showFontUrlDialog by remember { mutableStateOf(false) }
+    // Lifted to SettingsScreen scope so a dialog's confirm handler can
+    // dismiss the dialog AND still complete its async work + show the
+    // result Toast. Earlier these scopes lived inside the `if (showX)`
+    // blocks, which meant dismissing the dialog (showX = false) yanked
+    // the if-branch out of composition and cancelled the scope before
+    // the launched coroutine produced anything — silent install bug.
+    val settingsScope = rememberCoroutineScope()
+    var showLanguageDialog by remember { mutableStateOf(false) }
+    var showWaylandShellDialog by remember { mutableStateOf(false) }
+    var showMediaExtensionsDialog by remember { mutableStateOf(false) }
+    var showFontSizeDialog by remember { mutableStateOf(false) }
+    var showScrollbackRowsDialog by remember { mutableStateOf(false) }
+    var showSessionManagerDialog by remember { mutableStateOf(false) }
+    var showThemeDialog by remember { mutableStateOf(false) }
+    var showColorSchemeDialog by remember { mutableStateOf(false) }
+    var showLightColorSchemeDialog by remember { mutableStateOf(false) }
+    var showDarkColorSchemeDialog by remember { mutableStateOf(false) }
+    var showAboutDialog by remember { mutableStateOf(false) }
+    var showToolbarConfigDialog by remember { mutableStateOf(false) }
+    var showKeyboardModeDialog by remember { mutableStateOf(false) }
+    var showImeFlagsDialog by remember { mutableStateOf(false) }
+    var showYySlideCloudLoginDialog by remember { mutableStateOf(false) }
+    LaunchedEffect(openToolbarConfig) {
+        if (openToolbarConfig) {
+            showToolbarConfigDialog = true
+            // Tell the host the request has been consumed so it can clear
+            // its flag. Doing it from inside the effect (after the state
+            // write) avoids the race where a sibling reset would cancel
+            // this LaunchedEffect before the body had a chance to run.
+            onToolbarConfigConsumed()
+        }
+    }
+    var showBackupPasswordDialog by remember { mutableStateOf<BackupAction?>(null) }
+    var showLockTimeoutDialog by remember { mutableStateOf(false) }
+    var showOsc133SetupDialog by remember { mutableStateOf(false) }
+    var showScreenOrderDialog by remember { mutableStateOf(false) }
+    val screenOrder by viewModel.screenOrder.collectAsState()
+
+    val context = LocalContext.current
+
+    // SAF launchers for backup/restore
+    var pendingPassword by remember { mutableStateOf("") }
+    val exportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("application/octet-stream"),
+    ) { uri ->
+        if (uri != null) viewModel.exportBackup(uri, pendingPassword)
+    }
+    val importLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri ->
+        if (uri != null) {
+            showBackupPasswordDialog = BackupAction.Restore(uri)
+        }
+    }
+    // Custom-terminal-font picker (#123). MIME filter is loose because
+    // many file managers report TTF/OTF as application/octet-stream;
+    // we re-validate via Typeface.createFromFile after import.
+    val fontImportScope = rememberCoroutineScope()
+    val fontImportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri ->
+        if (uri != null) {
+            val displayName = run {
+                var n: String? = null
+                runCatching {
+                    context.contentResolver.query(uri, null, null, null, null)?.use { c ->
+                        if (c.moveToFirst()) {
+                            val ix = c.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+                            if (ix >= 0) n = c.getString(ix)
+                        }
+                    }
+                }
+                n ?: uri.lastPathSegment ?: "font.ttf"
+            }
+            fontImportScope.launch {
+                val path = viewModel.importCustomTerminalFont(uri, displayName)
+                if (path != null) {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.settings_terminal_font_set, displayName),
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.settings_terminal_font_invalid),
+                        Toast.LENGTH_LONG,
+                    ).show()
+                }
+            }
+        }
+    }
+
+    // Show toast on backup status changes
+    LaunchedEffect(backupStatus) {
+        when (val status = backupStatus) {
+            is SettingsViewModel.BackupStatus.Success -> {
+                Toast.makeText(context, status.message, Toast.LENGTH_SHORT).show()
+                viewModel.clearBackupStatus()
+            }
+            is SettingsViewModel.BackupStatus.Error -> {
+                Toast.makeText(context, status.message, Toast.LENGTH_LONG).show()
+                viewModel.clearBackupStatus()
+            }
+            else -> {}
+        }
+    }
+
+    LaunchedEffect(yySlideCloudStatus) {
+        when (val status = yySlideCloudStatus) {
+            is SettingsViewModel.YySlideCloudStatus.Success -> {
+                Toast.makeText(context, status.message, Toast.LENGTH_LONG).show()
+                viewModel.clearYySlideCloudStatus()
+            }
+            is SettingsViewModel.YySlideCloudStatus.Error -> {
+                Toast.makeText(context, status.message, Toast.LENGTH_LONG).show()
+                viewModel.clearYySlideCloudStatus()
+            }
+            else -> {}
+        }
+    }
+
+    val packageInfo = remember {
+        context.packageManager.getPackageInfo(context.packageName, 0)
+    }
+
+    if (showAuditLog) {
+        AuditLogScreen(onBack = { showAuditLog = false })
+        return
+    }
+    if (showProotInstallLog) {
+        ProotInstallLogScreen(onBack = { showProotInstallLog = false })
+        return
+    }
+    if (showAgentActivity) {
+        AgentActivityScreen(onBack = { showAgentActivity = false })
+        return
+    }
+    if (showFontUrlDialog) {
+        FontFromUrlDialog(
+            onInstall = { url ->
+                showFontUrlDialog = false
+                settingsScope.launch {
+                    when (val r = viewModel.installTerminalFontFromUrl(url)) {
+                        is sh.haven.core.data.font.TerminalFontInstaller.Result.Success ->
+                            Toast.makeText(
+                                context,
+                                "Installed (${r.bytesInstalled / 1024} KiB)",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        is sh.haven.core.data.font.TerminalFontInstaller.Result.Failure ->
+                            Toast.makeText(context, r.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+            },
+            onDismiss = { showFontUrlDialog = false },
+        )
+    }
+    // Collapsible settings sections — all collapsed by default so the screen
+    // opens compact and users expand only what they need.
+    val settingsExpanded = remember {
+        androidx.compose.runtime.mutableStateListOf(
+            false, false, false, false, false, false, false, false, true, false, false,
+        )
+    }
+    Column(modifier = Modifier.fillMaxSize()) {
+        TopAppBar(title = { Text(stringResource(R.string.settings_title)) })
+    Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_security_privacy), settingsExpanded[0], { settingsExpanded[0] = !settingsExpanded[0] }) {
+        if (viewModel.biometricAvailable) {
+            SettingsToggleItem(
+                icon = Icons.Filled.Fingerprint,
+                title = stringResource(R.string.settings_biometric_title),
+                subtitle = stringResource(R.string.settings_biometric_subtitle),
+                checked = biometricEnabled,
+                onCheckedChange = viewModel::setBiometricEnabled,
+            )
+            if (biometricEnabled) {
+                SettingsItem(
+                    icon = Icons.Filled.Timer,
+                    title = stringResource(R.string.settings_lock_timeout_title),
+                    subtitle = lockTimeout.label,
+                    onClick = { showLockTimeoutDialog = true },
+                )
+            }
+        }
+        SettingsToggleItem(
+            icon = Icons.Filled.ScreenLockPortrait,
+            title = stringResource(R.string.settings_prevent_screenshots_title),
+            subtitle = stringResource(R.string.settings_prevent_screenshots_subtitle),
+            checked = screenSecurity,
+            onCheckedChange = viewModel::setScreenSecurity,
+        )
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_appearance), settingsExpanded[1], { settingsExpanded[1] = !settingsExpanded[1] }) {
+        SettingsItem(
+            icon = Icons.Filled.ColorLens,
+            title = stringResource(R.string.settings_theme_title),
+            subtitle = theme.label,
+            onClick = { showThemeDialog = true },
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Palette,
+            title = stringResource(R.string.settings_color_scheme_auto_switch_title),
+            subtitle = stringResource(R.string.settings_color_scheme_auto_switch_subtitle),
+            checked = autoSwitchColorScheme,
+            onCheckedChange = viewModel::setTerminalAutoSwitchScheme,
+        )
+        if (autoSwitchColorScheme) {
+            SettingsItem(
+                icon = Icons.Filled.Palette,
+                title = stringResource(R.string.settings_color_scheme_light_title),
+                subtitle = lightColorScheme.label,
+                onClick = { showLightColorSchemeDialog = true },
+            )
+            SettingsItem(
+                icon = Icons.Filled.Palette,
+                title = stringResource(R.string.settings_color_scheme_dark_title),
+                subtitle = darkColorScheme.label,
+                onClick = { showDarkColorSchemeDialog = true },
+            )
+        } else {
+            SettingsItem(
+                icon = Icons.Filled.Palette,
+                title = stringResource(R.string.settings_color_scheme_title),
+                subtitle = colorScheme.label,
+                onClick = { showColorSchemeDialog = true },
+            )
+        }
+        SettingsItem(
+            icon = Icons.Filled.TextFields,
+            title = stringResource(R.string.settings_font_size_title),
+            subtitle = stringResource(R.string.settings_font_size_subtitle, fontSize),
+            onClick = { showFontSizeDialog = true },
+        )
+        SettingsItem(
+            icon = Icons.Filled.History,
+            title = stringResource(R.string.settings_scrollback_rows_title),
+            subtitle = stringResource(R.string.settings_scrollback_rows_subtitle, scrollbackRows),
+            onClick = { showScrollbackRowsDialog = true },
+        )
+        run {
+            val customFontPath by viewModel.terminalFontPath.collectAsState()
+            val activeFontLabel = if (customFontPath == null) {
+                "Hack Nerd Font Mono (default)"
+            } else {
+                "Custom: ${java.io.File(customFontPath!!).nameWithoutExtension}"
+            }
+            SettingsItem(
+                icon = Icons.Filled.FontDownload,
+                title = stringResource(R.string.settings_terminal_font_title),
+                subtitle = stringResource(R.string.settings_terminal_font_subtitle, activeFontLabel),
+                onClick = {
+                    // Loose MIME — many file managers report fonts as
+                    // application/octet-stream; we revalidate post-import.
+                    fontImportLauncher.launch(arrayOf("font/ttf", "font/otf", "application/octet-stream", "*/*"))
+                },
+            )
+            SettingsItem(
+                icon = Icons.Filled.CloudDownload,
+                title = stringResource(R.string.settings_font_install_title),
+                subtitle = stringResource(R.string.settings_terminal_font_url_subtitle),
+                onClick = { showFontUrlDialog = true },
+            )
+            if (customFontPath != null) {
+                SettingsItem(
+                    icon = Icons.Filled.RestartAlt,
+                    title = stringResource(R.string.settings_terminal_font_reset_title),
+                    subtitle = stringResource(R.string.settings_terminal_font_reset_subtitle),
+                    onClick = {
+                        viewModel.clearCustomTerminalFont()
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.settings_terminal_font_reset_done),
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    },
+                )
+            }
+        }
+        run {
+            val currentLocale = androidx.appcompat.app.AppCompatDelegate.getApplicationLocales()
+            val currentLang = when (currentLocale.toLanguageTags()) {
+                "" -> stringResource(R.string.settings_language_system_default)
+                "zh" -> "中文"
+                else -> "English"
+            }
+            SettingsItem(
+                icon = Icons.Filled.Language,
+                title = stringResource(R.string.settings_language_title),
+                subtitle = currentLang,
+                onClick = { showLanguageDialog = true },
+            )
+        }
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_keyboard_input), settingsExpanded[2], { settingsExpanded[2] = !settingsExpanded[2] }) {
+        SettingsItem(
+            icon = Icons.Filled.KeyboardAlt,
+            title = stringResource(R.string.settings_toolbar_title),
+            subtitle = stringResource(R.string.settings_toolbar_subtitle),
+            onClick = { showToolbarConfigDialog = true },
+        )
+        // Keyboard mode tri-state picker. Replaces the previous binary
+        // "Voice input and autocomplete" toggle so users can find all
+        // three modes (Secure / Standard / Raw) from one settings entry
+        // — the Raw mode used to be reachable only via the keyboard
+        // toolbar's Raw key, which most users never added.
+        val keyboardModeId = when {
+            rawKeyboardMode -> "RAW"
+            keyboardCustomMode -> "CUSTOM"
+            allowStandardKeyboard -> "STANDARD"
+            else -> "SECURE"
+        }
+        val keyboardModeLabel = when (keyboardModeId) {
+            "RAW" -> "Raw — physical keyboard only"
+            "STANDARD" -> "Standard — full Gboard features"
+            "CUSTOM" -> "Custom — user-selected EditorInfo flags"
+            else -> "Secure — default, suppresses autocorrect"
+        }
+        SettingsItem(
+            icon = Icons.Filled.Keyboard,
+            title = stringResource(R.string.settings_keyboard_mode_title),
+            subtitle = keyboardModeLabel,
+            onClick = { showKeyboardModeDialog = true },
+        )
+        if (keyboardCustomMode) {
+            SettingsItem(
+                icon = Icons.Filled.Tune,
+                title = stringResource(R.string.settings_ime_flags_title),
+                subtitle = stringResource(R.string.settings_ime_flags_subtitle),
+                onClick = { showImeFlagsDialog = true },
+            )
+        }
+        SettingsToggleItem(
+            icon = Icons.Filled.ContentPaste,
+            title = stringResource(R.string.settings_ctrl_shift_v_title),
+            subtitle = stringResource(R.string.settings_ctrl_shift_v_subtitle),
+            checked = interceptCtrlShiftV,
+            onCheckedChange = viewModel::setInterceptCtrlShiftV,
+        )
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_terminal), settingsExpanded[3], { settingsExpanded[3] = !settingsExpanded[3] }) {
+        SettingsItem(
+            icon = Icons.Filled.Terminal,
+            title = stringResource(R.string.settings_session_persistence_title),
+            subtitle = if (sessionManager == UserPreferencesRepository.SessionManager.NONE) {
+                stringResource(R.string.settings_session_persistence_none)
+            } else {
+                sessionManager.label
+            },
+            onClick = { showSessionManagerDialog = true },
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Search,
+            title = stringResource(R.string.settings_search_button_title),
+            subtitle = stringResource(R.string.settings_search_button_subtitle),
+            checked = showSearchButton,
+            onCheckedChange = viewModel::setShowSearchButton,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.ContentCopy,
+            title = stringResource(R.string.settings_copy_output_title),
+            subtitle = stringResource(R.string.settings_copy_output_subtitle),
+            checked = showCopyOutputButton,
+            onCheckedChange = { enabled ->
+                viewModel.setShowCopyOutputButton(enabled)
+                if (enabled) showOsc133SetupDialog = true
+            },
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.LightMode,
+            title = stringResource(R.string.settings_keep_screen_on_title),
+            subtitle = stringResource(R.string.settings_keep_screen_on_subtitle),
+            checked = keepScreenOnInTerminal,
+            onCheckedChange = viewModel::setKeepScreenOnInTerminal,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Terminal,
+            title = stringResource(R.string.settings_mouse_input_title),
+            subtitle = stringResource(R.string.settings_mouse_input_subtitle),
+            checked = mouseInputEnabled,
+            onCheckedChange = viewModel::setMouseInputEnabled,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Terminal,
+            title = stringResource(R.string.settings_drag_select_title),
+            subtitle = stringResource(R.string.settings_drag_select_subtitle),
+            checked = mouseDragSelects,
+            onCheckedChange = viewModel::setMouseDragSelects,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Terminal,
+            title = stringResource(R.string.settings_right_click_title),
+            subtitle = stringResource(R.string.settings_right_click_subtitle),
+            checked = terminalRightClick,
+            onCheckedChange = viewModel::setTerminalRightClick,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Terminal,
+            title = stringResource(R.string.settings_tap_to_position_title),
+            subtitle = stringResource(R.string.settings_tap_to_position_subtitle),
+            checked = tapToPositionCursorOnPrompt,
+            onCheckedChange = viewModel::setTerminalTapToPositionCursor,
+        )
+        SettingsToggleItem(
+            icon = Icons.AutoMirrored.Filled.ListAlt,
+            title = stringResource(R.string.settings_show_terminal_tab_bar_title),
+            subtitle = stringResource(R.string.settings_show_terminal_tab_bar_subtitle),
+            checked = showTerminalTabBar,
+            onCheckedChange = viewModel::setShowTerminalTabBar,
+        )
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_desktop), settingsExpanded[4], { settingsExpanded[4] = !settingsExpanded[4] }) {
+        SettingsToggleItem(
+            icon = Icons.Filled.Mouse,
+            title = stringResource(R.string.settings_touchpad_input_title),
+            subtitle = stringResource(
+                if (desktopInputMode == "TOUCHPAD")
+                    R.string.settings_touchpad_input_touchpad_subtitle
+                else
+                    R.string.settings_touchpad_input_direct_subtitle
+            ),
+            checked = desktopInputMode == "TOUCHPAD",
+            onCheckedChange = { enabled ->
+                viewModel.setDesktopInputMode(if (enabled) "TOUCHPAD" else "DIRECT")
+            },
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.CloudDownload,
+            title = stringResource(R.string.settings_bandwidth_suggest_title),
+            subtitle = stringResource(R.string.settings_bandwidth_suggest_subtitle),
+            checked = bandwidthAutoSuggest,
+            onCheckedChange = viewModel::setBandwidthAutoSuggest,
+        )
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_connections_screen), settingsExpanded[5], { settingsExpanded[5] = !settingsExpanded[5] }) {
+        SettingsToggleItem(
+            icon = Icons.Filled.DesktopWindows,
+            title = stringResource(R.string.settings_show_desktops_title),
+            subtitle = stringResource(R.string.settings_show_desktops_subtitle),
+            checked = showDesktopsCard,
+            onCheckedChange = viewModel::setShowDesktopsCard,
+        )
+        SettingsToggleItem(
+            icon = Icons.Filled.Laptop,
+            title = stringResource(R.string.settings_show_linux_vm_title),
+            subtitle = stringResource(R.string.settings_show_linux_vm_subtitle),
+            checked = showLinuxVmCard,
+            onCheckedChange = viewModel::setShowLinuxVmCard,
+        )
+        SettingsItem(
+            icon = Icons.Filled.Reorder,
+            title = stringResource(R.string.settings_screen_order_title),
+            subtitle = stringResource(R.string.settings_screen_order_subtitle),
+            onClick = { showScreenOrderDialog = true },
+        )
+        // Issue #160 — by default the bottom-nav hides tabs whose
+        // backing resource (terminal profiles, SSH keys, desktops) is
+        // empty. Power users with single-purpose installs can pin all
+        // tabs by turning this on.
+        val alwaysShowAllTabs by viewModel.alwaysShowAllTabs.collectAsState()
+        SettingsToggleItem(
+            icon = Icons.Filled.ViewModule,
+            title = stringResource(R.string.settings_always_show_tabs_title),
+            subtitle = stringResource(R.string.settings_always_show_tabs_subtitle),
+            checked = alwaysShowAllTabs,
+            onCheckedChange = viewModel::setAlwaysShowAllTabs,
+        )
+
+        // USB-to-guest is a privileged capability: once on, any app in the
+        // Linux guest can reach a USB device the agent attaches. Off by
+        // default; each attach still asks for consent on top of this.
+        val usbGuestExposure by viewModel.usbGuestExposureEnabled.collectAsState()
+        SettingsToggleItem(
+            icon = Icons.Filled.Usb,
+            title = stringResource(R.string.settings_usb_guest_title),
+            subtitle = stringResource(R.string.settings_usb_guest_subtitle),
+            checked = usbGuestExposure,
+            onCheckedChange = viewModel::setUsbGuestExposureEnabled,
+        )
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_diagnostics), settingsExpanded[6], { settingsExpanded[6] = !settingsExpanded[6] }) {
+        SettingsToggleItem(
+            icon = Icons.Filled.History,
+            title = stringResource(R.string.settings_connection_logging_title),
+            subtitle = stringResource(R.string.settings_connection_logging_subtitle),
+            checked = connectionLoggingEnabled,
+            onCheckedChange = viewModel::setConnectionLoggingEnabled,
+        )
+        if (connectionLoggingEnabled) {
+            SettingsItem(
+                icon = Icons.AutoMirrored.Filled.ListAlt,
+                title = stringResource(R.string.settings_view_connection_log_title),
+                subtitle = stringResource(R.string.settings_view_connection_log_subtitle),
+                onClick = { showAuditLog = true },
+            )
+            SettingsItem(
+                icon = Icons.AutoMirrored.Filled.ListAlt,
+                title = stringResource(R.string.settings_view_proot_install_log_title),
+                subtitle = stringResource(R.string.settings_proot_install_log_subtitle),
+                onClick = { showProotInstallLog = true },
+            )
+            SettingsToggleItem(
+                icon = Icons.Filled.BugReport,
+                title = stringResource(R.string.settings_verbose_logging_title),
+                subtitle = stringResource(R.string.settings_verbose_logging_subtitle),
+                checked = verboseLoggingEnabled,
+                onCheckedChange = viewModel::setVerboseLoggingEnabled,
+            )
+        }
+        run {
+            val context = LocalContext.current
+            val helper = sh.haven.core.local.WaylandSocketHelper
+            var capturing by remember { mutableStateOf(helper.isCapturingLogcat) }
+            SettingsItem(
+                icon = Icons.Filled.BugReport,
+                title = stringResource(R.string.settings_logcat_capture_title),
+                subtitle = if (capturing)
+                    stringResource(R.string.settings_logcat_capture_recording)
+                else
+                    stringResource(R.string.settings_logcat_capture_subtitle),
+                onClick = {
+                    if (capturing) {
+                        helper.stopLogcatCapture()
+                        capturing = false
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.settings_logcat_saved),
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    } else {
+                        capturing = helper.startLogcatCapture()
+                        if (capturing) {
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.settings_logcat_started),
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.settings_logcat_start_failed),
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        }
+                    }
+                },
+            )
+        }
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_advanced), settingsExpanded[7], { settingsExpanded[7] = !settingsExpanded[7] }) {
+        SettingsItem(
+            icon = Icons.Filled.DesktopWindows,
+            title = stringResource(R.string.settings_wayland_shell_title),
+            subtitle = waylandShellCommand,
+            onClick = { showWaylandShellDialog = true },
+        )
+        run {
+            val context = LocalContext.current
+            val helper = sh.haven.core.local.WaylandSocketHelper
+            val shizukuRunning = helper.isShizukuAvailable()
+            val shizukuInstalled = shizukuRunning || helper.isShizukuInstalled(context)
+            val shizukuGranted = shizukuRunning && helper.hasShizukuPermission()
+            SettingsItem(
+                icon = Icons.Filled.DesktopWindows,
+                title = stringResource(R.string.settings_shizuku_title),
+                subtitle = when {
+                    shizukuGranted -> stringResource(R.string.settings_shizuku_enabled)
+                    shizukuRunning -> stringResource(R.string.settings_shizuku_available)
+                    shizukuInstalled -> stringResource(R.string.settings_shizuku_not_running)
+                    else -> stringResource(R.string.settings_shizuku_not_installed)
+                },
+                onClick = {
+                    when {
+                        shizukuRunning && !shizukuGranted -> {
+                            helper.requestPermission()
+                        }
+                        shizukuInstalled && !shizukuRunning -> {
+                            // Open Shizuku app so user can start it
+                            val intent = context.packageManager.getLaunchIntentForPackage(
+                                "moe.shizuku.privileged.api"
+                            )
+                            if (intent != null) {
+                                context.startActivity(intent)
+                            }
+                        }
+                        !shizukuInstalled -> {
+                            // Open Play Store or browser
+                            val intent = android.content.Intent(
+                                android.content.Intent.ACTION_VIEW,
+                                android.net.Uri.parse("market://details?id=moe.shizuku.privileged.api"),
+                            )
+                            if (intent.resolveActivity(context.packageManager) != null) {
+                                context.startActivity(intent)
+                            } else {
+                                context.startActivity(android.content.Intent(
+                                    android.content.Intent.ACTION_VIEW,
+                                    android.net.Uri.parse("https://shizuku.rikka.app/download/"),
+                                ))
+                            }
+                        }
+                    }
+                },
+            )
+        }
+
+        // MCP agent endpoint — grouped near Shizuku because both are
+        // "lets an outside thing poke Haven" surfaces: Shizuku lets
+        // privileged Android helpers reach in, MCP lets local AI
+        // agents and scripts reach in. OFF by default. Read tools run
+        // unprompted, write tools require a per-call (or per-session)
+        // bottom-sheet consent.
+        SettingsToggleItem(
+            icon = Icons.Filled.Hub,
+            title = stringResource(R.string.settings_mcp_endpoint_title),
+            subtitle = if (mcpAgentEndpointEnabled) {
+                stringResource(R.string.settings_mcp_endpoint_enabled)
+            } else {
+                stringResource(R.string.settings_mcp_endpoint_disabled)
+            },
+            checked = mcpAgentEndpointEnabled,
+            onCheckedChange = viewModel::setMcpAgentEndpointEnabled,
+        )
+        if (mcpAgentEndpointEnabled) {
+            // Per-capability gate above per-call consent. Enabling the
+            // endpoint isn't enough on its own — raw file reads need
+            // this extra opt-in, because they let an agent exfiltrate
+            // any file in one call where other tools are scoped to
+            // narrower surfaces (terminal scrollback, list-only, etc.).
+            SettingsToggleItem(
+                icon = Icons.Filled.Hub,
+                title = stringResource(R.string.settings_mcp_file_read_title),
+                subtitle = if (agentAllowFileRead) {
+                    stringResource(R.string.settings_mcp_file_read_enabled)
+                } else {
+                    stringResource(R.string.settings_mcp_file_read_disabled)
+                },
+                checked = agentAllowFileRead,
+                onCheckedChange = viewModel::setAgentAllowFileRead,
+            )
+
+            // Power-user gate for `queue_terminal_input` — lets agents
+            // type text + ENTER into any connected SSH session at the
+            // next matching prompt. Off by default; this is real
+            // keystroke injection.
+            val agentAllowTerminalInputQueue by viewModel.agentAllowTerminalInputQueue.collectAsState()
+            SettingsToggleItem(
+                icon = Icons.Filled.Hub,
+                title = stringResource(R.string.settings_mcp_terminal_input_title),
+                subtitle = if (agentAllowTerminalInputQueue) {
+                    stringResource(R.string.settings_mcp_terminal_input_enabled)
+                } else {
+                    stringResource(R.string.settings_mcp_terminal_input_disabled)
+                },
+                checked = agentAllowTerminalInputQueue,
+                onCheckedChange = viewModel::setAgentAllowTerminalInputQueue,
+            )
+
+            // Dedicated reverse-tunnel endpoint. The MCP server only
+            // binds loopback on-device; to reach it from a laptop as the
+            // network roams, Haven brings up a headless, auto-reconnecting
+            // `-R` forward over the chosen SSH profile (decoupled from any
+            // interactive terminal session). Unset = on-device only.
+            val sshProfiles by viewModel.sshProfiles.collectAsState()
+            val mcpTunnelEndpointProfileId by viewModel.mcpTunnelEndpointProfileId.collectAsState()
+            var tunnelEndpointExpanded by remember { mutableStateOf(false) }
+            val selectedEndpointLabel = sshProfiles
+                .firstOrNull { it.id == mcpTunnelEndpointProfileId }?.label
+            Box {
+                SettingsItem(
+                    icon = Icons.Filled.Hub,
+                    title = stringResource(R.string.settings_mcp_reverse_tunnel_title),
+                    subtitle = if (selectedEndpointLabel != null) {
+                        stringResource(
+                            R.string.settings_mcp_reverse_tunnel_active,
+                            selectedEndpointLabel,
+                        )
+                    } else {
+                        stringResource(R.string.settings_mcp_reverse_tunnel_unset)
+                    },
+                    onClick = { tunnelEndpointExpanded = true },
+                )
+                DropdownMenu(
+                    expanded = tunnelEndpointExpanded,
+                    onDismissRequest = { tunnelEndpointExpanded = false },
+                ) {
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.settings_mcp_reverse_tunnel_none)) },
+                        onClick = {
+                            viewModel.setMcpTunnelEndpointProfileId(null)
+                            tunnelEndpointExpanded = false
+                        },
+                    )
+                    sshProfiles.forEach { option ->
+                        DropdownMenuItem(
+                            text = { Text(option.label) },
+                            onClick = {
+                                viewModel.setMcpTunnelEndpointProfileId(option.id)
+                                tunnelEndpointExpanded = false
+                            },
+                        )
+                    }
+                }
+            }
+
+            // Expose the endpoint on the active WireGuard tunnel too — a
+            // stable netstack address WG peers can reach across roams, no
+            // reverse forward. Off by default (wider surface than loopback).
+            val mcpWireguardEnabled by viewModel.mcpWireguardEnabled.collectAsState()
+            SettingsToggleItem(
+                icon = Icons.Filled.Hub,
+                title = stringResource(R.string.settings_mcp_wireguard_title),
+                subtitle = if (mcpWireguardEnabled) {
+                    mcpWireguardEndpointUrl?.let {
+                        stringResource(R.string.settings_mcp_wireguard_enabled, it)
+                    } ?: stringResource(R.string.settings_mcp_wireguard_waiting)
+                } else {
+                    stringResource(R.string.settings_mcp_wireguard_disabled)
+                },
+                checked = mcpWireguardEnabled,
+                onCheckedChange = viewModel::setMcpWireguardEnabled,
+            )
+            if (mcpWireguardEnabled) {
+                SettingsItem(
+                    icon = Icons.Filled.ContentCopy,
+                    title = stringResource(R.string.settings_mcp_copy_wireguard_config_title),
+                    subtitle = mcpWireguardEndpointUrl
+                        ?: stringResource(R.string.settings_mcp_wireguard_waiting),
+                    enabled = mcpWireguardServerConfigJson != null,
+                    onClick = {
+                        val configJson = mcpWireguardServerConfigJson ?: return@SettingsItem
+                        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE)
+                            as? android.content.ClipboardManager
+                        clipboard?.setPrimaryClip(
+                            android.content.ClipData.newPlainText(
+                                "yySlide WireGuard MCP server config",
+                                configJson,
+                            ),
+                        )
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.settings_mcp_wireguard_config_copied),
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    },
+                )
+            }
+
+            val endpointReady = mcpEndpointUrl != null && mcpServerConfigJson != null
+            SettingsItem(
+                icon = Icons.Filled.ContentCopy,
+                title = stringResource(R.string.settings_mcp_copy_endpoint_title),
+                subtitle = mcpEndpointUrl
+                    ?: stringResource(R.string.settings_mcp_endpoint_starting),
+                enabled = endpointReady,
+                onClick = {
+                    val endpointUrl = mcpEndpointUrl ?: return@SettingsItem
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE)
+                        as? android.content.ClipboardManager
+                    clipboard?.setPrimaryClip(
+                        android.content.ClipData.newPlainText("yySlide MCP endpoint", endpointUrl),
+                    )
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.settings_mcp_endpoint_copied),
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
+            SettingsItem(
+                icon = Icons.Filled.ContentCopy,
+                title = stringResource(R.string.settings_mcp_copy_config_title),
+                subtitle = if (endpointReady) {
+                    stringResource(R.string.settings_mcp_copy_config_subtitle)
+                } else {
+                    stringResource(R.string.settings_mcp_endpoint_starting)
+                },
+                enabled = endpointReady,
+                onClick = {
+                    val configJson = mcpServerConfigJson ?: return@SettingsItem
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE)
+                        as? android.content.ClipboardManager
+                    clipboard?.setPrimaryClip(
+                        android.content.ClipData.newPlainText(
+                            "yySlide MCP server config",
+                            configJson,
+                        ),
+                    )
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.settings_mcp_config_copied),
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
+            SettingsItem(
+                icon = Icons.Filled.Info,
+                title = stringResource(R.string.settings_mcp_proot_available_title),
+                subtitle = "~/.config/haven/mcp-servers.json",
+                onClick = {},
+            )
+            SettingsItem(
+                icon = Icons.Filled.History,
+                title = stringResource(
+                    if (unseenAgentActivity) {
+                        R.string.settings_agent_activity_view_unseen
+                    } else {
+                        R.string.settings_agent_activity_view
+                    },
+                ),
+                subtitle = stringResource(R.string.settings_agent_activity_subtitle),
+                onClick = { showAgentActivity = true },
+            )
+            SettingsToggleItem(
+                icon = Icons.Filled.Fingerprint,
+                title = stringResource(R.string.settings_agent_confirm_destructive_title),
+                subtitle = stringResource(R.string.settings_agent_confirm_destructive_subtitle),
+                checked = requireAgentConsentForWrites,
+                onCheckedChange = viewModel::setRequireAgentConsentForWrites,
+            )
+            SettingsItem(
+                icon = Icons.Filled.LockReset,
+                title = stringResource(R.string.settings_agent_forget_allows_title),
+                subtitle = stringResource(R.string.settings_agent_forget_allows_subtitle),
+                onClick = {
+                    viewModel.forgetMemoisedAgentAllows()
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.settings_agent_forget_allows_done),
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
+        }
+
+        SettingsItem(
+            icon = Icons.Filled.PlayArrow,
+            title = stringResource(R.string.settings_media_extensions_title),
+            subtitle = mediaExtensions,
+            onClick = { showMediaExtensionsDialog = true },
+        )
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.yyslide_cloud_section_title), settingsExpanded[8], { settingsExpanded[8] = !settingsExpanded[8] }) {
+        if (yySlideCloudSession.loggedIn) {
+            val username = yySlideCloudSession.username ?: "-"
+            val accountSummary = yySlideCloudSession.lastSyncAt?.let {
+                stringResource(R.string.yyslide_cloud_account_last_sync_summary, username, it)
+            } ?: stringResource(R.string.yyslide_cloud_account_summary, username)
+            SettingsItem(
+                icon = Icons.Filled.CloudDownload,
+                title = stringResource(R.string.yyslide_cloud_sync_connections_title),
+                subtitle = accountSummary,
+                onClick = { viewModel.syncYySlideCloud() },
+            )
+            SettingsItem(
+                icon = Icons.Filled.LockReset,
+                title = stringResource(R.string.yyslide_cloud_sign_out_title),
+                subtitle = yySlideCloudSession.serverUrl,
+                onClick = { viewModel.logoutYySlideCloud() },
+            )
+        } else {
+            SettingsItem(
+                icon = Icons.Filled.CloudDownload,
+                title = stringResource(R.string.yyslide_cloud_sign_in_title),
+                subtitle = stringResource(R.string.yyslide_cloud_sign_in_subtitle),
+                onClick = { showYySlideCloudLoginDialog = true },
+            )
+        }
+        if (yySlideCloudStatus is SettingsViewModel.YySlideCloudStatus.InProgress) {
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.yyslide_cloud_busy_title)) },
+                supportingContent = { Text(stringResource(R.string.yyslide_cloud_busy_subtitle)) },
+                leadingContent = {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                },
+                modifier = Modifier.padding(horizontal = 8.dp),
+            )
+        }
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_backup), settingsExpanded[9], { settingsExpanded[9] = !settingsExpanded[9] }) {
+        SettingsItem(
+            icon = Icons.Filled.CloudUpload,
+            title = stringResource(R.string.settings_export_backup_title),
+            subtitle = stringResource(R.string.settings_export_backup_subtitle),
+            onClick = {
+                showBackupPasswordDialog = BackupAction.Export
+            },
+        )
+        SettingsItem(
+            icon = Icons.Filled.CloudDownload,
+            title = stringResource(R.string.settings_restore_backup_title),
+            subtitle = stringResource(R.string.settings_restore_backup_subtitle),
+            onClick = {
+                importLauncher.launch(arrayOf("*/*"))
+            },
+        )
+
+        if (backupStatus is SettingsViewModel.BackupStatus.InProgress) {
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_backup_working)) },
+                leadingContent = {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                },
+                modifier = Modifier.padding(horizontal = 8.dp),
+            )
+        }
+
+        }
+        CollapsibleSettingsSection(stringResource(R.string.settings_section_about), settingsExpanded[10], { settingsExpanded[10] = !settingsExpanded[10] }) {
+        SettingsItem(
+            icon = Icons.Filled.Info,
+            title = stringResource(R.string.settings_about_title),
+            subtitle = "v${packageInfo.versionName}",
+            onClick = { showAboutDialog = true },
+        )
+
+        }
+    } // scrollable Column
+    } // outer Column
+
+    if (showAboutDialog) {
+        AboutDialog(
+            versionName = packageInfo.versionName ?: stringResource(R.string.settings_version_unknown),
+            versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                packageInfo.longVersionCode
+            } else {
+                @Suppress("DEPRECATION")
+                packageInfo.versionCode.toLong()
+            },
+            onDismiss = { showAboutDialog = false },
+        )
+    }
+
+    if (showThemeDialog) {
+        ThemeDialog(
+            currentTheme = theme,
+            onDismiss = { showThemeDialog = false },
+            onSelect = { selected ->
+                viewModel.setTheme(selected)
+                showThemeDialog = false
+            },
+        )
+    }
+
+    if (showKeyboardModeDialog) {
+        val modes = listOf(
+            Triple("SECURE", "Secure (default)",
+                "Real software keyboard with privacy flags set: Gboard mic, autocorrect, swipe typing and writing-assist are suppressed. Best for typing passwords; works with Bluetooth keyboards too."),
+            Triple("STANDARD", "Standard",
+                "Full Gboard features — voice input, swipe typing, autocorrect, word predictions. Pick this if your software keyboard isn't working in Secure mode, or if you want autocorrect."),
+            Triple("RAW", "Raw — Bluetooth/USB only",
+                "No software keyboard at all. Only physical keys (Bluetooth or USB) reach the terminal. Strongest privacy; on-screen keyboard won't appear when you tap the terminal."),
+            Triple("CUSTOM", "Custom — pick your own flags",
+                "Advanced. Choose which EditorInfo bits the terminal sets so you can mix-and-match around your IME's quirks (e.g. voice input on Gboard without autocorrect). Configure under Settings → \"IME flags\" once selected."),
+        )
+        val current = when {
+            rawKeyboardMode -> "RAW"
+            keyboardCustomMode -> "CUSTOM"
+            allowStandardKeyboard -> "STANDARD"
+            else -> "SECURE"
+        }
+        AlertDialog(
+            onDismissRequest = { showKeyboardModeDialog = false },
+            title = { Text(stringResource(R.string.settings_keyboard_mode_title)) },
+            text = {
+                Column {
+                    modes.forEach { (id, label, description) ->
+                        Row(
+                            verticalAlignment = Alignment.Top,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    viewModel.setKeyboardMode(id)
+                                    showKeyboardModeDialog = false
+                                }
+                                .padding(vertical = 8.dp, horizontal = 4.dp),
+                        ) {
+                            RadioButton(
+                                selected = id == current,
+                                onClick = null,
+                                modifier = Modifier.padding(top = 2.dp),
+                            )
+                            Spacer(Modifier.width(12.dp))
+                            Column {
+                                Text(label, style = MaterialTheme.typography.bodyLarge)
+                                Spacer(Modifier.height(2.dp))
+                                Text(
+                                    description,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showKeyboardModeDialog = false }) {
+                    Text(stringResource(R.string.common_cancel))
+                }
+            },
+        )
+    }
+
+    if (showImeFlagsDialog) {
+        ImeFlagsDialog(
+            noSuggestions = viewModel.imeFlagNoSuggestions.collectAsState().value,
+            visiblePassword = viewModel.imeFlagVisiblePassword.collectAsState().value,
+            autoCorrect = viewModel.imeFlagAutoCorrect.collectAsState().value,
+            fullEditor = viewModel.imeFlagFullEditor.collectAsState().value,
+            noExtractUi = viewModel.imeFlagNoExtractUi.collectAsState().value,
+            noPersonalizedLearning = viewModel.imeFlagNoPersonalizedLearning.collectAsState().value,
+            onNoSuggestions = viewModel::setImeFlagNoSuggestions,
+            onVisiblePassword = viewModel::setImeFlagVisiblePassword,
+            onAutoCorrect = viewModel::setImeFlagAutoCorrect,
+            onFullEditor = viewModel::setImeFlagFullEditor,
+            onNoExtractUi = viewModel::setImeFlagNoExtractUi,
+            onNoPersonalizedLearning = viewModel::setImeFlagNoPersonalizedLearning,
+            onDismiss = { showImeFlagsDialog = false },
+        )
+    }
+
+    if (showLanguageDialog) {
+        val languages = listOf(
+            "" to stringResource(R.string.settings_language_system_default),
+            "en" to "English",
+            "zh" to "中文",
+            "ar" to "العربية",
+            "bn" to "বাংলা",
+            "de" to "Deutsch",
+            "es" to "Español",
+            "fr" to "Français",
+            "hi" to "हिन्दी",
+            "ja" to "日本語",
+            "ko" to "한국어",
+            "pt" to "Português",
+            "ru" to "Русский",
+        )
+        val currentTag = androidx.appcompat.app.AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        AlertDialog(
+            onDismissRequest = { showLanguageDialog = false },
+            title = { Text(stringResource(R.string.settings_language_title)) },
+            text = {
+                Column {
+                    languages.forEach { (tag, label) ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    val locales = if (tag.isEmpty()) {
+                                        androidx.core.os.LocaleListCompat.getEmptyLocaleList()
+                                    } else {
+                                        androidx.core.os.LocaleListCompat.forLanguageTags(tag)
+                                    }
+                                    androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(locales)
+                                    showLanguageDialog = false
+                                }
+                                .padding(vertical = 12.dp, horizontal = 8.dp),
+                        ) {
+                            RadioButton(
+                                selected = (tag.isEmpty() && currentTag.isEmpty()) || tag == currentTag,
+                                onClick = null,
+                            )
+                            Spacer(Modifier.width(12.dp))
+                            Text(label)
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showLanguageDialog = false }) {
+                    Text(stringResource(R.string.common_cancel))
+                }
+            },
+        )
+    }
+
+    if (showScreenOrderDialog) {
+        ScreenOrderDialog(
+            currentOrder = screenOrder,
+            onDismiss = { showScreenOrderDialog = false },
+            onSave = { newOrder ->
+                viewModel.setScreenOrder(newOrder.map { it.route })
+                showScreenOrderDialog = false
+            },
+        )
+    }
+
+    if (showWaylandShellDialog) {
+        var shellCmd by rememberSaveable { mutableStateOf(waylandShellCommand) }
+        val shellOptions = listOf("/bin/sh -l", "/bin/ash -l", "/bin/bash -l", "/bin/zsh", "/bin/fish")
+        AlertDialog(
+            onDismissRequest = { showWaylandShellDialog = false },
+            title = { Text(stringResource(R.string.settings_wayland_dialog_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        stringResource(R.string.settings_wayland_dialog_description),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    OutlinedTextField(
+                        value = shellCmd,
+                        onValueChange = { v -> shellCmd = v },
+                        label = { Text(stringResource(R.string.settings_wayland_shell_command_label)) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    shellOptions.forEach { option ->
+                        FilterChip(
+                            selected = shellCmd == option,
+                            onClick = { shellCmd = option },
+                            label = { Text(option) },
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    viewModel.setWaylandShellCommand(shellCmd)
+                    showWaylandShellDialog = false
+                }) { Text(stringResource(R.string.common_save)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showWaylandShellDialog = false }) { Text(stringResource(R.string.common_cancel)) }
+            },
+        )
+    }
+
+    if (showMediaExtensionsDialog) {
+        var extText by rememberSaveable { mutableStateOf(mediaExtensions) }
+        AlertDialog(
+            onDismissRequest = { showMediaExtensionsDialog = false },
+            title = { Text(stringResource(R.string.settings_media_extensions_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        stringResource(R.string.settings_media_extensions_description),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    OutlinedTextField(
+                        value = extText,
+                        onValueChange = { extText = it },
+                        label = { Text(stringResource(R.string.settings_media_extensions_label)) },
+                        modifier = Modifier.fillMaxWidth(),
+                        minLines = 3,
+                        maxLines = 5,
+                    )
+                    TextButton(onClick = {
+                        extText = UserPreferencesRepository.DEFAULT_MEDIA_EXTENSIONS
+                    }) {
+                        Text(stringResource(R.string.common_reset))
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    viewModel.setMediaExtensions(extText.trim())
+                    showMediaExtensionsDialog = false
+                }) { Text(stringResource(R.string.common_save)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showMediaExtensionsDialog = false }) { Text(stringResource(R.string.common_cancel)) }
+            },
+        )
+    }
+
+    if (showColorSchemeDialog) {
+        ColorSchemeDialog(
+            currentScheme = colorScheme,
+            onDismiss = { showColorSchemeDialog = false },
+            onSelect = { selected ->
+                viewModel.setTerminalColorScheme(selected)
+                showColorSchemeDialog = false
+            },
+        )
+    }
+
+    if (showLightColorSchemeDialog) {
+        ColorSchemeDialog(
+            currentScheme = lightColorScheme,
+            titleRes = R.string.settings_color_scheme_light_dialog_title,
+            onDismiss = { showLightColorSchemeDialog = false },
+            onSelect = { selected ->
+                viewModel.setTerminalLightColorScheme(selected)
+                showLightColorSchemeDialog = false
+            },
+        )
+    }
+
+    if (showDarkColorSchemeDialog) {
+        ColorSchemeDialog(
+            currentScheme = darkColorScheme,
+            titleRes = R.string.settings_color_scheme_dark_dialog_title,
+            onDismiss = { showDarkColorSchemeDialog = false },
+            onSelect = { selected ->
+                viewModel.setTerminalDarkColorScheme(selected)
+                showDarkColorSchemeDialog = false
+            },
+        )
+    }
+
+    if (showLockTimeoutDialog) {
+        AlertDialog(
+            onDismissRequest = { showLockTimeoutDialog = false },
+            title = { Text(stringResource(R.string.settings_lock_timeout_dialog_title)) },
+            text = {
+                Column {
+                    UserPreferencesRepository.LockTimeout.entries.forEach { timeout ->
+                        ListItem(
+                            modifier = Modifier.clickable {
+                                viewModel.setLockTimeout(timeout)
+                                showLockTimeoutDialog = false
+                            },
+                            headlineContent = { Text(timeout.label) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = lockTimeout == timeout,
+                                    onClick = null,
+                                )
+                            },
+                        )
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = {
+                TextButton(onClick = { showLockTimeoutDialog = false }) {
+                    Text(stringResource(R.string.common_cancel))
+                }
+            },
+        )
+    }
+
+    if (showSessionManagerDialog) {
+        val sessionCmdOverride by viewModel.sessionCommandOverride.collectAsState()
+        SessionManagerDialog(
+            current = sessionManager,
+            commandOverride = sessionCmdOverride,
+            onDismiss = { showSessionManagerDialog = false },
+            onSelect = { selected ->
+                viewModel.setSessionManager(selected)
+                showSessionManagerDialog = false
+            },
+            onCommandOverrideChange = viewModel::setSessionCommandOverride,
+        )
+    }
+
+    if (showFontSizeDialog) {
+        FontSizeDialog(
+            currentSize = fontSize,
+            onDismiss = { showFontSizeDialog = false },
+            onConfirm = { newSize ->
+                viewModel.setTerminalFontSize(newSize)
+                showFontSizeDialog = false
+            },
+        )
+    }
+
+    if (showScrollbackRowsDialog) {
+        ScrollbackRowsDialog(
+            currentRows = scrollbackRows,
+            onDismiss = { showScrollbackRowsDialog = false },
+            onConfirm = { newRows ->
+                viewModel.setTerminalScrollbackRows(newRows)
+                showScrollbackRowsDialog = false
+            },
+        )
+    }
+
+    if (showToolbarConfigDialog) {
+        ToolbarConfigDialog(
+            layout = toolbarLayout,
+            layoutJson = toolbarLayoutJson,
+            navBlockMode = navBlockMode,
+            onDismiss = { showToolbarConfigDialog = false },
+            onSaveLayout = { layout ->
+                viewModel.setToolbarLayout(layout)
+                showToolbarConfigDialog = false
+            },
+            onSaveJson = { json ->
+                viewModel.setToolbarLayoutJson(json)
+                showToolbarConfigDialog = false
+            },
+            onNavBlockModeChange = { viewModel.setNavBlockMode(it) },
+        )
+    }
+
+    if (showYySlideCloudLoginDialog) {
+        YySlideCloudLoginDialog(
+            initialServerUrl = yySlideCloudSession.serverUrl,
+            initialUsername = yySlideCloudSession.username.orEmpty(),
+            busy = yySlideCloudStatus is SettingsViewModel.YySlideCloudStatus.InProgress,
+            onDismiss = { showYySlideCloudLoginDialog = false },
+            onLogin = { serverUrl, username, password, totpCode ->
+                showYySlideCloudLoginDialog = false
+                viewModel.loginYySlideCloud(serverUrl, username, password, totpCode)
+            },
+        )
+    }
+
+    showBackupPasswordDialog?.let { action ->
+        BackupPasswordDialog(
+            isExport = action is BackupAction.Export,
+            onDismiss = { showBackupPasswordDialog = null },
+            onConfirm = { password ->
+                showBackupPasswordDialog = null
+                when (action) {
+                    is BackupAction.Export -> {
+                        pendingPassword = password
+                        exportLauncher.launch("haven-backup.enc")
+                    }
+                    is BackupAction.Restore -> {
+                        viewModel.importBackup(action.uri, password)
+                    }
+                }
+            },
+        )
+    }
+
+    if (showOsc133SetupDialog) {
+        val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+        val bashSnippet = """# Add to ~/.bashrc
+PS0='\[\e]133;C\a\]'
+PS1='\[\e]133;D;${'$'}?\a\e]133;A\a\]'${'$'}PS1'\[\e]133;B\a\]'"""
+        val zshSnippet = """# Add to ~/.zshrc
+precmd()  { print -Pn '\e]133;D;%?\a\e]133;A\a' }
+preexec() { print -Pn '\e]133;B\a\e]133;C\a' }"""
+        val copiedBashMsg = stringResource(R.string.settings_osc133_copied_bash)
+        val copiedZshMsg = stringResource(R.string.settings_osc133_copied_zsh)
+        AlertDialog(
+            onDismissRequest = { showOsc133SetupDialog = false },
+            title = { Text(stringResource(R.string.settings_osc133_dialog_title)) },
+            text = {
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    Text(
+                        stringResource(R.string.settings_osc133_description),
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Text(stringResource(R.string.settings_osc133_bash), style = MaterialTheme.typography.titleSmall)
+                    Text(
+                        bashSnippet,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.shapes.small)
+                            .padding(8.dp)
+                            .clickable {
+                                clipboardManager.setPrimaryClip(android.content.ClipData.newPlainText("bash", bashSnippet))
+                                android.widget.Toast.makeText(context, copiedBashMsg, android.widget.Toast.LENGTH_SHORT).show()
+                            },
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Text(stringResource(R.string.settings_osc133_zsh), style = MaterialTheme.typography.titleSmall)
+                    Text(
+                        zshSnippet,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.shapes.small)
+                            .padding(8.dp)
+                            .clickable {
+                                clipboardManager.setPrimaryClip(android.content.ClipData.newPlainText("zsh", zshSnippet))
+                                android.widget.Toast.makeText(context, copiedZshMsg, android.widget.Toast.LENGTH_SHORT).show()
+                            },
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        stringResource(R.string.settings_osc133_footer),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    context.startActivity(Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://gitlab.freedesktop.org/Per_Bothner/specifications/blob/master/proposals/semantic-prompts.md")))
+                }) { Text(stringResource(R.string.settings_osc133_learn_more)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showOsc133SetupDialog = false }) { Text(stringResource(R.string.common_done)) }
+            },
+        )
+    }
+}
+
+private sealed interface BackupAction {
+    data object Export : BackupAction
+    data class Restore(val uri: Uri) : BackupAction
+}
+
+@Composable
+private fun YySlideCloudLoginDialog(
+    initialServerUrl: String,
+    initialUsername: String,
+    busy: Boolean,
+    onDismiss: () -> Unit,
+    onLogin: (serverUrl: String, username: String, password: String, totpCode: String) -> Unit,
+) {
+    var serverUrl by remember { mutableStateOf(initialServerUrl.ifBlank { YySlideCloudRepository.DEFAULT_SERVER_URL }) }
+    var username by remember { mutableStateOf(initialUsername) }
+    var password by remember { mutableStateOf("") }
+    var totpCode by remember { mutableStateOf("") }
+    val canLogin = !busy && serverUrl.isNotBlank() && username.isNotBlank() && password.isNotBlank()
+
+    AlertDialog(
+        onDismissRequest = { if (!busy) onDismiss() },
+        title = { Text(stringResource(R.string.yyslide_cloud_sign_in_title)) },
+        text = {
+            Column {
+                OutlinedTextField(
+                    value = serverUrl,
+                    onValueChange = { serverUrl = it.trim() },
+                    label = { Text(stringResource(R.string.yyslide_cloud_server_label)) },
+                    singleLine = true,
+                    enabled = !busy,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it.trim() },
+                    label = { Text(stringResource(R.string.yyslide_cloud_username_label)) },
+                    singleLine = true,
+                    enabled = !busy,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(8.dp))
+                sh.haven.core.ui.PasswordField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = stringResource(R.string.yyslide_cloud_password_label),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = totpCode,
+                    onValueChange = { totpCode = it.filter(Char::isDigit).take(8) },
+                    label = { Text(stringResource(R.string.yyslide_cloud_totp_label)) },
+                    singleLine = true,
+                    enabled = !busy,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { onLogin(serverUrl, username, password, totpCode) },
+                enabled = canLogin,
+            ) {
+                Text(
+                    if (busy) {
+                        stringResource(R.string.yyslide_cloud_login_busy_button)
+                    } else {
+                        stringResource(R.string.yyslide_cloud_login_submit_button)
+                    },
+                )
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss, enabled = !busy) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun BackupPasswordDialog(
+    isExport: Boolean,
+    onDismiss: () -> Unit,
+    onConfirm: (String) -> Unit,
+) {
+    var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+    val title = stringResource(if (isExport) R.string.settings_backup_export_dialog_title else R.string.settings_backup_restore_dialog_title)
+    val passwordError = if (isExport && password.length in 1..5) stringResource(R.string.settings_backup_password_min_length) else null
+    val confirmError = if (isExport && confirmPassword.isNotEmpty() && confirmPassword != password) {
+        stringResource(R.string.settings_backup_passwords_mismatch)
+    } else null
+    val canConfirm = if (isExport) {
+        password.length >= 6 && password == confirmPassword
+    } else {
+        password.isNotEmpty()
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(title) },
+        text = {
+            Column {
+                Text(
+                    text = stringResource(if (isExport) R.string.settings_backup_export_description else R.string.settings_backup_restore_description),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(12.dp))
+                sh.haven.core.ui.PasswordField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = stringResource(R.string.settings_backup_password_label),
+                    isError = passwordError != null,
+                    supportingText = passwordError,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                if (isExport) {
+                    Spacer(Modifier.height(8.dp))
+                    sh.haven.core.ui.PasswordField(
+                        value = confirmPassword,
+                        onValueChange = { confirmPassword = it },
+                        label = stringResource(R.string.settings_backup_confirm_password_label),
+                        isError = confirmError != null,
+                        supportingText = confirmError,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onConfirm(password) }, enabled = canConfirm) {
+                Text(stringResource(if (isExport) R.string.settings_backup_export_button else R.string.settings_backup_restore_button))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.common_cancel)) }
+        },
+    )
+}
+
+@Composable
+private fun AboutDialog(
+    versionName: String,
+    versionCode: Long,
+    onDismiss: () -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_about_dialog_title)) },
+        text = {
+            Column {
+                Text(
+                    text = stringResource(R.string.settings_about_app_name),
+                    style = MaterialTheme.typography.headlineSmall,
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.settings_about_description),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.settings_about_version, versionName, versionCode),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Text(
+                    text = stringResource(R.string.settings_about_android, Build.VERSION.RELEASE, Build.VERSION.SDK_INT),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.settings_about_libraries_title),
+                    style = MaterialTheme.typography.titleSmall,
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                val libraries = listOf(
+                    "rclone" to "Cloud storage engine (60+ providers) — MIT",
+                    "IronRDP" to "RDP protocol (Rust/UniFFI) — MIT/Apache-2.0",
+                    "JSch" to "SSH/SFTP protocol — BSD",
+                    "smbj" to "SMB/CIFS protocol — Apache-2.0",
+                    "ConnectBot termlib" to "Terminal emulator — Apache-2.0",
+                    "PRoot" to "Local Linux shell — GPL-2.0",
+                    "Jetpack Compose" to "UI toolkit — Apache-2.0",
+                    "Hack Nerd Font Mono" to "Terminal default font — Hack (MIT/Bitstream Vera) + Nerd Fonts patcher (MIT) + Font Awesome (CC-BY 4.0) + Material Design Icons (Apache-2.0) + Devicons/Octicons/Codicons/Powerline/Pomicons/Seti UI (MIT) + Weather Icons (SIL OFL 1.1) + IEC Power Symbols (Public Domain). See NOTICE-Fonts.md.",
+                )
+                libraries.forEach { (name, desc) ->
+                    Text(
+                        text = "$name — $desc",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_close))
+            }
+        },
+    )
+}
+
+@Composable
+private fun ScreenOrderDialog(
+    currentOrder: List<String>,
+    onDismiss: () -> Unit,
+    onSave: (List<Screen>) -> Unit,
+) {
+    val allScreens = Screen.entries.toList()
+    val initial = if (currentOrder.isNotEmpty()) {
+        val byRoute = currentOrder.mapNotNull { route ->
+            allScreens.find { it.route == route }
+        }
+        val missing = allScreens.filter { it !in byRoute }
+        byRoute + missing
+    } else {
+        allScreens
+    }
+    val order = remember { mutableStateListOf(*initial.toTypedArray()) }
+    var draggedIndex by remember { mutableIntStateOf(-1) }
+    var dragOffset by remember { mutableFloatStateOf(0f) }
+    val itemTops = remember { mutableStateMapOf<Int, Float>() }
+    val itemHeights = remember { mutableStateMapOf<Int, Float>() }
+    val haptic = LocalHapticFeedback.current
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_screen_order_dialog_title)) },
+        text = {
+            Column {
+                order.forEachIndexed { index, screen ->
+                    val isDragged = index == draggedIndex
+                    ListItem(
+                        headlineContent = { Text(stringResource(screen.labelRes)) },
+                        leadingContent = {
+                            Icon(
+                                screen.icon,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                            )
+                        },
+                        trailingContent = {
+                            Icon(
+                                Icons.Filled.DragHandle,
+                                contentDescription = stringResource(R.string.settings_screen_order_drag_description),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        },
+                        modifier = Modifier
+                            .onGloballyPositioned { coords ->
+                                itemTops[index] = coords.positionInParent().y
+                                itemHeights[index] = coords.size.height.toFloat()
+                            }
+                            .then(
+                                if (isDragged) {
+                                    Modifier
+                                        .zIndex(1f)
+                                        .offset { IntOffset(0, dragOffset.roundToInt()) }
+                                        .shadow(8.dp, RoundedCornerShape(8.dp))
+                                } else {
+                                    Modifier
+                                },
+                            )
+                            .pointerInput(Unit) {
+                                detectDragGesturesAfterLongPress(
+                                    onDragStart = {
+                                        draggedIndex = order.indexOf(screen)
+                                        dragOffset = 0f
+                                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                                    },
+                                    onDrag = { change, offset ->
+                                        change.consume()
+                                        dragOffset += offset.y
+                                        val di = draggedIndex
+                                        if (di < 0) return@detectDragGesturesAfterLongPress
+                                        val myTop = itemTops[di] ?: return@detectDragGesturesAfterLongPress
+                                        val myH = itemHeights[di] ?: return@detectDragGesturesAfterLongPress
+                                        val myCenter = myTop + myH / 2 + dragOffset
+                                        // Check swap with neighbor below
+                                        if (di < order.size - 1) {
+                                            val nextTop = itemTops[di + 1] ?: 0f
+                                            val nextH = itemHeights[di + 1] ?: 0f
+                                            val nextCenter = nextTop + nextH / 2
+                                            if (myCenter > nextCenter) {
+                                                val item = order.removeAt(di)
+                                                order.add(di + 1, item)
+                                                dragOffset -= nextH
+                                                // Update positions after swap
+                                                itemTops[di] = myTop
+                                                itemTops[di + 1] = myTop + nextH
+                                                draggedIndex = di + 1
+                                                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                            }
+                                        }
+                                        // Check swap with neighbor above
+                                        if (di > 0) {
+                                            val prevTop = itemTops[di - 1] ?: 0f
+                                            val prevH = itemHeights[di - 1] ?: 0f
+                                            val prevCenter = prevTop + prevH / 2
+                                            if (myCenter < prevCenter) {
+                                                val item = order.removeAt(di)
+                                                order.add(di - 1, item)
+                                                dragOffset += prevH
+                                                itemTops[di - 1] = myTop - prevH
+                                                itemTops[di] = myTop
+                                                draggedIndex = di - 1
+                                                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                            }
+                                        }
+                                    },
+                                    onDragEnd = {
+                                        draggedIndex = -1
+                                        dragOffset = 0f
+                                    },
+                                    onDragCancel = {
+                                        draggedIndex = -1
+                                        dragOffset = 0f
+                                    },
+                                )
+                            },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onSave(order.toList()) }) {
+                Text(stringResource(R.string.common_save))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun ThemeDialog(
+    currentTheme: UserPreferencesRepository.ThemeMode,
+    onDismiss: () -> Unit,
+    onSelect: (UserPreferencesRepository.ThemeMode) -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_theme_dialog_title)) },
+        text = {
+            Column {
+                UserPreferencesRepository.ThemeMode.entries.forEach { mode ->
+                    ListItem(
+                        headlineContent = { Text(mode.label) },
+                        leadingContent = {
+                            RadioButton(
+                                selected = mode == currentTheme,
+                                onClick = null,
+                            )
+                        },
+                        modifier = Modifier.clickable(role = Role.RadioButton) {
+                            onSelect(mode)
+                        },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun ColorSchemeDialog(
+    currentScheme: UserPreferencesRepository.TerminalColorScheme,
+    onDismiss: () -> Unit,
+    onSelect: (UserPreferencesRepository.TerminalColorScheme) -> Unit,
+    titleRes: Int = R.string.settings_color_scheme_dialog_title,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(titleRes)) },
+        text = {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                UserPreferencesRepository.TerminalColorScheme.entries.forEach { scheme ->
+                    // MATERIAL_YOU's "background" / "foreground" longs are
+                    // sentinel placeholders — derive the swatch from the
+                    // live MaterialTheme so the preview matches what the
+                    // terminal will actually look like.
+                    val previewBg = if (scheme.isDynamic) MaterialTheme.colorScheme.surface
+                        else Color(scheme.background)
+                    val previewFg = if (scheme.isDynamic) MaterialTheme.colorScheme.onSurface
+                        else Color(scheme.foreground)
+                    ListItem(
+                        headlineContent = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(previewBg)
+                                        .border(
+                                            1.dp,
+                                            MaterialTheme.colorScheme.outline,
+                                            RoundedCornerShape(4.dp),
+                                        ),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    Text(
+                                        text = "A",
+                                        color = previewFg,
+                                        fontFamily = FontFamily.Monospace,
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Text(scheme.label)
+                            }
+                        },
+                        leadingContent = {
+                            RadioButton(
+                                selected = scheme == currentScheme,
+                                onClick = null,
+                            )
+                        },
+                        modifier = Modifier.clickable(role = Role.RadioButton) {
+                            onSelect(scheme)
+                        },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun SessionManagerDialog(
+    current: UserPreferencesRepository.SessionManager,
+    commandOverride: String?,
+    onDismiss: () -> Unit,
+    onSelect: (UserPreferencesRepository.SessionManager) -> Unit,
+    onCommandOverrideChange: (String?) -> Unit,
+) {
+    val context = LocalContext.current
+    var overrideText by remember(commandOverride) { mutableStateOf(commandOverride ?: "") }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_session_dialog_title)) },
+        text = {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                UserPreferencesRepository.SessionManager.entries.forEach { manager ->
+                    ListItem(
+                        headlineContent = {
+                            if (manager.url != null) {
+                                Text(
+                                    text = manager.label,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    textDecoration = TextDecoration.Underline,
+                                    modifier = Modifier.clickable {
+                                        context.startActivity(
+                                            Intent(Intent.ACTION_VIEW, Uri.parse(manager.url))
+                                        )
+                                    },
+                                )
+                            } else {
+                                Text(manager.label)
+                            }
+                        },
+                        supportingContent = if (!manager.supportsScrollback) {
+                            { Text(stringResource(R.string.settings_session_no_scrollback)) }
+                        } else null,
+                        leadingContent = {
+                            RadioButton(
+                                selected = manager == current,
+                                onClick = null,
+                            )
+                        },
+                        modifier = Modifier.clickable(role = Role.RadioButton) {
+                            onSelect(manager)
+                        },
+                    )
+                }
+
+                if (current != UserPreferencesRepository.SessionManager.NONE) {
+                    Spacer(Modifier.height(12.dp))
+                    val defaultCommand = current.command?.invoke("{name}") ?: ""
+                    OutlinedTextField(
+                        value = overrideText,
+                        onValueChange = { overrideText = it },
+                        label = { Text(stringResource(R.string.settings_session_custom_command_label)) },
+                        placeholder = { Text(defaultCommand, maxLines = 1) },
+                        supportingText = {
+                            Text(stringResource(R.string.settings_session_custom_command_hint))
+                        },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    if (overrideText != (commandOverride ?: "")) {
+                        TextButton(
+                            onClick = {
+                                onCommandOverrideChange(overrideText.ifBlank { null })
+                            },
+                        ) {
+                            Text(stringResource(R.string.settings_session_save_command))
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_close))
+            }
+        },
+    )
+}
+
+@Composable
+private fun FontSizeDialog(
+    currentSize: Int,
+    onDismiss: () -> Unit,
+    onConfirm: (Int) -> Unit,
+) {
+    var sliderValue by remember { mutableFloatStateOf(currentSize.toFloat()) }
+    val displaySize = sliderValue.toInt()
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_font_size_dialog_title)) },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Text(
+                    text = stringResource(R.string.settings_font_size_sample),
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = displaySize.sp,
+                    modifier = Modifier.padding(vertical = 16.dp),
+                )
+                Text(
+                    text = stringResource(R.string.settings_font_size_value, displaySize),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                Slider(
+                    value = sliderValue,
+                    onValueChange = { sliderValue = it },
+                    valueRange = UserPreferencesRepository.MIN_FONT_SIZE.toFloat()..
+                        UserPreferencesRepository.MAX_FONT_SIZE.toFloat(),
+                    steps = UserPreferencesRepository.MAX_FONT_SIZE -
+                        UserPreferencesRepository.MIN_FONT_SIZE - 1,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onConfirm(displaySize) }) {
+                Text(stringResource(R.string.common_ok))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun ScrollbackRowsDialog(
+    currentRows: Int,
+    onDismiss: () -> Unit,
+    onConfirm: (Int) -> Unit,
+) {
+    val presets = UserPreferencesRepository.SCROLLBACK_ROWS_PRESETS
+    var selected by remember { mutableIntStateOf(currentRows) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_scrollback_rows_dialog_title)) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = stringResource(R.string.settings_scrollback_rows_dialog_body),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(bottom = 12.dp),
+                )
+                presets.forEach { preset ->
+                    val label = stringResource(R.string.settings_scrollback_rows_value, preset)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { selected = preset }
+                            .padding(vertical = 6.dp),
+                    ) {
+                        RadioButton(
+                            selected = selected == preset,
+                            onClick = { selected = preset },
+                        )
+                        Text(label, modifier = Modifier.padding(start = 8.dp))
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onConfirm(selected) }) {
+                Text(stringResource(R.string.common_ok))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+/**
+ * Section header rendered above a group of settings rows. Replaces
+ * `HorizontalDivider` as the visual grouping mechanism — a labelled
+ * header gives more orientation than a thin line, especially in a
+ * long scrolling list.
+ */
+@Composable
+private fun SettingsSection(title: String) {
+    Text(
+        text = title.uppercase(),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
+    )
+}
+
+/** A [SettingsSection] header that folds its [content] away (collapsed by default). */
+@Composable
+private fun CollapsibleSettingsSection(
+    title: String,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+    content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
+) {
+    androidx.compose.foundation.layout.Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(role = androidx.compose.ui.semantics.Role.Button) { onToggle() }
+            .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
+        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+    ) {
+        Text(
+            text = title.uppercase(),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.weight(1f),
+        )
+        Icon(
+            imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary,
+        )
+    }
+    if (expanded) {
+        androidx.compose.foundation.layout.Column(content = content)
+    }
+}
+
+@Composable
+private fun SettingsToggleItem(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+) {
+    ListItem(
+        headlineContent = { Text(title) },
+        supportingContent = { Text(subtitle) },
+        leadingContent = {
+            Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+        },
+        trailingContent = {
+            Switch(checked = checked, onCheckedChange = onCheckedChange)
+        },
+        modifier = Modifier
+            .clickable { onCheckedChange(!checked) }
+            .padding(horizontal = 8.dp),
+    )
+}
+
+@Composable
+private fun SettingsItem(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit = {},
+    enabled: Boolean = true,
+) {
+    ListItem(
+        headlineContent = { Text(title) },
+        supportingContent = { Text(subtitle) },
+        leadingContent = {
+            Icon(
+                icon,
+                contentDescription = null,
+                tint = if (enabled) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                },
+            )
+        },
+        modifier = Modifier
+            .clickable(enabled = enabled, onClick = onClick)
+            .padding(horizontal = 8.dp),
+    )
+}
+
+/** Assignment for a key in the toolbar config dialog. */
+private enum class KeyAssignment { ROW1, ROW2, OFF }
+
+@Composable
+private fun ToolbarConfigDialog(
+    layout: ToolbarLayout,
+    layoutJson: String,
+    navBlockMode: NavBlockMode,
+    onDismiss: () -> Unit,
+    onSaveLayout: (ToolbarLayout) -> Unit,
+    onSaveJson: (String) -> Unit,
+    onNavBlockModeChange: (NavBlockMode) -> Unit,
+) {
+    var advancedMode by remember { mutableStateOf(false) }
+
+    if (advancedMode) {
+        ToolbarJsonEditor(
+            json = layoutJson,
+            onDismiss = onDismiss,
+            onSave = onSaveJson,
+            onSimpleMode = { advancedMode = false },
+        )
+    } else {
+        ToolbarSimpleEditor(
+            layout = layout,
+            navBlockMode = navBlockMode,
+            onDismiss = onDismiss,
+            onSave = onSaveLayout,
+            onAdvancedMode = { advancedMode = true },
+            onNavBlockModeChange = onNavBlockModeChange,
+        )
+    }
+}
+
+private data class CustomKeyState(
+    val item: ToolbarItem.Custom,
+    val row: KeyAssignment,
+)
+
+@Composable
+private fun ToolbarSimpleEditor(
+    layout: ToolbarLayout,
+    navBlockMode: NavBlockMode,
+    onDismiss: () -> Unit,
+    onSave: (ToolbarLayout) -> Unit,
+    onAdvancedMode: () -> Unit,
+    onNavBlockModeChange: (NavBlockMode) -> Unit,
+) {
+    // Build assignment map from current layout (built-in keys only)
+    val row1BuiltIns = remember(layout) {
+        layout.row1.filterIsInstance<ToolbarItem.BuiltIn>().map { it.key }.toSet()
+    }
+    val row2BuiltIns = remember(layout) {
+        layout.row2.filterIsInstance<ToolbarItem.BuiltIn>().map { it.key }.toSet()
+    }
+
+    var assignments by remember(layout) {
+        mutableStateOf(
+            ToolbarKey.entries.associateWith { key ->
+                when (key) {
+                    in row1BuiltIns -> KeyAssignment.ROW1
+                    in row2BuiltIns -> KeyAssignment.ROW2
+                    else -> KeyAssignment.OFF
+                }
+            }
+        )
+    }
+
+    // Custom keys state — built from current layout
+    val customKeys = remember(layout) {
+        mutableStateListOf<CustomKeyState>().apply {
+            layout.row1.filterIsInstance<ToolbarItem.Custom>().forEach {
+                add(CustomKeyState(it, KeyAssignment.ROW1))
+            }
+            layout.row2.filterIsInstance<ToolbarItem.Custom>().forEach {
+                add(CustomKeyState(it, KeyAssignment.ROW2))
+            }
+        }
+    }
+
+    // Dialog state for creating/editing custom keys
+    var showCustomKeyDialog by remember { mutableStateOf(false) }
+    var editingCustomKeyIndex by remember { mutableStateOf(-1) }
+
+    if (showCustomKeyDialog) {
+        CustomKeyDialog(
+            initial = if (editingCustomKeyIndex >= 0) customKeys[editingCustomKeyIndex].item else null,
+            onDismiss = {
+                showCustomKeyDialog = false
+                editingCustomKeyIndex = -1
+            },
+            onSave = { newItem ->
+                if (editingCustomKeyIndex >= 0) {
+                    customKeys[editingCustomKeyIndex] = customKeys[editingCustomKeyIndex].copy(item = newItem)
+                } else {
+                    customKeys.add(CustomKeyState(newItem, KeyAssignment.ROW2))
+                }
+                showCustomKeyDialog = false
+                editingCustomKeyIndex = -1
+            },
+        )
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_toolbar_dialog_title)) },
+        text = {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Text(
+                    text = stringResource(R.string.settings_toolbar_assign_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 4.dp),
+                )
+
+                Text(
+                    stringResource(R.string.settings_toolbar_arrow_keys),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
+                )
+                Row(modifier = Modifier.padding(bottom = 4.dp)) {
+                    NavBlockMode.entries.forEach { mode ->
+                        FilterChip(
+                            selected = navBlockMode == mode,
+                            onClick = { onNavBlockModeChange(mode) },
+                            label = { Text(mode.label, fontSize = 11.sp) },
+                            modifier = Modifier.padding(horizontal = 2.dp),
+                        )
+                    }
+                }
+
+                Text(
+                    stringResource(R.string.settings_toolbar_function_keys),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
+                )
+                ToolbarKey.entries.filter { it.isAction || it.isModifier }.forEach { key ->
+                    ToolbarKeyRow(
+                        label = key.label,
+                        assignment = assignments[key] ?: KeyAssignment.OFF,
+                        onAssign = { assignments = assignments + (key to it) },
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    stringResource(R.string.settings_toolbar_symbols),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 4.dp),
+                )
+                ToolbarKey.entries.filter { !it.isAction && !it.isModifier }.forEach { key ->
+                    ToolbarKeyRow(
+                        label = key.label,
+                        assignment = assignments[key] ?: KeyAssignment.OFF,
+                        onAssign = { assignments = assignments + (key to it) },
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    stringResource(R.string.settings_toolbar_custom_keys),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 4.dp),
+                )
+
+                customKeys.forEachIndexed { index, ck ->
+                    CustomKeyRow(
+                        state = ck,
+                        onAssign = { customKeys[index] = ck.copy(row = it) },
+                        onEdit = {
+                            editingCustomKeyIndex = index
+                            showCustomKeyDialog = true
+                        },
+                        onDelete = { customKeys.removeAt(index) },
+                    )
+                }
+
+                TextButton(
+                    onClick = {
+                        editingCustomKeyIndex = -1
+                        showCustomKeyDialog = true
+                    },
+                ) {
+                    Icon(Icons.Filled.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(stringResource(R.string.settings_toolbar_add_custom_key))
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                val customRow1 = customKeys
+                    .filter { it.row == KeyAssignment.ROW1 }
+                    .map { it.item }
+                val customRow2 = customKeys
+                    .filter { it.row == KeyAssignment.ROW2 }
+                    .map { it.item }
+                val newRow1 = ToolbarKey.entries
+                    .filter { assignments[it] == KeyAssignment.ROW1 }
+                    .map { ToolbarItem.BuiltIn(it) } + customRow1
+                val newRow2 = ToolbarKey.entries
+                    .filter { assignments[it] == KeyAssignment.ROW2 }
+                    .map { ToolbarItem.BuiltIn(it) } + customRow2
+                onSave(ToolbarLayout(listOf(newRow1, newRow2)))
+            }) {
+                Text(stringResource(R.string.common_save))
+            }
+        },
+        dismissButton = {
+            // FlowRow so longer translated labels (de: "Zurücksetzen / JSON bearbeiten /
+            // Abbrechen") wrap to a second line instead of crushing into vertical-letter
+            // strips and inflating the row height — which clipped the function-keys list
+            // above on (#118).
+            FlowRow(horizontalArrangement = Arrangement.End) {
+                TextButton(onClick = {
+                    assignments = ToolbarKey.entries.associateWith { key ->
+                        when (key) {
+                            in ToolbarKey.DEFAULT_ROW1 -> KeyAssignment.ROW1
+                            in ToolbarKey.DEFAULT_ROW2 -> KeyAssignment.ROW2
+                            else -> KeyAssignment.OFF
+                        }
+                    }
+                    customKeys.clear()
+                }) {
+                    Text(stringResource(R.string.common_reset))
+                }
+                TextButton(onClick = onAdvancedMode) {
+                    Text(stringResource(R.string.settings_toolbar_edit_json))
+                }
+                TextButton(onClick = onDismiss) {
+                    Text(stringResource(R.string.common_cancel))
+                }
+            }
+        },
+    )
+}
+
+@Composable
+private fun CustomKeyRow(
+    state: CustomKeyState,
+    onAssign: (KeyAssignment) -> Unit,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = state.item.label,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                text = displaySendSequence(state.item.send, stringResource(R.string.settings_toolbar_paste_clipboard)),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        KeyAssignment.entries.forEach { option ->
+            FilterChip(
+                selected = state.row == option,
+                onClick = { onAssign(option) },
+                label = {
+                    Text(
+                        when (option) {
+                            KeyAssignment.ROW1 -> stringResource(R.string.settings_toolbar_row1)
+                            KeyAssignment.ROW2 -> stringResource(R.string.settings_toolbar_row2)
+                            KeyAssignment.OFF -> stringResource(R.string.settings_toolbar_off)
+                        },
+                        fontSize = 11.sp,
+                    )
+                },
+                modifier = Modifier.padding(horizontal = 1.dp),
+            )
+        }
+        IconButton(onClick = onEdit, modifier = Modifier.size(32.dp)) {
+            Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.common_edit), modifier = Modifier.size(16.dp))
+        }
+        IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.common_delete), modifier = Modifier.size(16.dp))
+        }
+    }
+}
+
+/** Show a human-readable representation of a send sequence. */
+private fun displaySendSequence(send: String, pasteLabel: String = "Paste clipboard"): String {
+    if (send == "PASTE") return pasteLabel
+    return send.map { ch ->
+        when {
+            ch.code < 0x20 -> "\\u${ch.code.toString(16).padStart(4, '0')}"
+            else -> ch.toString()
+        }
+    }.joinToString("")
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CustomKeyDialog(
+    initial: ToolbarItem.Custom? = null,
+    onDismiss: () -> Unit,
+    onSave: (ToolbarItem.Custom) -> Unit,
+) {
+    var label by remember { mutableStateOf(initial?.label ?: "") }
+    val pasteLabel = stringResource(R.string.settings_toolbar_paste_clipboard)
+    var sendText by remember { mutableStateOf(initial?.let { displaySendSequence(it.send, pasteLabel) } ?: "") }
+    var presetExpanded by remember { mutableStateOf(false) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(if (initial != null) R.string.settings_custom_key_edit_title else R.string.settings_custom_key_add_title)) },
+        text = {
+            Column {
+                // Preset dropdown
+                ExposedDropdownMenuBox(
+                    expanded = presetExpanded,
+                    onExpandedChange = { presetExpanded = it },
+                ) {
+                    OutlinedTextField(
+                        value = stringResource(R.string.settings_custom_key_presets),
+                        onValueChange = {},
+                        readOnly = true,
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = presetExpanded) },
+                        modifier = Modifier
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+                            .fillMaxWidth(),
+                        textStyle = MaterialTheme.typography.bodySmall,
+                    )
+                    ExposedDropdownMenu(
+                        expanded = presetExpanded,
+                        onDismissRequest = { presetExpanded = false },
+                    ) {
+                        MACRO_PRESETS.forEach { preset ->
+                            DropdownMenuItem(
+                                text = { Text(preset.description) },
+                                onClick = {
+                                    label = preset.label
+                                    sendText = displaySendSequence(preset.send, pasteLabel)
+                                    presetExpanded = false
+                                },
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                OutlinedTextField(
+                    value = label,
+                    onValueChange = { label = it },
+                    label = { Text(stringResource(R.string.settings_custom_key_label)) },
+                    placeholder = { Text(stringResource(R.string.settings_custom_key_label_placeholder)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                OutlinedTextField(
+                    value = sendText,
+                    onValueChange = { sendText = it },
+                    label = { Text(stringResource(R.string.settings_custom_key_sequence_label)) },
+                    placeholder = { Text(stringResource(R.string.settings_custom_key_sequence_placeholder)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
+                )
+
+                Text(
+                    text = stringResource(R.string.settings_custom_key_escape_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    val parsed = parseSendSequence(sendText)
+                    onSave(ToolbarItem.Custom(label.trim(), parsed))
+                },
+                enabled = label.isNotBlank() && sendText.isNotBlank(),
+            ) {
+                Text(stringResource(R.string.common_save))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.common_cancel))
+            }
+        },
+    )
+}
+
+/** Parse user-entered escape notation back to raw string. */
+private fun parseSendSequence(input: String): String {
+    val sb = StringBuilder()
+    var i = 0
+    while (i < input.length) {
+        if (i + 1 < input.length && input[i] == '\\') {
+            when (input[i + 1]) {
+                'n' -> { sb.append('\n'); i += 2 }
+                't' -> { sb.append('\t'); i += 2 }
+                'r' -> { sb.append('\r'); i += 2 }
+                '\\' -> { sb.append('\\'); i += 2 }
+                'u' -> {
+                    if (i + 5 < input.length) {
+                        val hex = input.substring(i + 2, i + 6)
+                        val code = hex.toIntOrNull(16)
+                        if (code != null) {
+                            sb.append(code.toChar())
+                            i += 6
+                        } else {
+                            sb.append(input[i])
+                            i++
+                        }
+                    } else {
+                        sb.append(input[i])
+                        i++
+                    }
+                }
+                else -> { sb.append(input[i]); i++ }
+            }
+        } else {
+            sb.append(input[i])
+            i++
+        }
+    }
+    return sb.toString()
+}
+
+@Composable
+private fun ToolbarJsonEditor(
+    json: String,
+    onDismiss: () -> Unit,
+    onSave: (String) -> Unit,
+    onSimpleMode: () -> Unit,
+) {
+    var text by remember(json) { mutableStateOf(json) }
+    var error by remember { mutableStateOf<String?>(null) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_json_editor_title)) },
+        text = {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Text(
+                    text = stringResource(R.string.settings_json_editor_format_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                )
+
+                OutlinedTextField(
+                    value = text,
+                    onValueChange = {
+                        text = it
+                        error = null
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(300.dp),
+                    textStyle = MaterialTheme.typography.bodySmall.copy(
+                        fontFamily = FontFamily.Monospace,
+                        fontSize = 11.sp,
+                    ),
+                    isError = error != null,
+                    supportingText = error?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = stringResource(R.string.settings_json_editor_builtin_ids),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 9.sp,
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                val validationError = ToolbarLayout.validate(text)
+                if (validationError != null) {
+                    error = validationError
+                } else {
+                    onSave(text)
+                }
+            }) {
+                Text(stringResource(R.string.common_save))
+            }
+        },
+        dismissButton = {
+            Row {
+                TextButton(onClick = {
+                    text = ToolbarLayout.DEFAULT.toJson()
+                    error = null
+                }) {
+                    Text(stringResource(R.string.common_reset))
+                }
+                TextButton(onClick = onSimpleMode) {
+                    Text(stringResource(R.string.common_simple))
+                }
+                TextButton(onClick = onDismiss) {
+                    Text(stringResource(R.string.common_cancel))
+                }
+            }
+        },
+    )
+}
+
+@Composable
+private fun ToolbarKeyRow(
+    label: String,
+    assignment: KeyAssignment,
+    onAssign: (KeyAssignment) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.weight(1f),
+        )
+        KeyAssignment.entries.forEach { option ->
+            FilterChip(
+                selected = assignment == option,
+                onClick = { onAssign(option) },
+                label = {
+                    Text(
+                        when (option) {
+                            KeyAssignment.ROW1 -> stringResource(R.string.settings_toolbar_row1)
+                            KeyAssignment.ROW2 -> stringResource(R.string.settings_toolbar_row2)
+                            KeyAssignment.OFF -> stringResource(R.string.settings_toolbar_off)
+                        },
+                        fontSize = 11.sp,
+                    )
+                },
+                modifier = Modifier.padding(horizontal = 2.dp),
+            )
+        }
+    }
+}
+
+/**
+ * Dialog asking the user for a TTF/OTF URL. The actual download +
+ * validation + persistence happens in TerminalFontInstaller via
+ * SettingsViewModel.installTerminalFontFromUrl. The dialog itself just
+ * collects the URL string and shows a one-line hint.
+ */
+@Composable
+private fun FontFromUrlDialog(
+    onInstall: (url: String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var url by remember { mutableStateOf("") }
+    val canSubmit = url.isNotBlank() && (url.startsWith("http://") || url.startsWith("https://"))
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_font_install_title)) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    "Paste a direct link to a TTF or OTF font file. Common Nerd Fonts have raw TTFs on GitHub at github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/<Name>/Regular/<Name>NerdFont-Regular.ttf — copy that URL here.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 12.dp),
+                )
+                OutlinedTextField(
+                    value = url,
+                    onValueChange = { url = it.trim() },
+                    placeholder = { Text(stringResource(R.string.settings_font_url_placeholder)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { onInstall(url) },
+                enabled = canSubmit,
+            ) { Text(stringResource(R.string.common_install)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.common_cancel)) }
+        },
+    )
+}
+
+/**
+ * Per-flag toggles for the Custom keyboard mode (#115 follow-up).
+ * Each row is one EditorInfo bit with a one-line explanation; the
+ * matrix is documented at the top of NOTICE-Fonts.md... no wait, the
+ * comment in HavenKeyboardMode.kt + the dialog text below is enough.
+ *
+ * No "save" button — toggles persist on tap so the user can iterate.
+ * Conflicting selections (e.g. visiblePassword + fullEditor) are
+ * preserved verbatim and the user discovers what their IME does with
+ * the combination by trying it.
+ */
+@Composable
+private fun ImeFlagsDialog(
+    noSuggestions: Boolean,
+    visiblePassword: Boolean,
+    autoCorrect: Boolean,
+    fullEditor: Boolean,
+    noExtractUi: Boolean,
+    noPersonalizedLearning: Boolean,
+    onNoSuggestions: (Boolean) -> Unit,
+    onVisiblePassword: (Boolean) -> Unit,
+    onAutoCorrect: (Boolean) -> Unit,
+    onFullEditor: (Boolean) -> Unit,
+    onNoExtractUi: (Boolean) -> Unit,
+    onNoPersonalizedLearning: (Boolean) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.settings_ime_flags_title)) },
+        text = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState()),
+            ) {
+                Text(
+                    "Each toggle controls one EditorInfo bit. Different IMEs honour different combinations; tweak until your terminal types verbatim while still letting through the IME features you need.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 12.dp),
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_hide_suggestions_title),
+                    detail = "TYPE_TEXT_FLAG_NO_SUGGESTIONS — universally honoured",
+                    checked = noSuggestions,
+                    onCheckedChange = onNoSuggestions,
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_suppress_corrections_title),
+                    detail = "TYPE_TEXT_VARIATION_VISIBLE_PASSWORD — strongest hint; Gboard honours it. Mutually exclusive with full editor on most IMEs (no swipe / voice).",
+                    checked = visiblePassword,
+                    onCheckedChange = onVisiblePassword,
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_enable_autocorrect_title),
+                    detail = "TYPE_TEXT_FLAG_AUTO_CORRECT — required by Samsung Honeyboard's commit-text gate (#110); explicitly enables autocorrect on Gboard.",
+                    checked = autoCorrect,
+                    onCheckedChange = onAutoCorrect,
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_full_editor_title),
+                    detail = "Give the IME a real Editable. Needed for voice input, swipe typing, and CJK composition. Conflicts with the autocorrect-suppression hint above.",
+                    checked = fullEditor,
+                    onCheckedChange = onFullEditor,
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_no_fullscreen_title),
+                    detail = "IME_FLAG_NO_EXTRACT_UI — stops landscape's fullscreen IME UI from showing.",
+                    checked = noExtractUi,
+                    onCheckedChange = onNoExtractUi,
+                )
+                ImeFlagToggle(
+                    title = stringResource(R.string.settings_ime_no_learning_title),
+                    detail = "IME_FLAG_NO_PERSONALIZED_LEARNING — privacy: IME's word bank ignores typed text. Strong enough on Gboard to also hide the mic.",
+                    checked = noPersonalizedLearning,
+                    onCheckedChange = onNoPersonalizedLearning,
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.common_close)) }
+        },
+    )
+}
+
+@Composable
+private fun ImeFlagToggle(
+    title: String,
+    detail: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+) {
+    Row(
+        verticalAlignment = Alignment.Top,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onCheckedChange(!checked) }
+            .padding(vertical = 6.dp),
+    ) {
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            modifier = Modifier.padding(top = 2.dp),
+        )
+        Spacer(Modifier.width(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(title, style = MaterialTheme.typography.bodyLarge)
+            Spacer(Modifier.height(2.dp))
+            Text(
+                detail,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
+}

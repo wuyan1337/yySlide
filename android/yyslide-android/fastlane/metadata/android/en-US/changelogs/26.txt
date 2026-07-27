@@ -1,0 +1,3 @@
+- Unified OSC handler: OSC 7 (CWD), 8 (hyperlinks), 9/777 (notifications), 52 (clipboard)
+- Open button in selection toolbar to launch URLs in browser
+- Terminal notifications: toast when foreground, system notification when background

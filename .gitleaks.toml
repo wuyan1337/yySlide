@@ -1,0 +1,87 @@
+title = "yySlide Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "private-key"
+
+  [[rules.allowlists]]
+  description = "PEM prefix placeholder in SSH key section test"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/data/src/test/kotlin/sh/haven/core/data/keystore/SshKeySectionTest\.kt$''']
+  regexes = ['''val pemPrefix\s*=\s*"-----BEGIN OPENSSH PRIVATE KEY-----''']
+
+  [[rules.allowlists]]
+  description = "PEM delimiter parser, not embedded key material"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/fido/src/main/kotlin/sh/haven/core/fido/SkKeyParser\.kt$''']
+  regexes = ['''text\.indexOf\("-----BEGIN OPENSSH PRIVATE KEY-----"\)''']
+
+  [[rules.allowlists]]
+  description = "PEM serializer templates interpolate runtime key bytes"
+  condition = "AND"
+  regexTarget = "match"
+  paths = ['''^android/yyslide-android/core/ssh/src/main/kotlin/sh/haven/core/ssh/SshKeyExporter\.kt$''']
+  regexes = ['''(?s)-----BEGIN PRIVATE KEY-----.*\$b64.*-----BEGIN OPENSSH PRIVATE KEY-----''']
+
+  [[rules.allowlists]]
+  description = "Assertion checks only the PEM delimiter"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/ssh/src/test/kotlin/sh/haven/core/ssh/SshKeyExporterTest\.kt$''']
+  regexes = ['''pemStr\.startsWith\("-----BEGIN OPENSSH PRIVATE KEY-----"\)''']
+
+  [[rules.allowlists]]
+  description = "Documented throwaway OpenSSH test fixtures"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/ssh/src/test/kotlin/sh/haven/core/ssh/SshKey(Exporter|Importer)Test\.kt$''']
+  regexes = ['''-----BEGIN OPENSSH PRIVATE KEY-----''']
+
+[[rules]]
+id = "generic-api-key"
+
+  [[rules.allowlists]]
+  description = "TOTP parser interoperability test vector"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/security/src/test/kotlin/sh/haven/core/security/OtpAuthUriTest\.kt$''']
+  regexes = ['''OtpAuthUri\.parse\("otpauth://totp/alice\?secret=''']
+
+  [[rules.allowlists]]
+  description = "fwknop deterministic test vector"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/core/spa/src/test/kotlin/sh/haven/core/spa/FwknopPacketTest\.kt$''']
+  regexes = ['''private val keyB64\s*=''']
+
+  [[rules.allowlists]]
+  description = "Historical changelog prose"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/fastlane/metadata/android/en-US/changelogs/2281\.txt$''']
+  regexes = ['''prompt, key passphrase, deploy-key, RDP/SMB/Reticulum edit,''']
+
+  [[rules.allowlists]]
+  description = "Toolbar enum mapping, not an API key"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/feature/settings/src/main/kotlin/sh/haven/feature/settings/SettingsScreen\.kt$''']
+  regexes = ['''in ToolbarKey\.DEFAULT_ROW[12]\s*->\s*KeyAssignment\.ROW[12]''']
+
+  [[rules.allowlists]]
+  description = "WireGuard parser unit-test vectors"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/rclone-android/go/wgbridge/wgbridge_test\.go$''']
+  regexes = ['''PrivateKey\s*=''', '''persistent_keepalive_interval=25''']
+
+  [[rules.allowlists]]
+  description = "WireGuard configuration field parser"
+  condition = "AND"
+  regexTarget = "line"
+  paths = ['''^android/yyslide-android/rclone-android/go/wgbridge/wgbridge\.go$''']
+  regexes = ['''privatekey"''']

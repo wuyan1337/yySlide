@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_connections">连接</string>
+    <string name="nav_terminal">终端</string>
+    <string name="nav_desktop">桌面</string>
+    <string name="nav_keys">密钥</string>
+    <string name="nav_sftp">文件</string>
+    <string name="nav_settings">设置</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_github">GitHub</string>
+    <string name="common_support">支持</string>
+    <string name="common_unlock">解锁</string>
+</resources>

@@ -1,0 +1,23 @@
+v5.32.0-rc1 — selection, scrollback, prompt-aware tap
+
+Drag-select extends past the top/bottom of the viewport into
+scrollback (#94). The viewport scrolls under your finger and the
+selection's anchor stays anchored on the line you originally
+pressed.
+
+Soft-wrap rejoin on copy now consults libvterm's authoritative
+softWrapped flag instead of a column-length heuristic. Wrapped
+long commands paste back without spurious mid-line newlines, and
+hand-typed lines that happen to fill the viewport no longer get
+joined with the next line.
+
+Settings → Terminal → Scrollback rows lets you bump per-tab
+history beyond the previous compile-time 1000 (#151). Presets
+1 000 / 5 000 / 10 000 / 25 000; description spells out the
+memory cost so you opt in deliberately.
+
+New Settings → Terminal toggle "Tap to move cursor on supported
+prompts" — synthesises arrow-key dispatches when you tap inside
+the active prompt's input region. Requires OSC 133 prompt
+markers (starship, fish 3.6+, recent bash/zsh shell-integration
+setups). No effect on shells that don't emit them. Default off.

@@ -1,0 +1,40 @@
+v5.41.0 — Nested Wayland desktops actually render (#162 Phase 4)
+
+• New: Sway, Hyprland, and Niri are installable as nested-Wayland
+  desktops on Arch / Alpine / (Sway on) Debian / Void. Tap a desktop
+  and the in-app VNC viewer drops you into a wlroots compositor
+  running headless inside the proot rootfs, with the `fuzzel` app
+  picker auto-launched so the first connect lands on a list of
+  installable graphical apps rather than a blank canvas. `mod+d`
+  re-opens fuzzel any time. Pick from Settings → Distro & Desktop
+  → Install desktop.
+
+• Fix (the grey screen): wayvnc 0.9.x prefers ext-image-copy-capture
+  over wlr-screencopy when both are available, but wlroots-0.19's
+  headless backend reports zero buffer formats on that path —
+  wayvnc bails with "No supported buffer formats were found" and the
+  client sees grey. Haven now ships a tiny capture-fallback shim
+  that hides the ext interfaces from wayvnc so it falls back to
+  wlr-screencopy (which the same backend serves correctly). The
+  shim is glibc-built per ABI and LD_PRELOAD'd from the launch
+  script.
+
+• Fix (the empty frame): wlroots' SHM allocator calls POSIX
+  shm_open(), which on glibc maps to "/dev/shm/<random>". Android's
+  /dev has no /dev/shm and proot can't create one. Every output
+  buffer allocation was failing silently. Haven now binds a writable
+  directory from the app cache as /dev/shm in the proot launch args.
+
+• Fix: stop_desktop now actually cleans up the compositor + wayvnc
+  + foot child tree. The earlier implementation only killed the
+  proot launch shell, leaving the rest as orphans — restarting the
+  desktop hit "Another wayvnc process is already running".
+
+• Fix: sway 1.11's "Invalid mode refresh rate" rejection of the
+  configSeed's `mode 1280x720@60` line. Switched to the `@60Hz`
+  spelling sway expects.
+
+Note: the in-app VNC viewer forwards single-point pointer events
+only, so multi-touch gestures (pinch, two-finger scroll) do not
+reach the compositor. Touch-based scroll inside foot or other
+windows works through the keyboard arrow keys.

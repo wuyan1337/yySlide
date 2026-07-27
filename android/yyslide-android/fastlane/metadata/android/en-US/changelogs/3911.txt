@@ -1,0 +1,19 @@
+v5.37.0-rc2 — Ed25519 export-to-PEM reliability + CI hygiene on top
+of rc1.
+
+• Ed25519 key export: SshKeyExporter's "input already looks like a
+  PEM" short-circuit matched any byte sequence starting with 0x2d,
+  which collides with ~1/256 of randomly-generated Ed25519 seeds.
+  When it hit, the exporter returned the raw 32-byte seed pretending
+  it was a PEM and downstream JSch parsing failed with "invalid
+  privatekey." Replaced the single-byte check with a full
+  "-----BEGIN " preamble match. Includes a regression test pinning
+  the CI-captured failing seed and a 200-iteration brute-force test.
+
+• Camera-scan toast (from v5.36.0) hoists its string read out of a
+  Compose lambda to satisfy Android Lint's
+  LocalContextGetResourceValueCall rule. No runtime behaviour change
+  — just lint hygiene. Unblocks the CI lint job.
+
+All Android 16 SSH stability, MCP toggle, Mirror delete-count, and
+MCP rclone tool changes from rc1 carry forward unchanged.

@@ -1,0 +1,14 @@
+Per-profile terminal colour scheme (#144) — override the global
+scheme on individual connections so servers distinguish at a glance.
+
+Major i18n sweep (#135): ~120 strings across the connection
+editor, sub-dialogs, SFTP browser, keyboard toolbar, and terminal/
+agent flows. Chinese gets real translations; 9 other locales
+scaffolded with English fallbacks.
+
+Backup format documented (#145): docs/backup-format.md ships a
+Python recipe for manual decrypt; import errors now name the
+exception class instead of "Import failed".
+
+UX: tab swipes reset fullscreen so you can't get stranded.
+Build: ffmpeg fetch retries transient F-Droid curl failures.

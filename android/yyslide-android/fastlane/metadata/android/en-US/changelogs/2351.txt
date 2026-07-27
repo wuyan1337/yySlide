@@ -1,0 +1,48 @@
+v5.8.0: SCP transport + local file-ops fixes
+
+Legacy SCP (scp -O) is now a first-class file transfer
+transport alongside SFTP. Useful on hardened or embedded
+servers that disable the sftp-server subsystem.
+
+New per-profile "File transport" setting (Auto / SFTP / SCP)
+in the connection editor:
+  Auto (default) tries SFTP first, falls back to SCP
+    transparently when the subsystem is unavailable,
+    with a one-shot snackbar announcing the switch.
+  SFTP forces the modern SFTP subsystem.
+  SCP forces legacy scp -t/-f for transfers and shell
+    ls -la for directory browsing.
+
+Core components:
+  ScpClient — full SCP wire protocol state machine
+    (upload/download, single file + recursive, -p
+    timestamp preservation, progress callbacks) over
+    a fresh JSch ChannelExec per operation.
+  ShellFileBrowser — parses GNU ls -la --time-style=
+    full-iso output for directory listings; graceful
+    fallback to ls -1 (names only) on non-GNU servers.
+  RemoteFileTransport interface with SftpTransport and
+    ScpTransport implementations. SftpViewModel's SSH
+    code paths (list, upload, download, delete, rename,
+    mkdir) now dispatch through the transport layer.
+  TransportSelector resolves the per-profile preference
+    plus Auto-fallback logic.
+
+A small "SCP" badge appears in the path bar when SCP is
+the active transport.
+
+Bug fixes surfaced during testing:
+  Local file delete/rename/mkdir were broken — the else
+    branch in each operation had no local-file handling
+    and fell through to SSH, throwing "Not connected".
+    Now uses File.delete/renameTo/mkdirs directly.
+  Cross-backend paste to Downloads failed with
+    FileAlreadyExistsException when the destination
+    already existed (Kotlin File.copyTo calls
+    target.delete() under the hood, which Android
+    scoped storage blocks for MediaStore-owned files).
+    Now streams via FileOutputStream first, falling
+    back to MediaStore insert/delete on failure.
+  NetworkOnMainThreadException in openSftpAndList and
+    currentSshTransport — JSch channel-open calls
+    were running on Main instead of Dispatchers.IO.

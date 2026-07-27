@@ -1,0 +1,31 @@
+v5.23.0-rc1: per-app WireGuard (#102)
+
+Route individual connection profiles through a WireGuard
+tunnel without engaging Android's system-wide VPN — other
+apps and your main WG app keep using the network directly.
+
+- New "Tunnels" settings screen (under Security & privacy
+  and also from the picker below). Paste a wg-quick config,
+  give it a label, save.
+- ConnectionEditDialog gets a "Route through tunnel"
+  dropdown between the SSH key picker and transport options.
+  "Direct" preserves the old behaviour; pick a saved config
+  to tunnel that profile's traffic.
+- Userspace WireGuard via wireguard-go + gVisor netstack,
+  bundled into the existing rclone-android gomobile build
+  (one libgojni.so, no competing VpnService slot).
+
+RC because the real tunnel + netstack path hasn't been
+exercised against a full spectrum of WG servers in the
+wild. The Go parser covers wg-quick's common shape
+(Interface: PrivateKey + Address + optional DNS; Peer:
+PublicKey + Endpoint + AllowedIPs + optional PresharedKey /
+PersistentKeepalive; unknown keys ignored).
+
+Tailscale follows as a strictly-additive PR — the Tunnel
+abstraction landed with this work specifically to keep it
+cheap. If you use Tailscale, let me know on GH #102 and
+I'll prioritise.
+
+Debug APK grows ~26 MB because wireguard-go + gVisor are
+big Go libraries; release build with R8 is smaller.

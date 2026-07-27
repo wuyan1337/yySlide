@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">Annuler</string>
+    <string name="common_save">Enregistrer</string>
+    <string name="common_done">Terminé</string>
+    <string name="common_close">Fermer</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Supprimer</string>
+    <string name="common_edit">Modifier</string>
+    <string name="common_rename">Renommer</string>
+    <string name="common_create">Créer</string>
+    <string name="common_connect">Connecter</string>
+    <string name="common_disconnect">Déconnecter</string>
+    <string name="common_copy">Copier</string>
+    <string name="common_paste">Coller</string>
+    <string name="common_label">Libellé</string>
+    <string name="common_password">Mot de passe</string>
+    <string name="common_port">Port</string>
+    <string name="common_host">Hôte</string>
+    <string name="common_username">Nom d\'utilisateur</string>
+    <string name="common_install">Installer</string>
+    <string name="common_reset">Réinitialiser</string>
+    <string name="common_allow">Autoriser</string>
+    <string name="common_not_now">Pas maintenant</string>
+    <string name="common_import">Importer</string>
+    <string name="common_add">Ajouter</string>
+    <string name="common_download">Télécharger</string>
+    <string name="common_unlock">Déverrouiller</string>
+
+    <!-- Common strings (shared across features) -->
+
+    <!-- Connections screen -->
+    <string name="connections_title">Connexions</string>
+    <string name="connections_add">Ajouter une connexion</string>
+    <string name="connections_quick_connect_placeholder">user@host ou host:port</string>
+    <string name="connections_quick_connect_button">Connecter</string>
+    <string name="connections_quick_connect_error">Format : user@host ou user@host:port</string>
+    <string name="connections_filter_placeholder">Filtrer les connexions\u2026</string>
+    <string name="connections_filter_clear">Effacer le filtre</string>
+    <string name="connections_reorder">Réorganiser</string>
+
+    <!-- Empty state -->
+    <string name="connections_empty_title">Aucune connexion</string>
+    <string name="connections_empty_subtitle">Appuyez sur + pour ajouter un serveur ou saisissez user@host ci-dessus</string>
+
+    <!-- Connection status -->
+    <string name="connections_status_connected">Connecté</string>
+    <string name="connections_status_error">Erreur</string>
+    <string name="connections_status_disconnected">Déconnecté</string>
+
+    <!-- Connection tree item -->
+    <string name="connections_proot_label">PRoot Alpine Linux</string>
+    <string name="connections_launch_desktop">Lancer le bureau</string>
+    <string name="connections_setup_desktop">Configurer le bureau</string>
+
+    <!-- Connection context menu -->
+    <string name="connections_menu_port_forwards">Redirection de ports</string>
+    <string name="connections_menu_connect_with_password">Connecter avec mot de passe</string>
+    <string name="connections_menu_sessions">Sessions</string>
+    <string name="connections_menu_disconnect">Déconnecter</string>
+    <string name="connections_menu_deploy_ssh_key">Déployer la clé SSH</string>
+
+    <!-- Delete confirmation dialog -->
+    <string name="connections_delete_title">Supprimer la connexion ?</string>
+    <string name="connections_delete_message">Supprimer \"%1$s\" ? Cette action est irréversible.</string>
+
+    <!-- Deploy key snackbar -->
+    <string name="connections_key_deployed">Clé SSH déployée avec succès</string>
+
+    <!-- Battery optimization dialog -->
+    <string name="connections_battery_title">Maintenir les connexions ?</string>
+    <string name="connections_battery_message">Android peut fermer les connexions SSH en arrière-plan pour économiser la batterie. Désactiver l\'optimisation de la batterie pour yySlide empêche cela.</string>
+
+    <!-- Mosh setup guide dialog -->
+    <string name="connections_mosh_not_found_title">Mosh introuvable sur le serveur</string>
+    <string name="connections_mosh_not_found_message">L\'hôte distant n\'a pas mosh-server installé. Mosh (Mobile Shell) maintient votre session lors des changements de réseau et des connexions à latence élevée.</string>
+    <string name="connections_mosh_install_prompt">Installez-le sur le serveur :</string>
+    <string name="connections_mosh_install_commands">\u0020 Ubuntu/Debian:  sudo apt install mosh\n\u0020 Fedora/RHEL:    sudo dnf install mosh\n\u0020 Arch:           sudo pacman -S mosh\n\u0020 macOS:          brew install mosh</string>
+    <string name="connections_mosh_firewall_note">Le port UDP 60001 doit être ouvert sur le pare-feu du serveur.</string>
+    <string name="connections_mosh_github">Mosh sur GitHub</string>
+
+    <!-- Mosh client missing dialog -->
+    <string name="connections_mosh_client_missing_title">Client Mosh non compilé</string>
+    <string name="connections_mosh_client_missing_message">Le binaire mosh-client n\'est pas inclus dans cette version. Il doit être compilé pour Android avec le NDK.</string>
+    <string name="connections_mosh_client_build_instructions">Exécutez tools/build-mosh.sh avec Android NDK r27+ pour compiler mosh-client, puis recompilez l\'application.</string>
+
+    <!-- Session picker dialog -->
+    <string name="connections_sessions_title">Sessions %1$s</string>
+    <string name="connections_restore_previous_sessions">Restaurer %1$d sessions précédentes</string>
+    <string name="connections_rename_session">Renommer la session</string>
+    <string name="connections_kill_session">Terminer la session</string>
+
+    <!-- Rename dialog -->
+    <string name="connections_rename_title">Renommer la connexion</string>
+
+    <!-- Linux VM card -->
+    <string name="connections_linux_vm">Linux VM</string>
+    <string name="connections_vm_tap_to_setup">Appuyez pour configurer</string>
+    <string name="connections_vm_status_active">Active</string>
+    <string name="connections_vm_refresh">Actualiser le statut VM</string>
+
+    <!-- Desktop setup dialog -->
+    <string name="connections_desktop_setup_title">Configuration du bureau</string>
+    <string name="connections_desktop_wayland_description">Installer un compositeur Wayland dans l\'environnement PRoot. Expérimental — rendu logiciel.</string>
+    <string name="connections_desktop_openbox_description">Installer un bureau et un serveur VNC dans l\'environnement PRoot. Openbox est minimal — clic droit sur le bureau pour le menu.</string>
+    <string name="connections_desktop_vnc_description">Installer un bureau et un serveur VNC dans l\'environnement PRoot.</string>
+    <string name="connections_desktop_vnc_password">Mot de passe VNC</string>
+    <string name="connections_desktop_shell">Shell</string>
+    <string name="connections_desktop_installed">Bureau installé. Connexion VNC\u2026</string>
+    <string name="connections_desktop_setup_failed">Échec de la configuration : %1$s</string>
+
+    <!-- New group dialog -->
+    <string name="connections_new_group_title">Nouveau groupe</string>
+    <string name="connections_group_name">Nom du groupe</string>
+
+    <!-- Group header -->
+    <string name="connections_launch_group">Lancer le groupe</string>
+    <string name="connections_expand">Développer</string>
+    <string name="connections_collapse">Réduire</string>
+    <string name="connections_menu_launch_all">Tout lancer</string>
+    <string name="connections_menu_delete_group">Supprimer le groupe</string>
+    <string name="connections_new_group_action">Nouveau groupe</string>
+    <string name="connections_desktop_addons_header">Fonctions bureau (optionnel)</string>
+    <string name="connections_menu_duplicate">Duplicate</string>
+    <string name="connections_desktops_title">Desktops</string>
+    <string name="connections_desktop_start">Start</string>
+    <string name="connections_desktop_stop">Stop</string>
+    <string name="connections_desktop_native_running">Native compositor</string>
+    <string name="connections_desktop_uninstall_title">Uninstall desktop?</string>
+    <string name="connections_desktop_uninstall_message">Uninstall %1$s? Packages will be removed from the PRoot environment.</string>
+    <string name="connections_use_android_shell">Use native Android shell</string>
+    <!-- Backfilled translations (i18n drift fix) -->
+    <string name="connections_new_session_create">Créer</string>
+
+    <!-- #135 -->
+    <string name="connections_field_vnc_host_via_ssh">VNC host (on SSH server)</string>
+    <string name="connections_field_rdp_host_via_ssh">RDP host (on SSH server)</string>
+    <string name="connections_toggle_run_before_session_manager">Run before session manager</string>
+    <string name="connections_toggle_disable_alt_screen">Disable alternate screen</string>
+    <string name="connections_helper_disable_alt_screen">Scrollback works in screen/vim. Program output stays in scrollback on exit.</string>
+    <string name="connections_toggle_forward_agent">Forward SSH agent</string>
+    <string name="connections_helper_forward_agent">Exposes non-encrypted stored SSH keys to the remote host (for git push etc.). Encrypted keys are skipped.</string>
+    <string name="connections_field_ssh_key">SSH Key</string>
+    <string name="connections_ssh_key_any">Any (try all keys)</string>
+    <string name="connections_field_vnc_port">VNC port</string>
+    <string name="connections_field_vnc_password">VNC password</string>
+    <string name="connections_field_vnc_color_depth">VNC colour depth</string>
+    <string name="connections_action_clear_vnc">Clear saved VNC settings</string>
+    <string name="connections_toggle_local_sideband">Local Sideband</string>
+    <string name="connections_field_gateway_host">Gateway Host</string>
+    <string name="connections_field_network_name">Network Name</string>
+    <string name="connections_helper_network_name">IFAC network name (optional)</string>
+    <string name="connections_action_scan_rnsh">Scan for rnsh nodes</string>
+    <string name="connections_field_destination_hash">Destination Hash</string>
+    <string name="connections_helper_destination_hash">32-character hex</string>
+    <string name="connections_field_color_scheme">Terminal colour scheme</string>
+    <string name="connections_color_scheme_inherit">Use default (global setting)</string>
+
+    <string name="connections_tunnel_dropdown_label">Tunnel: %1$s</string>
+    <string name="connections_session_default_with">Default (%1$s)</string>
+    <string name="connections_discovered_count">Discovered (%1$d)</string>
+    <string name="connections_discovered_count_filtered">Discovered (%1$d of %2$d)</string>
+
+    <!-- #135 third pass -->
+
+    <string name="connections_pf_dialog_title_edit">Edit Port Forward</string>
+    <string name="connections_pf_dialog_title_new">New Port Forward</string>
+    <string name="connections_pf_dialog_title_list">Port Forwards for %1$s</string>
+    <string name="connections_pf_empty">No port forward rules configured.</string>
+    <string name="connections_pf_add_rule">Add Rule</string>
+    <string name="connections_pf_local">Local (-L)</string>
+    <string name="connections_pf_remote">Remote (-R)</string>
+    <string name="connections_pf_dynamic">Dynamic (-D)</string>
+    <string name="connections_pf_address">Address</string>
+
+    <string name="connections_hostkey_title_verify">Verify Host Key</string>
+    <string name="connections_hostkey_first_time">Connecting to %1$s for the first time.</string>
+    <string name="connections_hostkey_key_type">Key type: %1$s</string>
+    <string name="connections_hostkey_fingerprint">Fingerprint:</string>
+    <string name="connections_hostkey_trust">Trust</string>
+    <string name="connections_hostkey_old_fingerprint">Old fingerprint:</string>
+    <string name="connections_hostkey_new_fingerprint">New fingerprint:</string>
+    <string name="connections_hostkey_accept_new">Accept New Key</string>
+    <string name="connections_hostkey_disconnect">Disconnect</string>
+
+    <string name="connections_deploy_title">Deploy SSH Key</string>
+    <string name="connections_deploy_field_key">SSH key</string>
+    <string name="connections_deploy_button">Deploy</string>
+
+    <string name="connections_password_title">Connect to %1$s</string>
+    <string name="connections_password_button">Connect</string>
+
+    <string name="connections_fido_pin_title">Security key PIN</string>
+    <string name="connections_fido_pin_label">PIN</string>
+
+    <string name="connections_ki_submit">Submit</string>
+
+    <string name="connections_vm_title">Linux VM</string>
+    <string name="connections_vm_detected_services">Detected services</string>
+    <string name="connections_vm_quick_setup">Quick setup</string>
+    <string name="connections_vm_copy_install">Copy install command</string>
+    <string name="connections_vm_view_script">View script</string>
+    <string name="connections_vm_step_start">1. Start the Linux VM</string>
+    <string name="connections_vm_open_terminal">Open Terminal app</string>
+    <string name="connections_vm_step_open_port">2. Open port 8022</string>
+    <string name="connections_vm_step_password">3. Set password &amp; install SSH</string>
+    <string name="connections_vm_step_vnc">4. Install VNC server (optional)</string>
+    <string name="connections_vm_step_desktop">5. Install a desktop (optional)</string>
+    <string name="connections_vm_step_apps">6. Install desktop apps (optional)</string>
+
+    <string name="connections_section_desktops">Desktops</string>
+    <string name="connections_action_back">Back</string>
+    <string name="connections_vnc_password_title">VNC Password</string>
+    <string name="connections_action_local_terminal">Local terminal</string>
+    <string name="connections_action_tunnels">Tunnels</string>
+    <string name="connections_action_reauthenticate">Re-authenticate</string>
+    <string name="connections_action_cancel_oauth">Cancel OAuth</string>
+
+    <string name="connections_hostkey_verify_hint">Verify this fingerprint matches the server\'s key before trusting.</string>
+    <string name="connections_hostkey_changed_title">Host Key Changed</string>
+    <string name="connections_hostkey_changed_body">The host key for %1$s has changed. This could indicate a server reinstall or a man-in-the-middle attack.</string>
+    <string name="connections_password_field_passphrase">Key passphrase</string>
+    <string name="connections_password_keyboard_warning">Your keyboard has internet access and may transmit what you type. Consider using a privacy keyboard (e.g. HeliBoard, Simple Keyboard).</string>
+    <string name="connections_password_domain">Domain: %1$s</string>
+    <string name="connections_password_passphrase_for_key">Enter the passphrase for SSH key \"%1$s\".</string>
+    <string name="connections_password_remember_password">Remember password</string>
+    <string name="connections_password_remember_passphrase">Remember key passphrase</string>
+    <string name="connections_password_leave_empty_for_key">Leave empty to connect with SSH key</string>
+    <string name="connections_fido_pin_help">This SSH key was registered with verify-required. Enter the PIN configured on your security key to continue.</string>
+    <string name="connections_fido_pin_wrong">Wrong PIN. %1$d attempts remaining before the key locks.</string>
+    <string name="connections_fido_waiting_title">Security key required</string>
+    <string name="connections_fido_waiting_body">Plug in your security key over USB, or tap it on the back of the device for NFC. yySlide will continue automatically once it is detected.</string>
+    <string name="connections_fido_touch_usb_title">Touch your security key</string>
+    <string name="connections_fido_touch_usb_body">Press the button on your security key now to authorise the SSH signature. The key may blink to indicate it is waiting.</string>
+    <string name="connections_fido_touch_nfc_title">Hold your security key</string>
+    <string name="connections_fido_touch_nfc_body">Keep the security key against the back of the device for two seconds while it signs. Moving it away early aborts the exchange and you\'ll need to tap it again.</string>
+    <string name="connections_fido_cancel_hint">Cancel by disconnecting from the connections list.</string>
+    <string name="connections_ki_response_fallback">Response</string>
+    <string name="connections_ki_title_additional">Additional authentication required</string>
+    <string name="connections_ki_title_server">Server prompt</string>
+    <string name="connections_vm_install_blurb">Installs SSH, VNC, Xfce4 desktop, and apps (browser, editor, file manager):</string>
+    <string name="connections_vm_copied">Copied to clipboard</string>
+    <string name="connections_vm_show_steps">Show setup steps</string>
+    <string name="connections_vm_hide_steps">Hide setup steps</string>
+    <string name="connections_vm_step_start_body">Open the Android Terminal app to boot the VM.</string>
+    <string name="connections_vm_step_open_port_body">In the Terminal app settings, add port 8022 to the listening ports list.</string>
+    <string name="connections_vm_step_password_body">Run in the Terminal app. You\'ll be prompted to set a password for the droid user.</string>
+    <string name="connections_vm_step_password_hint">Then connect with: droid@localhost:8022</string>
+    <string name="connections_vm_step_vnc_body">For remote desktop access via yySlide\'s Desktop tab.</string>
+    <string name="connections_vm_step_desktop_body">Xfce4 is lightweight and works well over VNC.</string>
+    <string name="connections_vm_step_apps_body">File manager, text editor, image viewer, browser, calculator.</string>
+
+    <!-- #133 phase 2b: cert renewal status banner --> (en fallback)
+    <string name="connections_renewing_cert">Renewing %1$s\'s cert via %2$s…</string>
+    <string name="connections_open_plain_shell">Ouvrir shell brut</string>
+
+    <!-- Port knocking -->
+    <string name="connections_section_port_knock">Port knocking</string>
+    <string name="connections_field_port_knock_sequence">Séquence de knock (facultative)</string>
+    <string name="connections_hint_port_knock_sequence">ex. 7000 8000 9000 ou 7000/tcp 8000/udp</string>
+    <string name="connections_helper_port_knock_active">Envoyée avant chaque connexion directe. Ignorée sur les chemins tunnelés SSH/SOCKS.</string>
+    <string name="connections_helper_port_knock_blank">Laisser vide pour désactiver.</string>
+    <string name="connections_field_port_knock_delay">Délai entre les knocks (ms)</string>
+    <string name="connections_button_test_knock">Tester le knock</string>
+    <string name="connections_button_test_knock_running">Knock en cours…</string>
+    <string name="connections_knock_invalid_sequence">Séquence invalide : %1$s</string>
+    <string name="connections_knock_empty">La séquence de knock est vide</string>
+    <string name="connections_knock_host_blank">L\'hôte est vide</string>
+    <string name="connections_knock_success">%1$d knocks envoyés en %2$d ms</string>
+    <string name="connections_knock_failed">Échec après %1$d ms : %2$s</string>
+    <string name="connections_dialog_new">Nouvelle connexion</string>
+    <string name="connections_dialog_edit">Modifier la connexion</string>
+    <string name="connections_field_transport">Transport</string>
+    <string name="connections_field_label">Libellé</string>
+    <string name="connections_field_color">Couleur</string>
+    <string name="connections_field_host">Hôte</string>
+    <string name="connections_field_port">Port</string>
+    <string name="connections_field_username">Nom d\'utilisateur</string>
+    <string name="connections_field_jump_host">Hôte de rebond (-J)</string>
+    <string name="connections_field_route_through">Acheminer via</string>
+    <string name="connections_field_session_manager">Gestionnaire de sessions</string>
+    <string name="connections_field_ssh_options">Options SSH</string>
+    <string name="connections_helper_ssh_options">Syntaxe ssh_config, une par ligne. Prend en charge KexAlgorithms, Ciphers, MACs, HostKeyAlgorithms, PubkeyAcceptedAlgorithms, PubkeyAuthentication, ServerAlive*. Préfixez les listes d\'algorithmes par + (ajouter), - (retirer) ou ^ (préfixer) pour conserver les valeurs par défaut.</string>
+    <string name="connections_field_post_login">Commande post-connexion</string>
+    <string name="connections_helper_post_login">Envoyée après la connexion.</string>
+    <string name="connections_dropdown_none_direct">Aucun (direct)</string>
+    <string name="connections_dropdown_cloudflare_tunnel">Cloudflare Tunnel</string>
+    <string name="connections_dropdown_default_none">Par défaut (Aucun)</string>
+    <string name="connections_dropdown_none">Aucun</string>
+    <string name="connections_section_file_transport">Transfert de fichiers</string>
+    <string name="connections_helper_file_transport">Comment l\'onglet Fichiers déplace les données vers/depuis ce serveur.</string>
+    <string name="connections_file_transport_auto">Auto</string>
+    <string name="connections_scan_network">Analyser le réseau</string>
+    <string name="connections_scanning">Analyse en cours</string>
+    <string name="connections_field_group">Groupe</string>
+    <string name="connections_field_provider">Fournisseur</string>
+    <string name="connections_field_tunnel_through_ssh">Tunnel via SSH</string>
+    <string name="connections_field_ssh_connection">Connexion SSH</string>
+    <string name="connections_field_username_vnc">Nom d\'utilisateur (facultatif — VeNCrypt uniquement)</string>
+    <string name="connections_field_password_optional">Mot de passe (facultatif)</string>
+    <string name="connections_field_domain_optional">Domaine (facultatif)</string>
+    <string name="connections_field_share_name">Nom du partage</string>
+    <string name="connections_field_colour_depth">Profondeur de couleur</string>
+    <string name="connections_field_proxy_host">Hôte du proxy</string>
+    <string name="connections_field_et_port">Port ET</string>
+    <string name="connections_field_mosh_server_command">Commande mosh-server</string>
+    <string name="connections_helper_mosh_server">Laissez vide pour la valeur par défaut. Utilisez authbind pour les ports inférieurs à 1024.</string>
+    <string name="connections_username_placeholder_ask">Laissez vide pour demander au moment de la connexion</string>
+    <string name="connections_file_transport_auto_desc">Essaie SFTP, revient à SCP si le sous-système sftp-server est indisponible.</string>
+    <string name="connections_file_transport_sftp_label">SFTP uniquement</string>
+    <string name="connections_file_transport_sftp_desc">Force le sous-système SFTP moderne. Échoue s\'il est désactivé côté serveur.</string>
+    <string name="connections_file_transport_scp_label">SCP (hérité)</string>
+    <string name="connections_file_transport_scp_desc">Force le scp -t/-f hérité et le ls du shell. À utiliser sur des serveurs renforcés ou embarqués.</string>
+    <string name="connection_address_family_label">Famille d\'adresses</string>
+    <string name="connection_address_family_auto">Auto</string>
+    <string name="connection_address_family_ipv4_only">IPv4 uniquement</string>
+    <string name="connection_address_family_ipv6_only">IPv6 uniquement</string>
+    <string name="connection_address_family_ipv4_hint">Ignore les enregistrements AAAA et se connecte en IPv4. Utile lorsque le DNS renvoie de l\'IPv6 mais que le réseau ne peut pas l\'acheminer.</string>
+    <string name="connection_address_family_ipv6_hint">Ignore les enregistrements A et se connecte en IPv6. Utile sur les réseaux uniquement IPv6 où le NAT IPv4 est défaillant.</string>
+    <string name="connections_section_general">Général</string>
+    <string name="connections_section_local_shell">Shell local</string>
+    <string name="connections_section_cloud_storage">Stockage cloud</string>
+    <string name="connections_section_vnc">Paramètres VNC</string>
+    <string name="connections_section_rdp">Paramètres RDP</string>
+    <string name="connections_section_smb">Paramètres SMB</string>
+    <string name="connections_section_connection">Connexion</string>
+    <string name="connections_section_terminal">Terminal</string>
+    <string name="connections_section_authentication">Authentification</string>
+    <string name="connections_section_embedded_vnc">VNC intégré</string>
+    <string name="connections_section_reticulum">Reticulum</string>
+    <string name="connections_section_routing">Routage</string>
+    <string name="connections_toggle_mcp_tunnel">Exposer le serveur MCP de yySlide</string>
+    <string name="connections_helper_mcp_tunnel">Ajoute une règle -R 8730 → 127.0.0.1:8730 pour qu\'un client MCP sur ce serveur puisse joindre yySlide à l\'adresse http://127.0.0.1:8730/mcp. Appliquée à la connexion.</string>
+    <string name="connections_section_reconnect">Reconnexion</string>
+    <string name="connections_local_shell_android_desc">Exécute le shell natif d\'Android (/system/bin/sh). Accès aux commandes Android, au système de fichiers et au root (si disponible).</string>
+    <string name="connections_local_shell_proot_desc">Exécute un shell Alpine Linux localement via PRoot. Télécharge un rootfs minimal (~4 Mo) à la première utilisation. Aucun root ni connexion réseau requis.</string>
+    <string name="connections_dropdown_select_provider">Sélectionner un fournisseur…</string>
+    <string name="connections_helper_rclone_signin">Connectez-vous via votre navigateur lors de la première connexion.</string>
+    <string name="connections_dropdown_select_ssh">Sélectionner une connexion SSH</string>
+    <string name="connections_helper_add_ssh_first">Ajoutez d\'abord une connexion SSH</string>
+    <string name="connections_toggle_rdp_nla">Authentification au niveau réseau (NLA)</string>
+    <string name="connections_helper_mosh_required">Nécessite mosh-server sur l\'hôte distant</string>
+    <string name="connections_helper_et_required">Nécessite etserver sur l\'hôte distant (port %1$s)</string>
+    <string name="connections_helper_run_before_session_manager">S\'exécute avant le démarrage du gestionnaire de sessions.</string>
+    <string name="connections_toggle_tunnel_only">Tunnel uniquement (sans terminal)</string>
+    <string name="connections_helper_tunnel_only">Établit SSH uniquement pour les redirections de ports — aucune session de terminal n\'est ouverte.</string>
+    <string name="connections_toggle_auto_reconnect">Reconnexion automatique en cas de déconnexion</string>
+    <string name="connections_field_reconnect_max_attempts">Tentatives maximales (0 = illimité)</string>
+    <string name="connections_toggle_reconnect_on_network_change">Reconnecter lors d\'un changement de réseau</string>
+    <string name="connections_field_passphrase">Phrase secrète</string>
+    <string name="connections_hint_ifac_passphrase">Phrase secrète IFAC (facultative)</string>
+    <string name="connections_helper_vnc_host_via_ssh">Où le serveur VNC est accessible depuis le serveur SSH — généralement 127.0.0.1 s\'il s\'agit de la même machine (wayvnc, etc. ne se lient qu\'au loopback).</string>
+    <string name="connections_helper_vnc_auth">Laissez le nom d\'utilisateur vide pour le VncAuth classique (mot de passe de 8 caractères). Renseignez le nom d\'utilisateur pour VeNCrypt (wayvnc, TigerVNC) — prend en charge des mots de passe plus longs et le chiffrement TLS.</string>
+    <string name="connections_helper_rdp_host_via_ssh">Où le serveur RDP est accessible depuis le serveur SSH — généralement 127.0.0.1 s\'il s\'agit de la même machine.</string>
+    <string name="connections_helper_rdp_nla">Activé par défaut. Désactivez-le si le serveur rejette la NLA de yySlide (certaines configurations Windows Server 2025 — le serveur doit avoir \"Require NLA\" désactivé pour se connecter en SSL uniquement).</string>
+    <string name="connections_action_manage_tunnels">Gérer les tunnels…</string>
+    <string name="connections_helper_cloudflare_routing">Routage via un connecteur Cloudflare Tunnel. L\'hôte ci-dessus sert de nom d\'hôte du tunnel ; le port ne s\'applique pas (le connecteur décide de la cible SSH en amont).</string>
+    <string name="connections_vnc_depth_24">Couleur 24 bits (meilleure qualité)</string>
+    <string name="connections_vnc_depth_16">Couleur 16 bits (plus rapide)</string>
+    <string name="connections_vnc_depth_8">256 couleurs (bande passante minimale)</string>
+    <string name="connections_rdp_depth_16">16 bits (par défaut — fonctionne partout, fidélité moindre)</string>
+    <string name="connections_rdp_depth_24">24 bits (xrdp — Windows réinitialise la connexion)</string>
+    <string name="connections_rdp_depth_32">32 bits (Windows — écran noir sur xrdp)</string>
+</resources>

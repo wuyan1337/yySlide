@@ -1,0 +1,34 @@
+{
+  "name": "yyslide-workspace",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuyan1337/yySlide.git"
+  },
+  "homepage": "https://yyslide.ccwu.cc",
+  "bugs": {
+    "url": "https://github.com/wuyan1337/yySlide/issues"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dist": "npm --prefix windows run dist",
+    "windows:dev": "npm --prefix windows run dev",
+    "windows:build": "npm --prefix windows run build",
+    "windows:dist": "npm --prefix windows run dist",
+    "windows:start": "npm --prefix windows run start",
+    "server:start": "node server/yycloud.cjs",
+    "server:migrate": "node server/yycloud.cjs --migrate-only",
+    "server:restore-legacy": "node scripts/decrypt-legacy-archive.cjs",
+    "server:test": "node scripts/server-security-check.cjs",
+    "sync:test": "node scripts/sync-contract-check.cjs",
+    "website:check": "node scripts/website-check.cjs",
+    "test": "npm run server:test && npm run sync:test && npm run website:check",
+    "android:copy-audit": "node scripts/android-copy-audit.cjs",
+    "android:assembleDebug": "cd android/yyslide-android && gradlew.bat :app:assembleDebug",
+    "android:dist": "node scripts/build-android-release.cjs",
+    "android:release": "node scripts/build-android-release.cjs --release",
+    "release:all": "npm run windows:dist && npm run android:release"
+  }
+}

@@ -1,0 +1,3 @@
+- Add custom mosh-server command field per connection (#73)
+- Lets you override the default mosh-server invocation for custom locale,
+  authbind for ports below 1024, port ranges, or other server options

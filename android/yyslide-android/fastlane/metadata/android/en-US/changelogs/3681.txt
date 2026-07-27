@@ -1,0 +1,11 @@
+FIDO2 SSH key + certificate auth (#134, #136): a hardware-resident
+sk-key signed by a CA now authenticates against TrustedUserCAKeys
+servers — v5.28.0's cert path extends to ed25519-sk and ecdsa-sk.
+The cert is advertised as sk-*-cert-v01@openssh.com while signing
+still goes through the authenticator (USB / NFC / built-in key).
+
+Attach-time cert validation: the embedded fingerprint must match
+the key, principals are surfaced on success, and an expired cert
+attaches with a warning instead of failing silently at connect.
+
+MCP: open_file_in_editor tool, folder filter in the SFTP browser.

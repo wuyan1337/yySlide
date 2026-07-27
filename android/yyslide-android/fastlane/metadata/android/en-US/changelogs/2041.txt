@@ -1,0 +1,10 @@
+Native Kotlin Reticulum transport (issue #79)
+
+- Replace Python/Chaquopy rnsh stack with pure Kotlin implementation
+  (reticulum-kt + rnsh-kt)
+- Two-way terminal sessions over IFAC-protected TCP gateways
+- Announce-based rnsh node discovery with scan button
+- IFAC network name and passphrase support in connection profiles
+- New ReticulumTransport interface with Flow-based I/O
+- Debug receiver for ADB-driven testing (debug builds only)
+- Room migration 28→29 for IFAC credential fields

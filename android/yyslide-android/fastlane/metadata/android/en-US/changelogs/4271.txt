@@ -1,0 +1,5 @@
+Robust MCP agent endpoint
+
+The MCP endpoint now stays reachable as the network roams. A dedicated, headless SSH reverse tunnel carries the endpoint back to a chosen "endpoint" SSH profile, decoupled from any terminal session, with unlimited auto-reconnect, reconnect-on-network-change, and a watchdog that re-establishes the tunnel after a drop. A failed reverse-forward bind now retries instead of silently coming up without the forward. Configure under Settings → Agent endpoint (MCP) → Reverse-tunnel endpoint.
+
+New: the endpoint can also be exposed over an active WireGuard tunnel (Settings → Agent endpoint → Expose on WireGuard tunnel) — reachable by WG peers at the tunnel's stable interface address with no reverse forward.

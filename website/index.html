@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>yySlide｜跨端 SSH / SFTP 与服务器管理工具</title>
+  <meta name="description" content="yySlide 是一个跨 Windows 与 Android 的 SSH、SFTP、服务器监控与 yySlide Cloud 加密同步工具。" />
+  <meta name="theme-color" content="#05060a" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <link rel="canonical" href="https://yyslide.ccwu.cc/" />
+  <meta property="og:title" content="yySlide｜服务器管理，从桌面滑到手机" />
+  <meta property="og:description" content="跨端 SSH / SFTP / 监控 / Cloud 加密同步。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yyslide.ccwu.cc/" />
+  <meta property="og:image" content="https://yyslide.ccwu.cc/assets/desktop.webp" />
+  <link rel="icon" href="./assets/logo.png" />
+  <link rel="preload" as="image" href="./assets/desktop.webp" />
+  <link rel="stylesheet" href="./styles.css?v=20260727" />
+  <link rel="stylesheet" href="./accessibility.css?v=20260727" />
+</head>
+<body>
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+  <canvas class="mesh-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="yySlide 首页"><img src="./assets/logo.webp" alt="" /><b>yySlide</b></a>
+    <nav aria-label="Primary">
+      <a href="#terminal">终端</a>
+      <a href="#monitor">监控</a>
+      <a href="#cloud">Cloud</a>
+      <a href="#download">部署</a>
+    </nav>
+    <a class="nav-cta" href="#download">开始使用</a>
+  </header>
+
+  <main id="top">
+    <section class="hero scene" data-scene>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Windows / Android / Cloud Sync</p>
+        <h1><span class="hero-line">服务器管理</span><span class="hero-line">桌面到手机，丝滑切换</span></h1>
+        <p class="lead">yySlide 把 SSH 终端、SFTP 文件、实时监控和加密同步放进一个轻快的跨端工作台。开机、连上、处理，然后继续移动。</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/wuyan1337/yySlide/releases">获取 yySlide</a>
+          <a class="button ghost" href="#showcase">看产品界面</a>
+        </div>
+        <div class="trust"><span>SSH</span><span>SFTP</span><span>2FA</span><span>Encrypted Vault</span><span>SSE Sync</span></div>
+      </div>
+      <div class="hero-stage reactbits-stage" id="showcase" aria-label="yySlide 桌面端截图">
+        <div class="glow-card desktop-card" data-float="slow">
+          <div class="window-bar"><i></i><i></i><i></i><span>yySlide Desktop</span></div>
+          <img src="./assets/desktop.webp" alt="yySlide 桌面端服务器管理界面" />
+        </div>
+        <div class="orbital-ring" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="mini sync-mini" data-float="mid"><b>Cloud synced</b><span>vault.updated · 2FA enabled</span></div>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="产品能力">
+      <div><b>一套连接库</b><span>分类、密钥、主机随身走</span></div>
+      <div><b>桌面级文件管理</b><span>上传下载队列与远端路径</span></div>
+      <div><b>实时服务器视图</b><span>CPU / 内存 / 网络 / 进程</span></div>
+    </section>
+
+    <section class="story scene" id="terminal" data-scene>
+      <div class="story-text sticky-copy">
+        <p class="eyebrow"><span></span> Mobile Terminal</p>
+        <h2>人在外面，也像坐在服务器前。</h2>
+        <p>Android 端保留终端快捷键与干净的深色命令行体验。Esc、Tab、Ctrl、Alt、Paste 都在手边，临时排障不用再找电脑。</p>
+        <ul>
+          <li>移动端 SSH 终端，适配长输出与快捷键栏</li>
+          <li>连接、终端、文件、设置四个核心入口</li>
+          <li>适合随手检查服务状态、重启、看日志</li>
+        </ul>
+      </div>
+      <div class="phone-stack">
+        <figure class="phone phone-left"><img src="./assets/android-terminal.webp" alt="yySlide Android 终端界面" loading="lazy" /></figure>
+        <div class="command-card"><span>$ systemctl status yyslide-cloud</span><b>active · encrypted sync online</b></div>
+      </div>
+    </section>
+
+    <section class="panel-scene scene" id="monitor" data-scene>
+      <div class="section-head">
+        <p class="eyebrow"><span></span> Desktop Control Center</p>
+        <h2>终端、监控、文件，一个窗口解决。</h2>
+        <p>桌面端像一块服务器驾驶舱：左侧看机器状态，中间敲命令，下方处理文件传输。少切窗口，少开网页。</p>
+      </div>
+      <div class="feature-grid">
+        <article><i>01</i><h3>实时监控</h3><p>CPU、内存、交换分区、网络吞吐、进程列表集中展示，远程机器状态一眼确认。</p></article>
+        <article><i>02</i><h3>SFTP 文件工作流</h3><p>路径、文件表、上传下载队列放在同一个视图，处理配置和日志更直接。</p></article>
+        <article><i>03</i><h3>多端一致</h3><p>Windows 上整理连接，Android 上继续使用；Cloud 负责安全地把配置带过去。</p></article>
+      </div>
+      <div class="wide-shot"><img src="./assets/desktop.webp" alt="yySlide 桌面端完整界面" loading="lazy" /></div>
+    </section>
+
+    <section class="story cloud scene" id="cloud" data-scene>
+      <div class="phone-stack cloud-phone">
+        <figure class="phone"><img src="./assets/android-cloud.webp" alt="yySlide Cloud 登录与设置界面" loading="lazy" /></figure>
+        <div class="security-orbit"><span>2FA</span><span>Recovery</span><span>Vault</span></div>
+      </div>
+      <div class="story-text sticky-copy">
+        <p class="eyebrow"><span></span> yySlide Cloud</p>
+        <h2>同步的是密文，不是你的秘密。</h2>
+        <p>Cloud 服务只保存加密 vault。登录、2FA、恢复码与实时 SSE 刷新负责账号和同步，客户端仍掌握连接数据的解密边界。</p>
+        <div class="code-box"><pre>GET  /health
+POST /v1/auth/login
+GET  /v1/vault/events
+PUT  /v1/vault</pre></div>
+      </div>
+    </section>
+
+    <section class="download scene" id="download" data-scene>
+      <div class="download-card">
+        <img src="./assets/logo.webp" alt="yySlide logo" loading="lazy" />
+        <p class="eyebrow"><span></span> Official Server</p>
+        <h2>yySlide Cloud 现在由 yyslide.ccwu.cc 提供。</h2>
+        <p>官网、健康检查与 Cloud API 部署在同一台服务器上；客户端 API 保留 `/health` 与 `/v1/*` 路径。</p>
+        <div class="endpoint"><b>Cloud Endpoint</b><code>https://yyslide.ccwu.cc</code></div>
+        <div class="actions center"><a class="button primary" href="https://yyslide.ccwu.cc/health">检查服务状态</a><a class="button ghost" href="https://github.com/wuyan1337/yySlide">查看源码</a><a class="button ghost" href="#top">回到顶部</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> yySlide. Built for quiet server people. · <a href="https://github.com/wuyan1337/yySlide/blob/main/PRIVACY.md">Privacy</a></footer>
+  <script src="./script.js?v=20260727"></script>
+</body>
+</html>

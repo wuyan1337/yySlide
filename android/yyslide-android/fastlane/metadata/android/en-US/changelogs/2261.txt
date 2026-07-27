@@ -1,0 +1,15 @@
+v5.4.4: RDP connections work in release builds
+
+- Fixes #93. RDP connections failed immediately with
+  "Structure class x5.j has unknown or zero size" because
+  R8 was renaming the UniFFI-generated JNA Structure
+  fields (capacity, len, data, etc.) that JNA resolves
+  reflectively from @Structure.FieldOrder string literals.
+  With the field names stripped, JNA computed a struct
+  size of zero and refused to allocate.
+- Added ProGuard keep rules for any class extending
+  com.sun.jna.Structure and for the entire sh.haven.rdp
+  package. Verified against the R8 dex dump: the
+  RustBuffer fields (capacity/len/data) are preserved
+  with their original names and public access.
+- Same class of bug as #82 (Shizuku), different library.

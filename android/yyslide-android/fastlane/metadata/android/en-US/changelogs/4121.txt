@@ -1,0 +1,39 @@
+v5.39.0 — three UX wins + per-phase install retry
+
+• Auto-hide unused bottom-nav tabs (issue #160, rkxspace). The six
+  fixed-width tabs used to overflow on smaller screens like the
+  Samsung S22. Now each tab fades in only when its category has
+  data — Terminal appears once you add an SSH/Mosh/ET profile, Keys
+  once you add an SSH key or step-ca config, Desktop once a VNC /
+  RDP / Wayland / local-shell session is in play (unchanged from
+  v5.38). Settings gains an "Always show all tabs" toggle as the
+  safety net for power users who prefer the old layout.
+
+• Selection autoscroll now scales with finger position (issue #94,
+  ehoeve786). When dragging a selection past the top or bottom of
+  the visible terminal, the scroll rate ramps from 1 row/tick at
+  the inner edge of the trigger zone up to 8 rows/tick (~130
+  rows/sec) at the very edge. Selecting through long output is
+  noticeably faster.
+
+• Per-phase install retry (issue #162 Phase 3d). The error chip on
+  a failed proot rootfs install now sits next to a Retry button.
+  For Bootstrap-hook or Baseline failures, Retry re-runs just that
+  phase against the existing rootfs (hooks are idempotent by
+  contract). For Download or Extract failures, "Wipe & retry"
+  starts over from the tarball because partial-extract state is
+  the risk to recover from.
+
+• step-ca OIDC discovery URL normalisation already shipped in
+  v5.38.0 (issue #133). Confirmed fixed.
+
+Deferred to v5.40:
+
+• Mosh-over-WireGuard tunnel (issue #164). The root cause is that
+  Haven's WireGuard tunnel only exposes a TCP surface today;
+  Mosh's UDP socket bypasses it. The fix requires a UDP path on
+  the tunnel manager and a refactor of MoshConnection — bigger
+  than v5.39 had room for.
+
+• Phase 4 of issue #162 — nested wlroots compositors (Sway,
+  Hyprland, niri via headless wlroots + wayvnc).

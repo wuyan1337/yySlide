@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_save">保存</string>
+    <string name="common_done">完成</string>
+    <string name="common_close">关闭</string>
+    <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="common_rename">重命名</string>
+    <string name="common_create">创建</string>
+    <string name="common_connect">连接</string>
+    <string name="common_disconnect">断开</string>
+    <string name="common_copy">复制</string>
+    <string name="common_paste">粘贴</string>
+    <string name="common_label">标签</string>
+    <string name="common_password">密码</string>
+    <string name="common_port">端口</string>
+    <string name="common_host">主机</string>
+    <string name="common_username">用户名</string>
+    <string name="common_install">安装</string>
+    <string name="common_reset">重置</string>
+    <string name="common_allow">允许</string>
+    <string name="common_not_now">暂不</string>
+    <string name="common_import">导入</string>
+    <string name="common_add">添加</string>
+    <string name="common_download">下载</string>
+    <string name="common_unlock">解锁</string>
+
+    <!-- KeysScreen -->
+    <string name="keys_add_key">添加密钥</string>
+    <string name="keys_no_ssh_keys">没有 SSH 密钥</string>
+    <string name="keys_tap_to_add">点击 + 生成或导入密钥</string>
+    <string name="keys_copy_public_key">复制公钥</string>
+    <string name="keys_export_private_key">导出私钥</string>
+
+    <!-- AddKeyChooser -->
+    <string name="keys_add_ssh_key">添加 SSH 密钥</string>
+    <string name="keys_generate_new_key">生成新密钥</string>
+    <string name="keys_generate_key_types">Ed25519、RSA 或 ECDSA</string>
+    <string name="keys_import_from_file">从文件导入</string>
+    <string name="keys_import_file_formats">PEM、OpenSSH 或 Dropbear 格式</string>
+    <string name="keys_paste_from_clipboard">从剪贴板粘贴</string>
+    <string name="keys_paste_clipboard_hint">仅限文本密钥（PEM/OpenSSH）。二进制 Dropbear 密钥请使用文件导入。</string>
+    <string name="keys_clipboard_empty">剪贴板为空</string>
+    <string name="keys_clipboard_not_text_key">剪贴板中没有文本 SSH 密钥。二进制密钥（如 Dropbear）必须从文件导入。</string>
+
+    <!-- GenerateKeyDialog -->
+    <string name="keys_generate_ssh_key">生成 SSH 密钥</string>
+    <string name="keys_label_placeholder">例如 my-server</string>
+    <string name="keys_key_type">密钥类型</string>
+    <string name="keys_generate">生成</string>
+
+    <!-- PassphraseDialog -->
+    <string name="keys_encrypted_key">加密密钥</string>
+    <string name="keys_passphrase_prompt">此密钥受密码短语保护。</string>
+    <string name="keys_passphrase">密码短语</string>
+    <string name="keys_unlock">解锁</string>
+
+    <!-- ImportLabelDialog -->
+    <string name="keys_import_ssh_key">导入 SSH 密钥</string>
+    <string name="keys_import">导入</string>
+
+    <!-- copyPublicKey -->
+    <string name="keys_ssh_public_key_clip_label">SSH 公钥</string>
+    <string name="keys_section_certificate_authorities">证书颁发机构（%1$d）</string>
+    <string name="keys_section_ssh">SSH 密钥（%1$d）</string>
+    <string name="keys_section_passwords">已保存的密码（%1$d）</string>
+    <string name="keys_chip_hardware_backed">硬件保护</string>
+    <string name="keys_chip_passphrase">密码短语</string>
+    <string name="keys_chip_user_presence">需要触摸</string>
+    <string name="keys_chip_user_verification">需要用户验证</string>
+    <string name="keys_chip_biometric">需要生物识别</string>
+    <string name="keys_require_biometric">使用时需要生物识别</string>
+    <string name="keys_clear_password_title">清除 %1$s？</string>
+    <string name="keys_clear_password_body">清除将删除此连接已保存的密码。连接本身保留 — 下次连接时会提示输入密码。</string>
+    <string name="keys_wipe_content_description">清除 %1$s</string>
+    <string name="keys_attach_certificate">附加证书</string>
+    <string name="keys_remove_certificate">移除证书</string>
+    <string name="keys_chip_certificate">已附加证书</string>
+
+    <!-- #133 第二阶段：通过 step-ca 生成 -->
+    <string name="keys_generate_via_stepca">通过 step-ca 生成</string>
+    <string name="keys_generate_via_stepca_hint">OIDC 登录后生成密钥对并签发证书</string>
+    <string name="keys_generate_via_stepca_no_ca">请先点击上方“证书颁发机构”添加一个 CA</string>
+    <string name="keys_stepca_dialog_title">通过 step-ca 生成</string>
+    <string name="keys_stepca_pick_ca">证书颁发机构</string>
+    <string name="keys_stepca_principals_override_label">覆盖主体（可选，逗号分隔）</string>
+    <string name="keys_stepca_label">密钥标签</string>
+    <string name="keys_stepca_generate">生成</string>
+    <string name="keys_chip_certificate_minted">%1$s 颁发</string>
+
+    <!-- #133 phase 2b: regenerate menu -->
+    <string name="keys_regenerate_via_stepca">通过 step-ca 重新生成</string>
+    <string name="keys_regenerate_confirm_title">续期 %1$s？</string>
+    <string name="keys_regenerate_confirm_body">这会替换 SSH 私钥及其 step-ca 证书。仅在此续期由你发起时继续。</string>
+    <string name="keys_regenerate_confirm_action">续期并轮换密钥</string>
+
+    <!-- #133 phase 2b: step-ca CA registration (moved from Settings) -->
+    <string name="stepca_add_title">添加证书颁发机构</string>
+    <string name="stepca_edit_title">编辑证书颁发机构</string>
+    <string name="stepca_add">添加</string>
+    <string name="stepca_save">保存</string>
+    <string name="stepca_cancel">取消</string>
+    <string name="stepca_delete">删除</string>
+    <string name="stepca_test_connection">测试连接</string>
+    <string name="stepca_field_name">显示名称</string>
+    <string name="stepca_field_ca_url">CA 地址</string>
+    <string name="stepca_field_ca_url_hint">https://ca.example.com</string>
+    <string name="stepca_field_oidc_issuer">OIDC 颁发者 URL</string>
+    <string name="stepca_field_oidc_auth_url">OIDC 授权 URL</string>
+    <string name="stepca_field_oidc_token_url">OIDC 令牌 URL</string>
+    <string name="stepca_field_oidc_client_id">OIDC 客户端 ID</string>
+    <string name="stepca_field_provisioner">step-ca 提供方</string>
+    <string name="stepca_field_principals">默认主体（逗号分隔）</string>
+    <string name="stepca_field_root_cert">根证书（PEM）</string>
+    <string name="stepca_field_root_cert_hint">-----BEGIN CERTIFICATE-----…</string>
+    <string name="stepca_test_ok">可达</string>
+    <string name="stepca_test_bad_root_cert">根证书无效：%1$s</string>
+    <string name="stepca_test_http_error">HTTP %1$d：%2$s</string>
+    <string name="stepca_test_network_error">网络错误：%1$s</string>
+    <string name="stepca_empty_state">尚未配置证书颁发机构。\n点击 + 添加一个。</string>
+    <string name="stepca_validation_required">%1$s 不能为空</string>
+    <string name="stepca_validation_url">%1$s 必须以 https:// 开头</string>
+    <string name="stepca_validation_pem">根证书必须为 PEM 编码</string>
+    <string name="stepca_delete_confirm_title">删除 %1$s 吗？</string>
+    <string name="stepca_delete_confirm_body">通过此 CA 颁发的现有密钥在证书到期前仍可使用，但您将无法续期或生成新密钥。</string>
+    <string name="stepca_field_ssh_host_ca">SSH 主机 CA 公钥（可选）</string>
+    <string name="stepca_field_ssh_host_ca_hint">ssh-ed25519 AAAAC3…</string>
+    <string name="stepca_discover_host_ca">从 /1.0/ssh/config 发现</string>
+    <string name="stepca_discovering">正在发现…</string>
+    <string name="stepca_import_from_file">从文件导入</string>
+    <string name="stepca_import_failed">导入失败: %1$s</string>
+
+    <!-- 引导流程 (#133 阶段 2c) -->
+    <string name="stepca_bootstrap_intro">仅需 CA URL 与 SHA-256 指纹即可引导;根证书、Provisioner、OIDC URL 与密钥都将从 CA 获取。</string>
+    <string name="stepca_field_fingerprint">根证书指纹 (SHA-256)</string>
+    <string name="stepca_field_fingerprint_hint">从 `step certificate fingerprint` 粘贴</string>
+    <string name="stepca_bootstrap_action">从 CA 引导</string>
+    <string name="stepca_bootstrapping">正在联系 CA…</string>
+    <string name="stepca_bootstrap_pick_provisioner">选择一个 OIDC provisioner:</string>
+    <string name="stepca_manual_entry">手动输入…</string>
+    <string name="stepca_field_oidc_client_secret">OIDC client secret (可选)</string>
+    <string name="stepca_field_oidc_client_secret_hint">公共 PKCE 客户端请留空</string>
+    <string name="keys_discover_from_security_key">从安全密钥发现</string>
+    <string name="keys_discover_from_security_key_hint">从插入或轻触的安全密钥枚举常驻 SSH-SK 凭据。跳过 ssh-keygen -K。</string>
+    <string name="keys_discover_picker_title">常驻 SSH 密钥</string>
+    <string name="keys_discover_picker_body">选择要导入的常驻凭据。每个都会成为新的 SSH 密钥条目；私钥材料仍保留在安全密钥本身。</string>
+    <string name="keys_discover_import_selected">导入所选</string>
+    <string name="keys_fido_pin_title">安全密钥 PIN</string>
+    <string name="keys_fido_pin_label">PIN</string>
+    <string name="keys_fido_pin_help">输入在安全密钥上设置的 PIN 以继续。</string>
+    <string name="keys_fido_pin_wrong">PIN 错误。密钥锁定前还剩 %1$d 次尝试。</string>
+    <string name="keys_fido_waiting_title">需要安全密钥</string>
+    <string name="keys_fido_waiting_body">通过 USB 插入安全密钥，或将其轻触设备背面以使用 NFC。检测到后 yySlide 将自动继续。</string>
+    <string name="keys_fido_touch_usb_title">触摸您的安全密钥</string>
+    <string name="keys_fido_touch_usb_body">现在按下安全密钥上的按钮以授权该请求。</string>
+    <string name="keys_fido_touch_nfc_title">按住您的安全密钥</string>
+    <string name="keys_fido_touch_nfc_body">将安全密钥贴在设备背面保持两秒。过早移开会中止交换。</string>
+    <string name="keys_fido_cancel_hint">在安全密钥响应之前保持打开。</string>
+    <string name="keys_delete_authenticator">删除身份验证器</string>
+    <string name="keys_scan_authenticator_qr">扫描身份验证器二维码（TOTP）</string>
+    <string name="keys_scan_authenticator_qr_hint">选择一张包含 otpauth:// 二维码的图片</string>
+    <string name="keys_add_authenticator_clipboard">从剪贴板添加身份验证器（TOTP）</string>
+    <string name="keys_add_authenticator_clipboard_hint">粘贴 otpauth:// URI 或 Base32 密钥</string>
+</resources>

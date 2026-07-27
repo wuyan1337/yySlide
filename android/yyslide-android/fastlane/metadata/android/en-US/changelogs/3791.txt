@@ -1,0 +1,12 @@
+Splash screen follows system dark mode — no more bright flash on cold
+launch in dark theme (#153).
+
+Desktop tab default orientation follows the system instead of forcing
+landscape.
+
+Terminal: smart-copy routes through SelectionController so selection
+survives scroll/resize. New MCP tools: drag_selection_to, and an
+open_local_shell plain mode for headless tests.
+
+MCP: pairing gate with an in-app approval prompt and a "bypass for
+this session" checkbox for one-off client authorisation.

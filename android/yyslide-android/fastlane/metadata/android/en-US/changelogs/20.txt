@@ -1,0 +1,3 @@
+- Fix SSH reconnection on network drop
+- Add cooldown between scroll drag and copy selection
+- Block accidental selection on horizontal drag

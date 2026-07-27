@@ -1,0 +1,13 @@
+v5.3.0: MCP agent transport (v1, read-only)
+
+- New Model Context Protocol server — Haven exposes its state
+  and primitives to local AI agents so a Claude Code instance
+  running in PRoot (or any MCP-aware client) can work with and
+  within what you see in the UI.
+- Loopback-only HTTP on 127.0.0.1:8730, stateless Streamable
+  HTTP, JSON-RPC 2.0. Server starts with the app.
+- Read-only tool set in v1: get_app_info, list_connections,
+  list_sessions, list_rclone_remotes, list_rclone_directory.
+- Secrets (passwords, keys) redacted from tool outputs.
+- No mutation tools yet — convert, upload, delete, disconnect
+  will ship in v2 behind a per-action consent dialog.

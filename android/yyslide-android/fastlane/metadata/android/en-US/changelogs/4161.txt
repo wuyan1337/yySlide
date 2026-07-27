@@ -1,0 +1,27 @@
+v5.42.0 — Nested Wayland desktops actually launch (#162)
+
+• Fix (the big one): Sway / Hyprland / Niri silently failed to start —
+  or took the whole app down. Two root causes: desktop start-failures
+  were logged through a path that hit a database constraint and
+  crashed the app; and Sway refuses to run as root, while the proot
+  ran everything as fake-root. Nested-Wayland desktops now launch as a
+  real non-root user, so the compositor starts and renders.
+
+• Fix (the grey screen): the auto-launched app picker (fuzzel)
+  segfaulted because the desktop user had no /etc/passwd entry. Haven
+  now seeds one, and the desktops auto-launch a foot terminal so a
+  fresh VNC connect lands on something usable. fuzzel stays on mod+d.
+
+• New: one-tap shell into any installed distro — each distro row in
+  Desktop → Manage has a terminal button that opens a local PRoot
+  shell in that distro.
+
+• Fix: desktop start failures now show an error (toast + on the row)
+  instead of doing nothing; installs show an in-progress spinner.
+
+• New: SSH-over-tunnel connections prompt for a password when the
+  jump host has none saved (instead of silently failing), and a
+  "Forget saved password" action was added to the connection menu.
+
+• Fix: readable launcher labels (dropped Font Awesome glyphs that
+  rendered as boxes); labwc crash on external resize.

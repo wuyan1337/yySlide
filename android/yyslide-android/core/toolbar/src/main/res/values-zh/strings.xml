@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toolbar_add_custom_key">添加自定义按键</string>
+    <string name="toolbar_toggle_keyboard">切换键盘</string>
+    <string name="toolbar_reorder_keys">重新排序工具栏按键</string>
+    <string name="toolbar_done_reordering">完成排序</string>
+    <string name="toolbar_vnc_desktop">VNC 桌面</string>
+    <string name="toolbar_settings">工具栏设置</string>
+    <string name="toolbar_custom_key_dialog_title">添加自定义按键</string>
+    <string name="toolbar_custom_key_label">标签</string>
+    <string name="toolbar_custom_key_sequence">序列</string>
+    <string name="toolbar_custom_key_add">添加</string>
+    <string name="toolbar_custom_key_cancel">取消</string>
+    <string name="toolbar_snippet_add">添加片段</string>
+    <string name="toolbar_snippet_search">搜索片段…</string>
+    <string name="toolbar_snippet_delete">删除</string>
+    <string name="toolbar_snippet_dialog_title">添加片段</string>
+    <string name="toolbar_snippet_label">标签</string>
+    <string name="toolbar_snippet_command">命令</string>
+</resources>

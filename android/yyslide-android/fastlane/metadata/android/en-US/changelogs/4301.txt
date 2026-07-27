@@ -1,0 +1,3 @@
+Collapsible settings sections
+
+The settings screen now groups its sections into collapsible headers — Security & Privacy, Appearance, Keyboard & Input, Terminal, Desktop, Connections, Diagnostics, Advanced, Backup, and About — all collapsed by default, so the screen opens compact and you expand only what you need. Mirrors the collapsible grouping in the connection editor.

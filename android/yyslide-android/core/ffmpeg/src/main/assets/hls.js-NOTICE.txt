@@ -1,0 +1,12 @@
+hls.js 1.6.16
+
+Upstream project: https://github.com/video-dev/hls.js
+Pinned package: https://registry.npmjs.org/hls.js/-/hls.js-1.6.16.tgz
+Vendored file: package/dist/hls.min.js
+Package integrity (SHA-512, npm):
+VSIRpLfRwlAAdGL4wiTucx2ScRipo0ed1FBatWkyt832jC4CReKstga6yIhYVwGu9LOBjuX9wzmRMeQdBJtzEA==
+Vendored file SHA-256:
+442f599c34f103c3355b375a23bdff560592d7117d09a8c847242ea3de2d40e0
+
+License: Apache-2.0. The upstream license text is included next to this
+notice as hls.js-LICENSE.txt.

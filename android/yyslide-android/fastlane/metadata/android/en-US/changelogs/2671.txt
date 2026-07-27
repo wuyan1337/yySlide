@@ -1,0 +1,15 @@
+v5.24.3: rebased termlib onto connectbot upstream 0.0.34
+
+Our terminal library fork catches up with 26+ commits of upstream
+work — libvterm strncpy bounds check, scroll braking fix,
+stuttering-scroll fix, dead-key handling improvements, configurable
+backspace-key meaning, AltGr preference, selection colours,
+autoDetectUrls opt-in, Robolectric test migration.
+
+All Haven-specific patches preserved: Gboard autocorrect fix (#99),
+CJK composition with floating composer (#96), wrap-aware URL
+detection, gesture callbacks with mouse-mode routing, Ctrl+Shift+V
+paste, NDK r28c pin, scroll-position-drift fix.
+
+On-device smoke tested: mouse mode, Gboard autocorrect, CJK input,
+URL underline on wrapped URLs, Ctrl+Shift+V paste, SSH connect.

@@ -1,0 +1,11 @@
+v5.31.0 — auto-reconnect setting + tunnel-only SSH (#150)
+
+Three new per-profile knobs in the SSH editor: auto-reconnect (gate
+the existing backoff loop), max attempts (0 = unlimited), reconnect
+on network change.
+
+New "Tunnel-only" toggle brings up SSH for port forwards only — no
+terminal tab. Pair with auto-reconnect + unlimited attempts for the
+autossh -M 0 equivalent.
+
+MCP create_connection gains a tunnelOnly arg.

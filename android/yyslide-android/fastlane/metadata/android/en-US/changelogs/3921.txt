@@ -1,0 +1,28 @@
+v5.37.0-rc3 — rclone sync results are now persisted to the connection
+log, on top of rc2.
+
+• Every Mirror / Copy / Move run now writes one entry to Settings →
+  View connection log with mode, source, destination, filters,
+  transfers, deletes, errors, duration, and the dry-run flag. Keyed
+  by the source profile id parsed from the rclone "remote:" prefix
+  (falls back to destination, then to the currently-browsed rclone
+  profile).
+
+• Per-file errors: rclone's last-error message is captured across the
+  sync run and shown under "Last error:" in the entry's verbose log.
+  Helps when rclone reported "1 error" but you can't tell which file
+  caused it.
+
+• Mirror-mode hint: when rclone's documented "skip the delete pass
+  because of source errors" path fires (mode=Mirror, errors > 0,
+  zero deletes), the completion toast gains a "deletions skipped —
+  source errors" suffix, and the audit-log verbose section
+  explicitly explains the suppression and points at fixing the
+  failing source files. Addresses ghanan's #157 root cause.
+
+• Two new audit-log row statuses with their own icons: Sync (green
+  circle-arrow) and Sync failed (red sync-problem icon).
+
+All Android 16 SSH stability, MCP reverse-tunnel toggle, Mirror
+delete-count, MCP rclone tools, and Ed25519 export fixes from rc1/rc2
+carry forward unchanged.
