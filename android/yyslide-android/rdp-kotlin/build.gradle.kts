@@ -18,7 +18,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
     // Keep version in sync with [versions.jna] in gradle/libs.versions.toml
-    compileOnly("net.java.dev.jna:jna:5.14.0")
+    compileOnly("net.java.dev.jna:jna:5.19.1")
 
     testImplementation("junit:junit:4.13.2")
 }
