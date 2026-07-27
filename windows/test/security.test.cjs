@@ -87,13 +87,18 @@ test("JSON writes replace complete files and leave no partial siblings", () => {
 test("release configuration pins the supported runtime and hardened build flow", () => {
   const root = path.join(__dirname, "..");
   const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  const npmConfig = fs.readFileSync(path.join(root, ".npmrc"), "utf8");
   const appSource = fs.readFileSync(path.join(root, "src/App.tsx"), "utf8");
   const mainSource = fs.readFileSync(path.join(root, "electron/main.cjs"), "utf8");
   assert.match(packageJson.devDependencies.electron, /42\.7\.1/);
+  assert.equal(packageJson.devDependencies["electron-builder"], "27.0.0-alpha.6");
   assert.match(packageJson.devDependencies["@types/node"], /^\^24\./);
+  assert.equal(packageJson.overrides.ejs, "6.0.1");
+  assert.match(npmConfig, /^legacy-peer-deps=true$/m);
   assert.equal(packageJson.build.electronFuses.enableEmbeddedAsarIntegrityValidation, true);
   assert.equal(packageJson.build.win.publisherName, undefined);
-  assert.equal(packageJson.build.win.signtoolOptions.publisherName, "yyslide");
+  assert.equal(packageJson.build.win.sign.publisherName, "yyslide");
+  assert.equal(packageJson.build.win.sign.type, "signtool");
   assert.ok(!packageJson.scripts.dist.includes("stamp"));
   assert.match(appSource, /DEFAULT_CLOUD_SERVER_URL = "https:\/\/yyslide\.ccwu\.cc"/);
   assert.match(appSource, /saved === "https:\/\/yyslide\.yyhvh\.com"/);

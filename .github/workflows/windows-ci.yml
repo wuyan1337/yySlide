@@ -33,4 +33,4 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm exec electron-builder -- --win --x64 --dir --publish never
-      - run: npm audit --omit=dev --audit-level=moderate
+      - run: npm audit --audit-level=moderate

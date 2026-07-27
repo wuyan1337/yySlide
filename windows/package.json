@@ -27,7 +27,9 @@
     "directories": {
       "output": "../releases/windows"
     },
-    "npmRebuild": false,
+    "nativeModules": {
+      "npmRebuild": false
+    },
     "files": [
       "dist/**/*",
       "electron/**/*",
@@ -41,10 +43,12 @@
         "to": "icon.ico"
       }
     ],
-    "asarUnpack": [
-      "node_modules/node-pty/prebuilds/**/*",
-      "node_modules/node-pty/third_party/**/*"
-    ],
+    "asar": {
+      "unpack": [
+        "node_modules/node-pty/prebuilds/**/*",
+        "node_modules/node-pty/third_party/**/*"
+      ]
+    },
     "electronFuses": {
       "runAsNode": false,
       "enableCookieEncryption": true,
@@ -56,9 +60,9 @@
     },
     "win": {
       "icon": "build/icon.ico",
-      "signAndEditExecutable": true,
-      "signtoolOptions": {
-        "publisherName": "yyslide"
+      "sign": {
+        "publisherName": "yyslide",
+        "type": "signtool"
       },
       "artifactName": "${productName}-Setup-${version}-${arch}.${ext}",
       "target": [
@@ -106,13 +110,14 @@
     "concurrently": "^9.2.4",
     "cross-env": "^10.1.0",
     "electron": "^42.7.1",
-    "electron-builder": "^26.15.3",
+    "electron-builder": "27.0.0-alpha.6",
     "typescript": "^6.0.3",
     "vite": "^8.1.5",
     "wait-on": "^9.1.0"
   },
   "overrides": {
     "dompurify": "3.4.12",
+    "ejs": "6.0.1",
     "monaco-editor": {
       "dompurify": "3.4.12"
     }
